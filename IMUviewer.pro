@@ -30,7 +30,10 @@ SOURCES += src/main.cpp \
     src/tests.cpp \
     src/mainwindow.cpp \
     src/integration.cpp \
+    src/integration_gyro.cpp\
     src/glwidget.cpp
+
+
 
 HEADERS += \
     include/traitementsignal.h \
@@ -39,6 +42,7 @@ HEADERS += \
     include/tests.h \
     include/mainwindow.h \
     include/integration.h \
+    include/integration_gyro.h\
     include/glwidget.h \
     include/parameter.h
 
