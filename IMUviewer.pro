@@ -18,7 +18,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 
 #Prise en compte de l'ISO C++ 2011
-
+QMAKE_CXXFLAGS+=-std=gnu++11
 
 TEMPLATE = app
 TARGET = IMUViewer
