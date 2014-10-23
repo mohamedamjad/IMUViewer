@@ -24,7 +24,7 @@ TEMPLATE = app
 TARGET = IMUViewer
 
 SOURCES += src/main.cpp \
-    src/traitementsignal.cpp \
+    src/signal.cpp \
     src/csv.cpp \
     src/quaternion.cpp \
     src/tests.cpp \
@@ -36,15 +36,16 @@ SOURCES += src/main.cpp \
 
 
 HEADERS += \
-    include/traitementsignal.h \
+    include/signal.h \
     include/csv.h \
     include/quaternion.h \
     include/tests.h \
     include/mainwindow.h \
     include/integration.h \
-    include/integration_gyro.h\
     include/glwidget.h \
-    include/parameter.h
+    include/parametres.h \
+    include/integration_gyro.h\
+    include/glwidget.h
 
 FORMS    += ui/mainwindow.ui
 
