@@ -25,7 +25,7 @@ bool Tests::testQuaternion()
     rotations[1]=20; // yaw
     rotations[2]=15; // roll
 
-    // le QUaternion qu'on obtient à partir des angles d'eulers précédemment définisss
+    // le Quaternion qu'on obtient à partir des angles d'eulers précédemment définisss
     resq=q.FromEuler(rotations[0],rotations[1],rotations[2]);
 
     //////////////////////::/TESTS
@@ -87,13 +87,14 @@ bool Tests::testQuaternion()
 
     cout << "res Khaled = " << res3[0]  << " " << res3[1] << " " << res3[2] << " " << res3[3] << endl;
 
-    if ((res3[0] == (val1*val5)) && (res3[1] == (val2*val6)) && (res3[2] == (val3*val7)) && (res3[3] == (val4*val8)))
+    if ((res3[0] == (val1*val5-val2*val6-val3*val7-val4*val8)) && (res3[1] == (val1*val6+val2*val5+val3*val8-val4*val7)) && (res3[2] == (val1*val7+val3*val5-val2*val8+val4*val6)) && (res3[3] == (val4*val5+val1*val8+val2*val7-val3*val6)))
         cout << " MULTIP OK " << endl;
     else
     {
         cout << "MULTIP PB" << endl;
         resB = false;
     }
+
     //////////////////////::/SET
     JeanMichel.setQ(Tarik.getQ());
     float *res4 = JeanMichel.getQ();
