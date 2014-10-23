@@ -95,15 +95,35 @@ bool Tests::testQuaternion()
         resB = false;
     }
 
+    //////////////////////::/INVERSE
+    Quaternion Qinv = JeanMichel.inverseQuaternion ();
+
+    float *res5 = Qinv.getQ();
+
+    cout << " res Qinv= "<< res5[0] << " " << res5[1] << " " << res5[2] << " " << res5[3]<<endl;
+
+
+    float tmp= val1/(val1*val1+val2*val2+val3*val3+val4*val4);
+
+    cout << tmp <<endl;
+
+    if ((res5[0] == (val1/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res5[1] == (-val2/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res5[2] == (-val3/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res5[3] == (-val4/(val1*val1+val2*val2+val3*val3+val4*val4))))
+        cout << " INV OK " << endl;
+    else
+    {
+        cout << " INV PB " << endl;
+        resB = false;
+    }
+
     //////////////////////::/SET
     JeanMichel.setQ(Tarik.getQ());
     float *res4 = JeanMichel.getQ();
 
     if((res4[0] == val5) && (res4[1] == val6) && (res4[2] == val7)  && (res4[3] == val8))
-            cout << "set ok"<< endl;
+            cout << " SET OK "<< endl;
     else
     {
-          cout << "set probleme" << endl;
+          cout << " SET PB " << endl;
           resB = false;
     }
     return resB;

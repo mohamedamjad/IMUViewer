@@ -80,21 +80,21 @@ Quaternion Quaternion::multipQuaternion(Quaternion q1, Quaternion q2)
     return q;
 }
 
-Quaternion Quaternion::inverseQuaternion(Quaternion q)
+Quaternion Quaternion::inverseQuaternion()
 {
     Quaternion tmp(1,1,1,1);
 
-    tmp.q[0]=q.q[0]/(q.q[0]*q.q[0]+q.q[1]*q.q[1]+q.q[2]*q.q[2]+q.q[3]*q.q[3]);
-    tmp.q[1]=-q.q[1]/(q.q[0]*q.q[0]+q.q[1]*q.q[1]+q.q[2]*q.q[2]+q.q[3]*q.q[3]);
-    tmp.q[2]=-q.q[2]/(q.q[0]*q.q[0]+q.q[1]*q.q[1]+q.q[2]*q.q[2]+q.q[3]*q.q[3]);
-    tmp.q[3]=-q.q[3]/(q.q[0]*q.q[0]+q.q[1]*q.q[1]+q.q[2]*q.q[2]+q.q[3]*q.q[3]);
+    tmp.q[0]=this->q[0]/(this->q[0]*this->q[0]+this->q[1]*this->q[1]+this->q[2]*this->q[2]+this->q[3]*this->q[3]);
+    tmp.q[1]=-this->q[1]/(this->q[0]*this->q[0]+this->q[1]*this->q[1]+this->q[2]*this->q[2]+this->q[3]*this->q[3]);
+    tmp.q[1]=-this->q[2]/(this->q[0]*this->q[0]+this->q[1]*this->q[1]+this->q[2]*this->q[2]+this->q[3]*this->q[3]);
+    tmp.q[2]=-this->q[3]/(this->q[0]*this->q[0]+this->q[1]*this->q[1]+this->q[2]*this->q[2]+this->q[3]*this->q[3]);
 
-    return q;
+    return tmp;
 }
 
 Quaternion Quaternion::divQuaternion(Quaternion q1,Quaternion q2)
 {
-    return (multipQuaternion(q1,inverseQuaternion (q2)));
+    return (multipQuaternion(q1,q2.inverseQuaternion ()));
 }
 
 void Quaternion::normalise()
