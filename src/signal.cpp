@@ -8,8 +8,12 @@ Signal::Signal(SampleType* unVecteurTemps,SampleType* unSignal,int taille)
     _signal       = unSignal;
 }
 
-double* Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch)
+
+void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEchantillone=false)
 {
+
+   if (reEchantillone)this->regulariseEchantillonage(freqEch);
+
     auto fft = FftFactory::getFft(_taille);
 
     // Transformée de Fourier du signal
@@ -35,14 +39,15 @@ double* Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch)
     std::transform(std::begin(spectre),std::end(spectre),std::begin(spectreFiltre),std::begin(spectre),[] (Aquila::ComplexType x, Aquila::ComplexType y) { return x * y; });
 
     // Fourier inverse ; retour dans l'espace temporel
-    double *res = new double[_taille];
+    SampleType *res = new SampleType[_taille];
     fft->ifft(spectre, res);
 
-    return res;
+    delete _signal;
+    _signal = res;
 }
 
 // Régularise le pas d'échantillonage du signal
-double* Signal::regulariseEchantillonage(float fEch)
+void Signal::regulariseEchantillonage(float fEch)
 {
     ////////////////:TESTS SUR LES TAILLES DE TABLEAU A INSERER SINON BUG//////////////////
 
@@ -53,7 +58,7 @@ double* Signal::regulariseEchantillonage(float fEch)
 
     int tailleTabRes = (int)((_vecteurTemps[_taille-2] - _vecteurTemps[1] )/2 );
 
-    double *res = new double[tailleTabRes];
+    SampleType *res = new SampleType[tailleTabRes];
 
     // Indice de parcours du signal origine
     int iSrc = 0;
@@ -80,7 +85,8 @@ double* Signal::regulariseEchantillonage(float fEch)
         tRes    += tEch;
     }
 
-    return res;
+    delete _signal;
+    _signal = res;
 }
 
 

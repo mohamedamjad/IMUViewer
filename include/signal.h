@@ -15,8 +15,8 @@ class Signal
 {
 public:
     Signal(SampleType *,SampleType *,int);
-    double* passeBas(FrequencyType,FrequencyType);
-    double* regulariseEchantillonage(float);
+    void passeBas(FrequencyType,FrequencyType,bool);
+    void regulariseEchantillonage(float);
     //static float* vecteurColonne(float **,int,int);
 
 private:
