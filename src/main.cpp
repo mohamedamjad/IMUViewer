@@ -1,10 +1,6 @@
 #include <QCoreApplication>
+#include "parametres.h"
 #include "tests.h"
-
-
-// Mode test
-#define TESTS_MODE
-
 
 
 int main(int argc, char *argv[])
