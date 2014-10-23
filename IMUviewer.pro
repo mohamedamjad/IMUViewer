@@ -39,7 +39,8 @@ HEADERS += \
     include/tests.h \
     include/mainwindow.h \
     include/integration.h \
-    include/glwidget.h
+    include/glwidget.h \
+    include/parameter.h
 
 FORMS    += ui/mainwindow.ui
 
