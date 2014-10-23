@@ -119,10 +119,13 @@ bool Tests::TdS()
     for (int i=0;i<nbEch;i++)
         std::cout<<i<< " "<<donnees[4][i]<<std::endl;
 
-    TraitementSignal tdS ((SampleType *)donnees[4],nbEch);
+    Signal tdS ((SampleType *)donnees[0],(SampleType *)donnees[4],nbEch);
 
 
     //tdS.passeBas(FrequencyType freqFiltre,FrequencyType freqEch);
+
+    // Test rééchantillonage
+    //tdS.regulariseEchantillonage(   );
 
 }
 

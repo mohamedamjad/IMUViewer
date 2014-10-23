@@ -3,7 +3,7 @@
 
 #include "quaternion.h"
 #include "csv.h"
-#include "traitementsignal.h"
+#include "signal.h"
 #include <time.h>
 #include <iostream>
 
