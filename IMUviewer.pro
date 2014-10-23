@@ -43,9 +43,9 @@ HEADERS += \
     include/mainwindow.h \
     include/integration.h \
     include/glwidget.h \
-    include/parametres.h
+    include/parametres.h \
     include/integration_gyro.h\
-    include/glwidget.h \
+    include/glwidget.h
 
 FORMS    += ui/mainwindow.ui
 
