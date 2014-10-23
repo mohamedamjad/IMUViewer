@@ -10,18 +10,18 @@ integration_gyro::integration_gyro()
 }
 
 
-integration_gyro::integration_gyro(const float Vx[5],const float Vy[5],const float Vz[5],const double T[5])
+integration_gyro::integration_gyro(float** S,int n)
 {
-   VX=new float [5];
-   VY=new float [5];
-   VZ=new float [5];
-   t=new double [5];
-   for (int i=0;i<5;i++)
+   VX=new float [n];
+   VY=new float [n];
+   VZ=new float [n];
+   t=new float [n];
+   for (int i=0;i<n;i++)
    {
-       VX[i]=Vx[i];
-       VY[i]=Vy[i];
-       VZ[i]=Vz[i];
-       t[i]=T[i];
+       VX[i]=S[6][i];
+       VY[i]=S[7][i];
+       VZ[i]=S[8][i];
+       t[i]=S[0][i];
    }
 
 }
@@ -29,7 +29,7 @@ integration_gyro::integration_gyro(const float Vx[5],const float Vy[5],const flo
 /******************************** Axis X *************************/
 
 
-float* integration_gyro::Integration_gyro_X()
+float* integration_gyro::Integration_gyro_X(int n)
 
 {
 
@@ -48,11 +48,11 @@ return angx;
 /******************************** Axis Y *************************/
 
 
-float* integration_gyro::Integration_gyro_Y()
+float* integration_gyro::Integration_gyro_Y(int n)
 
 {
 
-int size= 5;
+int size= n;
 
 float* angy=new float [size-1];
 
@@ -68,11 +68,11 @@ return angy;
 /******************************** Axis Z *************************/
 
 
-float* integration_gyro::Integration_gyro_Z()
+float* integration_gyro::Integration_gyro_Z(int n)
 
 {
 
-int size= 5;
+int size= n;
 
 float* angz=new float [size-1];
 
@@ -85,7 +85,7 @@ for(int i=0;i<size-1;i++)
 return angz;
 }
 /******************************test**************************************/
-void integration_gyro::test()
+/*void integration_gyro::test()
 
 {
 float* testX=new float [4];
@@ -110,4 +110,4 @@ if(testX[0]+testX[1]+testX[2]==2 && testY[0]+testY[1]+testY[2]==2)
    cout<<"NOOO :'("<<endl;
 
 }
-}
+}*/
