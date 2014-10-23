@@ -30,7 +30,10 @@ SOURCES += src/main.cpp \
     src/tests.cpp \
     src/mainwindow.cpp \
     src/integration.cpp \
+    src/integration_gyro.cpp\
     src/glwidget.cpp
+
+
 
 HEADERS += \
     include/signal.h \
@@ -41,6 +44,8 @@ HEADERS += \
     include/integration.h \
     include/glwidget.h \
     include/parametres.h
+    include/integration_gyro.h\
+    include/glwidget.h \
 
 FORMS    += ui/mainwindow.ui
 
