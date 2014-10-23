@@ -1,6 +1,7 @@
 #include <integration.h>
 #include <math.h>
 #include <stdio.h>
+#include "csv.h"
 #include <integration.h>
 #include <iostream>
 
@@ -12,18 +13,18 @@ Integration::Integration()
 {
 //ctor
 }
-Integration::Integration(const float Ax[5],const float Ay[5],const float Az[5],const double T[5])
+Integration::Integration(float** S,int n)
 {
-   AX=new float [5];
-   AY=new float [5];
-   AZ=new float [5];
-   t=new double [5];
-   for (int i=0;i<5;i++)
+   AX=new float [n];
+   AY=new float [n];
+   AZ=new float [n];
+   t=new float [n];
+   for (int i=0;i<n;i++)
    {
-       AX[i]=Ax[i];
-       AY[i]=Ay[i];
-       AZ[i]=Az[i];
-       t[i]=T[i];
+       AX[i]=S[2][i];
+       AY[i]=S[3][i];
+       AZ[i]=S[4][i];
+       t[i]=S[0][i];
    }
 
 }
@@ -33,27 +34,14 @@ float Integration:: getElt(int i)
 {
 return this->AX[i];
 }
-//******************************** Size of table *************************//
-
-int Integration:: getSize(float* AX)
-{
-int i=0;
-for(i=0;i<5;i++)
-{
-
-}
-
-return i;
-
-}
 
 //******************************** Axis X *************************//
-//récupérer la taille par la fonction qui retourne le nombre de ligne
 
-float* Integration::Integration_accelo_X()
+
+float* Integration::Integration_accelo_X(int n)
 {
 
-int size= getSize(this->AX);
+int size= n;
 
 float* Vtx=new float [size-1];
 float* X=new float [size-2];
@@ -76,12 +64,13 @@ return X;
 }
 
 //******************************** Axis Y *************************//
-//récupérer la taille par la fonction qui retourne le nombre de ligne
-float* Integration::Integration_accelo_Y()
+
+
+float* Integration::Integration_accelo_Y(int n)
 
 {
 
-int size= getSize(this->AY);
+int size= n ;
 float* Vty=new float [size-1];
 float* Y=new float [size-2];
 
@@ -93,7 +82,6 @@ for(int i=0;i<size-1;i++)
     }
 //Calcul of position
 
-//int sizevt= size-1;
 
 for(int i=0;i<size-2;i++)
 
@@ -104,21 +92,21 @@ return Y;
 }
 
 //******************************** Axis Z *************************//
-//récupérer la taille par la fonction qui retourne le nombre de ligne
 
-float* Integration::Integration_accelo_Z()
+
+float* Integration::Integration_accelo_Z(int n)
 
 {
 
-int size= getSize(this->AZ);
+int size= n;
 
 float* Vtz=new float [size-1];
 float* Z=new float [size-2];
-//remove the gravity
+/*//remove the gravity
 for(int i=0;i<size;i++)
     {
     this->AZ[i]=this->AZ[i]-9.81;
-    }
+    }*/
 //Calcul of velocity
 for(int i=0;i<size-1;i++)
 
@@ -127,7 +115,6 @@ for(int i=0;i<size-1;i++)
     }
 //Calcul of position
 
-//int sizevt= getSize(Vtz);
 
 for(int i=0;i<size-2;i++)
 
@@ -137,7 +124,7 @@ for(int i=0;i<size-2;i++)
 return Z;
 }
 
-//teeeeeest//
+/*//teeeeeest//
 void Integration::test()
 
 {
@@ -164,7 +151,7 @@ if(testX[0]+testX[1]+testX[2]==2 && testY[0]+testY[1]+testY[2]==2)
    cout<<"NOOO :'("<<endl;
 
 }
-}
+}*/
 
 Integration::~Integration()
 {
