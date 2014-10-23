@@ -2,6 +2,8 @@
 #include <math.h>
 #include <stdio.h>
 #include <integration.h>
+#include <iostream>
+
 using namespace std;
 
 
@@ -38,7 +40,7 @@ while(AX!=NULL)
 }
 
 return i;
-cout<<"la taille du tableau "<<i<<endl
+cout<<"la taille du tableau "<<i<<endl;
 }
 
 //******************************** Axis X *************************//

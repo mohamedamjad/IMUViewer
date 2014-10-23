@@ -29,6 +29,7 @@ SOURCES += src/main.cpp \
     src/quaternion.cpp \
     src/tests.cpp \
     src/mainwindow.cpp \
+    src/integration.cpp \
     src/glwidget.cpp
 
 HEADERS += \
@@ -37,6 +38,7 @@ HEADERS += \
     include/quaternion.h \
     include/tests.h \
     include/mainwindow.h \
+    include/integration.h \
     include/glwidget.h
 
 FORMS    += ui/mainwindow.ui
