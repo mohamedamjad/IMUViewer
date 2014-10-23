@@ -110,14 +110,14 @@ void Quaternion::normalise()
 
 }
 
-Quaternion Quaternion::conjugateQuaternion(Quaternion const q)
+Quaternion Quaternion::conjugateQuaternion()
 {
     Quaternion cq(1,1,1,1);
 
-    cq.q[0]=q.q[0];
-    cq.q[1]=-q.q[1];
-    cq.q[2]=-q.q[2];
-    cq.q[3]=-q.q[3];
+    cq.q[0]=this->q[0];
+    cq.q[1]=-this->q[1];
+    cq.q[2]=-this->q[2];
+    cq.q[3]=-this->q[3];
 
     return cq;
 
@@ -145,7 +145,7 @@ float* Quaternion::rotateVectorQuaternion(float vect[3])
     vectQuaternion.q[3]=vect[2];
 
     // Le nouveau vecteur= Quaternion * Ancien Vecteur * Conjugué du Quaternion
-    resQuaternion=multipQuaternion (vectQuaternion, conjugateQuaternion (*this));
+    resQuaternion=multipQuaternion (vectQuaternion, conjugateQuaternion ());
     resQuaternion=multipQuaternion (*this, resQuaternion);
 
     resVect[0]=resQuaternion.q[1];

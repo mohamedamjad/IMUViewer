@@ -14,7 +14,7 @@ public:
     Quaternion inverseQuaternion();
     Quaternion divQuaternion(Quaternion,Quaternion);
     void normalise();
-    Quaternion conjugateQuaternion(const Quaternion);
+    Quaternion conjugateQuaternion();
     float* rotateVectorQuaternion(float vect[3]);
     Quaternion rotationAxisQuaternion(float theta, float *axis);
     Quaternion FromEuler(float pitch, float yaw, float roll);

@@ -98,20 +98,33 @@ bool Tests::testQuaternion()
     //////////////////////::/INVERSE
     Quaternion Qinv = JeanMichel.inverseQuaternion ();
 
-    float *res5 = Qinv.getQ();
+    float *res51 = Qinv.getQ();
 
-    cout << " res Qinv= "<< res5[0] << " " << res5[1] << " " << res5[2] << " " << res5[3]<<endl;
+    cout << " res Qinv= "<< res51[0] << " " << res51[1] << " " << res51[2] << " " << res51[3]<<endl;
 
 
     float tmp= val1/(val1*val1+val2*val2+val3*val3+val4*val4);
 
     cout << tmp <<endl;
 
-    if ((res5[0] == (val1/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res5[1] == (-val2/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res5[2] == (-val3/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res5[3] == (-val4/(val1*val1+val2*val2+val3*val3+val4*val4))))
+    if ((res51[0] == (val1/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res51[1] == (-val2/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res51[2] == (-val3/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res51[3] == (-val4/(val1*val1+val2*val2+val3*val3+val4*val4))))
         cout << " INV OK " << endl;
     else
     {
         cout << " INV PB " << endl;
+        resB = false;
+    }
+
+    //////////////////////::/CONJUGATE
+    Quaternion conjugate=JeanMichel.conjugateQuaternion ();
+
+    float *res10 = conjugate.getQ ();
+
+    if ((res10[0] == val1) && (res10[1] == (-val2)) && (res10[2] == (-val3)) && (res10[3] == (-val4)))
+        cout << " CONJ OK " << endl;
+    else
+    {
+        cout << " CONJ PB " << endl;
         resB = false;
     }
 
@@ -146,7 +159,7 @@ bool Tests::TdS()
     //tdS.passeBas(FrequencyType freqFiltre,FrequencyType freqEch);
 
     // Test rééchantillonage
-    //tdS.regulariseEchantillonage(   );
+    //tdS.regulariseEchantillonage();
 
 }
 
