@@ -35,6 +35,8 @@ SOURCES += src/main.cpp \
 
 
 
+
+
 HEADERS += \
     include/signal.h \
     include/csv.h \
@@ -46,6 +48,8 @@ HEADERS += \
     include/parametres.h \
     include/integration_gyro.h\
     include/glwidget.h
+
+
 
 FORMS    += ui/mainwindow.ui
 
