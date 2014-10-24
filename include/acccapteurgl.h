@@ -7,7 +7,7 @@
 #include <QTimerEvent>
 
 
-class AccCapteurGL : virtual public CapteurGL
+class AccCapteurGL : public QGLWidget
 {
     Q_OBJECT
     public:

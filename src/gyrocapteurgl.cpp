@@ -1,7 +1,7 @@
 #include "gyrocapteurgl.h"
 
 GyroCapteurGL::GyroCapteurGL(QWidget *parent) :
-    CapteurGL(parent)
+    QGLWidget(parent)
 {
 }
 

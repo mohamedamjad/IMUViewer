@@ -6,7 +6,7 @@
 #include <QGLWidget>
 #include <QTimerEvent>
 
-class GyroCapteurGL : virtual public CapteurGL
+class GyroCapteurGL : public QGLWidget
 {
     Q_OBJECT
     public:

@@ -7,9 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->glSignalAcc = new PrincipalCapteurGL();
-
-
 }
 
 MainWindow::~MainWindow()

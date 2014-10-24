@@ -6,6 +6,14 @@
 #include <iostream>
 #include <QTimerEvent>
 
+/*
+   Pour optimisation diagramme de classes et classe intermédiaire entre QGLWIdget et les classes GL correspondant aux capteurs
+   mais probleme de polymorphisme, les méthodes petites filles ne sont pas appelées
+
+   ... à voir par la suite....
+*/
+
+
 class CapteurGL : virtual public QGLWidget
 {
     Q_OBJECT
@@ -21,7 +29,7 @@ public:
     virtual void keyPressEvent( QKeyEvent *keyEvent );
     void timerEvent(QTimerEvent);
 
-private :
+protected :
     Centrale* _centrale;
 
 };

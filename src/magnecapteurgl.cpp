@@ -1,7 +1,7 @@
 #include "magnecapteurgl.h"
 
 MagneCapteurGL::MagneCapteurGL(QWidget *parent) :
-    CapteurGL(parent)
+    QGLWidget(parent)
 {
 }
 

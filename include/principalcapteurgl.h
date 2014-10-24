@@ -2,7 +2,6 @@
 #ifndef PRINCIPALGLWIDGET_H
 #define PRINCIPALGLWIDGET_H
 
-#include "capteurgl.h"
 #include <QGLWidget>
 #include <QTimerEvent>
 #include <QGLWidget>
@@ -10,7 +9,7 @@
 #include <GL/glu.h>
 #include <iostream>
 
-class PrincipalCapteurGL : virtual public CapteurGL
+class PrincipalCapteurGL : public QGLWidget
 {
     Q_OBJECT
     public:

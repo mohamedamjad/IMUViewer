@@ -1,0 +1,4 @@
+- écrire procédure d'initialisation (exemple : dans fichier tableaudebord.cpp) qui lit le fichier csv, réalise le traitement du signal
+et l'intégration et fait évoluer les capteurs de la centrale dans le temps
+- les classes gl ont été simplifiées, maisil faudra ajouter un poiteur sur la centrale dans les classes gl
+- il faudra aussi etter les centrales sur les classes gl (où? maindinwow.cpp?)

@@ -6,7 +6,7 @@
 #include <QGLWidget>
 #include <QTimerEvent>
 
-class MagneCapteurGL : virtual public CapteurGL
+class MagneCapteurGL : public QGLWidget
 {
     Q_OBJECT
     public:

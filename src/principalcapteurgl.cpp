@@ -1,21 +1,25 @@
 #include "principalcapteurgl.h"
 
 PrincipalCapteurGL::PrincipalCapteurGL(QWidget *parent) :
-    CapteurGL(parent)
+    QGLWidget(parent)
 {
     std::cout<<"Constructeur principal"<<std::endl;
 }
 
 void PrincipalCapteurGL::initializeGL()
 {
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glBegin(GL_LINES);
+        glVertex3i(0,0,0);
+        glVertex3i(1,1,1);
+    glEnd();
 
 }
 void PrincipalCapteurGL::resizeGL(int width, int height){}
 
 void PrincipalCapteurGL::paintGL()
 {
-    std::cout<<"Princiapl gl paint"<<std::endl;
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 }
 
