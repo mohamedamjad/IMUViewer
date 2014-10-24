@@ -31,7 +31,8 @@ SOURCES += src/main.cpp \
     src/mainwindow.cpp \
     src/integration.cpp \
     src/integration_gyro.cpp\
-    src/glwidget.cpp
+    src/glwidget.cpp \
+    src/sensor.cpp
 
 
 
@@ -45,7 +46,8 @@ HEADERS += \
     include/glwidget.h \
     include/parametres.h \
     include/integration_gyro.h\
-    include/glwidget.h
+    include/glwidget.h \
+    include/sensor.h
 
 FORMS    += ui/mainwindow.ui
 

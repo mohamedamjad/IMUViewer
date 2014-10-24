@@ -1,7 +1,7 @@
 #include <QCoreApplication>
 #include "parametres.h"
 #include "tests.h"
-
+#include<QQuaternion>
 
 int main(int argc, char *argv[])
 {

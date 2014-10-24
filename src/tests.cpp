@@ -140,6 +140,7 @@ bool Tests::testQuaternion()
           resB = false;
     }
     return resB;
+
 }
 
 bool Tests::TdS()
