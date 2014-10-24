@@ -3,7 +3,7 @@
 # Project created by QtCreator 2014-10-17T09:05:19
 #
 #-------------------------------------------------
-QT       += core gui
+QT += core gui
 QT += opengl
 
 LIBS += -lglut
@@ -31,8 +31,14 @@ SOURCES += src/main.cpp \
     src/mainwindow.cpp \
     src/integration.cpp \
     src/integration_gyro.cpp\
+<<<<<<< HEAD
     src/glwidget.cpp \
     src/sensor.cpp
+=======
+    src/capteurgl.cpp
+
+
+>>>>>>> refs/remotes/origin/master
 
 
 
@@ -43,11 +49,13 @@ HEADERS += \
     include/tests.h \
     include/mainwindow.h \
     include/integration.h \
-    include/glwidget.h \
+    include/capteurgl.h \
     include/parametres.h \
     include/integration_gyro.h\
     include/glwidget.h \
     include/sensor.h
+
+
 
 FORMS    += ui/mainwindow.ui
 
