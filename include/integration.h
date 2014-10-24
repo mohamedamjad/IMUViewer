@@ -7,7 +7,7 @@ public:
 
 
     Integration();
-    Integration(float** S,int n);
+    Integration(double** S,int n);
     //int getSize(float* AX);
     float getElt(int i);
     float* Integration_accelo_X(int n);
@@ -20,10 +20,10 @@ public:
 private:
 
 
-    float* AX;
-    float* AY;
-    float* AZ;
-    float* t;
+    double* AX;
+    double* AY;
+    double* AZ;
+    double* t;
 
 
 };
