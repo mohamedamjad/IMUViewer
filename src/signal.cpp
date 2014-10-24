@@ -18,12 +18,19 @@ Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal)
 
 }
 
+double  Signal::getSignal(int i)
+{
+    return this->_signal[i];
+
+
+}
 
 Signal::~Signal()
 {
     delete _signal;
     delete _vecteurTemps;
 }
+
 
 void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEchantillone=false)
 {
@@ -147,3 +154,6 @@ int Signal::getTaille()
     }
     return res;
 }*/
+
+
+

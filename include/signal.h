@@ -17,7 +17,12 @@ public:
     Signal(SampleType **,int,int,int);
     ~Signal();
     void passeBas(FrequencyType,FrequencyType,bool);
+
+
+    double  getSignal(int i);
+
     void regulariseEchantillonage(SampleType);
+
     //static float* vecteurColonne(float **,int,int);
 
     SampleType *getSignal()const;
