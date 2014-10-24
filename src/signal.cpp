@@ -8,7 +8,11 @@ Signal::Signal(SampleType* unVecteurTemps,SampleType* unSignal,int taille)
     _signal       = unSignal;
 }
 
+double  Signal::get_signal(int i)
+{
+    return this->_signal[i];
 
+}
 void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEchantillone=false)
 {
 
@@ -103,3 +107,6 @@ void Signal::regulariseEchantillonage(float fEch)
     }
     return res;
 }*/
+
+
+
