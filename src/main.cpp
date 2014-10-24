@@ -43,34 +43,24 @@ double** TDS_matix(int n,double** sens,  FrequencyType freqFiltre, FrequencyType
 
 
      double** TDSmatix=new double* [4];
-     SampleType *sacclx = new SampleType[n];
-     SampleType *saccly = new SampleType[n];
-     SampleType *sacclz = new SampleType[n];
+
      SampleType *tmps = new SampleType[n];
 
-    for (int i=0;i<n;i++)
-    {
-       sacclx[i]=sens[2][i];
-       saccly[i]=sens[3][i];
-       sacclz[i]=sens[4][i];
-        tmps[i]=sens[0][i];
-
-    }
-    Signal saccx(tmps,sacclx,n);
+    Signal saccx(sens,n,0,2);
     saccx.passeBas(freqFiltre,freqEch,reEchantillone);
 
-    Signal saccy(tmps,saccly,n);
+    Signal saccy(sens,n,0,3);
     saccy.passeBas(freqFiltre,freqEch,reEchantillone);
 
-    Signal saccz(tmps,sacclz,n);
+    Signal saccz(sens,n,0,4);
     saccz.passeBas(freqFiltre,freqEch,reEchantillone);
 
     for (int i=0;i<n;i++)
     {
        TDSmatix[0][i]= tmps[i];
-       TDSmatix[0][i]= saccx.get_signal(i);
-       TDSmatix[0][i]= saccy.get_signal(i);
-       TDSmatix[0][i]= saccz.get_signal(i);
+       TDSmatix[0][i]= saccx.getSignal(i);
+       TDSmatix[0][i]= saccy.getSignal(i);
+       TDSmatix[0][i]= saccz.getSignal(i);
 
     }
 

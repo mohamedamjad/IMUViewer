@@ -146,20 +146,44 @@ bool Tests::TdS()
 {
 
     CSV donneesCentrale;
-    float **donnees   = donneesCentrale.readCSV("amjad_marche_cheville.out");
+    double **donnees   = donneesCentrale.readCSV("amjad_marche_cheville.out");
     int nbEch = donneesCentrale.getNbLines();
 
 
-    for (int i=0;i<nbEch;i++)
-        std::cout<<i<< " "<<donnees[4][i]<<std::endl;
+    std::cout << "Données avant echantilonge"<< std::endl;
 
-    Signal tdS ((SampleType *)donnees[0],(SampleType *)donnees[4],nbEch);
+   /* for (int i=0;i<nbEch;i++)
+        printf("%f;%f\n",donnees[0][i],donnees[4][i]);;//std::cout<<donnees[0][i]<< " "<<donnees[4][i]<<std::endl;
+*/
 
+    Signal tdS(donnees,nbEch,0,4);
 
     //tdS.passeBas(FrequencyType freqFiltre,FrequencyType freqEch);
 
+
+
+    std::cout << "***************"<< std::endl;
+    // Test rééchantillonage 50Hz
+    tdS.regulariseEchantillonage(50.0);
+
+
+
+
+    const SampleType *signalReechantillone = tdS.getSignal();
+    const SampleType *temps = tdS.getTemps();
+    int taille = tdS.getTaille();
+
+    std::cout << "TAILLE AVANT = "<< nbEch << std::endl;
+    std::cout << "TAILLE APRES = "<< taille << std::endl;
+
+    std::cout << "Données apres echantilonge"<< std::endl;
+
+    for (int i=0;i<taille;i++)
+        printf("%lf;%lf\n",temps[i],signalReechantillone[i]);
+
     // Test rééchantillonage
     //tdS.regulariseEchantillonage();
+
 
 }
 
