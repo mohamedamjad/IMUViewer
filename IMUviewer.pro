@@ -6,7 +6,7 @@
 QT += core gui
 QT += opengl
 
-LIBS += -lglut
+LIBS += -lGL -lGLU -lglut
 
 INCLUDEPATH += -L/usr/lib/
 
@@ -33,7 +33,10 @@ SOURCES += src/main.cpp \
     src/integration_gyro.cpp\
     src/capteurgl.cpp \
     src/centrale.cpp \
-    src/acccapteurgl.cpp
+    src/acccapteurgl.cpp \
+    src/magnecapteurgl.cpp \
+    src/gyrocapteurgl.cpp \
+    src/principalcapteurgl.cpp
 
 
 
@@ -51,7 +54,10 @@ HEADERS += \
     include/integration_gyro.h\
     include/glwidget.h \
     include/centrale.h \
-    include/acccapteurgl.h
+    include/acccapteurgl.h \
+    include/magnecapteurgl.h \
+    include/gyrocapteurgl.h \
+    include/principalcapteurgl.h
 
 
 

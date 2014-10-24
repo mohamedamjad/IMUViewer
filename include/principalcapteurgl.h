@@ -1,17 +1,20 @@
  
-#ifndef ACCGLWIDGET_H
-#define ACCGLWIDGET_H
+#ifndef PRINCIPALGLWIDGET_H
+#define PRINCIPALGLWIDGET_H
 
 #include "capteurgl.h"
 #include <QGLWidget>
 #include <QTimerEvent>
+#include <QGLWidget>
+#include <QtOpenGL>
+#include <GL/glu.h>
+#include <iostream>
 
-
-class AccCapteurGL : virtual public CapteurGL
+class PrincipalCapteurGL : virtual public CapteurGL
 {
     Q_OBJECT
     public:
-         explicit AccCapteurGL(QWidget *parent = 0);
+         explicit PrincipalCapteurGL(QWidget *parent = 0);
 
         void initializeGL();
         void resizeGL(int width, int height);

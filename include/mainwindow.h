@@ -3,6 +3,12 @@
 
 #include <QMainWindow>
 
+#include "acccapteurgl.h"
+#include "gyrocapteurgl.h"
+#include "principalcapteurgl.h"
+#include "magnecapteurgl.h"
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +23,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    AccCapteurGL *_accGL;
+    GyroCapteurGL *_gyroGL;
+    MagneCapteurGL *_magneGL;
 };
 
 #endif // MAINWINDOW_H

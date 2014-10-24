@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="CapteurGL" name="widget" native="true">
+   <widget class="PrincipalCapteurGL" name="glPrincipal" native="true">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -92,7 +92,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="CapteurGL" name="widget_2" native="true">
+   <widget class="CapteurGL" name="glSignalAcc" native="true">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -112,10 +112,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Gyroscope : Evolution de la vitesse angulaire</string>
+     <string>Accéléromètre : Evolution de l'accélération</string>
     </property>
    </widget>
-   <widget class="CapteurGL" name="widget_3" native="true">
+   <widget class="CapteurGL" name="glSignalGyro" native="true">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -138,7 +138,7 @@
      <string>Gyroscope : Evolution de la vitesse angulaire</string>
     </property>
    </widget>
-   <widget class="CapteurGL" name="widget_4" native="true">
+   <widget class="CapteurGL" name="glSignalMagne" native="true">
     <property name="geometry">
      <rect>
       <x>560</x>
@@ -158,10 +158,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Gyroscope : Evolution de la vitesse angulaire</string>
+     <string>Magnétomètre : évolution</string>
     </property>
    </widget>
-   <widget class="CapteurGL" name="widget_5" native="true">
+   <widget class="AccCapteurGL" name="glCapteurAcc" native="true">
     <property name="geometry">
      <rect>
       <x>560</x>
@@ -171,7 +171,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="CapteurGL" name="widget_6" native="true">
+   <widget class="GyroCapteurGL" name="glCapteurGyro" native="true">
     <property name="geometry">
      <rect>
       <x>740</x>
@@ -181,7 +181,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="CapteurGL" name="widget_7" native="true">
+   <widget class="MagneCapteurGL" name="glCapteurMagne" native="true">
     <property name="geometry">
      <rect>
       <x>920</x>
@@ -197,7 +197,7 @@
       <x>550</x>
       <y>20</y>
       <width>204</width>
-      <height>21</height>
+      <height>24</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
