@@ -10,12 +10,12 @@ integration_gyro::integration_gyro()
 }
 
 
-integration_gyro::integration_gyro(float** S,int n)
+integration_gyro::integration_gyro(double** S,int n)
 {
-   VX=new float [n];
-   VY=new float [n];
-   VZ=new float [n];
-   t=new float [n];
+   VX=new double [n];
+   VY=new double [n];
+   VZ=new double [n];
+   t=new double [n];
    for (int i=0;i<n;i++)
    {
        VX[i]=S[6][i];
