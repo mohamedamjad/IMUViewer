@@ -17,6 +17,7 @@ public:
     Signal(SampleType *,SampleType *,int);
     void passeBas(FrequencyType,FrequencyType,bool);
     void regulariseEchantillonage(float);
+    double  get_signal(int i);
     //static float* vecteurColonne(float **,int,int);
 
 private:
