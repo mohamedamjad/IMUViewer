@@ -1,4 +1,4 @@
-#include "glwidget.h"
+#include "capteurgl.h"
 
 GLWidget::GLWidget(QWidget *parent) :
     QGLWidget(parent)

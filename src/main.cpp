@@ -1,6 +1,7 @@
-#include <QCoreApplication>
+#include <QApplication>
 #include "parametres.h"
 #include "tests.h"
+#include "mainwindow.h"
 
 
 int main(int argc, char *argv[])
@@ -12,9 +13,11 @@ int main(int argc, char *argv[])
 
     #else
 
-    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
 
 #endif
 
-    return 0;
+    return a.exec();
 }
