@@ -11,15 +11,16 @@
 
 using namespace Aquila;
 
-class TraitementSignal
+class Signal
 {
 public:
-    TraitementSignal(SampleType *,int);
-    double* passeBas(FrequencyType,FrequencyType);
+    Signal(SampleType *,SampleType *,int);
+    void passeBas(FrequencyType,FrequencyType,bool);
     void regulariseEchantillonage(float);
     //static float* vecteurColonne(float **,int,int);
 
 private:
+    SampleType *_vecteurTemps;
     SampleType *_signal;
     int _taille;
 };

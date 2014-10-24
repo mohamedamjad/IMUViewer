@@ -8,17 +8,16 @@
 using namespace std;
 
 
-
 Integration::Integration()
 {
 //ctor
 }
-Integration::Integration(float** S,int n)
+Integration::Integration(double** S,int n)
 {
-   AX=new float [n];
-   AY=new float [n];
-   AZ=new float [n];
-   t=new float [n];
+   AX=new double [n];
+   AY=new double [n];
+   AZ=new double [n];
+   t=new double [n];
    for (int i=0;i<n;i++)
    {
        AX[i]=S[2][i];
