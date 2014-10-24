@@ -3,7 +3,7 @@
 
 #include "aquila/global.h"
 #include "aquila/transform/FftFactory.h"
-
+#include <iostream>
 //////////////////////// NECESSAIRE POUR TRANSFORM VERIFIER CE QUE CELA FAIT BIEN COMME IL FAUT
 #include <algorithm>
 
@@ -14,10 +14,15 @@ using namespace Aquila;
 class Signal
 {
 public:
-    Signal(SampleType *,SampleType *,int);
+    Signal(SampleType **,int,int,int);
+    ~Signal();
     void passeBas(FrequencyType,FrequencyType,bool);
-    void regulariseEchantillonage(float);
+    void regulariseEchantillonage(SampleType);
     //static float* vecteurColonne(float **,int,int);
+
+    SampleType *getSignal()const;
+    SampleType *getTemps()const;
+    int getTaille();
 
 private:
     SampleType *_vecteurTemps;

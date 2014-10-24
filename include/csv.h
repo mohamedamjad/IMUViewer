@@ -5,7 +5,7 @@ class CSV
 {
 public:
     CSV();
-    float **readCSV(char *);
+    double **readCSV(char *);
 
     int getNbLines();
 
