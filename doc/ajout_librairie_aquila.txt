@@ -1,0 +1,18 @@
+1) Compilation de la librairie aquila : 
+cmake ./ -DCMAKE_INSTALL_PREFIX="../../traitement_du_signal/traitement_du_signal/lib"
+make
+make install
+
+2) Copie à la main de la librairie générée dans librairie libOoura_fft.a dans ../../traitement_du_signal/traitement_du_signal/lib
+=> cette librairie correspond à du code écrit en C et appelée par les deux autres via méthodes extern (liaison statique)
+
+
+3) Pour compatibilité ISO C++ 2011
+Ajout de l'option dans le parametrage de qmake
+
+-r QMAKE_CXXFLAGS+=-std=gnu++11 
+
+4) Ajout des trois bibliothèques dans qt en mode bibliothèque externe
+
+
+
