@@ -9,7 +9,7 @@ CSV::CSV()
 {
 }
 
-float **CSV::readCSV(char *file_name){
+double **CSV::readCSV(char *file_name){
     ;
 
 
@@ -29,17 +29,17 @@ float **CSV::readCSV(char *file_name){
         // On se repositionne au début du fichier
         fseek ( fichier , 0 , SEEK_SET );
 
-        float **sensors=new float*[13];
+        double **sensors=new double*[13];
 
 
         for (int col=0;col<13;col++)
-            sensors[col] = new float[_number_of_lines];
+            sensors[col] = new double[_number_of_lines];
 
 
             // Lire les valeurs et les stocquer dans une matrice
             for (int i=0;i<_number_of_lines;i++)
             {
-                fscanf(fichier, "%f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f\n", &sensors[0][i],&sensors[1][i],&sensors[2][i],&sensors[3][i],&sensors[4][i],&sensors[5][i],&sensors[6][i],&sensors[7][i],&sensors[8][i],&sensors[9][i],&sensors[10][i],&sensors[11][i],&sensors[12][i]);
+                fscanf(fichier, "%lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf\n", &sensors[0][i],&sensors[1][i],&sensors[2][i],&sensors[3][i],&sensors[4][i],&sensors[5][i],&sensors[6][i],&sensors[7][i],&sensors[8][i],&sensors[9][i],&sensors[10][i],&sensors[11][i],&sensors[12][i]);
             }
             fclose (fichier);
             return sensors;
