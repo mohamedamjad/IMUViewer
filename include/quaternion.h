@@ -9,12 +9,12 @@ public:
     Quaternion(float a, float b, float c, float d);
     Quaternion(const Quaternion&);
 
-    Quaternion add(Quaternion,Quaternion);
-    Quaternion multipQuaternion(Quaternion, Quaternion);
-    Quaternion inverseQuaternion(Quaternion q);
+    Quaternion add(Quaternion,Quaternion); // testé
+    Quaternion multipQuaternion(Quaternion, Quaternion); // testé
+    Quaternion inverseQuaternion();
     Quaternion divQuaternion(Quaternion,Quaternion);
     void normalise();
-    Quaternion conjugateQuaternion(const Quaternion);
+    Quaternion conjugateQuaternion();
     float* rotateVectorQuaternion(float vect[3]);
     Quaternion rotationAxisQuaternion(float theta, float *axis);
     Quaternion FromEuler(float pitch, float yaw, float roll);

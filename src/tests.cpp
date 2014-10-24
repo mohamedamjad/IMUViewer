@@ -25,7 +25,7 @@ bool Tests::testQuaternion()
     rotations[1]=20; // yaw
     rotations[2]=15; // roll
 
-    // le QUaternion qu'on obtient à partir des angles d'eulers précédemment définisss
+    // le Quaternion qu'on obtient à partir des angles d'eulers précédemment définisss
     resq=q.FromEuler(rotations[0],rotations[1],rotations[2]);
 
     //////////////////////::/TESTS
@@ -87,22 +87,56 @@ bool Tests::testQuaternion()
 
     cout << "res Khaled = " << res3[0]  << " " << res3[1] << " " << res3[2] << " " << res3[3] << endl;
 
-    if ((res3[0] == (val1*val5)) && (res3[1] == (val2*val6)) && (res3[2] == (val3*val7)) && (res3[3] == (val4*val8)))
+    if ((res3[0] == (val1*val5-val2*val6-val3*val7-val4*val8)) && (res3[1] == (val1*val6+val2*val5+val3*val8-val4*val7)) && (res3[2] == (val1*val7+val3*val5-val2*val8+val4*val6)) && (res3[3] == (val4*val5+val1*val8+val2*val7-val3*val6)))
         cout << " MULTIP OK " << endl;
     else
     {
         cout << "MULTIP PB" << endl;
         resB = false;
     }
+
+    //////////////////////::/INVERSE
+    Quaternion Qinv = JeanMichel.inverseQuaternion ();
+
+    float *res51 = Qinv.getQ();
+
+    cout << " res Qinv= "<< res51[0] << " " << res51[1] << " " << res51[2] << " " << res51[3]<<endl;
+
+
+    float tmp= val1/(val1*val1+val2*val2+val3*val3+val4*val4);
+
+    cout << tmp <<endl;
+
+    if ((res51[0] == (val1/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res51[1] == (-val2/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res51[2] == (-val3/(val1*val1+val2*val2+val3*val3+val4*val4))) && (res51[3] == (-val4/(val1*val1+val2*val2+val3*val3+val4*val4))))
+        cout << " INV OK " << endl;
+    else
+    {
+        cout << " INV PB " << endl;
+        resB = false;
+    }
+
+    //////////////////////::/CONJUGATE
+    Quaternion conjugate=JeanMichel.conjugateQuaternion ();
+
+    float *res10 = conjugate.getQ ();
+
+    if ((res10[0] == val1) && (res10[1] == (-val2)) && (res10[2] == (-val3)) && (res10[3] == (-val4)))
+        cout << " CONJ OK " << endl;
+    else
+    {
+        cout << " CONJ PB " << endl;
+        resB = false;
+    }
+
     //////////////////////::/SET
     JeanMichel.setQ(Tarik.getQ());
     float *res4 = JeanMichel.getQ();
 
     if((res4[0] == val5) && (res4[1] == val6) && (res4[2] == val7)  && (res4[3] == val8))
-            cout << "set ok"<< endl;
+            cout << " SET OK "<< endl;
     else
     {
-          cout << "set probleme" << endl;
+          cout << " SET PB " << endl;
           resB = false;
     }
     return resB;
@@ -127,6 +161,7 @@ bool Tests::TdS()
     //tdS.passeBas(FrequencyType freqFiltre,FrequencyType freqEch);
 
 
+
     std::cout << "***************"<< std::endl;
     // Test rééchantillonage 50Hz
     tdS.regulariseEchantillonage(50.0);
@@ -145,6 +180,10 @@ bool Tests::TdS()
 
     for (int i=0;i<taille;i++)
         printf("%lf;%lf\n",temps[i],signalReechantillone[i]);
+
+    // Test rééchantillonage
+    //tdS.regulariseEchantillonage();
+
 
 }
 

@@ -7,7 +7,6 @@
 using namespace std;
 
 
-
 Integration::Integration()
 {
 //ctor
