@@ -1,4 +1,4 @@
-T ableau de bord : il faut setter les valeurs de tous les capteurs
+bug filtre passe bas à voir
 
 
 - les classes gl ont été simplifiées, on pourrait ajouter une classe capteur mere qui contiendra le pointeur vers la centrale
