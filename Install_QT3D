@@ -17,7 +17,7 @@ Vous avez Qt et QT-Creator en denière version avec le qmake aussi en dernière 
 * aller au dossier ou vous avez buildé (cd build_qt3d...)
 * écrire: make install
 * relancer QTCreator -> créer un nouveau projet -> dans le fichier .pro ajouter QT += 3dquick -> compiler le projet vide et 
-  ça ne doit pas renvoyer d'erreurs
+  ça ne doit pas renvoyer d'erreurs -> dans ce cas bravo vous avez QT3D
   
   Vous n'êtes pas chanceux (comme moi):
   ===
@@ -31,6 +31,7 @@ Vous avez Qt et QT-Creator en denière version avec le qmake aussi en dernière 
   
   Installer la dernière version de QTCreator:
   ==
+  * Avant d'installer la dernière version, supprimez l'ancienne version de qt-sdk: apt-get remove qt-sdk qt-creator
   * Télécharger la dernière version stable depuis: http://download.qt-project.org/official_releases/online_installers/qt-opensource-linux-x64-1.6.0-5-online.run
   * double cliquez sur le fichier que vous avez télécharger
   * Dans la fenêtre qui s'affiche cliquez sur paramètres pour modifier les paramètres du proxy de l'installateur
@@ -40,3 +41,4 @@ Vous avez Qt et QT-Creator en denière version avec le qmake aussi en dernière 
     supprimer la manuel et ne laisser que la version autodetectée .. ou encore mieux mêe dans la version manuelle pointé sur LE QMAKE de Qt5.3
     * Maintenant que vous avez les dernières versions recquises : reprener la partie : VOUS ETES CHANCEUX
 
+Si vous avez des problèmes venez vers moi ou mail: mohamed-amjad.lasri@ensg.eu
