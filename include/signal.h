@@ -36,6 +36,8 @@ public:
 
 private:
     SampleType *_vecteurTemps;
+
+
     SampleType *_signal;
     // Signal brut intégré
     SampleType *_signalIntegre;

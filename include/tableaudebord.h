@@ -35,6 +35,9 @@ class TableauDeBord : public QObject
 
 
     private:
+        // 0-1-2 : accelero
+        // 3-4-5 : gyro
+        // 6 7 8 : magnéto
         QVector<Signal*> _signaux;
 
         // Nb de lignes dans le fichier de départ
