@@ -8,6 +8,7 @@
 #include <QtOpenGL>
 #include <GL/glu.h>
 #include <iostream>
+#include "centrale.h"
 
 class PrincipalCapteurGL : public QGLWidget
 {
@@ -22,6 +23,13 @@ class PrincipalCapteurGL : public QGLWidget
         void mouseMoveEvent(QMouseEvent *event);
         void keyPressEvent( QKeyEvent *keyEvent );
         void timerEvent(QTimerEvent);
+        void setCentrale(Centrale *);
+
+    public slots:
+        void updateGL();
+
+    private:
+        Centrale* _pIMU;
 };
 
 #endif

@@ -2,11 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "tableaudebord.h"
 
-#include "acccapteurgl.h"
-#include "gyrocapteurgl.h"
-#include "principalcapteurgl.h"
-#include "magnecapteurgl.h"
+
+
 
 
 namespace Ui {
@@ -19,14 +18,15 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+
     ~MainWindow();
+
 
 private:
     Ui::MainWindow *ui;
 
-    AccCapteurGL *_accGL;
-    GyroCapteurGL *_gyroGL;
-    MagneCapteurGL *_magneGL;
+    TableauDeBord *_pTdb;
+
 };
 
 #endif // MAINWINDOW_H

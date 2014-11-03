@@ -8,8 +8,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <signal.h>
-#include <integration.h>
-#include <integration_gyro.h>
+
 #include <csv.h>
 
 using namespace std;
@@ -25,9 +24,9 @@ int main(int argc, char *argv[])
         #else // RUN MODE
 
             QApplication a(argc, argv);
+
             MainWindow w;
             w.show();
-
         #endif
 
 

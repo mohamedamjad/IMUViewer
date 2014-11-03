@@ -10,7 +10,7 @@ GyroCapteurGL::GyroCapteurGL(QWidget *parent) :
 void GyroCapteurGL::initializeGL()
 {}
 void GyroCapteurGL::resizeGL(int width, int height){}
-void GyroCapteurGL::paintGL(){}
+void GyroCapteurGL::paintGL(){std::cout <<"gyro"<<std::endl;}
 void GyroCapteurGL::mousePressEvent(QMouseEvent *event){}
 void GyroCapteurGL::mouseMoveEvent(QMouseEvent *event){}
 void GyroCapteurGL::keyPressEvent( QKeyEvent *keyEvent ){}
@@ -23,3 +23,14 @@ void GyroCapteurGL::timerEvent(QTimerEvent event)
 
 
 
+
+void GyroCapteurGL::updateGL()
+{
+
+    paintGL();
+}
+
+void GyroCapteurGL::setCentrale(Centrale *uneCentrale)
+{
+    _pIMU = uneCentrale;
+}

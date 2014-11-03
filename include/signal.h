@@ -29,9 +29,18 @@ public:
     SampleType *getTemps()const;
     int getTaille();
 
+    void integre();
+    void doubleIntegre();
+    SampleType getSignalIntegre(int i);
+    SampleType getSignalDoubleIntegre(int i);
+
 private:
     SampleType *_vecteurTemps;
     SampleType *_signal;
+    // Signal brut intégré
+    SampleType *_signalIntegre;
+    // Signal brut doublement intégré
+    SampleType *_signalDoubleIntegre;
     int _taille;
 };
 

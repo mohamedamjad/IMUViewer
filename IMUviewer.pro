@@ -29,14 +29,13 @@ SOURCES += src/main.cpp \
     src/quaternion.cpp \
     src/tests.cpp \
     src/mainwindow.cpp \
-    src/integration.cpp \
-    src/integration_gyro.cpp\
     src/capteurgl.cpp \
     src/centrale.cpp \
     src/acccapteurgl.cpp \
     src/magnecapteurgl.cpp \
     src/gyrocapteurgl.cpp \
-    src/principalcapteurgl.cpp
+    src/principalcapteurgl.cpp \
+    src/tableaudebord.cpp
 
 
 
@@ -48,16 +47,15 @@ HEADERS += \
     include/quaternion.h \
     include/tests.h \
     include/mainwindow.h \
-    include/integration.h \
     include/capteurgl.h \
     include/parametres.h \
-    include/integration_gyro.h\
     include/glwidget.h \
     include/centrale.h \
     include/acccapteurgl.h \
     include/magnecapteurgl.h \
     include/gyrocapteurgl.h \
-    include/principalcapteurgl.h
+    include/principalcapteurgl.h \
+    include/tableaudebord.h
 
 
 

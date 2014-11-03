@@ -2,8 +2,7 @@
 #define TESTS_H
 
 #include "quaternion.h"
-#include "integration.h"
-#include "integration_gyro.h"
+
 #include "csv.h"
 #include "signal.h"
 #include <time.h>
