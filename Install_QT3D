@@ -33,7 +33,7 @@ Vous avez Qt et QT-Creator en denière version avec le qmake aussi en dernière 
   ==
   * Avant d'installer la dernière version, supprimez l'ancienne version de qt-sdk: apt-get remove qt-sdk qt-creator
   * Télécharger la dernière version stable depuis: http://download.qt-project.org/official_releases/online_installers/qt-opensource-linux-x64-1.6.0-5-online.run
-  * double cliquez sur le fichier que vous avez télécharger
+  * double cliquez sur le fichier que vous avez télécharger (avant faites un chmod +x lenomdufichier.run)
   * Dans la fenêtre qui s'affiche cliquez sur paramètres pour modifier les paramètres du proxy de l'installateur
   * Cliquez sur suivant pour lancer l'installation
   * à la fin de l'installation -> lancer QtCreator

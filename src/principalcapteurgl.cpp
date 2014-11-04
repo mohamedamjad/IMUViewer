@@ -93,4 +93,13 @@ void PrincipalCapteurGL::timerEvent(QTimerEvent event)
 }
 
 
+void PrincipalCapteurGL::updateGL()
+{
 
+    paintGL();
+}
+
+void PrincipalCapteurGL::setCentrale(Centrale *uneCentrale)
+{
+    _pIMU = uneCentrale;
+}

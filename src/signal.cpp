@@ -2,7 +2,6 @@
 
 
 
-
 Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal)
 {
     _taille       = taille;
@@ -13,7 +12,6 @@ Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal)
     {
         _vecteurTemps[i] = uneMatrice[colTemps][i];
         _signal[i]       = uneMatrice[colSignal][i];
-
     }
 
 }
@@ -44,6 +42,7 @@ void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEcha
 
     // Generation du spectre filtre
     SpectrumType spectreFiltre(_taille);
+
     for (int i = 0; i < _taille; i++)
     {
         if (i < (_taille * freqFiltre / freqEch))
@@ -141,6 +140,40 @@ int Signal::getTaille()
 
 }
 
+void Signal::integre()
+{
+
+    int size= this->getTaille();
+    this->_signalIntegre= new SampleType[size-1];
+    for(int i=0;i<size-1;i++)
+
+        {
+
+        this->_signalIntegre[i]=(this->_signal[i]+(this->_signal[i+1]-this->_signal[i])/2)*(this->_vecteurTemps[i+1]-this->_vecteurTemps[i])+this->_signal[0];
+        }
+}
+void Signal::doubleIntegre()
+{
+    this->integre();
+    int size= this->getTaille();
+    this->_signalDoubleIntegre= new SampleType[size-2];
+    for(int i=0;i<size-2;i++)
+
+        {
+        this->_signalDoubleIntegre[i]=(this->_signalIntegre[i]+(this->_signalIntegre[i+1]-this->_signalIntegre[i])/2)*(this->_vecteurTemps[i+1]-this->_vecteurTemps[i])+this->_signalIntegre[0];
+        }
+}
+
+SampleType  Signal::getSignalIntegre(int i)
+{
+    return this->_signalIntegre[i];
+}
+
+SampleType  Signal::getSignalDoubleIntegre(int i)
+{
+    return this->_signalDoubleIntegre[i];
+}
+
 // Renvoie la colonne col de la matrice sous forme de vecteur
 
 /*float* Signal::vecteurColonne(float **matrice,int col,int nbLignes)
@@ -154,6 +187,5 @@ int Signal::getTaille()
     }
     return res;
 }*/
-
 
 

@@ -100,3 +100,14 @@ void MagneCapteurGL::timerEvent(QTimerEvent event)
     updateGL();
 }
 
+
+void MagneCapteurGL::updateGL()
+{
+
+    paintGL();
+}
+
+void MagneCapteurGL::setCentrale(Centrale *uneCentrale)
+{
+    _pIMU = uneCentrale;
+}

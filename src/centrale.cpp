@@ -8,5 +8,9 @@ Centrale::Centrale()
         _acc.append(0);
         _gyro.append(0);
         _magn.append(0);
+        _acc2I.append(0);
+        _gyroI.append(0);
     }
 }
+
+

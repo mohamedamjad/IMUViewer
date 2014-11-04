@@ -5,13 +5,14 @@ AccCapteurGL::AccCapteurGL(QWidget *parent) :
 {
         glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 }
-
 void AccCapteurGL::initializeGL()
+
 {
-
-
-
+    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 }
+
+
+
 void AccCapteurGL::resizeGL(int w, int h)
 {
     if (h == 0)
@@ -30,9 +31,11 @@ void AccCapteurGL::resizeGL(int w, int h)
 }
 
 
+
 void AccCapteurGL::paintGL()
 
 {
+
 
     GLUquadricObj *quadratic;
    quadratic = gluNewQuadric();
@@ -94,8 +97,19 @@ void AccCapteurGL::keyPressEvent( QKeyEvent *keyEvent ){}
 
 void AccCapteurGL::timerEvent(QTimerEvent event)
 {
+    std::cout<<"timer event"<<std::endl;
     updateGL();
 }
 
 
 
+void AccCapteurGL::updateGL()
+{
+
+    paintGL();
+}
+
+void AccCapteurGL::setCentrale(Centrale *uneCentrale)
+{
+    _pIMU = uneCentrale;
+}

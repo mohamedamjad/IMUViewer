@@ -8,9 +8,11 @@ GyroCapteurGL::GyroCapteurGL(QWidget *parent) :
 
 
 void GyroCapteurGL::initializeGL()
+
 {
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 }
+
 void GyroCapteurGL::resizeGL(int w, int h)
 {
     if (h == 0)
@@ -79,6 +81,7 @@ void GyroCapteurGL::paintGL()
    glutSolidCone (0.1f,0.2,20,20);
    glPopMatrix ();
 }
+
 void GyroCapteurGL::mousePressEvent(QMouseEvent *event){}
 void GyroCapteurGL::mouseMoveEvent(QMouseEvent *event){}
 void GyroCapteurGL::keyPressEvent( QKeyEvent *keyEvent ){}
@@ -91,3 +94,14 @@ void GyroCapteurGL::timerEvent(QTimerEvent event)
 
 
 
+
+void GyroCapteurGL::updateGL()
+{
+
+    paintGL();
+}
+
+void GyroCapteurGL::setCentrale(Centrale *uneCentrale)
+{
+    _pIMU = uneCentrale;
+}

@@ -235,7 +235,7 @@ double** Tests::TDS_matix(int n,double** sens,  FrequencyType freqFiltre, Freque
 }
 bool Tests::testItegration()
 {
-
+/*
 
     double **sensors=new double*[13];
     double **tdsmatrix=new double*[4];
@@ -257,5 +257,5 @@ bool Tests::testItegration()
     angY=IG.Integration_gyro_Y(n);
     angZ=IG.Integration_gyro_Z(n);
     tdsmatrix=Tests::TDS_matix(n,sensors,3,3,true);
-
+*/
 }

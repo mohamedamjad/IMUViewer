@@ -8,8 +8,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <signal.h>
-#include <integration.h>
-#include <integration_gyro.h>
+
 #include <csv.h>
 #include <GL/glut.h>
 
@@ -26,6 +25,7 @@ int main(int argc, char *argv[])
         #else // RUN MODE
             glutInit (&argc, argv);
             QApplication a(argc, argv);
+
             MainWindow w;
             w.show();
         #endif
