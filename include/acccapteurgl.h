@@ -5,8 +5,8 @@
 #include "capteurgl.h"
 #include <QGLWidget>
 #include <QTimerEvent>
+#include <GL/glut.h>
 #include "centrale.h"
-
 
 class AccCapteurGL : public QGLWidget
 {
@@ -15,7 +15,7 @@ class AccCapteurGL : public QGLWidget
          explicit AccCapteurGL(QWidget *parent = 0);
 
         void initializeGL();
-        void resizeGL(int width, int height);
+        void resizeGL(int w, int h);
         void paintGL();
         void mousePressEvent(QMouseEvent *event);
         void mouseMoveEvent(QMouseEvent *event);
