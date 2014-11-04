@@ -8,6 +8,7 @@
 #include <QtOpenGL>
 #include <GL/glu.h>
 #include <iostream>
+#include<GL/glut.h>
 
 class PrincipalCapteurGL : public QGLWidget
 {
@@ -16,7 +17,7 @@ class PrincipalCapteurGL : public QGLWidget
          explicit PrincipalCapteurGL(QWidget *parent = 0);
 
         void initializeGL();
-        void resizeGL(int width, int height);
+        void resizeGL(int w, int h);
         void paintGL();
         void mousePressEvent(QMouseEvent *event);
         void mouseMoveEvent(QMouseEvent *event);

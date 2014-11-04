@@ -11,6 +11,7 @@
 #include <integration.h>
 #include <integration_gyro.h>
 #include <csv.h>
+#include <GL/glut.h>
 
 using namespace std;
 
@@ -23,13 +24,11 @@ int main(int argc, char *argv[])
             Tests::tout();
 
         #else // RUN MODE
-
+            glutInit (&argc, argv);
             QApplication a(argc, argv);
             MainWindow w;
             w.show();
-
         #endif
-
 
         return a.exec();
 }

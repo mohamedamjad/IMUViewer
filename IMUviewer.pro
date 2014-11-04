@@ -6,7 +6,7 @@
 QT += core gui
 QT += opengl
 
-LIBS += -lGL -lGLU -lglut
+LIBS += -lGLU -lglut
 
 INCLUDEPATH += -L/usr/lib/
 
