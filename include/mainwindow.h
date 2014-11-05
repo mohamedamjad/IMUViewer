@@ -26,6 +26,9 @@ private:
     Ui::MainWindow *ui;
 
     TableauDeBord *_pTdb;
+    
+    // Pointeur sur la fenetre d'affichage principale
+    PrincipalCapteurGL *_pcGL;
 
 };
 
