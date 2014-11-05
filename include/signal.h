@@ -33,6 +33,8 @@ public:
     void doubleIntegre();
     SampleType getSignalIntegre(int i);
     SampleType getSignalDoubleIntegre(int i);
+    double getMaxSignal();
+    double normalizeVector(double val);
 
 private:
     SampleType *_vecteurTemps;
