@@ -36,7 +36,8 @@ SOURCES += src/main.cpp \
     src/gyrocapteurgl.cpp \
     src/principalcapteurgl.cpp \
     src/tableaudebord.cpp \
-    src/gyrograph.cpp
+    src/gyrograph.cpp \
+    src/CCamera.cpp
 
 
 
@@ -57,7 +58,8 @@ HEADERS += \
     include/gyrocapteurgl.h \
     include/principalcapteurgl.h \
     include/tableaudebord.h \
-    include/gyrograph.h
+    include/gyrograph.h \
+    include/CCamera.h
 
 
 
