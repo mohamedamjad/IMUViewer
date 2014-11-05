@@ -1,0 +1,46 @@
+03/11/2014 :On va attaquer la partie 3D dans QtCreator
+
+OpenGL et QT :
+=====
+Pour créer une interface graphique qui supporte des widgets en OpenGL, il faut passer
+par un plugin de QTQUICK qui s'appelle QT3D.
+
+Pour l'installer soit:
+
+Vous êtes chanceux:
+===
+Vous avez Qt et QT-Creator en denière version avec le qmake aussi en dernière version pour cela il faut simplement:
+* dans un dossier faire: git clone https://gitorious.org/qt/qt3d.git qt3d
+* Ouvrir QTCreator
+* Ouvrir le fichier .pro du répértoire que vous avez pullé
+* le compiler en mode RELEASE (attention pas en mode debug)
+* aller au dossier ou vous avez buildé (cd build_qt3d...)
+* écrire: make install
+* relancer QTCreator -> créer un nouveau projet -> dans le fichier .pro ajouter QT += 3dquick -> compiler le projet vide et 
+  ça ne doit pas renvoyer d'erreurs -> dans ce cas bravo vous avez QT3D
+  
+  Vous n'êtes pas chanceux (comme moi):
+  ===
+  Il faut suivre ces étapes pas à pas:
+  
+  Installer la dernière version de qmake:
+  ==
+  * Ajouter une nouvelle ligne (nouveau dépot) dans votre sources.list (vous ne savez pas comment ajouter un nouveau dépot: google.fr): 
+    deb http://ftp.fr.debian.org/debian wheezy-backports main
+  * en ligne de commande : sudo apt-get install qt5-qmake
+  
+  Installer la dernière version de QTCreator:
+  ==
+  * Avant d'installer la dernière version, supprimez l'ancienne version de qt-sdk: apt-get remove qt-sdk qt-creator
+  * Télécharger la dernière version stable depuis: http://download.qt-project.org/official_releases/online_installers/qt-opensource-linux-x64-1.6.0-5-online.run
+  * double cliquez sur le fichier que vous avez télécharger (avant faites un chmod +x lenomdufichier.run)
+  * Dans la fenêtre qui s'affiche cliquez sur paramètres pour modifier les paramètres du proxy de l'installateur
+  * Cliquez sur suivant pour lancer l'installation
+  * à la fin de l'installation -> lancer QtCreator
+  * Ouvrez QT Creator -> OUtils -> Options.. -> Compiler et Executer -> vous devez voir QT 5.3 GCC dans autodetectée et QT 4 dans manuel
+    supprimer la manuel et ne laisser que la version autodetectée .. ou encore mieux mêe dans la version manuelle pointé sur LE QMAKE de Qt5.3
+    * Maintenant que vous avez les dernières versions recquises : reprener la partie : VOUS ETES CHANCEUX
+
+Si vous avez des problèmes venez vers moi ou mail: mohamed-amjad.lasri@ensg.eu
+
+Se former à Qt3D : http://qt-project.org/wiki/Introduction-to-Qt3D
