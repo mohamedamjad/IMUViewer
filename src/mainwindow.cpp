@@ -14,7 +14,11 @@ MainWindow::MainWindow(QWidget *parent) :
     this->findChild<AccCapteurGL*>("glCapteurAcc")->setCentrale(&_pTdb->_IMU);
     this->findChild<GyroCapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
     this->findChild<MagneCapteurGL*>("glCapteurMagne")->setCentrale(&_pTdb->_IMU);
-    this->findChild<PrincipalCapteurGL*>("glPrincipal")->setCentrale(&_pTdb->_IMU);
+
+    _pcGL = this->findChild<PrincipalCapteurGL*>("glPrincipal");
+    _pcGL->setCentrale(&_pTdb->_IMU);
+    // + fenetre d'évolution de la centrale
+    _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
 
     // Mise à jour de la centrale inertielle en suivant le timer
     QObject::connect(timer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
@@ -34,5 +38,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
+void MainWindow::keyPressEvent(QKeyEvent* event)
+{
+    // On renvoit la gestion du clavier à la fenetre d'affichage principal
+    _pcGL->keyPressEvent(event);
+}
 
