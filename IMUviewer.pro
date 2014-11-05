@@ -35,7 +35,8 @@ SOURCES += src/main.cpp \
     src/magnecapteurgl.cpp \
     src/gyrocapteurgl.cpp \
     src/principalcapteurgl.cpp \
-    src/tableaudebord.cpp
+    src/tableaudebord.cpp \
+    src/gyrograph.cpp
 
 
 
@@ -55,7 +56,8 @@ HEADERS += \
     include/magnecapteurgl.h \
     include/gyrocapteurgl.h \
     include/principalcapteurgl.h \
-    include/tableaudebord.h
+    include/tableaudebord.h \
+    include/gyrograph.h
 
 
 
