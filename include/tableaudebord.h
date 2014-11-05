@@ -24,8 +24,11 @@ class TableauDeBord : public QObject
 
         TableauDeBord();
         ~TableauDeBord();
-        void creeVecteurSignaux(int,double** ,  FrequencyType , FrequencyType ,bool );
+
         Centrale _IMU;
+
+        QVector<double> getCoinInferieur();
+        QVector<double> getCoinSuperieur();
 
     public slots:
 
@@ -40,12 +43,18 @@ class TableauDeBord : public QObject
         // 6 7 8 : magnéto
         QVector<Signal*> _signaux;
 
+        // Coordonnées du point inférieur et supérieur de la fenetre d'évolution de la centrale
+        QVector<double> _coinInferieur;
+        QVector<double> _coinSuperieur;
+
         // Nb de lignes dans le fichier de départ
         int _nbEch;
         // Représente l'indice courant dans le tableau de données
         int iCourant;
 
         void creeVecteurSignaux(double**,  FrequencyType, FrequencyType,bool);
+
+        void calculeFenetreCentrale();
 
 };
 
