@@ -19,13 +19,14 @@ public:
     void passeBas(FrequencyType,FrequencyType,bool);
 
 
-    double  getSignal(int i);
+
 
     void regulariseEchantillonage(SampleType);
 
     //static float* vecteurColonne(float **,int,int);
-
+    double  getSignal(int i);
     SampleType *getSignal()const;
+    double getTemps(int i);
     SampleType *getTemps()const;
     int getTaille();
 

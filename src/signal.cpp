@@ -16,6 +16,12 @@ Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal)
 
 }
 
+double Signal::getTemps(int i)
+{
+
+    return this->_vecteurTemps[i];
+}
+
 double  Signal::getSignal(int i)
 {
     return this->_signal[i];
