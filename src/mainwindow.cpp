@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->findChild<AccCapteurGL*>("glCapteurAcc")->setCentrale(&_pTdb->_IMU);
     this->findChild<GyroCapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
     this->findChild<MagneCapteurGL*>("glCapteurMagne")->setCentrale(&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalAcc")->setCentrale (&_pTdb->_IMU);
 
     _pcGL = this->findChild<PrincipalCapteurGL*>("glPrincipal");
     _pcGL->setCentrale(&_pTdb->_IMU);
@@ -27,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(timer, SIGNAL(timeout()), this->findChild<GyroCapteurGL*>("glCapteurGyro"), SLOT(updateGL()));
     QObject::connect(timer, SIGNAL(timeout()), this->findChild<MagneCapteurGL*>("glCapteurMagne"), SLOT(updateGL()));
     QObject::connect(timer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
+    QObject::connect(timer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateGL()));
     // timer à 100 ms
     timer->start(100);
 }
