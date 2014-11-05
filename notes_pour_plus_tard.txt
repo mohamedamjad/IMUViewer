@@ -1,9 +1,7 @@
 
 ********* OpenGL *********
 - fenetre principale:
-	- visu permanente de la centrale
-	- caméra
-	- visu téléphone?
+	- visu téléphone?=> blender
 - visu du signal
 - bascule en Quaternions : rotations
 - vbo???
@@ -13,6 +11,7 @@
 ********* Traitement du signal *************
 - bug filtre passe bas à voir et à intégrer à la chaine
 - classification du mouvement
+- décalage dans les signaux
 
 ********* IHM *********
 - chargement fichier
