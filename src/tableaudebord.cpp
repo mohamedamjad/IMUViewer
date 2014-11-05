@@ -95,12 +95,18 @@ void TableauDeBord::majCentrale()
 {
     // Acc
     _IMU._acc[0] = _signaux[0]->getSignal(iCourant);
+    _IMU._accNorm[0]=_signaux[0]->normalizeVector (_signaux[0]->getSignal(iCourant));
     _IMU._acc[1] = _signaux[1]->getSignal(iCourant);
+    _IMU._accNorm[1]=_signaux[1]->normalizeVector (_signaux[1]->getSignal(iCourant));
     _IMU._acc[2] = _signaux[2]->getSignal(iCourant);
+    _IMU._accNorm[2]=_signaux[2]->normalizeVector (_signaux[2]->getSignal(iCourant));
     // Gyro
     _IMU._gyro[0]= _signaux[3]->getSignal(iCourant);
+    _IMU._gyroNorm[0]=_signaux[3]->normalizeVector (_signaux[3]->getSignal(iCourant));
     _IMU._gyro[1]= _signaux[4]->getSignal(iCourant);
+    _IMU._gyroNorm[1]=_signaux[4]->normalizeVector (_signaux[4]->getSignal(iCourant));
     _IMU._gyro[2]= _signaux[5]->getSignal(iCourant);
+    _IMU._gyroNorm[2]=_signaux[5]->normalizeVector (_signaux[5]->getSignal(iCourant));
     // Magnétomètre
     _IMU._magn[0]=_signaux[6]->getSignal(iCourant);
     _IMU._magn[1]=_signaux[7]->getSignal(iCourant);
