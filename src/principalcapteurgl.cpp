@@ -65,7 +65,23 @@ void PrincipalCapteurGL::paintGL()
 
 void PrincipalCapteurGL::afficheFenetreEvolution()
 {
-   // glBegin();
+
+    /*glBegin(GL_QUAD_STRIP);
+        // Face 1
+        glVertex3f(_coinInferieur[0],_coinInferieur[1],_coinInferieur[2]);
+        glVertex3f(_coinInferieur[0],_coinSuperieur[1],_coinInferieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinInferieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinInferieur[1],_coinInferieur[2]);
+        // Face 2
+        glVertex3f(_coinInferieur[0],_coinSuperieur[1],_coinSuperieur[2]);
+        glVertex3f(_coinInferieur[0],_coinInferieur[1],_coinSuperieur[2]);
+        // Face 3
+        glVertex3f(_coinSuperieur[0],_coinInferieur[1],_coinSuperieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinSuperieur[2]);
+        // Face 4
+        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinInferieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinInferieur[1],_coinInferieur[2]);
+    glEnd();*/
 }
 
  void PrincipalCapteurGL::afficheCentrale()

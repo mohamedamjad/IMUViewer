@@ -17,11 +17,12 @@ public:
     QVector<double> _acc2I;
     // Vecteur pour le gyroscope intégré une fois
     QVector<double> _gyroI;
-    // Vecteur Orientation (cumul des gyroI)
+    // Vecteur Orientation courant (cumul des gyroI)
     QVector<double> _orientation;
-    // Vecteur Position (cumul des acc2I)
+    // Vecteur Position courant (cumul des acc2I)
     QVector<double> _position;
-
+    // Trajectoire de la centrale
+    QVector<QVector<double>> _trajectoire;
 };
 
 #endif // CENTRALE_H
