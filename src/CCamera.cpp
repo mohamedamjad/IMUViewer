@@ -20,6 +20,7 @@ CCamera::CCamera(float anEyeX,float anEyeY,float anEyeZ,float anUpX,float anUpY,
     //ctor
 
     _idTrainGoPro   = -1;
+    this->updateCoordinatesWithProperties();
 }
 
 /**
@@ -144,6 +145,11 @@ void CCamera::setClassicalMode()
 */
 void CCamera::updateCoordinatesWithProperties()
 {
+    std::cout<< "*** Camera**** "<< std::endl;
+    std::cout<< "Eye =  "<< _eyeX << " "<< _eyeY <<  " " << _eyeZ<<   std::endl;
+    std::cout<< "Center =  "<< _centerX << " "<< _centerY <<  " " << _centerZ<<   std::endl;
+    std::cout << "Phi = "<< _phi << std::endl;
+    std::cout << "_teta = "<< _teta << std::endl;
     _centerX = _eyeX + cos(_teta) * cos(_phi);
     _centerY = _eyeY + cos(_teta) * sin(_phi);
     _centerZ = _eyeZ + sin(_teta);
@@ -170,4 +176,20 @@ float CCamera::getEyeY()
 float CCamera::getEyeZ()
 {
         return _eyeZ;
+}
+
+
+void CCamera::setEye(QVector<double> point)
+{
+    _eyeX = point[0];
+    _eyeY = point[1];
+    _eyeZ = point[2];
+
+}
+void CCamera::setCenter(QVector<double> point)
+{
+    _centerX = point[0];
+    _centerY = point[1];
+    _centerZ = point[2];
+
 }

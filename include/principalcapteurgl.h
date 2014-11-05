@@ -43,8 +43,11 @@ class PrincipalCapteurGL : public QGLWidget
         double _profondeurFenetre;// amplitude Y
         CCamera *_pCamera;
 
-        void afficheFenetreEvolution();
+        bool _cameraSuitCentrale  = false;
+
+        void afficheSol();
         void afficheCentrale();
+        void afficheTrajectoireCentrale();
 };
 
 #endif

@@ -25,7 +25,7 @@ PrincipalCapteurGL::PrincipalCapteurGL(QWidget *parent) :
     */
     _pCamera = new CCamera(-50.0,50.0,-3.0,
                            0.0,0.0,1.0,
-                           1.0,0.1,0.2,0.05);
+                           20.0,0.1,-0.1,-0.8);
 }
 
 void PrincipalCapteurGL::initializeGL()
@@ -46,7 +46,7 @@ void PrincipalCapteurGL::resizeGL(int w, int h)
    // Set the viewport to be the entire window
    glViewport(0, 0, w, h);
    // Set the correct perspective.
-   gluPerspective(60,ratio,1,10000);
+   gluPerspective(30,ratio,1,100);
    // Get Back to the Modelview
    glMatrixMode(GL_MODELVIEW);
 }
@@ -58,30 +58,46 @@ void PrincipalCapteurGL::paintGL()
     // Reset transformations
     glLoadIdentity();
 
+    if (_cameraSuitCentrale == true)//Mode suivi de centrale
+    {
+        if (_pIMU->_trajectoire.size()>6)
+        {
+            QVector<double> eye = _pIMU->_trajectoire.at(_pIMU->_trajectoire.size()-7);
+            _pCamera->setEye(eye);
+            _pCamera->setCenter(_pIMU->_position);
+        }
+    }
     _pCamera->play();
+    afficheSol();
     afficheCentrale();
-    afficheFenetreEvolution();
+    afficheTrajectoireCentrale();
+
 }
 
-void PrincipalCapteurGL::afficheFenetreEvolution()
+// Affiche la trajectoire de la centrale
+void PrincipalCapteurGL::afficheTrajectoireCentrale()
+{
+    if (_pIMU->_trajectoire.size()>1)
+    {
+        glBegin(GL_LINE_STRIP);
+            glColor3f(0.8,0.8,0.8);//gris
+            glVertex3f(_pIMU->_trajectoire.at(0)[0],_pIMU->_trajectoire.at(0)[1],_pIMU->_trajectoire.at(0)[2]);
+            for (int i=1;i<_pIMU->_trajectoire.size();i++)
+                glVertex3f(_pIMU->_trajectoire.at(i)[0],_pIMU->_trajectoire.at(i)[1],_pIMU->_trajectoire.at(i)[2]);
+        glEnd();
+    }
+}
+
+void PrincipalCapteurGL::afficheSol()
 {
 
-    /*glBegin(GL_QUAD_STRIP);
-        // Face 1
+    glBegin(GL_POLYGON);
+        glColor3f(0.87,0.42,0.07);//citrouille
         glVertex3f(_coinInferieur[0],_coinInferieur[1],_coinInferieur[2]);
-        glVertex3f(_coinInferieur[0],_coinSuperieur[1],_coinInferieur[2]);
-        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinInferieur[2]);
-        glVertex3f(_coinSuperieur[0],_coinInferieur[1],_coinInferieur[2]);
-        // Face 2
-        glVertex3f(_coinInferieur[0],_coinSuperieur[1],_coinSuperieur[2]);
-        glVertex3f(_coinInferieur[0],_coinInferieur[1],_coinSuperieur[2]);
-        // Face 3
-        glVertex3f(_coinSuperieur[0],_coinInferieur[1],_coinSuperieur[2]);
-        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinSuperieur[2]);
-        // Face 4
-        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinInferieur[2]);
-        glVertex3f(_coinSuperieur[0],_coinInferieur[1],_coinInferieur[2]);
-    glEnd();*/
+        glVertex3f(_coinInferieur[0],_coinInferieur[1]+_profondeurFenetre,_coinInferieur[2]);
+        glVertex3f(_coinInferieur[0]+_largeurFenetre,_coinInferieur[1]+_profondeurFenetre,_coinInferieur[2]);
+        glVertex3f(_coinInferieur[0]+_largeurFenetre,_coinInferieur[1],_coinInferieur[2]);
+    glEnd();
 }
 
  void PrincipalCapteurGL::afficheCentrale()
@@ -91,7 +107,7 @@ void PrincipalCapteurGL::afficheFenetreEvolution()
 
     glPushMatrix();
 
-        glTranslatef(_pIMU->_position[0],1,_pIMU->_position[2]);
+        glTranslatef(_pIMU->_position[0],_pIMU->_position[1],_pIMU->_position[2]);
 
         glRotatef (_pIMU->_orientation[0]*180.0/M_PI,1.0,0.0,0.0);
         glRotatef (_pIMU->_orientation[1]*180.0/M_PI,0.0,1.0,0.0);
@@ -147,6 +163,8 @@ void PrincipalCapteurGL::afficheFenetreEvolution()
     std::cout<<"coin inférieur" << _coinInferieur[0] << " " << _coinInferieur[1] << " " << _coinInferieur[2]<< std::endl;
     std::cout<<"coin supérieur" << _coinSuperieur[0] << " " << _coinSuperieur[1] << " " << _coinSuperieur[2]<< std::endl;
     std::cout<<"largeur fenetre = " << _largeurFenetre<< "profondeur fenetre = " << _profondeurFenetre<< "hauteur fenetre = " << _hauteurFenetre<< std::endl;
+
+
  }
 
 
@@ -169,6 +187,11 @@ void PrincipalCapteurGL::keyPressEvent( QKeyEvent *keyEvent )
             _pCamera->go();
         break;
 
+        case 'S':
+        case 's':
+            _cameraSuitCentrale = (_cameraSuitCentrale) ? false : true;
+        break;
+
         case '6':
             _pCamera->lookAtRight();
         break;
@@ -181,6 +204,7 @@ void PrincipalCapteurGL::keyPressEvent( QKeyEvent *keyEvent )
         case '2':
             _pCamera->lookAtBottom();
         break;
+
 
         case 27 :
         case 'q':

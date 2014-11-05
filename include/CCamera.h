@@ -4,6 +4,7 @@
 #include "GL/glut.h"
 #include <iostream>
 #include <math.h>
+#include <QVector>
 
 class CCamera
 {
@@ -92,6 +93,10 @@ class CCamera
         float getEyeX();
         float getEyeY();
         float getEyeZ();
+
+        void setEye(QVector<double>);
+        void setCenter(QVector<double>);
+
     protected:
     private:
 
