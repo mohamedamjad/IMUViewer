@@ -143,7 +143,8 @@ void TableauDeBord::majCentrale()
     _IMU._position[1]+= _IMU._acc2I[1];
     _IMU._position[2]+= _IMU._acc2I[2];
 
-
+    // On ajoute le point courant de la centrale à la trajectoire
+   // _IMU._trajectoire.append(_IMU._position);
 
     // Incrémentation de l'indice de parcours des données
     iCourant = (iCourant < (_signaux.at(0)->getTaille() -2)) ? iCourant+1:0;
@@ -159,6 +160,9 @@ void TableauDeBord::majCentrale()
         _IMU._position[0]=0;
         _IMU._position[1]=0;
         _IMU._position[2]=0;
+
+        // On vide la trajectoire
+       // _IMU._trajectoire.clear();
 
     }
 
