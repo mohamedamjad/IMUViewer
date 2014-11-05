@@ -92,7 +92,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="CapteurGL" name="glSignalAcc" native="true">
+   <widget class="gyrograph" name="glSignalAcc" native="true">
     <property name="geometry">
      <rect>
       <x>570</x>
