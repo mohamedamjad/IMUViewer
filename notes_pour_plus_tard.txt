@@ -1,6 +1,8 @@
 
 ********* OpenGL *********
-- fenetre principale
+- fenetre principale:
+	- visu permanente de la centrale
+	- caméra
 - visu du signal
 - bascule en Quaternions : rotations
 
