@@ -188,4 +188,26 @@ SampleType  Signal::getSignalDoubleIntegre(int i)
     return res;
 }*/
 
+double Signal::getMaxSignal ()
+{
+    double max=0;
 
+    for(int i=0;i<this->getTaille ();i++)
+    {
+        if (max>this->getSignal (i))
+            continue;
+        else
+            max=this->getSignal (i);
+    }
+
+    return max;
+}
+
+double Signal::normalizeVector(double val )
+{
+    double result;
+
+    result=val*2/this->getMaxSignal();
+
+    return result;
+}
