@@ -10,6 +10,7 @@
 #include <iostream>
 #include<GL/glut.h>
 #include "centrale.h"
+#include "CCamera.h"
 
 class PrincipalCapteurGL : public QGLWidget
 {
@@ -26,11 +27,24 @@ class PrincipalCapteurGL : public QGLWidget
         void timerEvent(QTimerEvent);
         void setCentrale(Centrale *);
 
+        void setFenetreEvolutionCentrale(QVector<double>,QVector<double>);
+
     public slots:
         void updateGL();
 
     private:
         Centrale* _pIMU;
+
+        // Coordonnées du point inférieur et supérieur de la fenetre d'évolution de la centrale
+        QVector<double> _coinInferieur;
+        QVector<double> _coinSuperieur;
+        double _hauteurFenetre;// amplitude Z
+        double _largeurFenetre;// amplitude X
+        double _profondeurFenetre;// amplitude Y
+        CCamera *_pCamera;
+
+        void afficheFenetreEvolution();
+        void afficheCentrale();
 };
 
 #endif
