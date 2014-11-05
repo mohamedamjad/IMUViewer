@@ -13,6 +13,10 @@ public:
     QVector<double> _acc;
     QVector<double> _gyro;
     QVector<double> _magn;
+    // Trois vecteurs normés pour l'affichage du graph signal
+    QVector<double> _accNorm;
+    QVector<double> _gyroNorm;
+    QVector<double> _magnNorm;
     // Vecteur pour l'accélo intégré deux fois
     QVector<double> _acc2I;
     // Vecteur pour le gyroscope intégré une fois
