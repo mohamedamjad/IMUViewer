@@ -142,32 +142,25 @@ bool Tests::testQuaternion()
     return resB;
 }
 
-bool Tests::TdS()
+void Tests::TdSReechantilonnage()
 {
-
     CSV donneesCentrale;
     double **donnees   = donneesCentrale.readCSV("amjad_marche_cheville.out");
     int nbEch = donneesCentrale.getNbLines();
 
-
     std::cout << "Données avant echantilonge"<< std::endl;
 
-   /* for (int i=0;i<nbEch;i++)
+    for (int i=0;i<nbEch;i++)
         printf("%f;%f\n",donnees[0][i],donnees[4][i]);;//std::cout<<donnees[0][i]<< " "<<donnees[4][i]<<std::endl;
-*/
 
+    // Creation de l'objet signal pour la composante x de l'accélérometre
     Signal tdS(donnees,nbEch,0,4);
 
     //tdS.passeBas(FrequencyType freqFiltre,FrequencyType freqEch);
 
-
-
     std::cout << "***************"<< std::endl;
     // Test rééchantillonage 50Hz
     tdS.regulariseEchantillonage(50.0);
-
-
-
 
     const SampleType *signalReechantillone = tdS.getSignal();
     const SampleType *temps = tdS.getTemps();
@@ -181,16 +174,22 @@ bool Tests::TdS()
     for (int i=0;i<taille;i++)
         printf("%lf;%lf\n",temps[i],signalReechantillone[i]);
 
-    // Test rééchantillonage
-    //tdS.regulariseEchantillonage();
+}
 
-
+void Tests::TdSPasseBas()
+{
+    CSV donneesCentrale;
+    double **donnees   = donneesCentrale.readCSV("amjad_marche_cheville.out");
+    Signal tdS(donnees,donneesCentrale.getNbLines(),0,4);
+    // filtrage passe bas à 5 Hz apres rééchantillonnage du signal
+    tdS.passeBas(5,50,true);
 }
 
 bool Tests::tout()
 {
     bool res = Tests::testQuaternion();
-    res &= Tests::TdS();
+    Tests::TdSReechantilonnage();
+    Tests::TdSPasseBas();
     // etc...
     return res;
 }
@@ -258,4 +257,5 @@ bool Tests::testItegration()
     angZ=IG.Integration_gyro_Z(n);
     tdsmatrix=Tests::TDS_matix(n,sensors,3,3,true);
 */
+    return false;
 }

@@ -16,7 +16,8 @@ public:
     Tests();
 
     static bool testQuaternion();
-    static bool TdS();
+    static void TdSReechantilonnage();
+    static void TdSPasseBas();
     static bool tout();
     static bool testItegration();
     static double** TDS_matix(int n,double** sens,  FrequencyType freqFiltre, FrequencyType freqEch,bool reEchantillone);

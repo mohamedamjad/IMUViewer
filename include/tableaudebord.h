@@ -1,13 +1,21 @@
 #ifndef TABLEAUDEBORD_H
 #define TABLEAUDEBORD_H
 
+// Mode test
+//#define TESTS_MODE
+
+// Mode run
+#define RUN_MODE
+
+
 
 // Fréquence du filtre passe-bas en Hz
 #define freqFiltre 5
 // Fréquence de ré-échantillonage du signal en Hz
 #define freqEch 50
 
-#define fichierCsv "amjad_marche_cheville.out"
+//#define fichierCsv "amjad_marche_cheville.out"
+#define fichierCsv "ferdaousse_mixte_cheville.out"
 
 #include <QThread>
 #include <QTimer>

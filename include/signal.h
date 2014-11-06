@@ -7,7 +7,10 @@
 //////////////////////// NECESSAIRE POUR TRANSFORM VERIFIER CE QUE CELA FAIT BIEN COMME IL FAUT
 #include <algorithm>
 
-
+#include "aquila/global.h"
+#include "aquila/source/generator/SineGenerator.h"
+#include "aquila/transform/FftFactory.h"
+#include "aquila/tools/TextPlot.h"
 
 using namespace Aquila;
 
@@ -47,6 +50,8 @@ private:
     // Signal brut doublement intégré
     SampleType *_signalDoubleIntegre;
     int _taille;
+
+    SampleType* produitSignalMultiple2(int* );
 };
 
 #endif // TRAITEMENTSIGNAL_H

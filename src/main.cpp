@@ -1,5 +1,5 @@
 #include <QApplication>
-#include "parametres.h"
+#include "tableaudebord.h"
 #include "tests.h"
 
 #include "mainwindow.h"
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
         #ifdef TESTS_MODE
 
             Tests::tout();
-
+            return 0;
         #else // RUN MODE
             qputenv("LC_NUMERIC",QByteArray("POSIX"));
             glutInit (&argc, argv);
@@ -29,7 +29,8 @@ int main(int argc, char *argv[])
 
             MainWindow w;
             w.show();
+            return a.exec();
         #endif
 
-        return a.exec();
+
 }
