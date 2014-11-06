@@ -188,9 +188,6 @@ void Signal::integre()
     this->_signalIntegre[0] = 0;
     for(int i=1;i<size;i++)
     {
-
-        // Loebeg
-        //this->_signalIntegre[i]=(/*this->_signal[i]+*/(this->_signal[i+1]-this->_signal[i])/2)*(this->_vecteurTemps[i+1]-this->_vecteurTemps[i])/*+this->_signal[0]*/;
           this->_signalIntegre[i]=this->_signal[i]*(this->_vecteurTemps[i]-this->_vecteurTemps[i-1]);
     }
 }
@@ -205,8 +202,6 @@ void Signal::doubleIntegre()
     this->_signalIntegre[1] = 0;
     for(int i=2;i<size;i++)
     {
-        // old school
-        //this->_signalDoubleIntegre[i]=(this->_signalIntegre[i]+(this->_signalIntegre[i+1]-this->_signalIntegre[i])/2)*(this->_vecteurTemps[i+1]-this->_vecteurTemps[i])+this->_signalIntegre[0];
         this->_signalDoubleIntegre[i]=this->_signalIntegre[i]*(this->_vecteurTemps[i]-this->_vecteurTemps[i-1]);
     }
 }

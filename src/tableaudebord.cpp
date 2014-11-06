@@ -65,10 +65,8 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
     for (int i=2;i<=4;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
-        //signalBrut->passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
-        std::cout<<"passe bas ok"<<std::endl;
+        signalBrut->passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
         signalBrut->doubleIntegre();
-        std::cout<<"db integre ok"<<std::endl;
         _signaux.append(signalBrut);
     }
 
