@@ -1,11 +1,13 @@
 
 ********* OpenGL *********
 - fenetre principale:
+	- parametres a changer avec nouvelle intégration
 	- visu téléphone?=> blender
 - visu du signal
 - bascule en Quaternions : rotations
 - vbo???
 - libqglviewer??
+
 
 
 ********* Traitement du signal *************
