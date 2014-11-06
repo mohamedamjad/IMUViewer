@@ -20,7 +20,6 @@ public:
     static void TdSPasseBas();
     static bool tout();
     static bool testItegration();
-    static double** TDS_matix(int n,double** sens,  FrequencyType freqFiltre, FrequencyType freqEch,bool reEchantillone);
 };
 
 #endif // TESTS_H

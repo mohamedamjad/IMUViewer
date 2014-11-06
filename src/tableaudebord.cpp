@@ -4,7 +4,6 @@
 
 TableauDeBord::TableauDeBord()
 {   
-    std::cout<<"Constructeur tdb"<<std::endl;
     // Lecture du fichier des données centrale
     CSV donneesCentrale;
     double **donneesBrutes   = donneesCentrale.readCSV(fichierCsv);
@@ -66,8 +65,10 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
     for (int i=2;i<=4;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
-        //signalBrut.passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
+        //signalBrut->passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
+        std::cout<<"passe bas ok"<<std::endl;
         signalBrut->doubleIntegre();
+        std::cout<<"db integre ok"<<std::endl;
         _signaux.append(signalBrut);
     }
 
@@ -75,7 +76,7 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
     for (int i=6;i<=8;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
-        //signalBrut.passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
+        //signalBrut->passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
         signalBrut->integre();
         _signaux.append(signalBrut);
     }
@@ -83,7 +84,7 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
     for (int i=10;i<=12;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
-        //signalBrut.passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
+        signalBrut->passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
         _signaux.append(signalBrut);
     }
 
@@ -147,7 +148,7 @@ void TableauDeBord::majCentrale()
     _IMU._trajectoire.append(_IMU._position);
 
     // Incrémentation de l'indice de parcours des données
-    iCourant = (iCourant < (_signaux.at(0)->getTaille() -2)) ? iCourant+1:0;
+    iCourant = (iCourant < (_signaux.at(0)->getTaille())) ? iCourant+1:0;
 
     if (iCourant==0)
     {

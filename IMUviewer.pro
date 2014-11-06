@@ -50,7 +50,6 @@ HEADERS += \
     include/tests.h \
     include/mainwindow.h \
     include/capteurgl.h \
-    include/parametres.h \
     include/glwidget.h \
     include/centrale.h \
     include/acccapteurgl.h \

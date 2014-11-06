@@ -195,43 +195,6 @@ bool Tests::tout()
 }
 
 
-// Gather all tds data in a matrix
-
-double** Tests::TDS_matix(int n,double** sens,  FrequencyType freqFiltre, FrequencyType freqEch,bool reEchantillone)
-{
-
-
-    double** TDSmatix=new double*[4];
-
-    Signal saccx(sens,n,0,2);
-    saccx.passeBas(freqFiltre,freqEch,reEchantillone);
-
-    Signal saccy(sens,n,0,3);
-    saccy.passeBas(freqFiltre,freqEch,reEchantillone);
-
-    Signal saccz(sens,n,0,4);
-    saccz.passeBas(freqFiltre,freqEch,reEchantillone);
-
-    SampleType *tmps = new SampleType[saccx.getTaille()];
-    tmps=saccx.getTemps();
-    for (int col=0;col<4;col++)
-        TDSmatix[col] = new double[saccx.getTaille()];
-
-    for (int i=0;i<saccz.getTaille();i++)
-    {
-       TDSmatix[0][i]= tmps[i];
-
-       TDSmatix[1][i]= saccx.getSignal(i);
-
-       TDSmatix[2][i]= 0;
-
-       TDSmatix[3][i]= saccz.getSignal(i);
-
-    }
-
-    return TDSmatix;
-
-}
 bool Tests::testItegration()
 {
 /*

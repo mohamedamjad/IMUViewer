@@ -41,17 +41,26 @@ void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEcha
 
    if (reEchantillone)this->regulariseEchantillonage(freqEch);
 
-    auto fft = FftFactory::getFft(_taille);
+    /* Pour le calcul de la transformée de Fourier, il est nécessaire que la taille du signal
+       soit un multiple de 2
+    */
+    // Fabrication du signal temporaire
+    int taillePuiss2;
+    SampleType * signalPuiss2=produitSignalMultiple2(&taillePuiss2);
+
+
+    // Recuperation de la meilleure transformée adaptée à la taille
+    auto fft = FftFactory::getFft(taillePuiss2);
 
     // Transformée de Fourier du signal
-    SpectrumType spectre = fft->fft(_signal);
+    SpectrumType spectre = fft->fft(signalPuiss2);
 
-    // Generation du spectre filtre
-    SpectrumType spectreFiltre(_taille);
+    ////////////// Generation du spectre filtre /////////////////
+    SpectrumType spectreFiltre(taillePuiss2);
 
-    for (int i = 0; i < _taille; i++)
+    for (int i = 0; i < taillePuiss2; i++)
     {
-        if (i < (_taille * freqFiltre / freqEch))
+        if (i < (taillePuiss2 * freqFiltre / freqEch))
         {
             // passband
             spectreFiltre[i] = 1.0;
@@ -62,16 +71,41 @@ void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEcha
             spectreFiltre[i] = 0.0;
         }
     }
-
+    ////////////////////////////////////////////////////////////
     // Multiplication des deux signaux
     std::transform(std::begin(spectre),std::end(spectre),std::begin(spectreFiltre),std::begin(spectre),[] (Aquila::ComplexType x, Aquila::ComplexType y) { return x * y; });
 
     // Fourier inverse ; retour dans l'espace temporel
-    SampleType *res = new SampleType[_taille];
-    fft->ifft(spectre, res);
+    SampleType *resIfft = new SampleType[taillePuiss2];
+    fft->ifft(spectre, resIfft);
 
-    delete _signal;
-    _signal = res;
+    // Recopie des valeurs qui nous intéressent
+    for (int i=0;i<_taille;i++)
+        _signal[i] = resIfft[i];
+
+}
+
+/* Produit un nouveau signal (nouvSig) de taille puissance de 2 immédiatement supérieur à la taille du signal (nouvTaille) courant
+    Les valeurs supplémentaires sont à zéro
+
+*/
+SampleType* Signal::produitSignalMultiple2(int* nouvTaille)
+{
+    // Identification de la taille
+    int t;
+    for (t=2;t<_taille;t*=2);
+
+    SampleType* nouvSig= new SampleType[t];
+
+    for (int i=0;i<_taille;i++)// Recopie des valeurs du signal
+        nouvSig[i] = _signal[i];
+    for (int i=_taille;i<t;i++)// Le reste à zero
+        nouvSig[i] = 0;
+
+    *nouvTaille = t;
+
+    return nouvSig;
+
 }
 
 // Régularise le pas d'échantillonage du signal
@@ -150,24 +184,31 @@ void Signal::integre()
 {
 
     int size= this->getTaille();
-    this->_signalIntegre= new SampleType[size-1];
-    for(int i=0;i<size-1;i++)
+    this->_signalIntegre= new SampleType[size];
+    this->_signalIntegre[0] = 0;
+    for(int i=1;i<size;i++)
+    {
 
-        {
-
-        this->_signalIntegre[i]=(this->_signal[i]+(this->_signal[i+1]-this->_signal[i])/2)*(this->_vecteurTemps[i+1]-this->_vecteurTemps[i])+this->_signal[0];
-        }
+        // Loebeg
+        //this->_signalIntegre[i]=(/*this->_signal[i]+*/(this->_signal[i+1]-this->_signal[i])/2)*(this->_vecteurTemps[i+1]-this->_vecteurTemps[i])/*+this->_signal[0]*/;
+          this->_signalIntegre[i]=this->_signal[i]*(this->_vecteurTemps[i]-this->_vecteurTemps[i-1]);
+    }
 }
+
+
 void Signal::doubleIntegre()
 {
     this->integre();
     int size= this->getTaille();
-    this->_signalDoubleIntegre= new SampleType[size-2];
-    for(int i=0;i<size-2;i++)
-
-        {
-        this->_signalDoubleIntegre[i]=(this->_signalIntegre[i]+(this->_signalIntegre[i+1]-this->_signalIntegre[i])/2)*(this->_vecteurTemps[i+1]-this->_vecteurTemps[i])+this->_signalIntegre[0];
-        }
+    this->_signalDoubleIntegre= new SampleType[size];
+    this->_signalIntegre[0] = 0;
+    this->_signalIntegre[1] = 0;
+    for(int i=2;i<size;i++)
+    {
+        // old school
+        //this->_signalDoubleIntegre[i]=(this->_signalIntegre[i]+(this->_signalIntegre[i+1]-this->_signalIntegre[i])/2)*(this->_vecteurTemps[i+1]-this->_vecteurTemps[i])+this->_signalIntegre[0];
+        this->_signalDoubleIntegre[i]=this->_signalIntegre[i]*(this->_vecteurTemps[i]-this->_vecteurTemps[i-1]);
+    }
 }
 
 SampleType  Signal::getSignalIntegre(int i)
