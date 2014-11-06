@@ -9,14 +9,11 @@
 
 
 ********* Traitement du signal *************
-- bug filtre passe bas à voir et à intégrer à la chaine
 - classification du mouvement
-- décalage dans les signaux
 
 ********* IHM *********
 - chargement fichier
 - évolution du curseur avec boutons
-- evolution du temps réel par rapport au temps du fichier
 
 
 - les classes gl ont été simplifiées, on pourrait ajouter une classe capteur mere qui contiendra le pointeur vers la centrale
