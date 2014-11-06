@@ -23,3 +23,11 @@
 ********* general *********
 - fuites memoire (delete...)
 - test de taille de fichier (si nbLignes>...)
+
+
+*********Priorités fixées par Emmanuel ***********
+- optimisation code
+- document Doxygen
+- tests unitaires
+- étude de la corrélation entre capteurs
+- qualification de la dérive issue d'une double intégration via l'affichage
