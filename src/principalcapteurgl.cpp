@@ -63,6 +63,7 @@ void PrincipalCapteurGL::paintGL()
         if (_pIMU->_trajectoire.size()>6)
         {
             QVector<double> eye = _pIMU->_trajectoire.at(_pIMU->_trajectoire.size()-7);
+            eye[0]+=0.5;eye[1]+=0.5;eye[2]+=0.5;// Leger decalage pour voir la trajectoire de la centrale
             _pCamera->setEye(eye);
             _pCamera->setCenter(_pIMU->_position);
         }
