@@ -144,6 +144,9 @@ void TableauDeBord::majCentrale()
     _IMU._position[1]+= _IMU._acc2I[1];
     _IMU._position[2]+= _IMU._acc2I[2];
 
+    // Incrémentation de la distance totale parcourue
+    _IMU._distance += sqrt(pow(_IMU._acc2I[0],2)+pow(_IMU._acc2I[1],2)+pow(_IMU._acc2I[2],2));
+
     // On ajoute le point courant de la centrale à la trajectoire
     _IMU._trajectoire.append(_IMU._position);
 
@@ -164,6 +167,7 @@ void TableauDeBord::majCentrale()
 
         // On vide la trajectoire
         _IMU._trajectoire.clear();
+        _IMU._distance;
 
     }
 

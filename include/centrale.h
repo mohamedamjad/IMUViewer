@@ -27,6 +27,8 @@ public:
     QVector<double> _position;
     // Trajectoire de la centrale
     QVector<QVector<double>> _trajectoire;
+    // Distance totale parcourue par la centrale
+    double _distance=0;
 };
 
 #endif // CENTRALE_H

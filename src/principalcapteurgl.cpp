@@ -25,7 +25,7 @@ PrincipalCapteurGL::PrincipalCapteurGL(QWidget *parent) :
     */
     _pCamera = new CCamera(-50.0,50.0,-3.0,
                            0.0,0.0,1.0,
-                           20.0,0.1,-0.1,-0.8);
+                           2.0,0.1,-0.1,-0.8);
 }
 
 void PrincipalCapteurGL::initializeGL()
@@ -59,20 +59,25 @@ void PrincipalCapteurGL::paintGL()
     glLoadIdentity();
 
     if (_cameraSuitCentrale == true)//Mode suivi de centrale
-    {
-        if (_pIMU->_trajectoire.size()>29)
-        {
-            QVector<double> eye = _pIMU->_trajectoire.at(_pIMU->_trajectoire.size()-30);
-            eye[0]+=0.5;eye[1]+=0.5;eye[2]+=0.5;// Leger decalage pour voir la trajectoire de la centrale
-            _pCamera->setEye(eye);
-            _pCamera->setCenter(_pIMU->_position);
-        }
-    }
+       suitCentrale();
+
     _pCamera->play();
    // afficheSol();
     afficheCentrale();
     afficheTrajectoireCentrale();
 
+}
+
+void PrincipalCapteurGL::suitCentrale()
+{
+
+    if (_pIMU->_trajectoire.size()>29)
+    {
+        QVector<double> eye = _pIMU->_trajectoire.at(_pIMU->_trajectoire.size()-30);
+        eye[0]+=10;eye[1]+=10;eye[2]+=10;// Leger decalage pour voir la trajectoire de la centrale
+        _pCamera->setEye(eye);
+        _pCamera->setCenter(_pIMU->_position);
+    }
 }
 
 // Affiche la trajectoire de la centrale
@@ -83,9 +88,13 @@ void PrincipalCapteurGL::afficheTrajectoireCentrale()
         glBegin(GL_LINE_STRIP);
             glColor3f(0.8,0.8,0.8);//gris
             glVertex3f(_pIMU->_trajectoire.at(0)[0],_pIMU->_trajectoire.at(0)[1],_pIMU->_trajectoire.at(0)[2]);
+
             for (int i=1;i<_pIMU->_trajectoire.size();i++)
+            {
                 glVertex3f(_pIMU->_trajectoire.at(i)[0],_pIMU->_trajectoire.at(i)[1],_pIMU->_trajectoire.at(i)[2]);
-        glEnd();
+            }
+            std::cout << _pIMU->_distance << std::endl;
+            glEnd();
     }
 }
 

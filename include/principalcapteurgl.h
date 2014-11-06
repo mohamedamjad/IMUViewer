@@ -48,6 +48,7 @@ class PrincipalCapteurGL : public QGLWidget
         void afficheSol();
         void afficheCentrale();
         void afficheTrajectoireCentrale();
+        void suitCentrale();
 };
 
 #endif
