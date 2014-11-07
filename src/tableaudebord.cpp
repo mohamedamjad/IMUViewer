@@ -172,8 +172,11 @@ void TableauDeBord::majCentrale()
     _IMU._gyroNorm[2]=_signaux[5]->normalizeVector (_signaux[5]->getSignal(iCourant));
     // Magnétomètre
     _IMU._magn[0]=_signaux[6]->getSignal(iCourant);
+    _IMU._magnNorm[0]=_signaux[6]->normalizeVector (_signaux[6]->getSignal(iCourant));
     _IMU._magn[1]=_signaux[7]->getSignal(iCourant);
+    _IMU._magnNorm[1]=_signaux[7]->normalizeVector (_signaux[7]->getSignal(iCourant));
     _IMU._magn[2]=_signaux[8]->getSignal(iCourant);
+    _IMU._magnNorm[0]=_signaux[8]->normalizeVector (_signaux[8]->getSignal(iCourant));
 
     //Position depuis l'accéléro
     _IMU._acc2I[0] = _signaux[0]->getSignalDoubleIntegre(iCourant);
@@ -194,9 +197,7 @@ void TableauDeBord::majCentrale()
 
 }
 
-///////////////// Fin modification à intégrer /////////////////
 
-//// DEBUT MODIFICATION A INTEGRER
 /// Incremente iCourant et renvoie le pas utilisé
 /// Réinitialise également lastTime
 /// Renvoie -1 si iCourant a été réinitialisé à zéro
@@ -229,12 +230,20 @@ int TableauDeBord::incrementeICourant()
         return -1;
     }
 }
-//// FIN MODIFICATION A INTEGRER
 
-//// DEBUT MODIFICATION A INTEGRER
-int TableauDeBord::getICourant()
+
+QVector<Signal*> TableauDeBord::get_signaux()
 {
-    return iCourant;
-
+    return this->_signaux;
 }
-//// FIN MODIFICATION A INTEGRER
+
+int TableauDeBord::getiCourant()
+{
+    return this->iCourant;
+}
+
+int TableauDeBord::getnbEch()
+{
+
+    return this->_nbEch;
+}

@@ -115,7 +115,7 @@
      <string>Accéléromètre : Evolution de l'accélération</string>
     </property>
    </widget>
-   <widget class="CapteurGL" name="glSignalGyro" native="true">
+   <widget class="gyrograph" name="glSignalGyro" native="true">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -138,7 +138,7 @@
      <string>Gyroscope : Evolution de la vitesse angulaire</string>
     </property>
    </widget>
-   <widget class="CapteurGL" name="glSignalMagne" native="true">
+   <widget class="gyrograph" name="glSignalMagne" native="true">
     <property name="geometry">
      <rect>
       <x>570</x>

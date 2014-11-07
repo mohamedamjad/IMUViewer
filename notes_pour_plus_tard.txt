@@ -3,7 +3,6 @@
 - fenetre principale:
 	- parametres a changer avec nouvelle intégration
 	- visu téléphone?=> blender
-- visu du signal
 - bascule en Quaternions : rotations
 - vbo???
 - libqglviewer??
@@ -31,3 +30,27 @@
 - tests unitaires
 - étude de la corrélation entre capteurs
 - qualification de la dérive issue d'une double intégration via l'affichage
+
+
+
+*****************************************A FAIRE DANS L'ORDRE
+Developpement : s'arrêter là fin de semaine prochaine
+- Régis : bug pause du curseur (QTime lastTime de tableau de bord prend en comtpe un maintenant absolu : probleme si pause)
+- Régis : réinitialisation du iCourant et de tous les capteurs quand clic sur stop ou quand fin signal
+- Ferdaousse : évolution curseur / boutons
+- amjad : QT designer : ajout des listes déroulantes à gauche et à droite (4 listes)
+- amjad : liste des signaux à choisir dans l'IHM (permettra l'étude de la corrélation entre signaux)
+- Régis : étude vitesse de la centrale + Affichage projeté avec hoix dans l'interface
+- chargement fichier
+- classification du mouvement
+----------------
+- optimisation code
+- fuites memoire (delete...)
+- ajout de tests (notamment sur la taille des tableaux)
+- tests unitaires
+- document Doxygen
+- rapport!!!!!!!!!!!!
+- soutenance!!!!!!!!
+
+
+

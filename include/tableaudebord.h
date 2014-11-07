@@ -10,7 +10,7 @@
 
 
 // Fréquence du filtre passe-bas en Hz
-#define freqFiltre 5
+#define freqFiltre 8
 // Fréquence de ré-échantillonage du signal en Hz
 #define freqEch 50
 
@@ -38,10 +38,10 @@ class TableauDeBord : public QObject
 
         QVector<double> getCoinInferieur();
         QVector<double> getCoinSuperieur();
+        QVector<Signal*> get_signaux();
+        int getiCourant();
+        int getnbEch();
 
-//// DEBUT MODIFICATION A INTEGRER
-        int getICourant();
-//// FIN MODIFICATION A INTEGRER
     public slots:
 
         void majCentrale();

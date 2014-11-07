@@ -4,10 +4,9 @@
 #include <QMainWindow>
 #include "tableaudebord.h"
 #include "principalcapteurgl.h"
-
 #include <iostream>
 #include <string>
-
+#include "gyrograph.h"
 
 
 namespace Ui {
@@ -26,6 +25,8 @@ public:
 
 public slots :
     void majLCD();
+    void setslidervalue();
+    void timer_stop();
 
 private:
     Ui::MainWindow *ui;
@@ -35,6 +36,9 @@ private:
     // Pointeur sur la fenetre d'affichage principale
     PrincipalCapteurGL *_pcGL;
 
+    QTimer *timer;
+    // Clic sur stop
+    bool stp;
 };
 
 #endif // MAINWINDOW_H
