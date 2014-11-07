@@ -2,6 +2,7 @@
 #define CENTRALE_H
 
 #include <QVector>
+#include "signal.h"
 
 class Centrale
 {
