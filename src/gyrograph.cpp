@@ -8,6 +8,8 @@ gyrograph::gyrograph(QWidget *parent) :
     QGLWidget(parent)
 {
 
+
+
 }
 
 
@@ -17,7 +19,6 @@ void gyrograph::initializeGL()
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
     // Afficher la grille
     // afficheGrille();
-
 }
 
 void gyrograph::resizeGL(int w, int h)
@@ -38,50 +39,46 @@ void gyrograph::resizeGL(int w, int h)
 }
 
 int buffer=0;
+int i;
 int tmp=0;
 
 void gyrograph::afficheSignal()
 {
-    TableauDeBord _tdb;
 
+
+    // Set the camera
+    // glMatrixMode(GL_MODELVIEW);
     // Clear Color and Depth Buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Reset transformations
      glLoadIdentity();
-    // Set the camera
-    // glMatrixMode(GL_MODELVIEW);
-
-        gluLookAt( -buffer*0.3, 30.0f, 0.0f,
-              -buffer*0.3, 0.0f, 0.0f,
+        gluLookAt( -buffer*0.4, 30.0f, 0.0f,
+              -buffer*0.4, 0.0f, 0.0f,
                0.0f, 0.0f, 1.0f);
 
      buffer++;
-    // Ligne de référence (rouge)
-    glColor3f (1,0,0);
-    glBegin (GL_LINES);
-    glVertex3f (-2000.0,0.0,0.0);
-    glVertex3f (2000,0.0,0.0);
-    glVertex3f (0.0,0.0,-20.0);
-    glVertex3f(0.0,0.0,20.0);
-    glEnd();
-    // Dessiner un graphe
-    glColor3f (0.0,1.0,0.0);
-    glBegin(GL_LINE_STRIP);
 
-    for(int i=0;i<buffer;i++)
-    {
-        glVertex3f(-i*0.30,0.0,_tdb.get_signaux ()[this->signalIndex]->normalizeVector (_tdb.get_signaux ()[this->signalIndex]->getSignal (i)));
-    }
+     // Ligne de référence (rouge)
+ glColor3f (1,0,0);
+ glBegin (GL_LINES);
+ glVertex3f (-2000.0,0.0,0.0);
+ glVertex3f (2000,0.0,0.0);
+ glVertex3f (0.0,0.0,-20.0);
+ glVertex3f(0.0,0.0,20.0);
+ glEnd();
+ // Dessiner un graphe
+ glColor3f (0.0,1.0,0.0);
+ glBegin(GL_LINE_STRIP);
+ if(buffer%100==0)
+ {
+     tmp=+90;
+ }
+ for(i=buffer-220;i<buffer;i++)
+ {
+     glVertex3f(-i*0.40,0.0,_pTDB->get_signaux ()[this->signalIndex]->normalizeVector (_pTDB->get_signaux ()[this->signalIndex]->getSignal (i)));
+ }
 
-    glEnd();
-
-}
-
-
-void gyrograph::lookat()
-{
-
-
+ glEnd();
 }
 
 void gyrograph::paintGL()
@@ -104,12 +101,19 @@ void gyrograph::timerEvent(QTimerEvent event)
 
 void gyrograph::updateGL()
 {
+
     QGLWidget::updateGL ();
+    //this->afficheSignal ();
 }
 
 void gyrograph::setCentrale(Centrale *uneCentrale)
 {
     _pIMU = uneCentrale;
+}
+
+void gyrograph::setTableauDeBord(TableauDeBord *tdb)
+{
+    _pTDB=tdb;
 }
 
 void gyrograph::setsignalIndex(int i)
