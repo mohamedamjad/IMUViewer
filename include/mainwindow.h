@@ -4,9 +4,7 @@
 #include <QMainWindow>
 #include "tableaudebord.h"
 #include "principalcapteurgl.h"
-
-
-
+#include "gyrograph.h"
 
 namespace Ui {
 class MainWindow;
