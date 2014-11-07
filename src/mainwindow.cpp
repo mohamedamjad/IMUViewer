@@ -15,6 +15,15 @@ MainWindow::MainWindow(QWidget *parent) :
     this->findChild<GyroCapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
     this->findChild<MagneCapteurGL*>("glCapteurMagne")->setCentrale(&_pTdb->_IMU);
     this->findChild<gyrograph*>("glSignalAcc")->setCentrale (&_pTdb->_IMU);
+    
+        this->findChild<gyrograph*>("glSignalAcc")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalAcc")->setsignalIndex (0);
+
+    this->findChild<gyrograph*>("glSignalGyro")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalGyro")->setsignalIndex (3);
+
+    this->findChild<gyrograph*>("glSignalMagne")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalMagne")->setsignalIndex (6);
 
     _pcGL = this->findChild<PrincipalCapteurGL*>("glPrincipal");
     _pcGL->setCentrale(&_pTdb->_IMU);
@@ -29,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(timer, SIGNAL(timeout()), this->findChild<MagneCapteurGL*>("glCapteurMagne"), SLOT(updateGL()));
     QObject::connect(timer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
     QObject::connect(timer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateGL()));
+    QObject::connect(timer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateGL()));
+    QObject::connect(timer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateGL()));
     // timer calé sur la fréquence d'échantillonage des signaux
     timer->start(1000/freqEch);
 }
