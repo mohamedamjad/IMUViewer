@@ -37,6 +37,8 @@ class TableauDeBord : public QObject
 
         QVector<double> getCoinInferieur();
         QVector<double> getCoinSuperieur();
+        QVector<Signal*> get_signaux();
+        int getiCourant();
 
     public slots:
 
