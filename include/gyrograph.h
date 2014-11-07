@@ -23,14 +23,15 @@ public:
     void timerEvent(QTimerEvent);
     void setCentrale(Centrale *);
     void afficheSignal();
-    void lookat();
     void setsignalIndex(int i);
+    void setTableauDeBord(TableauDeBord *tdb);
 
 public slots:
     void updateGL();
 
 private:
     Centrale* _pIMU;
+    TableauDeBord* _pTDB;
     int signalIndex;
 
 };
