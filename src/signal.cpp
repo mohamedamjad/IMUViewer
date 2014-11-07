@@ -241,10 +241,10 @@ double Signal::getMaxSignal ()
 
     for(int i=0;i<this->getTaille ();i++)
     {
-        if (max>this->getSignal (i))
+        if (max>fabs(this->getSignal (i)))
             continue;
         else
-            max=this->getSignal (i);
+            max=fabs(this->getSignal (i));
     }
 
     return max;
@@ -254,7 +254,7 @@ double Signal::normalizeVector(double val )
 {
     double result;
 
-    result=val*2/this->getMaxSignal();
+    result=val*9/this->getMaxSignal();
 
     return result;
 }
