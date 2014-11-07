@@ -5,6 +5,9 @@
 #include <QGLWidget>
 #include <QTimerEvent>
 #include<GL/glut.h>
+#include <QVector>
+#include "signal.h"
+#include "tableaudebord.h"
 
 class gyrograph : public QGLWidget
 {
@@ -19,14 +22,16 @@ public:
     void keyPressEvent( QKeyEvent *keyEvent );
     void timerEvent(QTimerEvent);
     void setCentrale(Centrale *);
-    void afficheGrille();
+    void afficheSignal();
+    void lookat();
+    void setsignalIndex(int i);
 
 public slots:
     void updateGL();
 
 private:
     Centrale* _pIMU;
-
+    int signalIndex;
 
 };
 
