@@ -23,6 +23,7 @@
 #include "csv.h"
 #include <QVector>
 #include "centrale.h"
+#include <QTime>
 
 
 class TableauDeBord : public QObject
@@ -38,6 +39,9 @@ class TableauDeBord : public QObject
         QVector<double> getCoinInferieur();
         QVector<double> getCoinSuperieur();
 
+//// DEBUT MODIFICATION A INTEGRER
+        int getICourant();
+//// FIN MODIFICATION A INTEGRER
     public slots:
 
         void majCentrale();
@@ -60,9 +64,16 @@ class TableauDeBord : public QObject
         // Représente l'indice courant dans le tableau de données
         int iCourant;
 
+        ///////////////// Début modification à intégrer
+        // Save QTime from the last iteration
+        QTime lastTime;
+
+        int incrementeICourant();
+        ///////////////// Fin modification à intégrer
         void creeVecteurSignaux(double**,  FrequencyType, FrequencyType,bool);
 
         void calculeFenetreCentrale();
+
 
 };
 

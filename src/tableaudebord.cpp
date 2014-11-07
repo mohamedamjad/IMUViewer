@@ -13,6 +13,14 @@ TableauDeBord::TableauDeBord()
     // Cree un vecteur de signaux avec toutes les données
     creeVecteurSignaux(donneesBrutes,freqFiltre,freqEch,true);
     calculeFenetreCentrale();
+
+    ///////////////// Début modification à intégrer
+    // Indice courant de parcours du signal
+    iCourant = 0;
+
+    // Initialisation du QTime à maintenant
+    lastTime = QTime::currentTime();
+    ///////////////// Fin modification à intégrer
 }
 
 
@@ -88,10 +96,66 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
 
 }
 
+///////////////// Début modification à intégrer /////////////////
 
 // Mise à jour des données du capteur de la centrale
 void TableauDeBord::majCentrale()
 {
+    ////////////////// Incrementation iCourant //////////////////
+    int pas = incrementeICourant();
+
+    ////////////////// Réinitialisation des capteurs //////////////////
+    if (iCourant==0)
+    {
+        // Orientation depuis le gyro
+        _IMU._orientation[0]=0;
+        _IMU._orientation[1]=0;
+        _IMU._orientation[2]=0;
+
+        // Postion depuis l'acceleromètre
+        _IMU._position[0]=0;
+        _IMU._position[1]=0;
+        _IMU._position[2]=0;
+
+        // On vide la trajectoire
+        _IMU._trajectoire.clear();
+        _IMU._distance = 0;
+
+    }
+    //////////////////Mise à jour des indicateurs de position/orientation absolues //////////////////
+    else
+    {
+        // On cumule les valeurs qu'on a sauté...
+        for (int i=iCourant;i>iCourant-pas;i--)
+        {
+            // Orientation : cumul des angles obtenus par intégration du signal gyro
+            double angleX = _signaux[3]->getSignalIntegre(i);
+            double angleY = _signaux[4]->getSignalIntegre(i);
+            double angleZ = _signaux[5]->getSignalIntegre(i);
+
+            _IMU._orientation[0]+= (_IMU._orientation[0]>=2*M_PI) ? angleX : angleX-2*M_PI;
+            _IMU._orientation[1]+= (_IMU._orientation[1]>=2*M_PI) ? angleY : angleY-2*M_PI;
+            _IMU._orientation[2]+= (_IMU._orientation[2]>=2*M_PI) ? angleZ : angleZ-2*M_PI;
+
+            // Position depuis l'acceleromètre
+            double deltaX = _signaux[0]->getSignalDoubleIntegre(i);
+            double deltaY = _signaux[1]->getSignalDoubleIntegre(i);
+            double deltaZ = _signaux[2]->getSignalDoubleIntegre(i);
+
+            _IMU._position[0]+= deltaX;
+            _IMU._position[1]+= deltaY;
+            _IMU._position[2]+= deltaZ;
+
+            // On ajoute le point courant de la centrale à la trajectoire
+            _IMU._trajectoire.append(_IMU._position);
+
+            // Incrémentation de la distance totale parcourue
+            _IMU._distance += sqrt(pow(deltaX,2)+pow(deltaY,2)+pow(deltaZ,2));
+
+        }
+    }
+    //////////////////Mise à jour des capteurs temps réel //////////////////
+
     // Acc
     _IMU._acc[0] = _signaux[0]->getSignal(iCourant);
     _IMU._accNorm[0]=_signaux[0]->normalizeVector (_signaux[0]->getSignal(iCourant));
@@ -121,53 +185,56 @@ void TableauDeBord::majCentrale()
     _IMU._gyroI[1]= _signaux[4]->getSignalIntegre(iCourant);
     _IMU._gyroI[2]= _signaux[5]->getSignalIntegre(iCourant);
 
-    // Orientation depuis le gyro
-    if (_IMU._orientation[0]>=360)
-        _IMU._orientation[0]+= _IMU._gyroI[0] - 360;
-    else
-        _IMU._orientation[0]+= _IMU._gyroI[0];
+    // Vitesse courante
+    double vX = _signaux[0]->getSignalIntegre(iCourant);
+    double vY = _signaux[1]->getSignalIntegre(iCourant);
+    double vZ = _signaux[2]->getSignalIntegre(iCourant);
+    _IMU._vitesse  = sqrt(pow(vX,2)+pow(vY,2)+pow(vZ,2));
 
-    if (_IMU._orientation[1]>=360)
-        _IMU._orientation[1]+= _IMU._gyroI[1] - 360;
-    else
-        _IMU._orientation[1]+= _IMU._gyroI[1];
-
-    if (_IMU._orientation[2]>=360)
-        _IMU._orientation[2]+= _IMU._gyroI[2] - 360;
-    else
-        _IMU._orientation[2]+= _IMU._gyroI[2];
-
-    // Postion depuis l'acceleromètre
-    _IMU._position[0]+= _IMU._acc2I[0];
-    _IMU._position[1]+= _IMU._acc2I[1];
-    _IMU._position[2]+= _IMU._acc2I[2];
-
-    // Incrémentation de la distance totale parcourue
-    _IMU._distance += sqrt(pow(_IMU._acc2I[0],2)+pow(_IMU._acc2I[1],2)+pow(_IMU._acc2I[2],2));
-
-    // On ajoute le point courant de la centrale à la trajectoire
-    _IMU._trajectoire.append(_IMU._position);
-
-    // Incrémentation de l'indice de parcours des données
-    iCourant = (iCourant < (_signaux.at(0)->getTaille())) ? iCourant+1:0;
-
-    if (iCourant==0)
-    {
-        // Orientation depuis le gyro
-        _IMU._orientation[0]=0;
-        _IMU._orientation[1]=0;
-        _IMU._orientation[2]=0;
-
-        // Postion depuis l'acceleromètre
-        _IMU._position[0]=0;
-        _IMU._position[1]=0;
-        _IMU._position[2]=0;
-
-        // On vide la trajectoire
-        _IMU._trajectoire.clear();
-        _IMU._distance;
-
-    }
 
 }
 
+///////////////// Fin modification à intégrer /////////////////
+
+//// DEBUT MODIFICATION A INTEGRER
+/// Incremente iCourant et renvoie le pas utilisé
+/// Réinitialise également lastTime
+/// Renvoie -1 si iCourant a été réinitialisé à zéro
+int TableauDeBord::incrementeICourant()
+{
+    QTime maintenant = QTime::currentTime();
+    // Nb de ms depuis le dernier tour
+    int mSecs = abs(maintenant.msecsTo(lastTime));
+
+
+    // période d'échantillonage en ms
+    double periodeEchantillonage = 1000/freqEch;
+
+
+    // Incrémentation du pas = division entière (mSecs / période en mS) arrondie à l'entier le plus pres
+    int pas = round((mSecs / periodeEchantillonage));
+
+    if ((iCourant+pas) < (_signaux.at(0)->getTaille()))
+    {
+        iCourant+=pas;
+        // Décalage à rajouter à maintenant pour tomber sur le "maintenant" du signal échantilloné
+        //(légèrement supérieur ou inférieur)
+        lastTime = lastTime.addMSecs(pas*periodeEchantillonage);
+        return pas;
+    }
+    else
+    {
+        iCourant = 0;
+        lastTime = QTime::currentTime();
+        return -1;
+    }
+}
+//// FIN MODIFICATION A INTEGRER
+
+//// DEBUT MODIFICATION A INTEGRER
+int TableauDeBord::getICourant()
+{
+    return iCourant;
+
+}
+//// FIN MODIFICATION A INTEGRER

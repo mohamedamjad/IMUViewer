@@ -93,8 +93,8 @@ void PrincipalCapteurGL::afficheTrajectoireCentrale()
             {
                 glVertex3f(_pIMU->_trajectoire.at(i)[0],_pIMU->_trajectoire.at(i)[1],_pIMU->_trajectoire.at(i)[2]);
             }
-            std::cout << _pIMU->_distance << std::endl;
-            glEnd();
+
+        glEnd();
     }
 }
 

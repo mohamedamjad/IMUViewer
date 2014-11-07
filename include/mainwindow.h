@@ -5,6 +5,8 @@
 #include "tableaudebord.h"
 #include "principalcapteurgl.h"
 
+#include <iostream>
+#include <string>
 
 
 
@@ -22,6 +24,8 @@ public:
 
     ~MainWindow();
 
+public slots :
+    void majLCD();
 
 private:
     Ui::MainWindow *ui;

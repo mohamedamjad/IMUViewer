@@ -21,6 +21,11 @@ MainWindow::MainWindow(QWidget *parent) :
     // + fenetre d'évolution de la centrale
     _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
 
+    //// DEBUT MODIFICATION A INTEGRER
+    // Affichage en décimal
+    ui->lcdNumber->setDigitCount(8);
+    //// FIN MODIFICATION A INTEGRER
+
     // Mise à jour de la centrale inertielle en suivant le timer
     QObject::connect(timer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
     // Mise à jour des widgets capteurs
@@ -29,6 +34,12 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(timer, SIGNAL(timeout()), this->findChild<MagneCapteurGL*>("glCapteurMagne"), SLOT(updateGL()));
     QObject::connect(timer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
     QObject::connect(timer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateGL()));
+
+    //// DEBUT MODIFICATION A INTEGRER
+    // Mise à jour de l'écran LCD
+    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(majLCD()));
+    //// FIN MODIFICATION A INTEGRER
+
     // timer calé sur la fréquence d'échantillonage des signaux
     timer->start(1000/freqEch);
 }
@@ -46,3 +57,13 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
     _pcGL->keyPressEvent(event);
 }
 
+//// DEBUT MODIFICATION A INTEGRER
+void MainWindow::majLCD()
+{
+    std::ostringstream s;
+    s<<(double)_pTdb->getICourant()/(double)freqEch;
+    std::string sttime=s.str();
+    ui->lcdNumber->display(QString(sttime.c_str()));
+
+}
+//// FIN MODIFICATION A INTEGRER
