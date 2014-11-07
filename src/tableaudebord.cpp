@@ -110,8 +110,11 @@ void TableauDeBord::majCentrale()
     _IMU._gyroNorm[2]=_signaux[5]->normalizeVector (_signaux[5]->getSignal(iCourant));
     // Magnétomètre
     _IMU._magn[0]=_signaux[6]->getSignal(iCourant);
+    _IMU._magnNorm[0]=_signaux[6]->normalizeVector (_signaux[6]->getSignal(iCourant));
     _IMU._magn[1]=_signaux[7]->getSignal(iCourant);
+    _IMU._magnNorm[1]=_signaux[7]->normalizeVector (_signaux[7]->getSignal(iCourant));
     _IMU._magn[2]=_signaux[8]->getSignal(iCourant);
+    _IMU._magnNorm[0]=_signaux[8]->normalizeVector (_signaux[8]->getSignal(iCourant));
 
     //Position depuis l'accéléro
     _IMU._acc2I[0] = _signaux[0]->getSignalDoubleIntegre(iCourant);
@@ -171,5 +174,14 @@ void TableauDeBord::majCentrale()
 
     }
 
+}
+QVector<Signal*> TableauDeBord::get_signaux()
+{
+    return this->_signaux;
+}
+
+int TableauDeBord::getiCourant()
+{
+    return this->iCourant;
 }
 
