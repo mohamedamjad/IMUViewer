@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
 
     ui->lcdNumber->setDigitCount(8);
+    //initialisation de la taille du slider
     ui->horizontalSlider->setRange(0,max);
 
     // Mise à jour de la centrale inertielle en suivant le _pTimer
@@ -57,11 +58,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Evolution slider + boutons
     connect(_pTimer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
+    // Clic sur pause
     connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
     // Modif Régis 12/11
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(timer_play()));
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(clicPlay()));
     // Fin Régis 12/11
-    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(timer_stop()));
+    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(clicStop()));
 
 
 
@@ -93,6 +95,7 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
 
 void MainWindow::majLCD()
 {
+    //std::cout<<this->_pTdb->getiCourant()<<std::endl;
     std::ostringstream s;
     s<<(double)_pTdb->getiCourant()/(double)freqEch;
     std::string sttime=s.str();
@@ -101,14 +104,14 @@ void MainWindow::majLCD()
 
 void MainWindow::setslidervalue()
 {
-
+    std::cout<<this->_pTdb->getiCourant()<<std::endl;
     ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
 
 
 }
 
 // Ajout Régis 12/11
-void MainWindow::timer_play()
+void MainWindow::clicPlay()
 {
     // On réaffecte la mémoire de date à la date courante
     _pTdb->setLastTimeToCurrentTime();
@@ -118,9 +121,10 @@ void MainWindow::timer_play()
 }
 // Fin ajout Régis 12/11
 
-void MainWindow::timer_stop()
+void MainWindow::clicStop()
 {
   _pTimer->stop();
+  _pTdb->reInitialiseCapteursCentraleEtProgressionSignal();
   ui->lcdNumber->display(0);
   ui->horizontalSlider->setValue(0);
 }
@@ -131,7 +135,7 @@ void MainWindow::dragslidervalue()
 {
     this->_pTdb->setiCourant(ui->horizontalSlider->value());
     _pTimer->start();
-    //_pTdb->setLastTimeToCurrentTime();
+    _pTdb->setLastTimeToCurrentTime();
 
 
 }

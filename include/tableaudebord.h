@@ -12,7 +12,7 @@
 // Fréquence du filtre passe-bas en Hz
 #define freqFiltre 8
 // Fréquence de ré-échantillonage du signal en Hz
-#define freqEch 50
+#define freqEch 100
 
 //#define fichierCsv "amjad_marche_cheville.out"
 #define fichierCsv "ferdaousse_mixte_cheville.out"
@@ -44,6 +44,11 @@ class TableauDeBord : public QObject
         // Affecte current time au last time
         void setLastTimeToCurrentTime();
         void setiCourant(int i);
+
+        // Réinitilisation de tous les capteurs
+        void reInitialiseCapteursCentraleEtProgressionSignal();
+        //mise en place de la centrale
+        void miseenplace(int i);
 
     public slots:
 
