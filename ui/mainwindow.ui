@@ -97,7 +97,7 @@
      <rect>
       <x>570</x>
       <y>210</y>
-      <width>541</width>
+      <width>441</width>
       <height>71</height>
      </rect>
     </property>
@@ -105,14 +105,14 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>720</x>
+      <x>740</x>
       <y>290</y>
-      <width>291</width>
+      <width>161</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Accéléromètre : Evolution de l'accélération</string>
+     <string>Espace d'affichage 1</string>
     </property>
    </widget>
    <widget class="gyrograph" name="glSignalGyro" native="true">
@@ -120,7 +120,7 @@
      <rect>
       <x>570</x>
       <y>330</y>
-      <width>541</width>
+      <width>441</width>
       <height>71</height>
      </rect>
     </property>
@@ -128,14 +128,14 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>720</x>
+      <x>750</x>
       <y>410</y>
-      <width>291</width>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Gyroscope : Evolution de la vitesse angulaire</string>
+     <string>Espace d'affichage 2</string>
     </property>
    </widget>
    <widget class="gyrograph" name="glSignalMagne" native="true">
@@ -143,7 +143,7 @@
      <rect>
       <x>570</x>
       <y>440</y>
-      <width>541</width>
+      <width>441</width>
       <height>71</height>
      </rect>
     </property>
@@ -151,14 +151,14 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>740</x>
       <y>520</y>
-      <width>331</width>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Magnétomètre : évolution du champs magnénatique</string>
+     <string>Espace d'affichage 3</string>
     </property>
    </widget>
    <widget class="AccCapteurGL" name="glCapteurAcc" native="true">
@@ -294,6 +294,66 @@
      <string>(x, y, z) </string>
     </property>
    </widget>
+   <widget class="Combobox" name="comboBox_1">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>230</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Combobox" name="comboBox_2">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>350</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Combobox" name="comboBox_3">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>460</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>480</y>
+      <width>171</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Vue 3D</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Projection X</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Projection Y</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Projection Z</string>
+     </property>
+    </item>
+   </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -396,6 +456,16 @@
    <class>MagneCapteurGL</class>
    <extends>QWidget</extends>
    <header>magnecapteurgl.h</header>
+  </customwidget>
+  <customwidget>
+   <class>gyrograph</class>
+   <extends>QWidget</extends>
+   <header>gyrograph.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Combobox</class>
+   <extends>QComboBox</extends>
+   <header>combobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

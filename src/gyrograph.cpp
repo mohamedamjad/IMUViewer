@@ -69,6 +69,7 @@ void gyrograph::afficheSignal()
  // Dessiner un graphe
  glColor3f (0.0,1.0,0.0);
  glBegin(GL_LINE_STRIP);
+
  if(buffer%100==0)
  {
      tmp=+90;
@@ -78,6 +79,15 @@ void gyrograph::afficheSignal()
      glVertex3f(-i*0.40,0.0,_pTDB->get_signaux ()[this->signalIndex]->normalizeVector (_pTDB->get_signaux ()[this->signalIndex]->getSignal (i)));
  }
 
+ if (_pTDB->get_signaux ()[this->signalIndex]->getTaille ()==buffer)
+{
+     buffer=0;
+     glColor3f(1,0,0);
+     glBegin(GL_LINES);
+     glVertex3f (0.0,0.0,-20.0);
+     glVertex3f(0.0,0.0,20.0);
+     glEnd();
+ }
  glEnd();
 }
 
@@ -119,4 +129,5 @@ void gyrograph::setTableauDeBord(TableauDeBord *tdb)
 void gyrograph::setsignalIndex(int i)
 {
     this->signalIndex=i;
+
 }

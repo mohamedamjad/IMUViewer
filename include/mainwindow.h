@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include "gyrograph.h"
+#include"combobox.h"
 
 
 namespace Ui {
@@ -41,6 +42,8 @@ private:
     PrincipalCapteurGL *_pcGL;
 
     QTimer *_pTimer;
+    // Pointeur sur Combobox
+    Combobox *_pCombo;
 };
 
 #endif // MAINWINDOW_H
