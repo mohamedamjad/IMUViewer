@@ -36,7 +36,6 @@
 
 *****************************************A FAIRE DANS L'ORDRE
 Developpement : s'arrêter là fin de semaine prochaine
-- attention un signal non filtré n'est pas réeéchantillonné actuellement (signaux deu pas différents)
 - Régis : bug pause du curseur (QTime lastTime de tableau de bord prend en comtpe un maintenant absolu : probleme si pause)
 - Régis : réinitialisation du iCourant et de tous les capteurs quand clic sur stop ou quand fin signal
 - Ferdaousse : évolution curseur / boutons

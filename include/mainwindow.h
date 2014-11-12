@@ -26,7 +26,11 @@ public:
 public slots :
     void majLCD();
     void setslidervalue();
+    // Ajout Régis 12/11
+    void timer_play();
+    // Fin Régis 12/11
     void timer_stop();
+
 
 private:
     Ui::MainWindow *ui;
@@ -36,9 +40,7 @@ private:
     // Pointeur sur la fenetre d'affichage principale
     PrincipalCapteurGL *_pcGL;
 
-    QTimer *timer;
-    // Clic sur stop
-    bool stp;
+    QTimer *_pTimer;
 };
 
 #endif // MAINWINDOW_H

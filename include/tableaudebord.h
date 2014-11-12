@@ -41,6 +41,8 @@ class TableauDeBord : public QObject
         QVector<Signal*> get_signaux();
         int getiCourant();
         int getnbEch();
+        // Affecte current time au last time
+        void setLastTimeToCurrentTime();
 
     public slots:
 
@@ -65,8 +67,9 @@ class TableauDeBord : public QObject
         int iCourant;
 
         ///////////////// Début modification à intégrer
-        // Save QTime from the last iteration
-        QTime lastTime;
+        // Enregistre le QTime de la dernière itération pour identifier un éventuel décalage entre le temps
+        // reel et le temps du signal
+        QTime _lastTime;
 
         int incrementeICourant();
         ///////////////// Fin modification à intégrer

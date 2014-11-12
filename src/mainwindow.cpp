@@ -7,10 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-     QTimer *timer = new QTimer(this);
+     _pTimer = new QTimer(this);
     _pTdb = new TableauDeBord();
 
-    stp=false;
     int max=_pTdb->getnbEch();
 
     // Affectation de la centrale du tableau de bord aux widgets capteurs
@@ -41,25 +40,27 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lcdNumber->setDigitCount(8);
     ui->horizontalSlider->setRange(0,max*1000);
 
-    // Mise à jour de la centrale inertielle en suivant le timer
-    QObject::connect(timer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
+    // Mise à jour de la centrale inertielle en suivant le _pTimer
+    QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
     // Mise à jour des widgets gl
-    QObject::connect(timer, SIGNAL(timeout()), this->findChild<AccCapteurGL*>("glCapteurAcc"), SLOT(updateGL()));
-    QObject::connect(timer, SIGNAL(timeout()), this->findChild<GyroCapteurGL*>("glCapteurGyro"), SLOT(updateGL()));
-    QObject::connect(timer, SIGNAL(timeout()), this->findChild<MagneCapteurGL*>("glCapteurMagne"), SLOT(updateGL()));
-    QObject::connect(timer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
-    QObject::connect(timer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<AccCapteurGL*>("glCapteurAcc"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<GyroCapteurGL*>("glCapteurGyro"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<MagneCapteurGL*>("glCapteurMagne"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateGL()));
 
     // Mise à jour de l'écran LCD
-    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(majLCD()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majLCD()));
 
-    QObject::connect(timer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateGL()));
-    QObject::connect(timer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateGL()));
 
     // Evolution slider + boutons
-    connect(timer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
-    connect(ui->pushButton_3, SIGNAL(clicked()), timer, SLOT(stop()));
-    connect(ui->pushButton, SIGNAL(clicked()), timer, SLOT(start()));
+    connect(_pTimer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
+    connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
+    // Modif Régis 12/11
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(timer_play()));
+    // Fin Régis 12/11
     connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(timer_stop()));
 
     // timer calé sur la fréquence d'échantillonage des signaux
@@ -96,12 +97,20 @@ void MainWindow::setslidervalue()
 
 }
 
+// Ajout Régis 12/11
+void MainWindow::timer_play()
+{
+    // On réaffecte la mémoire de date à la date courante
+    _pTdb->setLastTimeToCurrentTime();
+    _pTimer->start();
+
+}
+// Fin ajout Régis 12/11
+
 void MainWindow::timer_stop()
 {
-  timer->stop();
+  _pTimer->stop();
   ui->lcdNumber->display(0);
   ui->horizontalSlider->setValue(0);
-  stp=true;
-
 }
 

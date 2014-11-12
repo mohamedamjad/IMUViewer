@@ -19,7 +19,7 @@ TableauDeBord::TableauDeBord()
     iCourant = 0;
 
     // Initialisation du QTime à maintenant
-    lastTime = QTime::currentTime();
+    setLastTimeToCurrentTime();
     ///////////////// Fin modification à intégrer
 }
 
@@ -202,13 +202,13 @@ void TableauDeBord::majCentrale()
 
 
 /// Incremente iCourant et renvoie le pas utilisé
-/// Réinitialise également lastTime
+/// Réinitialise également _lastTime
 /// Renvoie -1 si iCourant a été réinitialisé à zéro
 int TableauDeBord::incrementeICourant()
 {
     QTime maintenant = QTime::currentTime();
     // Nb de ms depuis le dernier tour
-    int mSecs = abs(maintenant.msecsTo(lastTime));
+    int mSecs = abs(maintenant.msecsTo(_lastTime));
 
 
     // période d'échantillonage en ms
@@ -223,13 +223,13 @@ int TableauDeBord::incrementeICourant()
         iCourant+=pas;
         // Décalage à rajouter à maintenant pour tomber sur le "maintenant" du signal échantilloné
         //(légèrement supérieur ou inférieur)
-        lastTime = lastTime.addMSecs(pas*periodeEchantillonage);
+        _lastTime = _lastTime.addMSecs(pas*periodeEchantillonage);
         return pas;
     }
     else
     {
         iCourant = 0;
-        lastTime = QTime::currentTime();
+        setLastTimeToCurrentTime();
         return -1;
     }
 }
@@ -249,4 +249,9 @@ int TableauDeBord::getnbEch()
 {
 
     return this->_nbEch;
+}
+
+void TableauDeBord::setLastTimeToCurrentTime()
+{
+    _lastTime = QTime::currentTime();
 }
