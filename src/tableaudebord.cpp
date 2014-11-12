@@ -15,8 +15,8 @@ TableauDeBord::TableauDeBord()
     calculeFenetreCentrale();
 
     ///////////////// Début modification à intégrer
-    // Indice courant de parcours du signal
-    iCourant = 0;
+    // Initialisation de l'indice de parcours du signal et des capteurs
+    reInitialiseCapteursCentraleEtProgressionSignal();
 
     // Initialisation du QTime à maintenant
     setLastTimeToCurrentTime();
@@ -74,7 +74,7 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
         signalBrut->regulariseEchantillonage(uneFreqEch);
-        signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
+       // signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
         signalBrut->doubleIntegre();
         _signaux.append(signalBrut);
     }
@@ -97,6 +97,7 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
         _signaux.append(signalBrut);
     }
 
+   _nbEch=_signaux[0]->getTaille();
 }
 
 ///////////////// Début modification à intégrer /////////////////
@@ -110,52 +111,21 @@ void TableauDeBord::majCentrale()
     ////////////////// Réinitialisation des capteurs //////////////////
     if (iCourant==0)
     {
-        // Orientation depuis le gyro
-        _IMU._orientation[0]=0;
-        _IMU._orientation[1]=0;
-        _IMU._orientation[2]=0;
-
-        // Postion depuis l'acceleromètre
-        _IMU._position[0]=0;
-        _IMU._position[1]=0;
-        _IMU._position[2]=0;
-
-        // On vide la trajectoire
-        _IMU._trajectoire.clear();
-        _IMU._distance = 0;
+        reInitialiseCapteursCentraleEtProgressionSignal();
 
     }
     //////////////////Mise à jour des indicateurs de position/orientation absolues //////////////////
     else
     {
+
         // On cumule les valeurs qu'on a sauté...
         for (int i=iCourant;i>iCourant-pas;i--)
         {
-            // Orientation : cumul des angles obtenus par intégration du signal gyro
-            double angleX = _signaux[3]->getSignalIntegre(i);
-            double angleY = _signaux[4]->getSignalIntegre(i);
-            double angleZ = _signaux[5]->getSignalIntegre(i);
+            miseenplace(i);
 
-            _IMU._orientation[0]+= (_IMU._orientation[0]>=2*M_PI) ? angleX : angleX-2*M_PI;
-            _IMU._orientation[1]+= (_IMU._orientation[1]>=2*M_PI) ? angleY : angleY-2*M_PI;
-            _IMU._orientation[2]+= (_IMU._orientation[2]>=2*M_PI) ? angleZ : angleZ-2*M_PI;
-
-            // Position depuis l'acceleromètre
-            double deltaX = _signaux[0]->getSignalDoubleIntegre(i);
-            double deltaY = _signaux[1]->getSignalDoubleIntegre(i);
-            double deltaZ = _signaux[2]->getSignalDoubleIntegre(i);
-
-            _IMU._position[0]+= deltaX;
-            _IMU._position[1]+= deltaY;
-            _IMU._position[2]+= deltaZ;
-
-            // On ajoute le point courant de la centrale à la trajectoire
-            _IMU._trajectoire.append(_IMU._position);
-
-            // Incrémentation de la distance totale parcourue
-            _IMU._distance += sqrt(pow(deltaX,2)+pow(deltaY,2)+pow(deltaZ,2));
 
         }
+
     }
     //////////////////Mise à jour des capteurs temps réel //////////////////
 
@@ -196,7 +166,7 @@ void TableauDeBord::majCentrale()
     double vY = _signaux[1]->getSignalIntegre(iCourant);
     double vZ = _signaux[2]->getSignalIntegre(iCourant);
     _IMU._vitesse  = sqrt(pow(vX,2)+pow(vY,2)+pow(vZ,2));
-
+    //std::cout<< _lastTime.toString().toStdString()<< " => " << vY<<std::endl;
 
 }
 
@@ -245,6 +215,23 @@ int TableauDeBord::getiCourant()
     return this->iCourant;
 }
 
+void TableauDeBord::setiCourant(int unI)
+{
+
+    reInitialiseCapteursCentraleEtProgressionSignal();
+    this->iCourant = unI;
+    // Rejoue le parcours du signal jusqu'au nouveau iCourant
+
+
+
+    for (int i=0;i<iCourant;i++)
+    {
+       miseenplace(i);
+
+    }
+
+}
+
 int TableauDeBord::getnbEch()
 {
 
@@ -254,4 +241,47 @@ int TableauDeBord::getnbEch()
 void TableauDeBord::setLastTimeToCurrentTime()
 {
     _lastTime = QTime::currentTime();
+}
+
+
+// Réinitialise tous les capteurs ainsi que iCourant
+void TableauDeBord::reInitialiseCapteursCentraleEtProgressionSignal()
+{
+
+    iCourant = 0;
+    // Orientation depuis le gyro
+    _IMU._orientation[0]=0;
+    _IMU._orientation[1]=0;
+    _IMU._orientation[2]=0;
+
+    // Postion depuis l'acceleromètre
+    _IMU._position[0]=0;
+    _IMU._position[1]=0;
+    _IMU._position[2]=0;
+
+    // On vide la trajectoire
+    _IMU._trajectoire.clear();
+    _IMU._distance = 0;
+
+}
+void TableauDeBord::miseenplace(int i)
+{
+    // Orientation : cumul des angles obtenus par intégration du signal gyro
+    double angleX = _signaux[3]->getSignalIntegre(i);
+    double angleY = _signaux[4]->getSignalIntegre(i);
+    double angleZ = _signaux[5]->getSignalIntegre(i);
+    _IMU._orientation[0]+= (_IMU._orientation[0]>=2*M_PI) ? angleX : angleX-2*M_PI;
+    _IMU._orientation[1]+= (_IMU._orientation[1]>=2*M_PI) ? angleY : angleY-2*M_PI;
+    _IMU._orientation[2]+= (_IMU._orientation[2]>=2*M_PI) ? angleZ : angleZ-2*M_PI;
+    // Position depuis l'acceleromètre
+    double deltaX = _signaux[0]->getSignalDoubleIntegre(i);
+    double deltaY = _signaux[1]->getSignalDoubleIntegre(i);
+    double deltaZ = _signaux[2]->getSignalDoubleIntegre(i);
+    _IMU._position[0]+= deltaX;
+    _IMU._position[1]+= deltaY;
+    _IMU._position[2]+= deltaZ;
+    // On ajoute le point courant de la centrale à la trajectoire
+    _IMU._trajectoire.append(_IMU._position);
+    // Incrémentation de la distance totale parcourue
+    _IMU._distance += sqrt(pow(deltaX,2)+pow(deltaY,2)+pow(deltaZ,2));
 }

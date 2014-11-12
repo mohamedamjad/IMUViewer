@@ -28,9 +28,11 @@ public slots :
     void majLCD();
     void setslidervalue();
     // Ajout Régis 12/11
-    void timer_play();
+    void clicPlay();
     // Fin Régis 12/11
-    void timer_stop();
+    void dragslidervalue();
+    void clicStop();
+
 
 
 private:

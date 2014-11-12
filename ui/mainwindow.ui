@@ -30,14 +30,23 @@
       <x>10</x>
       <y>510</y>
       <width>531</width>
-      <height>21</height>
+      <height>27</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QSlider" name="horizontalSlider">
+       <property name="tracking">
+        <bool>true</bool>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
+      </property>
+       <property name="tickPosition">
+        <enum>QSlider::NoTicks</enum>
+       </property>
+       <property name="tickInterval">
+        <number>1</number>
        </property>
       </widget>
      </item>
@@ -462,11 +471,14 @@
    <extends>QWidget</extends>
    <header>gyrograph.h</header>
   </customwidget>
+
   <customwidget>
    <class>Combobox</class>
    <extends>QComboBox</extends>
    <header>combobox.h</header>
   </customwidget>
+
+
  </customwidgets>
  <resources/>
  <connections/>

@@ -87,7 +87,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
 
     ui->lcdNumber->setDigitCount(8);
-    ui->horizontalSlider->setRange(0,max*1000);
+    //initialisation de la taille du slider
+    ui->horizontalSlider->setRange(0,max);
 
     // Mise à jour de la centrale inertielle en suivant le _pTimer
     QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
@@ -122,11 +123,22 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Evolution slider + boutons
     connect(_pTimer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
+    // Clic sur pause
     connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
     // Modif Régis 12/11
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(timer_play()));
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(clicPlay()));
     // Fin Régis 12/11
-    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(timer_stop()));
+    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(clicStop()));
+
+
+
+
+    //ferdaousse's modifications
+
+     connect(ui->horizontalSlider, SIGNAL(sliderReleased()), this, SLOT(dragslidervalue()));
+
+     connect(ui->horizontalSlider, SIGNAL(sliderPressed()), _pTimer, SLOT(stop()));
+
 
     // timer calé sur la fréquence d'échantillonage des signaux
     //timer->start(1000/freqEch);
@@ -148,6 +160,7 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
 
 void MainWindow::majLCD()
 {
+    //std::cout<<this->_pTdb->getiCourant()<<std::endl;
     std::ostringstream s;
     s<<(double)_pTdb->getiCourant()/(double)freqEch;
     std::string sttime=s.str();
@@ -156,26 +169,38 @@ void MainWindow::majLCD()
 
 void MainWindow::setslidervalue()
 {
-    int valslider=this->_pTdb->getiCourant();
-    int value = ui->horizontalSlider->value()+valslider;
-    ui->horizontalSlider->setValue(value);
+    std::cout<<this->_pTdb->getiCourant()<<std::endl;
+    ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
+
 
 }
 
 // Ajout Régis 12/11
-void MainWindow::timer_play()
+void MainWindow::clicPlay()
 {
     // On réaffecte la mémoire de date à la date courante
     _pTdb->setLastTimeToCurrentTime();
     _pTimer->start();
 
+
 }
 // Fin ajout Régis 12/11
 
-void MainWindow::timer_stop()
+void MainWindow::clicStop()
 {
   _pTimer->stop();
+  _pTdb->reInitialiseCapteursCentraleEtProgressionSignal();
   ui->lcdNumber->display(0);
   ui->horizontalSlider->setValue(0);
 }
 
+//ferdaousse's modifications
+
+void MainWindow::dragslidervalue()
+{
+    this->_pTdb->setiCourant(ui->horizontalSlider->value());
+    _pTimer->start();
+    _pTdb->setLastTimeToCurrentTime();
+
+
+}
