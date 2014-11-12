@@ -15,8 +15,8 @@ TableauDeBord::TableauDeBord()
     calculeFenetreCentrale();
 
     ///////////////// Début modification à intégrer
-    // Indice courant de parcours du signal
-    iCourant = 0;
+    // Initialisation de l'indice de parcours du signal et des capteurs
+    reInitialiseCapteursCentraleEtProgressionSignal();
 
     // Initialisation du QTime à maintenant
     setLastTimeToCurrentTime();
@@ -110,19 +110,7 @@ void TableauDeBord::majCentrale()
     ////////////////// Réinitialisation des capteurs //////////////////
     if (iCourant==0)
     {
-        // Orientation depuis le gyro
-        _IMU._orientation[0]=0;
-        _IMU._orientation[1]=0;
-        _IMU._orientation[2]=0;
-
-        // Postion depuis l'acceleromètre
-        _IMU._position[0]=0;
-        _IMU._position[1]=0;
-        _IMU._position[2]=0;
-
-        // On vide la trajectoire
-        _IMU._trajectoire.clear();
-        _IMU._distance = 0;
+        reInitialiseCapteursCentraleEtProgressionSignal();
 
     }
     //////////////////Mise à jour des indicateurs de position/orientation absolues //////////////////
@@ -254,4 +242,25 @@ int TableauDeBord::getnbEch()
 void TableauDeBord::setLastTimeToCurrentTime()
 {
     _lastTime = QTime::currentTime();
+}
+
+// Réinitialise tous les capteurs ainsi que iCourant
+void TableauDeBord::reInitialiseCapteursCentraleEtProgressionSignal()
+{
+
+    iCourant = 0;
+    // Orientation depuis le gyro
+    _IMU._orientation[0]=0;
+    _IMU._orientation[1]=0;
+    _IMU._orientation[2]=0;
+
+    // Postion depuis l'acceleromètre
+    _IMU._position[0]=0;
+    _IMU._position[1]=0;
+    _IMU._position[2]=0;
+
+    // On vide la trajectoire
+    _IMU._trajectoire.clear();
+    _IMU._distance = 0;
+
 }

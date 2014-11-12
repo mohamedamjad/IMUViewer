@@ -44,6 +44,8 @@ class TableauDeBord : public QObject
         // Affecte current time au last time
         void setLastTimeToCurrentTime();
 
+        // Réinitilisation de tous les capteurs
+        void reInitialiseCapteursCentraleEtProgressionSignal();
     public slots:
 
         void majCentrale();

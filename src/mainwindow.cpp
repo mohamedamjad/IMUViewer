@@ -57,11 +57,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Evolution slider + boutons
     connect(_pTimer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
+    // Clic sur pause
     connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
     // Modif Régis 12/11
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(timer_play()));
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(clicPlay()));
     // Fin Régis 12/11
-    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(timer_stop()));
+    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(clicStop()));
 
     // timer calé sur la fréquence d'échantillonage des signaux
     //timer->start(1000/freqEch);
@@ -98,7 +99,7 @@ void MainWindow::setslidervalue()
 }
 
 // Ajout Régis 12/11
-void MainWindow::timer_play()
+void MainWindow::clicPlay()
 {
     // On réaffecte la mémoire de date à la date courante
     _pTdb->setLastTimeToCurrentTime();
@@ -107,9 +108,10 @@ void MainWindow::timer_play()
 }
 // Fin ajout Régis 12/11
 
-void MainWindow::timer_stop()
+void MainWindow::clicStop()
 {
   _pTimer->stop();
+  _pTdb->reInitialiseCapteursCentraleEtProgressionSignal();
   ui->lcdNumber->display(0);
   ui->horizontalSlider->setValue(0);
 }
