@@ -11,7 +11,7 @@ TableauDeBord::TableauDeBord()
     // Nombre de lignes du fichier
     _nbEch = donneesCentrale.getNbLines();
     // Cree un vecteur de signaux avec toutes les données
-    creeVecteurSignaux(donneesBrutes,freqFiltre,freqEch,true);
+    creeVecteurSignaux(donneesBrutes,freqFiltre,freqEch);
     calculeFenetreCentrale();
 
     ///////////////// Début modification à intégrer
@@ -66,14 +66,15 @@ QVector<double> TableauDeBord::getCoinSuperieur()
     return _coinSuperieur;
 }
 
-void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType uneFreqFiltre, FrequencyType uneFreqEch,bool reEchantillone)
+void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType uneFreqFiltre, FrequencyType uneFreqEch)
 {
 
     // Données de l'accéléromètre
     for (int i=2;i<=4;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
-        signalBrut->passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
+        signalBrut->regulariseEchantillonage(uneFreqEch);
+        signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
         signalBrut->doubleIntegre();
         _signaux.append(signalBrut);
     }
@@ -82,7 +83,8 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
     for (int i=6;i<=8;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
-        //signalBrut->passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
+        signalBrut->regulariseEchantillonage(uneFreqEch);
+        //signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
         signalBrut->integre();
         _signaux.append(signalBrut);
     }
@@ -90,7 +92,8 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
     for (int i=10;i<=12;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
-        signalBrut->passeBas(uneFreqFiltre,uneFreqEch,reEchantillone);
+        signalBrut->regulariseEchantillonage(uneFreqEch);
+        signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
         _signaux.append(signalBrut);
     }
 

@@ -70,7 +70,7 @@ class TableauDeBord : public QObject
 
         int incrementeICourant();
         ///////////////// Fin modification à intégrer
-        void creeVecteurSignaux(double**,  FrequencyType, FrequencyType,bool);
+        void creeVecteurSignaux(double**,  FrequencyType, FrequencyType);
 
         void calculeFenetreCentrale();
 
