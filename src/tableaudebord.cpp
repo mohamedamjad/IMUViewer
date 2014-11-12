@@ -270,18 +270,15 @@ void TableauDeBord::miseenplace(int i)
     double angleX = _signaux[3]->getSignalIntegre(i);
     double angleY = _signaux[4]->getSignalIntegre(i);
     double angleZ = _signaux[5]->getSignalIntegre(i);
-    _IMU._orientation[0]+= (_IMU._orientation[0]>=2*M_PI) ? angleX : angleX-2*M_PI;
-    _IMU._orientation[1]+= (_IMU._orientation[1]>=2*M_PI) ? angleY : angleY-2*M_PI;
-    _IMU._orientation[2]+= (_IMU._orientation[2]>=2*M_PI) ? angleZ : angleZ-2*M_PI;
+    _IMU._orientation[0]= (_IMU._orientation[0]>=2*M_PI) ? angleX : angleX-2*M_PI;
+    _IMU._orientation[1]= (_IMU._orientation[1]>=2*M_PI) ? angleY : angleY-2*M_PI;
+    _IMU._orientation[2]= (_IMU._orientation[2]>=2*M_PI) ? angleZ : angleZ-2*M_PI;
     // Position depuis l'acceleromètre
-    double deltaX = _signaux[0]->getSignalDoubleIntegre(i);
-    double deltaY = _signaux[1]->getSignalDoubleIntegre(i);
-    double deltaZ = _signaux[2]->getSignalDoubleIntegre(i);
-    _IMU._position[0]+= deltaX;
-    _IMU._position[1]+= deltaY;
-    _IMU._position[2]+= deltaZ;
+    _IMU._position[0]= _signaux[0]->getSignalDoubleIntegre(i);
+    _IMU._position[1]= _signaux[1]->getSignalDoubleIntegre(i);
+    _IMU._position[2]= _signaux[2]->getSignalDoubleIntegre(i);
     // On ajoute le point courant de la centrale à la trajectoire
     _IMU._trajectoire.append(_IMU._position);
-    // Incrémentation de la distance totale parcourue
-    _IMU._distance += sqrt(pow(deltaX,2)+pow(deltaY,2)+pow(deltaZ,2));
+    // Distance à vol d'oiseau de la centrale a l'origine
+    _IMU._distance += sqrt(pow(_IMU._position[0],2)+pow(_IMU._position[1],2)+pow(_IMU._position[2],2));
 }
