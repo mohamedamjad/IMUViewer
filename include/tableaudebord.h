@@ -43,6 +43,7 @@ class TableauDeBord : public QObject
         int getnbEch();
         // Affecte current time au last time
         void setLastTimeToCurrentTime();
+        void setiCourant(int i);
 
     public slots:
 

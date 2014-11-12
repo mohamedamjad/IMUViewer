@@ -30,6 +30,7 @@ public slots :
     void timer_play();
     // Fin Régis 12/11
     void timer_stop();
+    void dragslidervalue();
 
 
 private:

@@ -255,3 +255,7 @@ void TableauDeBord::setLastTimeToCurrentTime()
 {
     _lastTime = QTime::currentTime();
 }
+void TableauDeBord::setiCourant(int i)
+{
+    iCourant = i;
+}

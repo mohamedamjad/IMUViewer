@@ -131,7 +131,6 @@ void MainWindow::dragslidervalue()
 {
     this->_pTdb->setiCourant(ui->horizontalSlider->value());
     _pTimer->start();
-    //_pTdb->setLastTimeToCurrentTime();
-
+    _pTdb->setLastTimeToCurrentTime();
 
 }
