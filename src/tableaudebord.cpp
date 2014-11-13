@@ -2,11 +2,12 @@
 #include "tableaudebord.h"
 
 
-TableauDeBord::TableauDeBord()
+TableauDeBord::TableauDeBord(const char* fichiercsv)
 {   
     // Lecture du fichier des données centrale
     CSV donneesCentrale;
-    double **donneesBrutes   = donneesCentrale.readCSV(fichierCsv);
+    //_fichiercsv="amjad_marche_cheville.out";
+    double **donneesBrutes   = donneesCentrale.readCSV(fichiercsv);
 
     // Nombre de lignes du fichier
     _nbEch = donneesCentrale.getNbLines();
