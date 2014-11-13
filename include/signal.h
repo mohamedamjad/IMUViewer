@@ -52,6 +52,7 @@ private:
     int _taille;
 
     SampleType* produitSignalMultiple2(int* );
+    static SampleType* integreUnSignal(SampleType *,SampleType *,int);
 };
 
 #endif // TRAITEMENTSIGNAL_H

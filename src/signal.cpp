@@ -180,31 +180,61 @@ int Signal::getTaille()
 
 }
 
+
+SampleType* Signal::integreUnSignal(SampleType* unTemps,SampleType *unSignal,int uneTaille)
+{
+    SampleType* res = new SampleType[uneTaille];
+    res[0] = 0;
+    for (int i=1;i<uneTaille;i++)
+    {
+        // Formule roots
+        //res[i] = ((unSignal[i]-unSignal[i-1])/2)*(unTemps[i]-unTemps[i-1]);
+        double deltaX = unTemps[i]-unTemps[i-1];
+        double y1     = unSignal[i-1];
+        double y2     = unSignal[i];
+        double yMinAbs = (abs(y1)<abs(y2)) ? abs(y1):abs(y2);
+        double deltaY = abs(y2-y1);
+        double deltaIntegre = 0;
+        // Cas 1 : aire triangle + aire rectangle
+        if ((y1>0) && (y2>0))
+        {
+            deltaIntegre = deltaY*deltaX/2+deltaX*yMinAbs;
+        }
+        // Cas 2 : idem en négatif
+        else if ((y1<0) && (y2<0))
+        {
+            deltaIntegre = -(deltaY*deltaX/2+deltaX*yMinAbs);
+        }
+        // Cas 3 : un y positif un autre négatif
+        else
+        {
+            // Thales
+            double a = (y2!=0) ? deltaX*abs(y1/y2) : deltaX;
+            double b = (y1!=0) ? deltaX*abs(y2/y1) : deltaX;
+
+            deltaIntegre = a*y1/2+b*y2/2;
+
+        }
+
+        res[i] = res[i-1] + deltaIntegre;
+
+    }
+    return res;
+}
+
+
 void Signal::integre()
 {
-
-    int size= this->getTaille();
-    this->_signalIntegre= new SampleType[size];
-    this->_signalIntegre[0] = 0;
-    for(int i=1;i<size;i++)
-    {
-          this->_signalIntegre[i]=this->_signal[i]*(this->_vecteurTemps[i]-this->_vecteurTemps[i-1]);
-    }
+    this->_signalIntegre= Signal::integreUnSignal(this->_vecteurTemps,this->_signal,this->getTaille());
 }
 
 
 void Signal::doubleIntegre()
 {
-    this->integre();
-    int size= this->getTaille();
-    this->_signalDoubleIntegre= new SampleType[size];
-    this->_signalIntegre[0] = 0;
-    this->_signalIntegre[1] = 0;
-    for(int i=2;i<size;i++)
-    {
-        this->_signalDoubleIntegre[i]=this->_signalIntegre[i]*(this->_vecteurTemps[i]-this->_vecteurTemps[i-1]);
-    }
+    integre();
+    this->_signalDoubleIntegre= Signal::integreUnSignal(this->_vecteurTemps,this->_signalIntegre,this->getTaille());
 }
+
 
 SampleType  Signal::getSignalIntegre(int i)
 {
