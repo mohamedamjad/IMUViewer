@@ -52,30 +52,32 @@ void gyrograph::afficheSignal()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Reset transformations
      glLoadIdentity();
-        gluLookAt( -buffer*0.4, 30.0f, 0.0f,
-              -buffer*0.4, 0.0f, 0.0f,
+        gluLookAt( -_pTDB->getiCourant ()*0.4, 30.0f, 0.0f,
+              -_pTDB->getiCourant ()*0.4, 0.0f, 0.0f,
                0.0f, 0.0f, 1.0f);
 
-     buffer++;
+     //buffer++;
 
      // Ligne de référence (rouge)
  glColor3f (1,0,0);
  glBegin (GL_LINES);
- glVertex3f (-2000.0,0.0,0.0);
- glVertex3f (2000,0.0,0.0);
+ glVertex3f (-60*_pTDB->getiCourant (),0.0,0.0);
+ glVertex3f (60*_pTDB->getiCourant (),0.0,0.0);
  glVertex3f (0.0,0.0,-20.0);
  glVertex3f(0.0,0.0,20.0);
  glEnd();
  // Dessiner un graphe
  glColor3f (0.0,1.0,0.0);
  glBegin(GL_LINE_STRIP);
- if(buffer%100==0)
+
+ if(_pTDB->getiCourant ()%100==0)
  {
      tmp=+90;
  }
- for(i=buffer-220;i<buffer;i++)
+ for(i=_pTDB->getiCourant ()-220;i<_pTDB->getiCourant ();i++)
  {
      glVertex3f(-i*0.40,0.0,_pTDB->get_signaux ()[this->signalIndex]->normalizeVector (_pTDB->get_signaux ()[this->signalIndex]->getSignal (i)));
+
  }
 
  glEnd();
@@ -119,4 +121,5 @@ void gyrograph::setTableauDeBord(TableauDeBord *tdb)
 void gyrograph::setsignalIndex(int i)
 {
     this->signalIndex=i;
+
 }

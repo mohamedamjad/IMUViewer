@@ -8,6 +8,7 @@
 #include <QVector>
 #include "signal.h"
 #include "tableaudebord.h"
+#include <QComboBox>
 
 class gyrograph : public QGLWidget
 {
@@ -23,16 +24,17 @@ public:
     void timerEvent(QTimerEvent);
     void setCentrale(Centrale *);
     void afficheSignal();
-    void setsignalIndex(int i);
     void setTableauDeBord(TableauDeBord *tdb);
 
 public slots:
     void updateGL();
+        void setsignalIndex(int i);
 
 private:
     Centrale* _pIMU;
     TableauDeBord* _pTDB;
     int signalIndex;
+    QComboBox* combobox;
 
 };
 

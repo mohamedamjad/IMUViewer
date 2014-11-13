@@ -18,7 +18,10 @@ class Signal
 {
 public:
     Signal(SampleType **,int,int,int);
+    Signal(const Signal&);
+
     ~Signal();
+    Signal* operator-(Signal);
     void passeBas(FrequencyType,FrequencyType,bool);
 
 
@@ -52,6 +55,9 @@ private:
     int _taille;
 
     SampleType* produitSignalMultiple2(int* );
+    static SampleType* integreUnSignal(SampleType *,SampleType *,int);
+    bool estIntegre = false;
+    bool estDoubleIntegre = false;
 };
 
 #endif // TRAITEMENTSIGNAL_H

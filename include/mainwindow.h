@@ -9,6 +9,8 @@
 #include "gyrograph.h"
 #include <QString>
 #include <QFileDialog>
+#include"combobox.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -43,6 +45,8 @@ private:
     PrincipalCapteurGL *_pcGL;
 
     QTimer *_pTimer;
+    // Pointeur sur Combobox
+    Combobox *_pCombo;
 };
 
 #endif // MAINWINDOW_H

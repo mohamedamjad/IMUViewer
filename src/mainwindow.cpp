@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+using namespace std;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -24,6 +26,61 @@ void MainWindow::Initmainwindow(const char* filename)
        _pcGL = this->findChild<PrincipalCapteurGL*>("glPrincipal");
        _pcGL->setCentrale(&_pTdb->_IMU);
 
+    this->findChild<gyrograph*>("glSignalGyro")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalGyro")->setTableauDeBord (_pTdb);
+    this->findChild<gyrograph*>("glSignalGyro")->setsignalIndex (0);
+
+    this->findChild<gyrograph*>("glSignalMagne")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalMagne")->setTableauDeBord (_pTdb);
+    this->findChild<gyrograph*>("glSignalMagne")->setsignalIndex (0);
+
+    // Affectation des Comboboxs aux widgets appropriés
+    // Première Combobox (premier espace d'affichage)
+    this->findChild<Combobox*>("comboBox_1")->addItem ("Acc. X (m/s2)");
+    this->findChild<Combobox*>("comboBox_1")->addItem ("Acc. Y (m/s2)");
+    this->findChild<Combobox*>("comboBox_1")->addItem ("Acc. Z (m/s2)");
+    this->findChild<Combobox*>("comboBox_1")->addItem ("Gyro. X (rad/s)");
+    this->findChild<Combobox*>("comboBox_1")->addItem ("Gyro. Y (rad/s)");
+    this->findChild<Combobox*>("comboBox_1")->addItem ("Gyro. Z (m/s2)");
+    this->findChild<Combobox*>("comboBox_1")->addItem ("Magn. X (uT)");
+    this->findChild<Combobox*>("comboBox_1")->addItem ("Magn. Y (uT)");
+    this->findChild<Combobox*>("comboBox_1")->addItem ("Magn. Z (uT)");
+    this->findChild<Combobox*>("comboBox_1")->setgyrograph(this->findChild<gyrograph*>("glSignalAcc"));
+
+    // Première Combobox (deuxième espace d'affichage)
+    this->findChild<Combobox*>("comboBox_2")->addItem ("Acc. X (m/s2)");
+    this->findChild<Combobox*>("comboBox_2")->addItem ("Acc. Y (m/s2)");
+    this->findChild<Combobox*>("comboBox_2")->addItem ("Acc. Z (m/s2)");
+    this->findChild<Combobox*>("comboBox_2")->addItem ("Gyro. X (rad/s)");
+    this->findChild<Combobox*>("comboBox_2")->addItem ("Gyro. Y (rad/s)");
+    this->findChild<Combobox*>("comboBox_2")->addItem ("Gyro. Z (m/s2)");
+    this->findChild<Combobox*>("comboBox_2")->addItem ("Magn. X (uT)");
+    this->findChild<Combobox*>("comboBox_2")->addItem ("Magn. Y (uT)");
+    this->findChild<Combobox*>("comboBox_2")->addItem ("Magn. Z (uT)");
+    this->findChild<Combobox*>("comboBox_2")->setgyrograph(this->findChild<gyrograph*>("glSignalGyro"));
+
+
+    // Troisième Combobox (troisième espace d'affichage)
+    this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. X (m/s2)");
+    this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. Y (m/s2)");
+    this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. Z (m/s2)");
+    this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. X (rad/s)");
+    this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. Y (rad/s)");
+    this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. Z (m/s2)");
+    this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. X (uT)");
+    this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. Y (uT)");
+    this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. Z (uT)");
+    this->findChild<Combobox*>("comboBox_3")->setgyrograph(this->findChild<gyrograph*>("glSignalGyro"));
+
+
+//    this->findChild<Combobox*>("comboBox_2")->setItemText (1,"Vit. X (m/s2)");
+//    this->findChild<Combobox*>("comboBox_2")->setItemText (2,"Vit. Y (m/s2)");
+//    this->findChild<Combobox*>("comboBox_2")->setItemText (3,"Vit. Z (m/s2)");
+//
+//    this->findChild<Combobox*>("comboBox_2")->setItemText (1,"Vit. X (m/s2)");
+//    this->findChild<Combobox*>("comboBox_2")->setItemText (2,"Vit. Y (m/s2)");
+//    this->findChild<Combobox*>("comboBox_2")->setItemText (3,"Vit. Z (m/s2)");
+
 
        // Affectation de la centrale et du tableau de bord aux widgets signaux
        this->findChild<gyrograph*>("glSignalAcc")->setCentrale (&_pTdb->_IMU);
@@ -37,6 +94,32 @@ void MainWindow::Initmainwindow(const char* filename)
        this->findChild<gyrograph*>("glSignalMagne")->setCentrale (&_pTdb->_IMU);
        this->findChild<gyrograph*>("glSignalMagne")->setTableauDeBord (_pTdb);
        this->findChild<gyrograph*>("glSignalMagne")->setsignalIndex (6);
+
+    // Mise à jour de la centrale inertielle en suivant le _pTimer
+    QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
+    // Mise à jour des widgets gl
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<AccCapteurGL*>("glCapteurAcc"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<GyroCapteurGL*>("glCapteurGyro"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<MagneCapteurGL*>("glCapteurMagne"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateGL()));
+    QObject::connect(this->findChild<Combobox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalAcc"), SLOT(setsignalIndex(int)));
+    QObject::connect(this->findChild<Combobox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalGyro"), SLOT(setsignalIndex(int)));
+    QObject::connect(this->findChild<Combobox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalMagne"), SLOT(setsignalIndex(int)));
+
+    // Mise à jour des gyrograph au crisques environnementaux, smartphone, crowdmapping, SIG, hangement du Combobox
+
+
+
+
+    //if (this->findChild<Combobox*>("comboBox")->curren)
+
+
+
+
+
+//    QObject::connect (_pCombo1, SIGNAL()), this->findChild<gyrograph*>("glSignalAcc"), SLOT()
+
 
        // + fenetre d'évolution de la centrale
        _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
@@ -107,8 +190,11 @@ void MainWindow::majLCD()
 void MainWindow::setslidervalue()
 {
 
+
     ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
 
+
+    ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
 
 }
 
