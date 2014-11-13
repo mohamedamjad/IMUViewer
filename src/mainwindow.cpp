@@ -169,7 +169,7 @@ void MainWindow::majLCD()
 
 void MainWindow::setslidervalue()
 {
-    std::cout<<this->_pTdb->getiCourant()<<std::endl;
+    //std::cout<<this->_pTdb->getiCourant()<<std::endl;
     ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
 
 
