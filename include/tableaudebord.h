@@ -9,8 +9,8 @@
 
 
 
-// Fréquence du filtre passe-bas en Hz
-#define freqFiltre 8
+// Fréquence du filtre passe-bas permettant de ressortir le signal gravité en Hz
+#define freqFiltreGravite 0.18
 // Fréquence de ré-échantillonage du signal en Hz
 #define freqEch 100
 

@@ -16,6 +16,61 @@ Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal)
 
 }
 
+
+Signal::Signal(const Signal& unSignal)
+{
+    _taille       = unSignal._taille;
+    _signal       = new SampleType[_taille];
+    _vecteurTemps = new SampleType[_taille];
+
+    // Recopie du temps et du signal
+    for (int i=0;i<_taille;i++)
+    {
+        _vecteurTemps[i] = unSignal._vecteurTemps[i];
+        _signal[i]       = unSignal._signal[i];
+    }
+    // Drapeau d'intégration
+    estIntegre      = unSignal.estIntegre;
+    estDoubleIntegre= unSignal.estDoubleIntegre;
+    // Recopie des signaux intégrés si le signal l'a été
+    if (unSignal.estIntegre)
+    {
+        _signalIntegre = new SampleType[_taille];
+        for (int i=0;i<_taille;i++)
+        {
+            _signalIntegre[i] = unSignal._signalIntegre[i];
+        }
+    }
+    if (unSignal.estDoubleIntegre)
+    {
+        _signalDoubleIntegre = new SampleType[_taille];
+        for (int i=0;i<_taille;i++)
+        {
+            _signalDoubleIntegre[i] = unSignal._signalDoubleIntegre[i];
+        }
+    }
+}
+
+
+Signal* Signal::operator-(Signal lautre)
+{
+    Signal *res = new Signal (*this);
+
+    if (this->_taille == lautre._taille)
+    {
+        for (int i=0;i<_taille;i++)
+        {
+            res->_signal[i] -= lautre._signal[i];
+        }
+    }
+    // Si le signal est d'ores et déjà intégré, on réintègre apres soustraction
+    if (this->estIntegre)
+        res->integre();
+    if (this->estDoubleIntegre)
+        res->doubleIntegre();
+    return res;
+}
+
 double Signal::getTemps(int i)
 {
 
@@ -225,13 +280,15 @@ SampleType* Signal::integreUnSignal(SampleType* unTemps,SampleType *unSignal,int
 
 void Signal::integre()
 {
+    estIntegre = true;
     this->_signalIntegre= Signal::integreUnSignal(this->_vecteurTemps,this->_signal,this->getTaille());
 }
 
 
 void Signal::doubleIntegre()
 {
-    integre();
+    if (estIntegre == false)integre();
+    estDoubleIntegre = true;
     this->_signalDoubleIntegre= Signal::integreUnSignal(this->_vecteurTemps,this->_signalIntegre,this->getTaille());
 }
 
@@ -283,3 +340,6 @@ double Signal::normalizeVector(double val )
 
     return result;
 }
+
+
+
