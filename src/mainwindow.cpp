@@ -8,7 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    Initmainwindow("amjad_marche_cheville.out");
+    Initmainwindow("");
+    connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
 }
 void MainWindow::Initmainwindow(const char* filename)
 {
@@ -65,6 +66,7 @@ void MainWindow::Initmainwindow(const char* filename)
     this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. Y (m/s2)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. Z (m/s2)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. X (rad/s)");
+
     this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. Y (rad/s)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. Z (m/s2)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. X (uT)");
@@ -128,14 +130,14 @@ void MainWindow::Initmainwindow(const char* filename)
        //initialisation de la taille du slider
        ui->horizontalSlider->setRange(0,max);
 
-       // Mise à jour de la centrale inertielle en suivant le _pTimer
+    /*  // Mise à jour de la centrale inertielle en suivant le _pTimer
        QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
        // Mise à jour des widgets gl
        QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<AccCapteurGL*>("glCapteurAcc"), SLOT(updateGL()));
        QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<GyroCapteurGL*>("glCapteurGyro"), SLOT(updateGL()));
        QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<MagneCapteurGL*>("glCapteurMagne"), SLOT(updateGL()));
        QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
-       QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateGL()));
+       QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateGL()));*/
 
        // Mise à jour de l'écran LCD
        QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majLCD()));
@@ -156,7 +158,6 @@ void MainWindow::Initmainwindow(const char* filename)
 
         connect(ui->horizontalSlider, SIGNAL(sliderReleased()), this, SLOT(dragslidervalue()));
         connect(ui->horizontalSlider, SIGNAL(sliderPressed()), _pTimer, SLOT(stop()));
-        connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
         connect(ui->actionQuitter, SIGNAL(triggered(bool)),this , SLOT(close()));
        // timer calé sur la fréquence d'échantillonage des signaux
        // timer->start(1000/freqEch);
