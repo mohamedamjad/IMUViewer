@@ -1,5 +1,7 @@
 #include "label.h"
 
-label::label()
+label::label(QWidget *parent) : QLabel(parent)
 {
+
 }
+

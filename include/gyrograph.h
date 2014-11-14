@@ -26,18 +26,22 @@ public:
     void setCentrale(Centrale *);
     void afficheSignal();
     void setTableauDeBord(TableauDeBord *tdb);
-    //void setmaxSignal(float);
+    int getsignalIndex();
+    TableauDeBord* getpTDB();
+    void setmaxLabel(QLabel *maxlabel);
+    void setminLabel(QLabel *minlabel);
 
 public slots:
     void updateGL();
-        void setsignalIndex(int i);
+    void setsignalIndex(int i);
+    void updateLabel();
 
 private:
     Centrale* _pIMU;
     TableauDeBord* _pTDB;
     int signalIndex;
-    //QComboBox* combobox;
-    QLabel* max_min;
+    QLabel* _maxLabel;
+    QLabel* _minLabel;
 
 };
 

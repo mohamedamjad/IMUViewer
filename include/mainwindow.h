@@ -10,6 +10,7 @@
 #include <QString>
 #include <QFileDialog>
 #include"combobox.h"
+#include"label.h"
 
 namespace Ui {
 class MainWindow;

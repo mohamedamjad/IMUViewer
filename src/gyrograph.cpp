@@ -123,3 +123,28 @@ void gyrograph::setsignalIndex(int i)
     this->signalIndex=i;
 
 }
+
+void gyrograph::setmaxLabel(QLabel *maxlabel)
+{
+    _maxLabel=maxlabel;
+}
+
+void gyrograph::setminLabel(QLabel *minlabel)
+{
+    _minLabel=minlabel;
+}
+ int gyrograph::getsignalIndex ()
+ {
+     return this->signalIndex;
+ }
+ TableauDeBord* gyrograph::getpTDB()
+ {
+     return _pTDB;
+ }
+
+void gyrograph::updateLabel()
+ {
+    this->_maxLabel->setNum (this->_pTDB->get_signaux ()[this->getsignalIndex ()]->getMaxSignal ());
+    this->_minLabel->setNum (-this->_pTDB->get_signaux ()[this->getsignalIndex ()]->getMaxSignal ());
+
+ }
