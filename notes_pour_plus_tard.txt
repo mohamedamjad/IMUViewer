@@ -36,9 +36,8 @@
 
 *****************************************A FAIRE DANS L'ORDRE
 Developpement : s'arrêter là fin de semaine prochaine
-- Régis : étude vitesse de la centrale
+
 - Amjad Affichage projeté avec hoix dans l'interface
-- chargement fichier
 - classification du mouvement
 ----------------
 - optimisation code
@@ -53,3 +52,9 @@ Developpement : s'arrêter là fin de semaine prochaine
 *****************************************RAPPORT
 Perspectives : 
 comparaison signal dégravité avec capteur TYPE_GRAVITY de Android
+
+
+
+*****************************************Si on a encore du temps
+- caméra orientée dans le sens du pied (ou autre)
+- axe y inversé non? (sur toutes les vues capteur)

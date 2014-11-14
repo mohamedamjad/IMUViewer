@@ -62,9 +62,60 @@ void PrincipalCapteurGL::paintGL()
        suitCentrale();
 
     _pCamera->play();
+    afficheRepereSol();
    // afficheSol();
     afficheCentrale();
     afficheTrajectoireCentrale();
+
+}
+
+void PrincipalCapteurGL::afficheRepereSol()
+{
+
+    GLUquadricObj *quadratic;
+    quadratic = gluNewQuadric();
+
+    glColor3f(1.0,1.0,1.0);
+    // Dessiner le centre du repère
+    glutWireSphere (0.05f,20,20);
+
+    glPushMatrix ();
+        // Axe des X
+        glColor3f(1.0,0.0,0.0);
+        glRasterPos3f(3,0,0);
+        glutBitmapCharacter ( GLUT_BITMAP_HELVETICA_10, ((int)'X') );
+        glTranslatef (0.075f,0.0f,0.0f);
+        glRotatef (90,0.0,1.0,0.0);
+        gluCylinder (quadratic,0.025,0.025,2,20,20);
+        // Sens des X
+        glTranslatef (0.0f,0.0f,2.0);
+        glutSolidCone (0.1f,0.2,20,20);
+    glPopMatrix ();
+
+    glPushMatrix ();
+        // Axe des Y
+        glColor3f(0.0,1.0,0.0);
+        glRasterPos3f(0,-3,0);
+        glutBitmapCharacter ( GLUT_BITMAP_HELVETICA_10, ((int)'Y') );
+        glTranslatef (0.0f,0.075f,0.0f);
+        glRotatef (90,1.0,0.0,0.0);
+        gluCylinder (quadratic,0.025,0.025,2,20,20);
+        // Sens des Y
+        glTranslatef (0.0f,0.0f,2.0);
+        glutSolidCone (0.1f,0.2,20,20);
+    glPopMatrix ();
+
+    glPushMatrix ();
+        // Axe des Z
+        glColor3f(0.0,0.0,1.0);
+        glRasterPos3f(0,0,3);
+        glutBitmapCharacter ( GLUT_BITMAP_HELVETICA_10, ((int)'Z') );
+        gluCylinder (quadratic,0.025,0.025,2,20,20);
+        // Sens des Z
+        glTranslatef (0.0f,0.0f,2);
+        glutSolidCone (0.1f,0.2,20,20);
+    glPopMatrix ();
+
 
 }
 
@@ -127,33 +178,35 @@ void PrincipalCapteurGL::afficheSol()
         glutWireSphere (0.05f,20,20);
 
         glPushMatrix ();
-            // Dessiner l'axe des X
+            // Axe des X
             glColor3f(1.0,0.0,0.0);
             glTranslatef (0.05f,0.0f,0.0f);
             glRotatef (90,0.0,1.0,0.0);
             gluCylinder (quadratic,0.05,0.05,1.5,20,20);
-            // Dessiner le sens des X
+
+            // Sens des X
             glColor3f(0.5,0.5,0.5);
             glTranslatef (0.0f,0.0f,1.5f);
             glutSolidCone (0.1f,0.2,20,20);
-            glPopMatrix ();
-            glPushMatrix ();
-            // Dessiner l'axe des Z
+        glPopMatrix ();
+
+        glPushMatrix ();
+            // Axe des Z
             glColor3f(0.0,0.0,1.0);
-            // Dessiner le cylindre
             gluCylinder (quadratic,0.05,0.05,1.5,20,20);
-            // Dessiner le sens des Z
+            // Sens des Z
             glColor3f(0.5,0.5,0.5);
             glTranslatef (0.0f,0.0f,1.5f);
             glutSolidCone (0.1f,0.2,20,20);
-            glPopMatrix ();
-            glPushMatrix ();
-            // Dessiner l'axe des Y
+        glPopMatrix ();
+
+        glPushMatrix ();
+            // Axe des Y
             glColor3f(0.0,1.0,0.0);
-            glTranslatef (0.0f,-0.05f,0.0f);
+            glTranslatef (0.0f,-0.075f,0.0f);
             glRotatef (90,1.0,0.0,0.0);
             gluCylinder (quadratic,0.05,0.05,1.5,20,20);
-            // Dessiner le sens des Y
+            // Sens des Y
             glColor3f(0.5,0.5,0.5);
             glTranslatef (0.0f,0.0f,1.5f);
             glutSolidCone (0.1f,0.2,20,20);
@@ -170,9 +223,6 @@ void PrincipalCapteurGL::afficheSol()
     _profondeurFenetre = _coinSuperieur[1] - _coinInferieur[1];
     _hauteurFenetre    = _coinSuperieur[2] - _coinInferieur[2];
 
-    std::cout<<"coin inférieur" << _coinInferieur[0] << " " << _coinInferieur[1] << " " << _coinInferieur[2]<< std::endl;
-    std::cout<<"coin supérieur" << _coinSuperieur[0] << " " << _coinSuperieur[1] << " " << _coinSuperieur[2]<< std::endl;
-    std::cout<<"largeur fenetre = " << _largeurFenetre<< "profondeur fenetre = " << _profondeurFenetre<< "hauteur fenetre = " << _hauteurFenetre<< std::endl;
 
 
  }

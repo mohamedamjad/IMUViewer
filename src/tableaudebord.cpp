@@ -1,4 +1,3 @@
-
 #include "tableaudebord.h"
 
 
@@ -43,9 +42,9 @@ void TableauDeBord::calculeFenetreCentrale()
     // Parcours de toutes les données
     for (int i=0;i<_nbEch-2;i++)
     {
-        x+=_signaux[0]->getSignalDoubleIntegre(i);
-        y+=_signaux[1]->getSignalDoubleIntegre(i);
-        z+=_signaux[2]->getSignalDoubleIntegre(i);
+        x = _signaux[9]->getSignalDoubleIntegre(i);
+        y = _signaux[10]->getSignalDoubleIntegre(i);
+        z = _signaux[11]->getSignalDoubleIntegre(i);
 
         if (x<_coinInferieur[0])_coinInferieur[0]=x;
         if (y<_coinInferieur[1])_coinInferieur[1]=y;
@@ -70,50 +69,35 @@ QVector<double> TableauDeBord::getCoinSuperieur()
 void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType uneFreqFiltre, FrequencyType uneFreqEch)
 {
 
-
-        /*Signal signalBrut(donneesBrutes,_nbEch,0,3);
-        signalBrut.regulariseEchantillonage(uneFreqEch);
-
-        Signal gravite(signalBrut);
-        gravite.passeBas(uneFreqFiltre,uneFreqEch,false);
-
-        Signal *signalSansGravite = signalBrut - gravite;
-
-        signalSansGravite->doubleIntegre();
-
-        for (int i=0;i<_nbEch;i++)
-        {
-            std::cout<< i << "signal brut = "<< signalBrut.getSignal(i) << "gravite = "<<  gravite.getSignal(i) << "signal sans = "<<  signalSansGravite->getSignal(i) << std::endl;
-
-        }
-
-
-        _signaux.append(signalSansGravite);*/
-
+    // Données de l'accéléro : récupération et suppression de l'effet de gravité
+    // _signaux[0-1-2];
     for (int i=2;i<=4;i++)
     {
         Signal signalBrut(donneesBrutes,_nbEch,0,i);
         signalBrut.regulariseEchantillonage(uneFreqEch);
 
+
         Signal gravite(signalBrut);
         gravite.passeBas(uneFreqFiltre,uneFreqEch,false);
 
         Signal *signalSansGravite = signalBrut - gravite;
 
-        signalSansGravite->doubleIntegre();
         _signaux.append(signalSansGravite);
     }
 
-    // Données du gyroscope
+
+    // Données du gyroscope : récupération et intégration
+    // _signaux[3-4-5];
     for (int i=6;i<=8;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
         signalBrut->regulariseEchantillonage(uneFreqEch);
-        //signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
         signalBrut->integre();
         _signaux.append(signalBrut);
     }
-    // Données du magnéto
+
+    // Données du magnéto : récupération
+    // _signaux[6-7-8];
     for (int i=10;i<=12;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
@@ -121,6 +105,21 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
         signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
         _signaux.append(signalBrut);
     }
+
+    // Données de l'accéléromètre : changement de repère (repère central => repère absolu)
+    // et récupération des nouveaux signaux correspondants
+    // _signaux[9-10-11];
+    for (int i = 0;i<=2;i++)// Copie signaux
+    {
+        Signal *signalAccelero = new Signal(*_signaux[i]);
+        _signaux.append(signalAccelero);
+    }
+    Signal::changeRepere(_signaux[9],_signaux[10],_signaux[11],*_signaux[3],*_signaux[4],*_signaux[5]);
+
+    // ON double intègre l'accéléro repère absolu
+    for (int i = 9;i<=11;i++)_signaux[i]->doubleIntegre();
+
+
 
    _nbEch=_signaux[0]->getTaille();
 }
@@ -142,15 +141,11 @@ void TableauDeBord::majCentrale()
     //////////////////Mise à jour des indicateurs de position/orientation absolues //////////////////
     else
     {
-
         // On cumule les valeurs qu'on a sauté...
         for (int i=iCourant;i>iCourant-pas;i--)
         {
             miseenplace(i);
-
-
         }
-
     }
     //////////////////Mise à jour des capteurs temps réel //////////////////
 
@@ -177,9 +172,9 @@ void TableauDeBord::majCentrale()
     _IMU._magnNorm[0]=_signaux[8]->normalizeVector (_signaux[8]->getSignal(iCourant));
 
     //Position depuis l'accéléro
-    _IMU._acc2I[0] = _signaux[0]->getSignalDoubleIntegre(iCourant);
-    _IMU._acc2I[1] = _signaux[1]->getSignalDoubleIntegre(iCourant);
-    _IMU._acc2I[2] = _signaux[2]->getSignalDoubleIntegre(iCourant);
+    _IMU._acc2I[0] = _signaux[9]->getSignalDoubleIntegre(iCourant);
+    _IMU._acc2I[1] = _signaux[10]->getSignalDoubleIntegre(iCourant);
+    _IMU._acc2I[2] = _signaux[11]->getSignalDoubleIntegre(iCourant);
 
     // Angle depuis le gyro
     _IMU._gyroI[0]= _signaux[3]->getSignalIntegre(iCourant);
@@ -187,11 +182,13 @@ void TableauDeBord::majCentrale()
     _IMU._gyroI[2]= _signaux[5]->getSignalIntegre(iCourant);
 
     // Vitesse courante
-    double vX = _signaux[0]->getSignalIntegre(iCourant);
-    double vY = _signaux[1]->getSignalIntegre(iCourant);
-    double vZ = _signaux[2]->getSignalIntegre(iCourant);
+    double vX = _signaux[9]->getSignalIntegre(iCourant);
+    double vY = _signaux[10]->getSignalIntegre(iCourant);
+    double vZ = _signaux[11]->getSignalIntegre(iCourant);
     _IMU._vitesse  = sqrt(pow(vX,2)+pow(vY,2)+pow(vZ,2));
-    std::cout<< _lastTime.toString().toStdString()<< " => " << _IMU._distance<<std::endl;
+
+    double normeAcceleration = sqrt(pow(_IMU._acc[0],2)+pow(_IMU._acc[1],2)+pow(_IMU._acc[2],2));
+    std::cout<<iCourant <<  "  norme acceleration = "<<  normeAcceleration <<std::endl;
 
 }
 
@@ -299,9 +296,9 @@ void TableauDeBord::miseenplace(int i)
     _IMU._orientation[1]= (_IMU._orientation[1]>=2*M_PI) ? angleY : angleY-2*M_PI;
     _IMU._orientation[2]= (_IMU._orientation[2]>=2*M_PI) ? angleZ : angleZ-2*M_PI;
     // Position depuis l'acceleromètre
-    _IMU._position[0]= _signaux[0]->getSignalDoubleIntegre(i);
-    _IMU._position[1]= _signaux[1]->getSignalDoubleIntegre(i);
-    _IMU._position[2]= _signaux[2]->getSignalDoubleIntegre(i);
+    _IMU._position[0]= _signaux[9]->getSignalDoubleIntegre(i);
+    _IMU._position[1]= _signaux[10]->getSignalDoubleIntegre(i);
+    _IMU._position[2]= _signaux[11]->getSignalDoubleIntegre(i);
     // On ajoute le point courant de la centrale à la trajectoire
     _IMU._trajectoire.append(_IMU._position);
     // Distance à vol d'oiseau de la centrale a l'origine

@@ -8,9 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    _pTimer = new QTimer(this);
     Initmainwindow("");
     //Signal du chargement du fichier
     connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
+
 }
 void MainWindow::Initmainwindow(const char* filename)
 {
@@ -48,6 +50,7 @@ void MainWindow::Initmainwindow(const char* filename)
     this->findChild<gyrograph*>("glSignalMagne")->setsignalIndex (0);
     this->findChild<gyrograph*>("glSignalMagne")->setmaxLabel (this->findChild<label*>("label_12"));
     this->findChild<gyrograph*>("glSignalMagne")->setminLabel (this->findChild<label*>("label_13"));
+
 
     // Affectation des Comboboxs aux widgets appropriés
     // Première Combobox (premier espace d'affichage)
@@ -105,6 +108,7 @@ void MainWindow::Initmainwindow(const char* filename)
     // Mise à jour de la centrale inertielle en suivant le _pTimer
     QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
     // Mise à jour des widgets gl
+
     QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<AccCapteurGL*>("glCapteurAcc"), SLOT(updateGL()));
     QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<GyroCapteurGL*>("glCapteurGyro"), SLOT(updateGL()));
     QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<MagneCapteurGL*>("glCapteurMagne"), SLOT(updateGL()));
@@ -117,20 +121,9 @@ void MainWindow::Initmainwindow(const char* filename)
     QObject::connect (this->findChild<Combobox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateLabel()));
     QObject::connect (this->findChild<Combobox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateLabel()));
 
-
-    // + fenetre d'évolution de la centrale
-
-    _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
-
     //Affichage en décimal dans l'écran LCD
 
      ui->lcdNumber->setDigitCount(8);
-
-    //initialisation de la taille du slider
-
-     ui->horizontalSlider->setRange(0,max);
-
-    // Mise à jour de l'écran LCD
 
     QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majLCD()));
     QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateGL()));
@@ -158,8 +151,51 @@ void MainWindow::Initmainwindow(const char* filename)
     connect(ui->horizontalSlider, SIGNAL(sliderPressed()), _pTimer, SLOT(stop()));
     connect(ui->actionQuitter, SIGNAL(triggered(bool)),this , SLOT(close()));
 
+}/*
+void MainWindow::Initmainwindow(const char* filename)
+{
 
-}
+
+       _pTdb = new TableauDeBord(filename);
+       int max=_pTdb->getnbEch();
+
+       _pcGL = this->findChild<PrincipalCapteurGL*>("glPrincipal");
+       _pcGL->setCentrale(&_pTdb->_IMU);
+
+  // Mise à jour des widgets gl
+    // Affectation de la centrale du tableau de bord aux widgets capteurs
+    this->findChild<AccCapteurGL*>("glCapteurAcc")->setCentrale(&_pTdb->_IMU);
+    this->findChild<GyroCapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
+    this->findChild<MagneCapteurGL*>("glCapteurMagne")->setCentrale(&_pTdb->_IMU);
+
+
+
+    // Affectation de la centrale et du tableau de bord aux widgets signaux
+    this->findChild<gyrograph*>("glSignalAcc")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalAcc")->setTableauDeBord (_pTdb);
+    this->findChild<gyrograph*>("glSignalAcc")->setsignalIndex (0);
+
+    this->findChild<gyrograph*>("glSignalGyro")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalGyro")->setTableauDeBord (_pTdb);
+    this->findChild<gyrograph*>("glSignalGyro")->setsignalIndex (0);
+
+    this->findChild<gyrograph*>("glSignalMagne")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalMagne")->setTableauDeBord (_pTdb);
+    this->findChild<gyrograph*>("glSignalMagne")->setsignalIndex (0);
+
+
+    // Mise à jour de la centrale inertielle en suivant le _pTimer
+    QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
+
+    // + fenetre d'évolution de la centrale
+
+    _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
+
+    //initialisation de la taille du slider
+
+     ui->horizontalSlider->setRange(0,max);
+
+}*/
 
 //destructeur
 MainWindow::~MainWindow()
@@ -226,4 +262,5 @@ void MainWindow::loadfile()
 {
     QString filename=QFileDialog::getOpenFileName(this,tr("Open File"),"",tr("Text files (*.out)"));
     this->Initmainwindow(filename.toStdString().c_str());
+
 }
