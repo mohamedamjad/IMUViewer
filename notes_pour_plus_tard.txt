@@ -36,10 +36,8 @@
 
 *****************************************A FAIRE DANS L'ORDRE
 Developpement : s'arrêter là fin de semaine prochaine
-- Ferdaousse : évolution curseur / boutons
-- amjad : QT designer : ajout des listes déroulantes à gauche et à droite (4 listes)
-- amjad : liste des signaux à choisir dans l'IHM (permettra l'étude de la corrélation entre signaux)
-- Régis : étude vitesse de la centrale + Affichage projeté avec hoix dans l'interface
+- Régis : étude vitesse de la centrale
+- Amjad Affichage projeté avec hoix dans l'interface
 - chargement fichier
 - classification du mouvement
 ----------------
@@ -52,4 +50,6 @@ Developpement : s'arrêter là fin de semaine prochaine
 - soutenance!!!!!!!!
 
 
-
+*****************************************RAPPORT
+Perspectives : 
+comparaison signal dégravité avec capteur TYPE_GRAVITY de Android

@@ -8,19 +8,25 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    Initmainwindow("");
+    //Signal du chargement du fichier
+    connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
+}
+void MainWindow::Initmainwindow(const char* filename)
+{
 
-     _pTimer = new QTimer(this);
-    _pTdb = new TableauDeBord();
+       _pTimer = new QTimer(this);
+       _pTdb = new TableauDeBord(filename);
+       int max=_pTdb->getnbEch();
 
-    int max=_pTdb->getnbEch();
+       _pcGL = this->findChild<PrincipalCapteurGL*>("glPrincipal");
+       _pcGL->setCentrale(&_pTdb->_IMU);
 
     // Affectation de la centrale du tableau de bord aux widgets capteurs
     this->findChild<AccCapteurGL*>("glCapteurAcc")->setCentrale(&_pTdb->_IMU);
     this->findChild<GyroCapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
     this->findChild<MagneCapteurGL*>("glCapteurMagne")->setCentrale(&_pTdb->_IMU);
 
-    _pcGL = this->findChild<PrincipalCapteurGL*>("glPrincipal");
-    _pcGL->setCentrale(&_pTdb->_IMU);
 
 
     // Affectation de la centrale et du tableau de bord aux widgets signaux
@@ -49,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->findChild<Combobox*>("comboBox_1")->addItem ("Magn. Z (uT)");
     this->findChild<Combobox*>("comboBox_1")->setgyrograph(this->findChild<gyrograph*>("glSignalAcc"));
 
-    // Première Combobox (deuxième espace d'affichage)
+    // Deuxième Combobox (deuxième espace d'affichage)
     this->findChild<Combobox*>("comboBox_2")->addItem ("Acc. X (m/s2)");
     this->findChild<Combobox*>("comboBox_2")->addItem ("Acc. Y (m/s2)");
     this->findChild<Combobox*>("comboBox_2")->addItem ("Acc. Z (m/s2)");
@@ -61,19 +67,18 @@ MainWindow::MainWindow(QWidget *parent) :
     this->findChild<Combobox*>("comboBox_2")->addItem ("Magn. Z (uT)");
     this->findChild<Combobox*>("comboBox_2")->setgyrograph(this->findChild<gyrograph*>("glSignalGyro"));
 
-
     // Troisième Combobox (troisième espace d'affichage)
     this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. X (m/s2)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. Y (m/s2)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. Z (m/s2)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. X (rad/s)");
+
     this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. Y (rad/s)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. Z (m/s2)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. X (uT)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. Y (uT)");
     this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. Z (uT)");
     this->findChild<Combobox*>("comboBox_3")->setgyrograph(this->findChild<gyrograph*>("glSignalGyro"));
-
 
     // + fenetre d'évolution de la centrale
     _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
@@ -94,50 +99,51 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(this->findChild<Combobox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalGyro"), SLOT(setsignalIndex(int)));
     QObject::connect(this->findChild<Combobox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalMagne"), SLOT(setsignalIndex(int)));
 
-    // Mise à jour des gyrograph au crisques environnementaux, smartphone, crowdmapping, SIG, hangement du Combobox
 
+    // + fenetre d'évolution de la centrale
 
+    _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
 
+    //Affichage en décimal dans l'écran LCD
 
-    //if (this->findChild<Combobox*>("comboBox")->curren)
+     ui->lcdNumber->setDigitCount(8);
 
+    //initialisation de la taille du slider
 
-
-
-
-//    QObject::connect (_pCombo1, SIGNAL()), this->findChild<gyrograph*>("glSignalAcc"), SLOT()
+     ui->horizontalSlider->setRange(0,max);
 
     // Mise à jour de l'écran LCD
-    QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majLCD()));
 
+    QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majLCD()));
     QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateGL()));
     QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateGL()));
 
     // Evolution slider + boutons
+
     connect(_pTimer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
+
     // Clic sur pause
+
     connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
-    // Modif Régis 12/11
+
+    // Clic sur play
+
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(clicPlay()));
-    // Fin Régis 12/11
+
+    // Clic sur stop
+
     connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(clicStop()));
 
+    //Faire glisser le slider
+
+    connect(ui->horizontalSlider, SIGNAL(sliderReleased()), this, SLOT(dragslidervalue()));
+    connect(ui->horizontalSlider, SIGNAL(sliderPressed()), _pTimer, SLOT(stop()));
+    connect(ui->actionQuitter, SIGNAL(triggered(bool)),this , SLOT(close()));
 
 
-
-    //ferdaousse's modifications
-
-     connect(ui->horizontalSlider, SIGNAL(sliderReleased()), this, SLOT(dragslidervalue()));
-
-     connect(ui->horizontalSlider, SIGNAL(sliderPressed()), _pTimer, SLOT(stop()));
-
-
-    // timer calé sur la fréquence d'échantillonage des signaux
-    //timer->start(1000/freqEch);
 }
 
-
-
+//destructeur
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -149,24 +155,27 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
     _pcGL->keyPressEvent(event);
 }
 
+//Affichage dans l'écran LCD
 
 void MainWindow::majLCD()
 {
-    //std::cout<<this->_pTdb->getiCourant()<<std::endl;
+
     std::ostringstream s;
     s<<(double)_pTdb->getiCourant()/(double)freqEch;
     std::string sttime=s.str();
     ui->lcdNumber->display(QString(sttime.c_str()));
 }
 
+//Initialisation de la valeur du slider
+
 void MainWindow::setslidervalue()
 {
 
     ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
-
+    ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
 }
 
-// Ajout Régis 12/11
+// PLAY
 void MainWindow::clicPlay()
 {
     // On réaffecte la mémoire de date à la date courante
@@ -175,8 +184,7 @@ void MainWindow::clicPlay()
 
 
 }
-// Fin ajout Régis 12/11
-
+// STOP
 void MainWindow::clicStop()
 {
   _pTimer->stop();
@@ -185,11 +193,21 @@ void MainWindow::clicStop()
   ui->horizontalSlider->setValue(0);
 }
 
-//ferdaousse's modifications
-
+//Faire glisser le slider
 void MainWindow::dragslidervalue()
 {
     this->_pTdb->setiCourant(ui->horizontalSlider->value());
     _pTimer->start();
     _pTdb->setLastTimeToCurrentTime();
+<<<<<<< HEAD
+=======
+
+}
+//Chargement d'un fichier
+
+void MainWindow::loadfile()
+{
+    QString filename=QFileDialog::getOpenFileName(this,tr("Open File"),"",tr("Text files (*.out)"));
+    this->Initmainwindow(filename.toStdString().c_str());
+>>>>>>> b7eb34f02f23a0fb70360fdb51c70cdd259e1277
 }

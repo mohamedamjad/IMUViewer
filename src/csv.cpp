@@ -9,7 +9,7 @@ CSV::CSV()
 {
 }
 
-double **CSV::readCSV(char *file_name){
+double **CSV::readCSV(const char *file_name){
     ;
 
 

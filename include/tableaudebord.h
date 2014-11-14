@@ -9,13 +9,13 @@
 
 
 
-// Fréquence du filtre passe-bas en Hz
-#define freqFiltre 8
+// Fréquence du filtre passe-bas permettant de ressortir le signal gravité en Hz
+#define freqFiltreGravite 0.18
 // Fréquence de ré-échantillonage du signal en Hz
 #define freqEch 100
 
 //#define fichierCsv "amjad_marche_cheville.out"
-#define fichierCsv "ferdaousse_mixte_cheville.out"
+//#define fichierCsv "ferdaousse_mixte_cheville.out"
 
 #include <QThread>
 #include <QTimer>
@@ -31,7 +31,7 @@ class TableauDeBord : public QObject
     Q_OBJECT
     public:
 
-        TableauDeBord();
+        TableauDeBord(const char* fichiercsv);
         ~TableauDeBord();
 
         Centrale _IMU;
@@ -44,7 +44,6 @@ class TableauDeBord : public QObject
         // Affecte current time au last time
         void setLastTimeToCurrentTime();
         void setiCourant(int i);
-
         // Réinitilisation de tous les capteurs
         void reInitialiseCapteursCentraleEtProgressionSignal();
         //mise en place de la centrale
@@ -58,6 +57,8 @@ class TableauDeBord : public QObject
 
 
     private:
+
+        //const char* _fichiercsv;
         // 0-1-2 : accelero
         // 3-4-5 : gyro
         // 6 7 8 : magnéto

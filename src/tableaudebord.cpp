@@ -2,16 +2,17 @@
 #include "tableaudebord.h"
 
 
-TableauDeBord::TableauDeBord()
+TableauDeBord::TableauDeBord(const char* fichiercsv)
 {   
     // Lecture du fichier des données centrale
     CSV donneesCentrale;
-    double **donneesBrutes   = donneesCentrale.readCSV(fichierCsv);
+    //_fichiercsv="amjad_marche_cheville.out";
+    double **donneesBrutes   = donneesCentrale.readCSV(fichiercsv);
 
     // Nombre de lignes du fichier
     _nbEch = donneesCentrale.getNbLines();
     // Cree un vecteur de signaux avec toutes les données
-    creeVecteurSignaux(donneesBrutes,freqFiltre,freqEch);
+    creeVecteurSignaux(donneesBrutes,freqFiltreGravite,freqEch);
     calculeFenetreCentrale();
 
     ///////////////// Début modification à intégrer
@@ -69,14 +70,38 @@ QVector<double> TableauDeBord::getCoinSuperieur()
 void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType uneFreqFiltre, FrequencyType uneFreqEch)
 {
 
-    // Données de l'accéléromètre
+
+        /*Signal signalBrut(donneesBrutes,_nbEch,0,3);
+        signalBrut.regulariseEchantillonage(uneFreqEch);
+
+        Signal gravite(signalBrut);
+        gravite.passeBas(uneFreqFiltre,uneFreqEch,false);
+
+        Signal *signalSansGravite = signalBrut - gravite;
+
+        signalSansGravite->doubleIntegre();
+
+        for (int i=0;i<_nbEch;i++)
+        {
+            std::cout<< i << "signal brut = "<< signalBrut.getSignal(i) << "gravite = "<<  gravite.getSignal(i) << "signal sans = "<<  signalSansGravite->getSignal(i) << std::endl;
+
+        }
+
+
+        _signaux.append(signalSansGravite);*/
+
     for (int i=2;i<=4;i++)
     {
-        Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
-        signalBrut->regulariseEchantillonage(uneFreqEch);
-       // signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
-        signalBrut->doubleIntegre();
-        _signaux.append(signalBrut);
+        Signal signalBrut(donneesBrutes,_nbEch,0,i);
+        signalBrut.regulariseEchantillonage(uneFreqEch);
+
+        Signal gravite(signalBrut);
+        gravite.passeBas(uneFreqFiltre,uneFreqEch,false);
+
+        Signal *signalSansGravite = signalBrut - gravite;
+
+        signalSansGravite->doubleIntegre();
+        _signaux.append(signalSansGravite);
     }
 
     // Données du gyroscope
@@ -166,7 +191,7 @@ void TableauDeBord::majCentrale()
     double vY = _signaux[1]->getSignalIntegre(iCourant);
     double vZ = _signaux[2]->getSignalIntegre(iCourant);
     _IMU._vitesse  = sqrt(pow(vX,2)+pow(vY,2)+pow(vZ,2));
-    //std::cout<< _lastTime.toString().toStdString()<< " => " << vY<<std::endl;
+    std::cout<< _lastTime.toString().toStdString()<< " => " << _IMU._distance<<std::endl;
 
 }
 
@@ -280,5 +305,5 @@ void TableauDeBord::miseenplace(int i)
     // On ajoute le point courant de la centrale à la trajectoire
     _IMU._trajectoire.append(_IMU._position);
     // Distance à vol d'oiseau de la centrale a l'origine
-    _IMU._distance += sqrt(pow(_IMU._position[0],2)+pow(_IMU._position[1],2)+pow(_IMU._position[2],2));
+    _IMU._distance = sqrt(pow(_IMU._position[0],2)+pow(_IMU._position[1],2)+pow(_IMU._position[2],2));
 }
