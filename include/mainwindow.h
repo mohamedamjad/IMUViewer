@@ -7,8 +7,9 @@
 #include <iostream>
 #include <string>
 #include "gyrograph.h"
+#include <QString>
+#include <QFileDialog>
 #include"combobox.h"
-
 
 namespace Ui {
 class MainWindow;
@@ -21,7 +22,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void keyPressEvent(QKeyEvent* event);
-
+    void Initmainwindow(const char* filename);
     ~MainWindow();
 
 public slots :
@@ -32,8 +33,8 @@ public slots :
     // Fin Régis 12/11
     void dragslidervalue();
     void clicStop();
-
-
+    //ferdaousse 13/11
+    void loadfile ();
 
 private:
     Ui::MainWindow *ui;

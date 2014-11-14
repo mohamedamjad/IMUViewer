@@ -1,11 +1,12 @@
 #include "tableaudebord.h"
 
 
-TableauDeBord::TableauDeBord()
+TableauDeBord::TableauDeBord(const char* fichiercsv)
 {   
     // Lecture du fichier des données centrale
     CSV donneesCentrale;
-    double **donneesBrutes   = donneesCentrale.readCSV(fichierCsv);
+    //_fichiercsv="amjad_marche_cheville.out";
+    double **donneesBrutes   = donneesCentrale.readCSV(fichiercsv);
 
     // Nombre de lignes du fichier
     _nbEch = donneesCentrale.getNbLines();
@@ -73,6 +74,7 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
     {
         Signal signalBrut(donneesBrutes,_nbEch,0,i);
         signalBrut.regulariseEchantillonage(uneFreqEch);
+
 
         Signal gravite(signalBrut);
         gravite.passeBas(uneFreqFiltre,uneFreqEch,false);

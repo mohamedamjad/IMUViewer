@@ -9,6 +9,7 @@
 #include "signal.h"
 #include "tableaudebord.h"
 #include <QComboBox>
+#include <QLabel>
 
 class gyrograph : public QGLWidget
 {
@@ -25,6 +26,7 @@ public:
     void setCentrale(Centrale *);
     void afficheSignal();
     void setTableauDeBord(TableauDeBord *tdb);
+    //void setmaxSignal(float);
 
 public slots:
     void updateGL();
@@ -34,7 +36,8 @@ private:
     Centrale* _pIMU;
     TableauDeBord* _pTDB;
     int signalIndex;
-    QComboBox* combobox;
+    //QComboBox* combobox;
+    QLabel* max_min;
 
 };
 
