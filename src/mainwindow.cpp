@@ -75,14 +75,6 @@ MainWindow::MainWindow(QWidget *parent) :
     this->findChild<Combobox*>("comboBox_3")->setgyrograph(this->findChild<gyrograph*>("glSignalGyro"));
 
 
-//    this->findChild<Combobox*>("comboBox_2")->setItemText (1,"Vit. X (m/s2)");
-//    this->findChild<Combobox*>("comboBox_2")->setItemText (2,"Vit. Y (m/s2)");
-//    this->findChild<Combobox*>("comboBox_2")->setItemText (3,"Vit. Z (m/s2)");
-//
-//    this->findChild<Combobox*>("comboBox_2")->setItemText (1,"Vit. X (m/s2)");
-//    this->findChild<Combobox*>("comboBox_2")->setItemText (2,"Vit. Y (m/s2)");
-//    this->findChild<Combobox*>("comboBox_2")->setItemText (3,"Vit. Z (m/s2)");
-
     // + fenetre d'évolution de la centrale
     _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
 
@@ -200,6 +192,4 @@ void MainWindow::dragslidervalue()
     this->_pTdb->setiCourant(ui->horizontalSlider->value());
     _pTimer->start();
     _pTdb->setLastTimeToCurrentTime();
-
-
 }
