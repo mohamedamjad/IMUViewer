@@ -198,6 +198,7 @@ void MainWindow::dragslidervalue()
     _pTimer->start();
     _pTdb->setLastTimeToCurrentTime();
 
+
 }
 //Chargement d'un fichier
 
@@ -205,4 +206,5 @@ void MainWindow::loadfile()
 {
     QString filename=QFileDialog::getOpenFileName(this,tr("Open File"),"",tr("Text files (*.out)"));
     this->Initmainwindow(filename.toStdString().c_str());
+
 }

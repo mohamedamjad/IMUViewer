@@ -14,6 +14,7 @@ public:
     explicit Combobox(QWidget *parent = 0);
     void setgyrograph(gyrograph *graph);
 
+
 signals:
 
 public slots:

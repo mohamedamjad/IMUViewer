@@ -41,7 +41,7 @@
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
-      </property>
+       </property>
        <property name="tickPosition">
         <enum>QSlider::NoTicks</enum>
        </property>
@@ -104,9 +104,9 @@
    <widget class="gyrograph" name="glSignalAcc" native="true">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>600</x>
       <y>210</y>
-      <width>441</width>
+      <width>411</width>
       <height>71</height>
      </rect>
     </property>
@@ -127,9 +127,9 @@
    <widget class="gyrograph" name="glSignalGyro" native="true">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>600</x>
       <y>330</y>
-      <width>441</width>
+      <width>411</width>
       <height>71</height>
      </rect>
     </property>
@@ -150,9 +150,9 @@
    <widget class="gyrograph" name="glSignalMagne" native="true">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>600</x>
       <y>440</y>
-      <width>441</width>
+      <width>411</width>
       <height>71</height>
      </rect>
     </property>
@@ -363,6 +363,84 @@
      </property>
     </item>
    </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>546</x>
+      <y>210</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>  Max   -</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>260</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>  Min   -</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>380</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>  Min   -</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>330</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>  Max   -</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>440</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>  Max   -</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>490</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>  Min   -</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -471,14 +549,11 @@
    <extends>QWidget</extends>
    <header>gyrograph.h</header>
   </customwidget>
-
   <customwidget>
    <class>Combobox</class>
    <extends>QComboBox</extends>
    <header>combobox.h</header>
   </customwidget>
-
-
  </customwidgets>
  <resources/>
  <connections/>

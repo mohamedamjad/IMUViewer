@@ -1,4 +1,3 @@
-
 #include "tableaudebord.h"
 
 
@@ -71,48 +70,36 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
 {
 
 
-        /*Signal signalBrut(donneesBrutes,_nbEch,0,3);
-        signalBrut.regulariseEchantillonage(uneFreqEch);
-
-        Signal gravite(signalBrut);
-        gravite.passeBas(uneFreqFiltre,uneFreqEch,false);
-
-        Signal *signalSansGravite = signalBrut - gravite;
-
-        signalSansGravite->doubleIntegre();
-
-        for (int i=0;i<_nbEch;i++)
-        {
-            std::cout<< i << "signal brut = "<< signalBrut.getSignal(i) << "gravite = "<<  gravite.getSignal(i) << "signal sans = "<<  signalSansGravite->getSignal(i) << std::endl;
-
-        }
-
-
-        _signaux.append(signalSansGravite);*/
-
     for (int i=2;i<=4;i++)
     {
         Signal signalBrut(donneesBrutes,_nbEch,0,i);
         signalBrut.regulariseEchantillonage(uneFreqEch);
 
+
         Signal gravite(signalBrut);
         gravite.passeBas(uneFreqFiltre,uneFreqEch,false);
 
         Signal *signalSansGravite = signalBrut - gravite;
 
-        signalSansGravite->doubleIntegre();
         _signaux.append(signalSansGravite);
     }
+
 
     // Données du gyroscope
     for (int i=6;i<=8;i++)
     {
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
         signalBrut->regulariseEchantillonage(uneFreqEch);
-        //signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
         signalBrut->integre();
         _signaux.append(signalBrut);
     }
+
+    // Changement de repere pour les données de l'accéléromètre en fonction de l'orientation de la centrale
+    Signal::changeRepere(_signaux[0],_signaux[1],_signaux[2],*_signaux[3],*_signaux[4],*_signaux[5]);
+
+    // ON double intègre l'accéléro
+    for (int i = 0;i<3;i++)_signaux[i]->doubleIntegre();;
+
     // Données du magnéto
     for (int i=10;i<=12;i++)
     {
@@ -306,4 +293,5 @@ void TableauDeBord::miseenplace(int i)
     _IMU._trajectoire.append(_IMU._position);
     // Distance à vol d'oiseau de la centrale a l'origine
     _IMU._distance = sqrt(pow(_IMU._position[0],2)+pow(_IMU._position[1],2)+pow(_IMU._position[2],2));
+    std::cout<< _signaux[2]->getSignal(i)<<std::endl;
 }
