@@ -48,6 +48,7 @@ Developpement : s'arrêter là fin de semaine prochaine
 - rapport!!!!!!!!!!!!
 - soutenance!!!!!!!!
 
+9 dans signal::normalizevector
 
 *****************************************RAPPORT
 Perspectives : 
