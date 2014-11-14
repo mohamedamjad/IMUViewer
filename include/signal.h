@@ -24,7 +24,7 @@ public:
     Signal* operator-(Signal);
     void passeBas(FrequencyType,FrequencyType,bool);
 
-
+    static void changeRepere(Signal*,Signal*,Signal*,Signal,Signal,Signal);
 
 
     void regulariseEchantillonage(SampleType);

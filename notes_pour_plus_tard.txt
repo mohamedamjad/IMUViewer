@@ -36,7 +36,7 @@
 
 *****************************************A FAIRE DANS L'ORDRE
 Developpement : s'arrêter là fin de semaine prochaine
-- Régis : étude vitesse de la centrale
+
 - Amjad Affichage projeté avec hoix dans l'interface
 - chargement fichier
 - classification du mouvement

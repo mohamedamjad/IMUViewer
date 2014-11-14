@@ -15,7 +15,7 @@
 #define freqEch 100
 
 //#define fichierCsv "amjad_marche_cheville.out"
-#define fichierCsv "ferdaousse_mixte_cheville.out"
+#define fichierCsv "amjad_marche_cheville.out"
 
 #include <QThread>
 #include <QTimer>

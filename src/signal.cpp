@@ -216,6 +216,35 @@ void Signal::regulariseEchantillonage(SampleType fEch)
     }
 }
 
+void Signal::changeRepere(Signal *srcX,Signal *srcY,Signal *srcZ, Signal orientationX,Signal orientationY,Signal orientationZ)
+{
+    int t = srcX->getTaille();
+    // On vérifie que les six signaux ont la même taille
+    if ((srcX->getTaille() == t) && (srcX->getTaille() == t))
+    {
+
+        if ((orientationX.getTaille() == t) && (orientationY.getTaille() == t) && (orientationZ.getTaille() == t))
+        {
+            for (int i=0;i<t;i++)
+            {
+                double alpha = orientationX._signal[i];
+                double teta  = orientationY._signal[i];
+                double gamma = orientationZ._signal[i];
+
+                srcX->_signal[i] = cos(alpha)*cos(gamma)*srcX->_signal[i]-sin(gamma)*cos(alpha)*srcY->_signal[i]
+                        +sin(alpha)*srcZ->_signal[i];
+
+                srcY->_signal[i] = (sin(teta)*sin(alpha)*cos(gamma)+cos(teta)*sin(gamma))*srcX->_signal[i]
+                        -(sin(gamma)*sin(teta)*sin(alpha)+cos(gamma)*cos(teta))*srcY->_signal[i]
+                        -(sin(teta)*cos(alpha)) *srcZ->_signal[i];
+
+                srcZ->_signal[i] = (cos(teta) * sin(alpha) * cos(gamma) - sin(teta)*sin(gamma))*srcX->_signal[i]
+                        +(sin(gamma)*cos(teta)*sin(alpha)-cos(gamma)*sin(teta))*srcY->_signal[i]
+                        +cos(teta)*cos(alpha)*srcZ->_signal[i];
+            }
+        }
+    }
+}
 
 SampleType* Signal::getSignal()const
 {
@@ -253,12 +282,12 @@ SampleType* Signal::integreUnSignal(SampleType* unTemps,SampleType *unSignal,int
         // Cas 1 : aire triangle + aire rectangle
         if ((y1>0) && (y2>0))
         {
-            deltaIntegre = deltaY*deltaX/2+deltaX*yMinAbs;
+            deltaIntegre = deltaY*deltaX/2.0+deltaX*yMinAbs;
         }
         // Cas 2 : idem en négatif
         else if ((y1<0) && (y2<0))
         {
-            deltaIntegre = -(deltaY*deltaX/2+deltaX*yMinAbs);
+            deltaIntegre = -(deltaY*deltaX/2.0+deltaX*yMinAbs);
         }
         // Cas 3 : un y positif un autre négatif
         else
@@ -267,7 +296,7 @@ SampleType* Signal::integreUnSignal(SampleType* unTemps,SampleType *unSignal,int
             double a = (y2!=0) ? deltaX*abs(y1/y2) : deltaX;
             double b = (y1!=0) ? deltaX*abs(y2/y1) : deltaX;
 
-            deltaIntegre = a*y1/2+b*y2/2;
+            deltaIntegre = a*y1/2.0+b*y2/2.0;
 
         }
 
