@@ -10,22 +10,28 @@ TableauDeBord::TableauDeBord(const char* fichiercsv)
 
     // Nombre de lignes du fichier
     _nbEch = donneesCentrale.getNbLines();
+
+    _classif = new Classifieur(&_signaux,nbSignauxClassif);
+
     // Cree un vecteur de signaux avec toutes les données
     creeVecteurSignaux(donneesBrutes,freqFiltreGravite,freqEch);
     calculeFenetreCentrale();
 
-    ///////////////// Début modification à intégrer
+
     // Initialisation de l'indice de parcours du signal et des capteurs
     reInitialiseCapteursCentraleEtProgressionSignal();
 
     // Initialisation du QTime à maintenant
     setLastTimeToCurrentTime();
-    ///////////////// Fin modification à intégrer
+
 }
 
 
 TableauDeBord::~TableauDeBord()
-{}
+{
+    delete _classif;
+
+}
 
 // Calcule la fenête d'évolution de la centrale en simulant son évolution
 void TableauDeBord::calculeFenetreCentrale()
@@ -76,15 +82,13 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
         Signal signalBrut(donneesBrutes,_nbEch,0,i);
         signalBrut.regulariseEchantillonage(uneFreqEch);
 
-
         Signal gravite(signalBrut);
         gravite.passeBas(uneFreqFiltre,uneFreqEch,false);
 
         Signal *signalSansGravite = signalBrut - gravite;
-
+        signalSansGravite->calculStats();
         _signaux.append(signalSansGravite);
     }
-
 
     // Données du gyroscope : récupération et intégration
     // _signaux[3-4-5];
@@ -93,8 +97,11 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
         Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
         signalBrut->regulariseEchantillonage(uneFreqEch);
         signalBrut->integre();
+        signalBrut->calculStats();
         _signaux.append(signalBrut);
     }
+
+    _classif->classe();
 
     // Données du magnéto : récupération
     // _signaux[6-7-8];

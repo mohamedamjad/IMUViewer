@@ -38,9 +38,10 @@
 Developpement : s'arrêter là fin de semaine prochaine
 
 - Amjad Affichage projeté avec hoix dans l'interface
-- classification du mouvement
+- Régis : classification du mouvement, calcul de stats sur Signal ok... classif à venir
 ----------------
-- optimisation code
+- pb de timer
+- optimisation code : si pas le temps indiquer ce qu'il faudrait faire dans le rapport
 - fuites memoire (delete...)
 - ajout de tests (notamment sur la taille des tableaux)
 - tests unitaires

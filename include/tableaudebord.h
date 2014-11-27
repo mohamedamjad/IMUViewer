@@ -14,8 +14,10 @@
 // Fréquence de ré-échantillonage du signal en Hz
 #define freqEch 100
 
-//#define fichierCsv "amjad_marche_cheville.out"
+// Nb signaux utilisés pour la classification
+#define nbSignauxClassif 6
 
+//#define fichierCsv "amjad_marche_cheville.out"
 //#define fichierCsv "ferdaousse_mixte_cheville.out"
 
 
@@ -26,6 +28,7 @@
 #include <QVector>
 #include "centrale.h"
 #include <QTime>
+#include "classifieur.h"
 
 
 class TableauDeBord : public QObject
@@ -75,6 +78,7 @@ class TableauDeBord : public QObject
         // Représente l'indice courant dans le tableau de données
         int iCourant;
 
+        Classifieur* _classif;
 
         // Enregistre le QTime de la dernière itération pour identifier un éventuel décalage entre le temps
         // reel et le temps du signal
@@ -85,7 +89,6 @@ class TableauDeBord : public QObject
         void creeVecteurSignaux(double**,  FrequencyType, FrequencyType);
 
         void calculeFenetreCentrale();
-
 
 };
 

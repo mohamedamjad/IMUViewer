@@ -166,7 +166,7 @@ SampleType* Signal::produitSignalMultiple2(int* nouvTaille)
 // Régularise le pas d'échantillonage du signal
 void Signal::regulariseEchantillonage(SampleType fEch)
 {
-    if (_taille > 1)
+    if ((_taille > 1) && (fEch != 0))
     {
 
         // Periode d'échantillonage en s
@@ -370,5 +370,53 @@ double Signal::normalizeVector(double val )
     return result;
 }
 
+void Signal::calculStats()
+{
+    if (_taille > (tailleFenetreStats+1))
+    {
+        _signalMoyenne  = new SampleType[_taille-tailleFenetreStats+1];
+        _signalEcartType= new SampleType[_taille-tailleFenetreStats+1];
+        _signalAmplitude= new SampleType[_taille-tailleFenetreStats+1];
 
+        int delta       = (tailleFenetreStats-1)/2;
 
+        // Parcours du signal
+        for (int i=delta;i<_taille-delta;i++)
+        {
+            _signalMoyenne[i-delta]   = moyenne(i-delta,i+delta);
+            _signalEcartType[i-delta] = ecartType(i-delta,i+delta,_signalMoyenne[i-delta]);
+            _signalAmplitude[i-delta] = amplitude(i-delta,i+delta);
+        }
+    }
+}
+// Calcul la moyenne du signal brut sur une fenetre donnée pour la classif
+SampleType Signal::moyenne(int iDeb,int iFin)
+{
+    SampleType somme = 0;
+    for (int i=iDeb;i<=iFin;i++)
+        somme += _signal[i];
+    return somme/tailleFenetreStats;
+}
+
+SampleType Signal::ecartType(int iDeb,int iFin,SampleType moyenne)
+{
+    SampleType somme = 0;
+    for (int i=iDeb;i<=iFin;i++)
+    {
+        somme += pow(_signal[i]-moyenne,2.0);
+    }
+    // somme/ taille => variance
+    return sqrt(somme/tailleFenetreStats);
+}
+
+SampleType Signal::amplitude(int iDeb,int iFin)
+{
+    SampleType min = INFINITY;
+    SampleType max = -INFINITY;
+    for (int i=iDeb;i<=iFin;i++)
+    {
+        if (_signal[i]<min)min=_signal[i];
+        if (_signal[i]>max)max=_signal[i];
+    }
+    return max - min;
+}

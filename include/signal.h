@@ -12,6 +12,9 @@
 #include "aquila/transform/FftFactory.h"
 #include "aquila/tools/TextPlot.h"
 
+// Taille de la fenetre utilisée pour le calcul des indicateurs préalables à la classification
+#define tailleFenetreStats 25
+
 using namespace Aquila;
 
 class Signal
@@ -42,20 +45,29 @@ public:
     SampleType getSignalDoubleIntegre(int i);
     double getMaxSignal();
     double normalizeVector(double val);
+    void calculStats();
 
 private:
-    SampleType *_vecteurTemps;
+    SampleType* produitSignalMultiple2(int* );
+    static SampleType* integreUnSignal(SampleType *,SampleType *,int);
+    SampleType moyenne(int ,int );
+    SampleType ecartType(int,int,SampleType);
+    SampleType amplitude(int,int);
 
+    SampleType *_vecteurTemps;
 
     SampleType *_signal;
     // Signal brut intégré
     SampleType *_signalIntegre;
     // Signal brut doublement intégré
     SampleType *_signalDoubleIntegre;
+    // Moyenne du signal calculée en glissant une fenetre
+    SampleType *_signalMoyenne;
+    // Ecart-type du signal calculé en glissant une fenetre
+    SampleType *_signalEcartType;
+    // Amplitude calculée en glissant une fenetre
+    SampleType *_signalAmplitude;
     int _taille;
-
-    SampleType* produitSignalMultiple2(int* );
-    static SampleType* integreUnSignal(SampleType *,SampleType *,int);
     bool estIntegre = false;
     bool estDoubleIntegre = false;
 };
