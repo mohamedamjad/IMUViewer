@@ -124,31 +124,31 @@ void MainWindow::Initmainwindow(const char* filename)
     /*   // Mise à jour de la centrale inertielle en suivant le _pTimer
        QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
     */   // Mise à jour des widgets gl
- // Affectation de la centrale du tableau de bord aux widgets capteurs
- this->findChild<AccCapteurGL*>("glCapteurAcc")->setCentrale(&_pTdb->_IMU);
- this->findChild<GyroCapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
- this->findChild<MagneCapteurGL*>("glCapteurMagne")->setCentrale(&_pTdb->_IMU);
+    // Affectation de la centrale du tableau de bord aux widgets capteurs
+    this->findChild<AccCapteurGL*>("glCapteurAcc")->setCentrale(&_pTdb->_IMU);
+    this->findChild<GyroCapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
+    this->findChild<MagneCapteurGL*>("glCapteurMagne")->setCentrale(&_pTdb->_IMU);
 
 
 
- // Affectation de la centrale et du tableau de bord aux widgets signaux
- this->findChild<gyrograph*>("glSignalAcc")->setCentrale (&_pTdb->_IMU);
- this->findChild<gyrograph*>("glSignalAcc")->setTableauDeBord (_pTdb);
- this->findChild<gyrograph*>("glSignalAcc")->setsignalIndex (0);
+    // Affectation de la centrale et du tableau de bord aux widgets signaux
+    this->findChild<gyrograph*>("glSignalAcc")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalAcc")->setTableauDeBord (_pTdb);
+    this->findChild<gyrograph*>("glSignalAcc")->setsignalIndex (0);
     this->findChild<gyrograph*>("glSignalAcc")->setmaxLabel (this->findChild<label*>("label_8"));
     this->findChild<gyrograph*>("glSignalAcc")->setminLabel (this->findChild<label*>("label_9"));
 
 
- this->findChild<gyrograph*>("glSignalGyro")->setCentrale (&_pTdb->_IMU);
- this->findChild<gyrograph*>("glSignalGyro")->setTableauDeBord (_pTdb);
- this->findChild<gyrograph*>("glSignalGyro")->setsignalIndex (0);
+    this->findChild<gyrograph*>("glSignalGyro")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalGyro")->setTableauDeBord (_pTdb);
+    this->findChild<gyrograph*>("glSignalGyro")->setsignalIndex (0);
     this->findChild<gyrograph*>("glSignalGyro")->setmaxLabel (this->findChild<label*>("label_10"));
     this->findChild<gyrograph*>("glSignalGyro")->setminLabel (this->findChild<label*>("label_11"));
 
 
- this->findChild<gyrograph*>("glSignalMagne")->setCentrale (&_pTdb->_IMU);
- this->findChild<gyrograph*>("glSignalMagne")->setTableauDeBord (_pTdb);
- this->findChild<gyrograph*>("glSignalMagne")->setsignalIndex (0);
+    this->findChild<gyrograph*>("glSignalMagne")->setCentrale (&_pTdb->_IMU);
+    this->findChild<gyrograph*>("glSignalMagne")->setTableauDeBord (_pTdb);
+    this->findChild<gyrograph*>("glSignalMagne")->setsignalIndex (0);
     this->findChild<gyrograph*>("glSignalMagne")->setmaxLabel (this->findChild<label*>("label_12"));
     this->findChild<gyrograph*>("glSignalMagne")->setminLabel (this->findChild<label*>("label_13"));
 
