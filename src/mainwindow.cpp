@@ -117,6 +117,7 @@ void MainWindow::Initmainwindow(const char* filename)
 
     _pTdb = new TableauDeBord(filename);
     int max=_pTdb->getnbEch();
+    _pTdb->calculeFenetreCentrale ();
 
     _pcGL = this->findChild<PrincipalCapteurGL*>("glPrincipal");
     _pcGL->setCentrale(&_pTdb->_IMU);
