@@ -1,4 +1,3 @@
- 
 #ifndef PRINCIPALGLWIDGET_H
 #define PRINCIPALGLWIDGET_H
 
@@ -11,6 +10,7 @@
 #include<GL/glut.h>
 #include "centrale.h"
 #include "CCamera.h"
+#include"tableaudebord.h"
 
 class PrincipalCapteurGL : public QGLWidget
 {
@@ -26,6 +26,7 @@ class PrincipalCapteurGL : public QGLWidget
         void keyPressEvent( QKeyEvent *keyEvent );
         void timerEvent(QTimerEvent);
         void setCentrale(Centrale *);
+
 
         void setFenetreEvolutionCentrale(QVector<double>,QVector<double>);
 
@@ -50,6 +51,7 @@ class PrincipalCapteurGL : public QGLWidget
         void afficheTrajectoireCentrale();
         void suitCentrale();
         void afficheRepereSol();
+        void afficheCubEvolution();
 };
 
 #endif

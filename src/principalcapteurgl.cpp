@@ -1,5 +1,7 @@
 #include "principalcapteurgl.h"
 
+using namespace std;
+
 PrincipalCapteurGL::PrincipalCapteurGL(QWidget *parent) :
     QGLWidget(parent)
 {
@@ -25,7 +27,7 @@ PrincipalCapteurGL::PrincipalCapteurGL(QWidget *parent) :
     */
     _pCamera = new CCamera(-50.0,50.0,-3.0,
                            0.0,0.0,1.0,
-                           2.0,0.1,-0.1,-0.8);
+                           20.0,0.1,-0.1,-0.8);
 }
 
 void PrincipalCapteurGL::initializeGL()
@@ -66,7 +68,41 @@ void PrincipalCapteurGL::paintGL()
    // afficheSol();
     afficheCentrale();
     afficheTrajectoireCentrale();
+    afficheCubEvolution();
 
+}
+
+void PrincipalCapteurGL::afficheCubEvolution() {
+
+     glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+
+    glBegin(GL_QUADS);
+        glColor3f(0.0,1.0,0.0);
+
+        glVertex3f(_coinInferieur[0],_coinInferieur[1],_coinInferieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinInferieur[1],_coinInferieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinInferieur[2]);
+        glVertex3f(_coinInferieur[0],_coinSuperieur[1],_coinInferieur[2]);
+
+        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinInferieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinSuperieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinInferieur[1],_coinSuperieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinInferieur[1],_coinInferieur[2]);
+        glColor3f(0.0,0.0,1.0);
+
+        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinInferieur[2]);
+        glVertex3f(_coinInferieur[0],_coinSuperieur[1],_coinInferieur[2]);
+        glVertex3f(_coinInferieur[0],_coinSuperieur[1],_coinSuperieur[2]);
+        glVertex3f(_coinSuperieur[0],_coinSuperieur[1],_coinSuperieur[2]);
+
+        glColor3f(1.0,0.0,0.0);
+
+        glVertex3f(_coinInferieur[0],_coinInferieur[1],_coinInferieur[2]);
+        glVertex3f(_coinInferieur[0],_coinInferieur[1],_coinSuperieur[2]);
+        glVertex3f(_coinInferieur[0],_coinSuperieur[1],_coinSuperieur[2]);
+        glVertex3f(_coinInferieur[0],_coinSuperieur[1],_coinInferieur[2]);
+
+    glEnd ();
 }
 
 void PrincipalCapteurGL::afficheRepereSol()
@@ -214,6 +250,7 @@ void PrincipalCapteurGL::afficheSol()
     glPopMatrix();
 }
 
+
  void PrincipalCapteurGL::setFenetreEvolutionCentrale(QVector<double> unCoinInf,QVector<double> unCoinSup)
  {
     _coinInferieur = unCoinInf;
@@ -222,8 +259,6 @@ void PrincipalCapteurGL::afficheSol()
     _largeurFenetre    = _coinSuperieur[0] - _coinInferieur[0];
     _profondeurFenetre = _coinSuperieur[1] - _coinInferieur[1];
     _hauteurFenetre    = _coinSuperieur[2] - _coinInferieur[2];
-
-
 
  }
 
@@ -292,3 +327,4 @@ void PrincipalCapteurGL::setCentrale(Centrale *uneCentrale)
 {
     _pIMU = uneCentrale;
 }
+

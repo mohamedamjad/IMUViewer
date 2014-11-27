@@ -50,6 +50,7 @@ class TableauDeBord : public QObject
         void reInitialiseCapteursCentraleEtProgressionSignal();
         //mise en place de la centrale
         void miseenplace(int i);
+        void calculeFenetreCentrale();
 
     public slots:
 
@@ -83,8 +84,6 @@ class TableauDeBord : public QObject
         int incrementeICourant();
 
         void creeVecteurSignaux(double**,  FrequencyType, FrequencyType);
-
-        void calculeFenetreCentrale();
 
 
 };
