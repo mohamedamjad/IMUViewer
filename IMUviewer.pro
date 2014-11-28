@@ -39,7 +39,8 @@ SOURCES += src/main.cpp \
     src/gyrograph.cpp \
     src/CCamera.cpp \
     src/combobox.cpp \
-    src/label.cpp
+    src/label.cpp \
+    src/classifieur.cpp
 
 
 
@@ -62,7 +63,8 @@ HEADERS += \
     include/gyrograph.h \
     include/CCamera.h \
     include/combobox.h \
-    include/label.h
+    include/label.h \
+    include/classifieur.h
 
 
 
