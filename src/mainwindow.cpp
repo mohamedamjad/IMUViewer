@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     _pTimer = new QTimer(this);
-    Initmainwindow("");
+    Initmainwindow("ferdaousse_mixte_cheville.out");
     //Signal du chargement du fichier
     connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
 
@@ -158,6 +158,9 @@ void MainWindow::Initmainwindow(const char* filename)
  // Mise à jour de la centrale inertielle en suivant le _pTimer
  QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
 
+ // Maj de la classe de mouvement
+ QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majClasse()));
+
  // + fenetre d'évolution de la centrale
 
  _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
@@ -191,6 +194,12 @@ void MainWindow::majLCD()
     s<<(double)_pTdb->getiCourant()/(double)freqEch;
     std::string sttime=s.str();
     ui->lcdNumber->display(QString(sttime.c_str()));
+}
+
+void MainWindow::majClasse()
+{
+    std::cout<< "CLASSE = " << _pTdb->getClasse(this->_pTdb->getiCourant())<<std::endl;
+
 }
 
 //Initialisation de la valeur du slider

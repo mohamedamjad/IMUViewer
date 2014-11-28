@@ -154,7 +154,7 @@ void Tests::TdSReechantilonnage()
         printf("%f;%f\n",donnees[0][i],donnees[4][i]);;//std::cout<<donnees[0][i]<< " "<<donnees[4][i]<<std::endl;
 
     // Creation de l'objet signal pour la composante x de l'accélérometre
-    Signal tdS(donnees,nbEch,0,4);
+    Signal tdS(donnees,nbEch,0,4,tailleFenetreStats);
 
     //tdS.passeBas(FrequencyType freqFiltre,FrequencyType freqEch);
 
@@ -180,7 +180,7 @@ void Tests::TdSPasseBas()
 {
     CSV donneesCentrale;
     double **donnees   = donneesCentrale.readCSV("amjad_marche_cheville.out");
-    Signal tdS(donnees,donneesCentrale.getNbLines(),0,4);
+    Signal tdS(donnees,donneesCentrale.getNbLines(),0,4,tailleFenetreStats);
     // filtrage passe bas à 5 Hz apres rééchantillonnage du signal
     tdS.passeBas(5,50,true);
 }

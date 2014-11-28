@@ -14,8 +14,11 @@
 // Fréquence de ré-échantillonage du signal en Hz
 #define freqEch 100
 
-// Nb signaux utilisés pour la classification
-#define nbSignauxClassif 6
+// Nb signaux bruts utilisés pour la classification
+#define nbSignauxClassif 3
+
+// Taille de la fenetre utilisée pour le calcul des indicateurs préalables à la classification
+#define tailleFenetreStats freqEch-1
 
 //#define fichierCsv "amjad_marche_cheville.out"
 //#define fichierCsv "ferdaousse_mixte_cheville.out"
@@ -54,6 +57,7 @@ class TableauDeBord : public QObject
         //mise en place de la centrale
         void miseenplace(int i);
         void calculeFenetreCentrale();
+        int getClasse(int i);
 
     public slots:
 
@@ -86,8 +90,7 @@ class TableauDeBord : public QObject
         QTime _lastTime;
 
         int incrementeICourant();
-
-        void creeVecteurSignaux(double**,  FrequencyType, FrequencyType);
+        void creeVecteurSignauxEtClassifie(double**,  FrequencyType, FrequencyType);
 };
 
 #endif // TABLEAUDEBORD_H

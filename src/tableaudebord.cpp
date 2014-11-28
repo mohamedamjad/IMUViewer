@@ -11,10 +11,8 @@ TableauDeBord::TableauDeBord(const char* fichiercsv)
     // Nombre de lignes du fichier
     _nbEch = donneesCentrale.getNbLines();
 
-    _classif = new Classifieur(&_signaux,nbSignauxClassif);
-
-    // Cree un vecteur de signaux avec toutes les données
-    creeVecteurSignaux(donneesBrutes,freqFiltreGravite,freqEch);
+    // Cree un vecteur de signaux avec toutes les données et classifie le mouvement
+    creeVecteurSignauxEtClassifie(donneesBrutes,freqFiltreGravite,freqEch);
     calculeFenetreCentrale();
 
 
@@ -23,7 +21,6 @@ TableauDeBord::TableauDeBord(const char* fichiercsv)
 
     // Initialisation du QTime à maintenant
     setLastTimeToCurrentTime();
-
 }
 
 
@@ -32,6 +29,7 @@ TableauDeBord::~TableauDeBord()
     delete _classif;
 
 }
+
 
 // Calcule la fenête d'évolution de la centrale en simulant son évolution
 void TableauDeBord::calculeFenetreCentrale()
@@ -72,42 +70,45 @@ QVector<double> TableauDeBord::getCoinSuperieur()
     return _coinSuperieur;
 }
 
-void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType uneFreqFiltre, FrequencyType uneFreqEch)
+void TableauDeBord::creeVecteurSignauxEtClassifie(double** donneesBrutes,  FrequencyType uneFreqFiltre, FrequencyType uneFreqEch)
 {
+
 
     // Données de l'accéléro : récupération et suppression de l'effet de gravité
     // _signaux[0-1-2];
+    QVector<Signal*> _signauxTmp;
     for (int i=2;i<=4;i++)
     {
-        Signal signalBrut(donneesBrutes,_nbEch,0,i);
-        signalBrut.regulariseEchantillonage(uneFreqEch);
+        Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i,tailleFenetreStats);
+        signalBrut->regulariseEchantillonage(uneFreqEch);
+        signalBrut->calculStats();
 
-        Signal gravite(signalBrut);
+        Signal gravite(*signalBrut);
         gravite.passeBas(uneFreqFiltre,uneFreqEch,false);
 
-        Signal *signalSansGravite = signalBrut - gravite;
-        signalSansGravite->calculStats();
+        Signal *signalSansGravite = *signalBrut - gravite;
         _signaux.append(signalSansGravite);
+        _signauxTmp.append(signalBrut);
     }
+
+    _classif = new Classifieur(&_signauxTmp,nbSignauxClassif,tailleFenetreStats);
+    _classif->classe();
 
     // Données du gyroscope : récupération et intégration
     // _signaux[3-4-5];
     for (int i=6;i<=8;i++)
     {
-        Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
+        Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i,tailleFenetreStats);
         signalBrut->regulariseEchantillonage(uneFreqEch);
         signalBrut->integre();
-        signalBrut->calculStats();
         _signaux.append(signalBrut);
     }
-
-    _classif->classe();
 
     // Données du magnéto : récupération
     // _signaux[6-7-8];
     for (int i=10;i<=12;i++)
     {
-        Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i);
+        Signal *signalBrut = new Signal(donneesBrutes,_nbEch,0,i,tailleFenetreStats);
         signalBrut->regulariseEchantillonage(uneFreqEch);
         signalBrut->passeBas(uneFreqFiltre,uneFreqEch,false);
         _signaux.append(signalBrut);
@@ -195,8 +196,6 @@ void TableauDeBord::majCentrale()
     _IMU._vitesse  = sqrt(pow(vX,2)+pow(vY,2)+pow(vZ,2));
 
     double normeAcceleration = sqrt(pow(_IMU._acc[0],2)+pow(_IMU._acc[1],2)+pow(_IMU._acc[2],2));
-    std::cout<<iCourant <<  "  norme acceleration = "<<  normeAcceleration <<std::endl;
-
 }
 
 
@@ -310,4 +309,11 @@ void TableauDeBord::miseenplace(int i)
     _IMU._trajectoire.append(_IMU._position);
     // Distance à vol d'oiseau de la centrale a l'origine
     _IMU._distance = sqrt(pow(_IMU._position[0],2)+pow(_IMU._position[1],2)+pow(_IMU._position[2],2));
+}
+
+// Renvoie la classe courante
+int TableauDeBord::getClasse(int i)
+{
+    return _classif->getClasse(i);
+
 }

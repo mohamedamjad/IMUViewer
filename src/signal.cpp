@@ -2,11 +2,12 @@
 
 
 
-Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal)
+Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal,int tailleFenetreStats)
 {
     _taille       = taille;
     _signal       = new SampleType[taille];
     _vecteurTemps = new SampleType[taille];
+    _tailleFenetreStats = tailleFenetreStats;
 
     for (int i=0;i<taille;i++)
     {
@@ -22,6 +23,8 @@ Signal::Signal(const Signal& unSignal)
     _taille       = unSignal._taille;
     _signal       = new SampleType[_taille];
     _vecteurTemps = new SampleType[_taille];
+    _tailleFenetreStats = unSignal._tailleFenetreStats;
+
 
     // Recopie du temps et du signal
     for (int i=0;i<_taille;i++)
@@ -49,10 +52,27 @@ Signal::Signal(const Signal& unSignal)
             _signalDoubleIntegre[i] = unSignal._signalDoubleIntegre[i];
         }
     }
+    // Drapeau de statistiques
+    _estStatistique = unSignal._estStatistique;
+    if (_estStatistique)
+    {
+        int delta       = (_tailleFenetreStats-1)/2;
+        _signalMoyenne  = new SampleType[_taille-_tailleFenetreStats+1];
+        _signalEcartType= new SampleType[_taille-_tailleFenetreStats+1];
+        _signalAmplitude= new SampleType[_taille-_tailleFenetreStats+1];
+        _signalMin      = new SampleType[_taille-_tailleFenetreStats+1];
+        // Parcours du signal
+        for (int i=0;i<_taille-2*delta;i++)
+        {
+            _signalMoyenne[i]   = unSignal._signalMoyenne[i];
+            _signalEcartType[i] = unSignal._signalEcartType[i];
+            _signalAmplitude[i] = unSignal._signalAmplitude[i];
+            _signalMin[i]       = unSignal._signalMin[i];
+        }
+    }
 }
 
-
-Signal* Signal::operator-(Signal lautre)
+Signal* Signal::operator+(Signal lautre)
 {
     Signal *res = new Signal (*this);
 
@@ -60,7 +80,7 @@ Signal* Signal::operator-(Signal lautre)
     {
         for (int i=0;i<_taille;i++)
         {
-            res->_signal[i] -= lautre._signal[i];
+            res->_signal[i] += lautre._signal[i];
         }
     }
     // Si le signal est d'ores et déjà intégré, on réintègre apres soustraction
@@ -68,6 +88,51 @@ Signal* Signal::operator-(Signal lautre)
         res->integre();
     if (this->estDoubleIntegre)
         res->doubleIntegre();
+    if (this->_estStatistique)
+        res->calculStats();
+    return res;
+}
+
+
+Signal* Signal::operator-(Signal lautre)
+{
+    Signal *res = new Signal (*this);
+    if ((this->_taille == lautre._taille))
+    {
+
+        for (int i=0;i<_taille;i++)
+        {
+            res->_signal[i] -= lautre._signal[i];
+        }
+        // Si le signal est d'ores et déjà intégré, on réintègre apres soustraction
+        if (this->estIntegre)
+            res->integre();
+        if (this->estDoubleIntegre)
+            res->doubleIntegre();
+        if (this->_estStatistique)
+            res->calculStats();
+    }
+    return res;
+}
+
+Signal* Signal::operator*(Signal lautre)
+{
+    Signal *res = new Signal (*this);
+
+    if (this->_taille == lautre._taille)
+    {
+        for (int i=0;i<_taille;i++)
+        {
+            res->_signal[i] *= lautre._signal[i];
+        }
+    }
+    // Si le signal est d'ores et déjà intégré, on réintègre apres soustraction
+    if (this->estIntegre)
+        res->integre();
+    if (this->estDoubleIntegre)
+        res->doubleIntegre();
+    if (this->_estStatistique)
+        res->calculStats();
     return res;
 }
 
@@ -88,6 +153,16 @@ Signal::~Signal()
 {
     delete _signal;
     delete _vecteurTemps;
+    if (estIntegre)delete _signalIntegre;
+    if (estDoubleIntegre)delete _signalDoubleIntegre;
+    if (_estStatistique)
+    {
+        delete _signalMoyenne;
+        delete _signalEcartType;
+        delete _signalAmplitude;
+        delete _signalMin;
+    }
+    ///////////////////// il manque des delete ici
 }
 
 
@@ -372,13 +447,15 @@ double Signal::normalizeVector(double val )
 
 void Signal::calculStats()
 {
-    if (_taille > (tailleFenetreStats+1))
+    _estStatistique = true;
+    if (_taille > (_tailleFenetreStats+1))
     {
-        _signalMoyenne  = new SampleType[_taille-tailleFenetreStats+1];
-        _signalEcartType= new SampleType[_taille-tailleFenetreStats+1];
-        _signalAmplitude= new SampleType[_taille-tailleFenetreStats+1];
+        _signalMoyenne  = new SampleType[_taille-_tailleFenetreStats+1];
+        _signalEcartType= new SampleType[_taille-_tailleFenetreStats+1];
+        _signalAmplitude= new SampleType[_taille-_tailleFenetreStats+1];
+        _signalMin      = new SampleType[_taille-_tailleFenetreStats+1];
 
-        int delta       = (tailleFenetreStats-1)/2;
+        int delta       = (_tailleFenetreStats-1)/2;
 
         // Parcours du signal
         for (int i=delta;i<_taille-delta;i++)
@@ -386,6 +463,7 @@ void Signal::calculStats()
             _signalMoyenne[i-delta]   = moyenne(i-delta,i+delta);
             _signalEcartType[i-delta] = ecartType(i-delta,i+delta,_signalMoyenne[i-delta]);
             _signalAmplitude[i-delta] = amplitude(i-delta,i+delta);
+            _signalMin[i-delta]       = min(i-delta,i+delta);
         }
     }
 }
@@ -395,7 +473,7 @@ SampleType Signal::moyenne(int iDeb,int iFin)
     SampleType somme = 0;
     for (int i=iDeb;i<=iFin;i++)
         somme += _signal[i];
-    return somme/tailleFenetreStats;
+    return somme/_tailleFenetreStats;
 }
 
 SampleType Signal::ecartType(int iDeb,int iFin,SampleType moyenne)
@@ -406,7 +484,7 @@ SampleType Signal::ecartType(int iDeb,int iFin,SampleType moyenne)
         somme += pow(_signal[i]-moyenne,2.0);
     }
     // somme/ taille => variance
-    return sqrt(somme/tailleFenetreStats);
+    return sqrt(somme/_tailleFenetreStats);
 }
 
 SampleType Signal::amplitude(int iDeb,int iFin)
@@ -420,3 +498,38 @@ SampleType Signal::amplitude(int iDeb,int iFin)
     }
     return max - min;
 }
+
+SampleType Signal::min(int iDeb,int iFin)
+{
+    SampleType min = INFINITY;
+    for (int i=iDeb;i<=iFin;i++)
+    {
+        if (_signal[i]<min)min=_signal[i];
+    }
+    return min;
+}
+
+SampleType Signal::getEcartType(int i)
+{
+   if ((_estStatistique) && (i<_taille-_tailleFenetreStats+1))
+        return _signalEcartType[i];
+}
+
+SampleType Signal::getMoyenne(int i)
+{
+   if ((_estStatistique) && (i<_taille-_tailleFenetreStats+1))
+        return _signalMoyenne[i];
+}
+
+SampleType Signal::getMin(int i)
+{
+   if ((_estStatistique) && (i<_taille-_tailleFenetreStats+1))
+        return _signalMin[i];
+}
+
+void Signal::setSignal(SampleType val,int i)
+{
+    if ((_estStatistique) && (i<_taille))_signal[i] = val;
+}
+
+

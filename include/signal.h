@@ -12,19 +12,19 @@
 #include "aquila/transform/FftFactory.h"
 #include "aquila/tools/TextPlot.h"
 
-// Taille de la fenetre utilisée pour le calcul des indicateurs préalables à la classification
-#define tailleFenetreStats 25
 
 using namespace Aquila;
 
 class Signal
 {
 public:
-    Signal(SampleType **,int,int,int);
+    Signal(SampleType **,int,int,int,int);
     Signal(const Signal&);
 
     ~Signal();
+    Signal* operator+(Signal);
     Signal* operator-(Signal);
+    Signal* operator*(Signal);
     void passeBas(FrequencyType,FrequencyType,bool);
 
     static void changeRepere(Signal*,Signal*,Signal*,Signal,Signal,Signal);
@@ -33,7 +33,8 @@ public:
     void regulariseEchantillonage(SampleType);
 
     //static float* vecteurColonne(float **,int,int);
-    double  getSignal(int i);
+    double getSignal(int i);
+    void setSignal(SampleType val,int i);
     SampleType *getSignal()const;
     double getTemps(int i);
     SampleType *getTemps()const;
@@ -46,13 +47,16 @@ public:
     double getMaxSignal();
     double normalizeVector(double val);
     void calculStats();
-
+    SampleType getEcartType(int);
+    SampleType getMoyenne(int);
+    SampleType getMin(int);
 private:
     SampleType* produitSignalMultiple2(int* );
     static SampleType* integreUnSignal(SampleType *,SampleType *,int);
-    SampleType moyenne(int ,int );
+    SampleType moyenne(int ,int);
     SampleType ecartType(int,int,SampleType);
     SampleType amplitude(int,int);
+    SampleType min(int,int);
 
     SampleType *_vecteurTemps;
 
@@ -67,9 +71,13 @@ private:
     SampleType *_signalEcartType;
     // Amplitude calculée en glissant une fenetre
     SampleType *_signalAmplitude;
+    // Minimum calculé en glissant une fenetre
+    SampleType *_signalMin;
     int _taille;
     bool estIntegre = false;
     bool estDoubleIntegre = false;
+    bool _estStatistique = false;
+    int _tailleFenetreStats;
 };
 
 #endif // TRAITEMENTSIGNAL_H

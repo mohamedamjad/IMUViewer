@@ -7,6 +7,7 @@
 #include "signal.h"
 #include <time.h>
 #include <iostream>
+#include "tableaudebord.h"
 
 using namespace std;
 

@@ -36,6 +36,8 @@ public slots :
     void clicStop();
     //ferdaousse 13/11
     void loadfile ();
+    // Régis : 28/11
+    void majClasse();
 
 private:
     Ui::MainWindow *ui;
