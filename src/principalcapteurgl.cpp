@@ -40,7 +40,6 @@ void PrincipalCapteurGL::initializeGL()
 }
 void PrincipalCapteurGL::resizeGL(int w, int h)
 {
-
     if (h == 0)
    h = 1;
    float ratio = w * 1.0 / h;
@@ -59,7 +58,7 @@ void PrincipalCapteurGL::resizeGL(int w, int h)
 void PrincipalCapteurGL::paintGL()
 {
     // Distance entre les deux coins Sup et Inf
-    double distInfSup=sqrt ((_coinInferieur[0]-_coinSuperieur[0])*(_coinInferieur[0]-_coinSuperieur[0])+(_coinInferieur[1]-_coinSuperieur[1])*(_coinInferieur[1]-_coinSuperieur[1])+(_coinInferieur[2]-_coinSuperieur[2])*(_coinInferieur[2]-_coinSuperieur[2]));
+    double distInfSup=sqrt ((_coinInferieur[0]-_coinSuperieur[0])*(_coinInferieur[0]-_coinSuperieur[0])+(_coinInferieur[1]-_coinSuperieur[1])*(_coinInferieur[1]-_coinSuperieur[1])+(_coinInferieur[2]-_coinInferieur[2])*(_coinInferieur[2]-_coinInferieur[2]));
 
     //distance de la camera pour voir tout le cube de l'évolution
     double distCam;
@@ -68,8 +67,8 @@ void PrincipalCapteurGL::paintGL()
 
     QVector<double> eye(3);
     eye.append (0);
-    eye[0]=0;
-    eye[1]=distCam;
+    eye[0]=distCam;
+    eye[1]=0;
     eye[2]=0;
     _pCamera->setEye (eye);
 
@@ -353,4 +352,37 @@ void PrincipalCapteurGL::updateGL()
 void PrincipalCapteurGL::setCentrale(Centrale *uneCentrale)
 {
     _pIMU = uneCentrale;
+}
+
+// Slot pour projeté suivant X lorsque le combobox change
+void PrincipalCapteurGL::setProjectionX()
+{
+
+    // Distance entre les deux coins Sup et Inf
+    double distInfSup=sqrt ((_coinInferieur[0]-_coinSuperieur[0])*(_coinInferieur[0]-_coinSuperieur[0])+(_coinInferieur[1]-_coinSuperieur[1])*(_coinInferieur[1]-_coinSuperieur[1])+(_coinInferieur[2]-_coinInferieur[2])*(_coinInferieur[2]-_coinInferieur[2]));
+
+    //distance de la camera pour voir tout le cube de l'évolution
+    double distCam;
+
+    distCam=(distInfSup/2)/tan(15*3.1415/180.0);
+
+    QVector<double> eye(3);
+    eye.append (0);
+    eye[0]=distCam;
+    eye[1]=0;
+    eye[2]=0;
+    _pCamera->setEye (eye);
+
+}
+
+// Slot pour projeté suivant Y lorsque le combobox change
+void PrincipalCapteurGL::setProjectionY()
+{
+
+}
+
+// Slot pour projeté suivant Y lorsque le combobox change
+void PrincipalCapteurGL::setProjectionZ()
+{
+
 }

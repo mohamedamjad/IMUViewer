@@ -193,18 +193,3 @@ void CCamera::setCenter(QVector<double> point)
     _centerZ = point[2];
 
 }
-
-//void CCamera::setProjectionX()
-//{
-
-//}
-
-//void CCamera::setProjectionY()
-//{
-
-//}
-
-//void CCamera::setProjectionZ()
-//{
-
-//}
