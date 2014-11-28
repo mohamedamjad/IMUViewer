@@ -198,7 +198,7 @@ void MainWindow::majLCD()
 
 void MainWindow::majClasse()
 {
-    std::cout<< "CLASSE = " << _pTdb->getClasse(this->_pTdb->getiCourant())<<std::endl;
+   // std::cout<< "CLASSE = " << _pTdb->getClasse(this->_pTdb->getiCourant())<<std::endl;
 
 }
 

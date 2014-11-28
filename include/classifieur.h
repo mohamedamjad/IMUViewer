@@ -7,8 +7,8 @@
 
 #define CLASSE_MARCHE 1
 #define CLASSE_COURSE 2
-#define MONTE_ESCALIER 3
-#define DESCEND_ESCALIER 4
+#define CLASSE_MONTE_ESCALIER 3
+#define CLASSE_DESCEND_ESCALIER 4
 #define NON_CLASSE -1
 
 // Parametres de classification empiriques

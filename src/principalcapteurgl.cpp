@@ -355,7 +355,7 @@ void PrincipalCapteurGL::setCentrale(Centrale *uneCentrale)
 }
 
 // Slot pour projeté suivant X lorsque le combobox change
-void PrincipalCapteurGL::setProjectionX()
+/*void PrincipalCapteurGL::setProjectionX()
 {
 
     // Distance entre les deux coins Sup et Inf
@@ -385,4 +385,4 @@ void PrincipalCapteurGL::setProjectionY()
 void PrincipalCapteurGL::setProjectionZ()
 {
 
-}
+}*/

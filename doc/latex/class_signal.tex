@@ -1,0 +1,340 @@
+\hypertarget{class_signal}{\section{Signal Class Reference}
+\label{class_signal}\index{Signal@{Signal}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_signal_a7d7ef373c7af5cfbdb950bf2d20befa2}{{\bfseries Signal} (Sample\-Type $\ast$$\ast$, int, int, int, int)}\label{class_signal_a7d7ef373c7af5cfbdb950bf2d20befa2}
+
+\item 
+\hypertarget{class_signal_a05383557d64e49fe332fba8c9ba00ee1}{{\bfseries Signal} (const \hyperlink{class_signal}{Signal} \&)}\label{class_signal_a05383557d64e49fe332fba8c9ba00ee1}
+
+\item 
+\hypertarget{class_signal_ae7a1d116cda63e790bf9aab549d57d3a}{\hyperlink{class_signal_ae7a1d116cda63e790bf9aab549d57d3a}{$\sim$\-Signal} ()}\label{class_signal_ae7a1d116cda63e790bf9aab549d57d3a}
+
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+\hypertarget{class_signal_ae2e2646b2fa7e8c1e7ea7061e67590ef}{\hyperlink{class_signal}{Signal} $\ast$ {\bfseries operator+} (\hyperlink{class_signal}{Signal})}\label{class_signal_ae2e2646b2fa7e8c1e7ea7061e67590ef}
+
+\item 
+\hypertarget{class_signal_a843324818f2dccfe55785f2b5e50d1aa}{\hyperlink{class_signal}{Signal} $\ast$ {\bfseries operator-\/} (\hyperlink{class_signal}{Signal})}\label{class_signal_a843324818f2dccfe55785f2b5e50d1aa}
+
+\item 
+\hypertarget{class_signal_a38b54facba43de6e3be75dbbd6809764}{\hyperlink{class_signal}{Signal} $\ast$ {\bfseries operator$\ast$} (\hyperlink{class_signal}{Signal})}\label{class_signal_a38b54facba43de6e3be75dbbd6809764}
+
+\item 
+void \hyperlink{class_signal_a151dc6c717029e392f246d4d55fa895b}{passe\-Bas} (Frequency\-Type, Frequency\-Type, bool)
+\begin{DoxyCompactList}\small\item\em Effectue un filtre passe bas sur le signal. \end{DoxyCompactList}\item 
+void \hyperlink{class_signal_ab9d50c6b05a4632d1773efc4ed1b018a}{regularise\-Echantillonage} (Frequency\-Type)
+\begin{DoxyCompactList}\small\item\em Rééchantillone le signal par interpolation linéaire. \end{DoxyCompactList}\item 
+Sample\-Type \hyperlink{class_signal_a5191f410a06237266e0ed68a9aea52bf}{get\-Signal} (int)
+\begin{DoxyCompactList}\small\item\em Accesseur pour un élément du signal. \end{DoxyCompactList}\item 
+void \hyperlink{class_signal_a602184787c1afbeacb31b62507a96820}{set\-Signal} (Sample\-Type, int)
+\begin{DoxyCompactList}\small\item\em Méthode d'écriture d'u signa'une valeur du signal. \end{DoxyCompactList}\item 
+Sample\-Type \hyperlink{class_signal_ab61493ff9d47090d1f47455223bea0cd}{get\-Temps} (int)
+\begin{DoxyCompactList}\small\item\em Accesseur pour un élément du vecteur de temps. \end{DoxyCompactList}\item 
+int \hyperlink{class_signal_ae8479776ef4c70c895c5ade8b0071528}{get\-Taille} ()
+\begin{DoxyCompactList}\small\item\em Renvoie le nombre d'échantillons du signal. \end{DoxyCompactList}\item 
+\hypertarget{class_signal_a0ece1bae5423b833c8e1c379a2c7eda4}{void \hyperlink{class_signal_a0ece1bae5423b833c8e1c379a2c7eda4}{integre} ()}\label{class_signal_a0ece1bae5423b833c8e1c379a2c7eda4}
+
+\begin{DoxyCompactList}\small\item\em Intègre le signal (ne modifie pas les valeurs du signal) \end{DoxyCompactList}\item 
+\hypertarget{class_signal_a20b042d70735cbb05ea6ac2954b2a85d}{void \hyperlink{class_signal_a20b042d70735cbb05ea6ac2954b2a85d}{double\-Integre} ()}\label{class_signal_a20b042d70735cbb05ea6ac2954b2a85d}
+
+\begin{DoxyCompactList}\small\item\em Double intègre le signal (ne modifie pas les valeurs du signal) \end{DoxyCompactList}\item 
+Sample\-Type \hyperlink{class_signal_ad40ab4bea98799cf15be88c1d4811152}{get\-Signal\-Integre} (int)
+\begin{DoxyCompactList}\small\item\em Accesseur pour un élément du signal intégré \end{DoxyCompactList}\item 
+Sample\-Type \hyperlink{class_signal_a70cb3b57f8518dd5a47f683da530769b}{get\-Signal\-Double\-Integre} (int)
+\begin{DoxyCompactList}\small\item\em Accesseur pour un élément du signal doublement intégré \end{DoxyCompactList}\item 
+Sample\-Type \hyperlink{class_signal_adfd4acc458739bfef0000fd8f0d72fd5}{get\-Max\-Signal} ()
+\begin{DoxyCompactList}\small\item\em Retourne la valeur max du signal. \end{DoxyCompactList}\item 
+Sample\-Type \hyperlink{class_signal_af84a1d605472c50d699a4ca21b784a98}{normalize\-Vector} (Sample\-Type)
+\begin{DoxyCompactList}\small\item\em Normalise un nombre en fonction du max du signal. \end{DoxyCompactList}\item 
+\hypertarget{class_signal_ace834afef344f6d8bcfd0d44045fab43}{void \hyperlink{class_signal_ace834afef344f6d8bcfd0d44045fab43}{calcul\-Stats} ()}\label{class_signal_ace834afef344f6d8bcfd0d44045fab43}
+
+\begin{DoxyCompactList}\small\item\em Lance le calcul des statistiques sur le signal (crée un tableau de taille du vecteur -\/\-\_\-taille\-Fenetre\-Stats+1) \end{DoxyCompactList}\item 
+Sample\-Type \hyperlink{class_signal_a71191a77e1492967acd690b909cfd355}{get\-Ecart\-Type} (int)
+\begin{DoxyCompactList}\small\item\em Recuperation de l'écart type autour du ieme échantillon. \end{DoxyCompactList}\item 
+Sample\-Type \hyperlink{class_signal_a163edec705cd436b076904edb51c00bb}{get\-Moyenne} (int)
+\begin{DoxyCompactList}\small\item\em Recuperation de la moyenne autour du ieme échantillon. \end{DoxyCompactList}\item 
+Sample\-Type \hyperlink{class_signal_a37f82f2b4069d045f604d5d33d1c3296}{get\-Min} (int)
+\begin{DoxyCompactList}\small\item\em Recuperation du minimum autour du ieme échantillon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_signal_afdc4a7cb6f8e9474d20527967a8161c8}{change\-Repere} (\hyperlink{class_signal}{Signal} $\ast$, \hyperlink{class_signal}{Signal} $\ast$, \hyperlink{class_signal}{Signal} $\ast$, \hyperlink{class_signal}{Signal}, \hyperlink{class_signal}{Signal}, \hyperlink{class_signal}{Signal})
+\begin{DoxyCompactList}\small\item\em Change trois signaux x y z dans un repère inertiel à un repère absolu en prenant en compte l'orientation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_signal_afdc4a7cb6f8e9474d20527967a8161c8}{\index{Signal@{Signal}!change\-Repere@{change\-Repere}}
+\index{change\-Repere@{change\-Repere}!Signal@{Signal}}
+\subsubsection[{change\-Repere}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::change\-Repere (
+\begin{DoxyParamCaption}
+\item[{{\bf Signal} $\ast$}]{, }
+\item[{{\bf Signal} $\ast$}]{, }
+\item[{{\bf Signal} $\ast$}]{, }
+\item[{{\bf Signal}}]{, }
+\item[{{\bf Signal}}]{, }
+\item[{{\bf Signal}}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_signal_afdc4a7cb6f8e9474d20527967a8161c8}
+
+
+Change trois signaux x y z dans un repère inertiel à un repère absolu en prenant en compte l'orientation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src\-X} & \hyperlink{class_signal}{Signal} d'évolution du x (\hyperlink{class_signal}{Signal}) \\
+\hline
+{\em src\-Y} & \hyperlink{class_signal}{Signal} d'évolution du y (\hyperlink{class_signal}{Signal}) \\
+\hline
+{\em src\-Z} & \hyperlink{class_signal}{Signal} d'évolution du z (\hyperlink{class_signal}{Signal}) \\
+\hline
+{\em orientation\-X} & \hyperlink{class_signal}{Signal} contenant l'orientation selon l'axe X \\
+\hline
+{\em orientation\-Y} & \hyperlink{class_signal}{Signal} contenant l'orientation selon l'axe Y \\
+\hline
+{\em orientation\-Z} & \hyperlink{class_signal}{Signal} contenant l'orientation selon l'axe Z \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_signal_a71191a77e1492967acd690b909cfd355}{\index{Signal@{Signal}!get\-Ecart\-Type@{get\-Ecart\-Type}}
+\index{get\-Ecart\-Type@{get\-Ecart\-Type}!Signal@{Signal}}
+\subsubsection[{get\-Ecart\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::get\-Ecart\-Type (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_a71191a77e1492967acd690b909cfd355}
+
+
+Recuperation de l'écart type autour du ieme échantillon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Indice de l'élément dans le signal (int) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La valeur de l'écart type (Sample\-Type) 
+\end{DoxyReturn}
+\hypertarget{class_signal_adfd4acc458739bfef0000fd8f0d72fd5}{\index{Signal@{Signal}!get\-Max\-Signal@{get\-Max\-Signal}}
+\index{get\-Max\-Signal@{get\-Max\-Signal}!Signal@{Signal}}
+\subsubsection[{get\-Max\-Signal}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::get\-Max\-Signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_adfd4acc458739bfef0000fd8f0d72fd5}
+
+
+Retourne la valeur max du signal. 
+
+\begin{DoxyReturn}{Returns}
+La valeur max du signal(\-Sample\-Type) 
+\end{DoxyReturn}
+\hypertarget{class_signal_a37f82f2b4069d045f604d5d33d1c3296}{\index{Signal@{Signal}!get\-Min@{get\-Min}}
+\index{get\-Min@{get\-Min}!Signal@{Signal}}
+\subsubsection[{get\-Min}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::get\-Min (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_a37f82f2b4069d045f604d5d33d1c3296}
+
+
+Recuperation du minimum autour du ieme échantillon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Indice de l'élément (int) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La valeur du minimum (Sample\-Type) 
+\end{DoxyReturn}
+\hypertarget{class_signal_a163edec705cd436b076904edb51c00bb}{\index{Signal@{Signal}!get\-Moyenne@{get\-Moyenne}}
+\index{get\-Moyenne@{get\-Moyenne}!Signal@{Signal}}
+\subsubsection[{get\-Moyenne}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::get\-Moyenne (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_a163edec705cd436b076904edb51c00bb}
+
+
+Recuperation de la moyenne autour du ieme échantillon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Indice de l'élément (int) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La valeur de la moyenne (Sample\-Type) 
+\end{DoxyReturn}
+\hypertarget{class_signal_a5191f410a06237266e0ed68a9aea52bf}{\index{Signal@{Signal}!get\-Signal@{get\-Signal}}
+\index{get\-Signal@{get\-Signal}!Signal@{Signal}}
+\subsubsection[{get\-Signal}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::get\-Signal (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_a5191f410a06237266e0ed68a9aea52bf}
+
+
+Accesseur pour un élément du signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Indice de l'élément (int) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le ieme élément du signal (Sample\-Type) 
+\end{DoxyReturn}
+\hypertarget{class_signal_a70cb3b57f8518dd5a47f683da530769b}{\index{Signal@{Signal}!get\-Signal\-Double\-Integre@{get\-Signal\-Double\-Integre}}
+\index{get\-Signal\-Double\-Integre@{get\-Signal\-Double\-Integre}!Signal@{Signal}}
+\subsubsection[{get\-Signal\-Double\-Integre}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::get\-Signal\-Double\-Integre (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_a70cb3b57f8518dd5a47f683da530769b}
+
+
+Accesseur pour un élément du signal doublement intégré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Indice de l'élément (int) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le ieme élément du signal (Sample\-Type) 
+\end{DoxyReturn}
+\hypertarget{class_signal_ad40ab4bea98799cf15be88c1d4811152}{\index{Signal@{Signal}!get\-Signal\-Integre@{get\-Signal\-Integre}}
+\index{get\-Signal\-Integre@{get\-Signal\-Integre}!Signal@{Signal}}
+\subsubsection[{get\-Signal\-Integre}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::get\-Signal\-Integre (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_ad40ab4bea98799cf15be88c1d4811152}
+
+
+Accesseur pour un élément du signal intégré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Indice de l'élément (int) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le ieme élément du signal (Sample\-Type) 
+\end{DoxyReturn}
+\hypertarget{class_signal_ae8479776ef4c70c895c5ade8b0071528}{\index{Signal@{Signal}!get\-Taille@{get\-Taille}}
+\index{get\-Taille@{get\-Taille}!Signal@{Signal}}
+\subsubsection[{get\-Taille}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::get\-Taille (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_ae8479776ef4c70c895c5ade8b0071528}
+
+
+Renvoie le nombre d'échantillons du signal. 
+
+\begin{DoxyReturn}{Returns}
+Le nb d'échantillons (int) 
+\end{DoxyReturn}
+\hypertarget{class_signal_ab61493ff9d47090d1f47455223bea0cd}{\index{Signal@{Signal}!get\-Temps@{get\-Temps}}
+\index{get\-Temps@{get\-Temps}!Signal@{Signal}}
+\subsubsection[{get\-Temps}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::get\-Temps (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_ab61493ff9d47090d1f47455223bea0cd}
+
+
+Accesseur pour un élément du vecteur de temps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Indice de l'élément (int) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le ieme élément du signal (Sample\-Type) 
+\end{DoxyReturn}
+\hypertarget{class_signal_af84a1d605472c50d699a4ca21b784a98}{\index{Signal@{Signal}!normalize\-Vector@{normalize\-Vector}}
+\index{normalize\-Vector@{normalize\-Vector}!Signal@{Signal}}
+\subsubsection[{normalize\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::normalize\-Vector (
+\begin{DoxyParamCaption}
+\item[{Sample\-Type}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_af84a1d605472c50d699a4ca21b784a98}
+
+
+Normalise un nombre en fonction du max du signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Nombre à normaliser (Sample\-Type) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le nombre normalisé (Sample\-Type) 
+\end{DoxyReturn}
+\hypertarget{class_signal_a151dc6c717029e392f246d4d55fa895b}{\index{Signal@{Signal}!passe\-Bas@{passe\-Bas}}
+\index{passe\-Bas@{passe\-Bas}!Signal@{Signal}}
+\subsubsection[{passe\-Bas}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::passe\-Bas (
+\begin{DoxyParamCaption}
+\item[{Frequency\-Type}]{, }
+\item[{Frequency\-Type}]{, }
+\item[{bool}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_a151dc6c717029e392f246d4d55fa895b}
+
+
+Effectue un filtre passe bas sur le signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em freq\-Filtre} & fréquence du filtre en Hz (Aquila\-::\-Frequency\-Type) \\
+\hline
+{\em freq\-Filtre} & fréquence d'échantillonage en Hz (Aquila\-::\-Frequency\-Type) \\
+\hline
+{\em re\-Echantillone} & Indique si un rééchantillonage doit être effectué sur le signal (le filtre marche uniquement avec un signal échantilloné de manière régulière) \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_signal_ab9d50c6b05a4632d1773efc4ed1b018a}{\index{Signal@{Signal}!regularise\-Echantillonage@{regularise\-Echantillonage}}
+\index{regularise\-Echantillonage@{regularise\-Echantillonage}!Signal@{Signal}}
+\subsubsection[{regularise\-Echantillonage}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::regularise\-Echantillonage (
+\begin{DoxyParamCaption}
+\item[{Frequency\-Type}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_ab9d50c6b05a4632d1773efc4ed1b018a}
+
+
+Rééchantillone le signal par interpolation linéaire. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em freq\-Filtre} & fréquence du filtre en Hz (Aquila\-::\-Frequency\-Type) \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_signal_a602184787c1afbeacb31b62507a96820}{\index{Signal@{Signal}!set\-Signal@{set\-Signal}}
+\index{set\-Signal@{set\-Signal}!Signal@{Signal}}
+\subsubsection[{set\-Signal}]{\setlength{\rightskip}{0pt plus 5cm}Signal\-::set\-Signal (
+\begin{DoxyParamCaption}
+\item[{Sample\-Type}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{class_signal_a602184787c1afbeacb31b62507a96820}
+
+
+Méthode d'écriture d'u signa'une valeur du signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Valeur à setter dans le signal (Sample\-Type) \\
+\hline
+{\em i} & Indice de l'élément (int) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/signal.\-h\end{DoxyCompactItemize}

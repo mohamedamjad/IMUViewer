@@ -144,7 +144,7 @@ bool Tests::testQuaternion()
 
 void Tests::TdSReechantilonnage()
 {
-    CSV donneesCentrale;
+/*    CSV donneesCentrale;
     double **donnees   = donneesCentrale.readCSV("amjad_marche_cheville.out");
     int nbEch = donneesCentrale.getNbLines();
 
@@ -173,7 +173,7 @@ void Tests::TdSReechantilonnage()
 
     for (int i=0;i<taille;i++)
         printf("%lf;%lf\n",temps[i],signalReechantillone[i]);
-
+*/
 }
 
 void Tests::TdSPasseBas()

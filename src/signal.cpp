@@ -1,7 +1,6 @@
 #include "signal.h"
 
-
-
+// Constructeur
 Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal,int tailleFenetreStats)
 {
     _taille       = taille;
@@ -9,6 +8,7 @@ Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal,int
     _vecteurTemps = new SampleType[taille];
     _tailleFenetreStats = tailleFenetreStats;
 
+    // Récupération des valeurs du signal temps et du signal tout court
     for (int i=0;i<taille;i++)
     {
         _vecteurTemps[i] = uneMatrice[colTemps][i];
@@ -17,7 +17,7 @@ Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal,int
 
 }
 
-
+// Constructeur par copie
 Signal::Signal(const Signal& unSignal)
 {
     _taille       = unSignal._taille;
@@ -32,7 +32,7 @@ Signal::Signal(const Signal& unSignal)
         _vecteurTemps[i] = unSignal._vecteurTemps[i];
         _signal[i]       = unSignal._signal[i];
     }
-    // Drapeau d'intégration
+    // Drapeaux d'intégration
     estIntegre      = unSignal.estIntegre;
     estDoubleIntegre= unSignal.estDoubleIntegre;
     // Recopie des signaux intégrés si le signal l'a été
@@ -52,7 +52,7 @@ Signal::Signal(const Signal& unSignal)
             _signalDoubleIntegre[i] = unSignal._signalDoubleIntegre[i];
         }
     }
-    // Drapeau de statistiques
+    // Drapeau de statistiques & recopie éventuelle
     _estStatistique = unSignal._estStatistique;
     if (_estStatistique)
     {
@@ -136,7 +136,7 @@ Signal* Signal::operator*(Signal lautre)
     return res;
 }
 
-double Signal::getTemps(int i)
+SampleType Signal::getTemps(int i)
 {
 
     return this->_vecteurTemps[i];
@@ -162,7 +162,6 @@ Signal::~Signal()
         delete _signalAmplitude;
         delete _signalMin;
     }
-    ///////////////////// il manque des delete ici
 }
 
 
@@ -174,10 +173,9 @@ void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEcha
     /* Pour le calcul de la transformée de Fourier, il est nécessaire que la taille du signal
        soit un multiple de 2
     */
-    // Fabrication du signal temporaire
+    // Fabrication du signal temporaire avec taille en puiss de 2
     int taillePuiss2;
     SampleType * signalPuiss2=produitSignalMultiple2(&taillePuiss2);
-
 
     // Recuperation de la meilleure transformée adaptée à la taille
     auto fft = FftFactory::getFft(taillePuiss2);
@@ -185,7 +183,7 @@ void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEcha
     // Transformée de Fourier du signal
     SpectrumType spectre = fft->fft(signalPuiss2);
 
-    ////////////// Generation du spectre filtre /////////////////
+    // Génération du spectre filtre
     SpectrumType spectreFiltre(taillePuiss2);
 
     for (int i = 0; i < taillePuiss2; i++)
@@ -201,7 +199,7 @@ void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEcha
             spectreFiltre[i] = 0.0;
         }
     }
-    ////////////////////////////////////////////////////////////
+
     // Multiplication des deux signaux
     std::transform(std::begin(spectre),std::end(spectre),std::begin(spectreFiltre),std::begin(spectre),[] (Aquila::ComplexType x, Aquila::ComplexType y) { return x * y; });
 
@@ -221,7 +219,7 @@ void Signal::passeBas(FrequencyType freqFiltre,FrequencyType freqEch,bool reEcha
 */
 SampleType* Signal::produitSignalMultiple2(int* nouvTaille)
 {
-    // Identification de la taille
+    // Identification de la taille t
     int t;
     for (t=2;t<_taille;t*=2);
 
@@ -239,7 +237,7 @@ SampleType* Signal::produitSignalMultiple2(int* nouvTaille)
 }
 
 // Régularise le pas d'échantillonage du signal
-void Signal::regulariseEchantillonage(SampleType fEch)
+void Signal::regulariseEchantillonage(FrequencyType fEch)
 {
     if ((_taille > 1) && (fEch != 0))
     {
@@ -247,7 +245,6 @@ void Signal::regulariseEchantillonage(SampleType fEch)
         // Periode d'échantillonage en s
         SampleType tEch = 1/fEch;
         // Taille du tableau résultat
-
         int tailleTabRes = (int)((_vecteurTemps[_taille-1] - _vecteurTemps[0] )*fEch );
 
         SampleType *resTemps  = new SampleType[tailleTabRes];
@@ -259,12 +256,13 @@ void Signal::regulariseEchantillonage(SampleType fEch)
         resSignal[0] = _signal[0];
         resTemps[0]  = _vecteurTemps[0];
 
-        // Temps correspondant à l'indice courant dans le signal résutat
+        // Temps correspondant à l'indice courant dans le signal résultat
         SampleType tRes = _vecteurTemps[0]+tEch;
 
         // Parcours du signal résultat
         for (int iRes=1;iRes<tailleTabRes;iRes++)
         {
+            // Il faut incrémenter iRes tant qu'on n'a pas atteint l'instant voulu (çad tRes)
             while ((_vecteurTemps[iSrc]<tRes) && (iSrc < _taille-1))
                 iSrc++;
             // Temps et valeurs à gauche et droite de la valeur courante à remplir
@@ -273,7 +271,6 @@ void Signal::regulariseEchantillonage(SampleType fEch)
 
             // Interpolation des deux valeurs pour l'entree courante
             SampleType denomi   = tDroite-tGauche;
-
             resSignal[iRes] = (1 - ((tRes-tGauche)/denomi))*vGauche + (1 - ((tDroite-tRes)/denomi))*vDroite;
             resTemps[iRes]  = tRes;
 
@@ -295,17 +292,18 @@ void Signal::changeRepere(Signal *srcX,Signal *srcY,Signal *srcZ, Signal orienta
 {
     int t = srcX->getTaille();
     // On vérifie que les six signaux ont la même taille
-    if ((srcX->getTaille() == t) && (srcX->getTaille() == t))
+    if ((srcY->getTaille() == t) && (srcZ->getTaille() == t))
     {
 
         if ((orientationX.getTaille() == t) && (orientationY.getTaille() == t) && (orientationZ.getTaille() == t))
         {
-            for (int i=0;i<t;i++)
+            for (int i=0;i<t;i++)// Parcours des signaux source
             {
                 double alpha = orientationX._signal[i];
                 double teta  = orientationY._signal[i];
                 double gamma = orientationZ._signal[i];
 
+                // Rotations
                 srcX->_signal[i] = cos(alpha)*cos(gamma)*srcX->_signal[i]-sin(gamma)*cos(alpha)*srcY->_signal[i]
                         +sin(alpha)*srcZ->_signal[i];
 
@@ -321,17 +319,6 @@ void Signal::changeRepere(Signal *srcX,Signal *srcY,Signal *srcZ, Signal orienta
     }
 }
 
-SampleType* Signal::getSignal()const
-{
-    return _signal;
-
-}
-
-SampleType *Signal::getTemps()const
-{
-    return _vecteurTemps;
-
-}
 
 int Signal::getTaille()
 {
@@ -346,8 +333,6 @@ SampleType* Signal::integreUnSignal(SampleType* unTemps,SampleType *unSignal,int
     res[0] = 0;
     for (int i=1;i<uneTaille;i++)
     {
-        // Formule roots
-        //res[i] = ((unSignal[i]-unSignal[i-1])/2)*(unTemps[i]-unTemps[i-1]);
         double deltaX = unTemps[i]-unTemps[i-1];
         double y1     = unSignal[i-1];
         double y2     = unSignal[i];
@@ -370,9 +355,7 @@ SampleType* Signal::integreUnSignal(SampleType* unTemps,SampleType *unSignal,int
             // Thales
             double a = (y2!=0) ? deltaX*abs(y1/y2) : deltaX;
             double b = (y1!=0) ? deltaX*abs(y2/y1) : deltaX;
-
             deltaIntegre = a*y1/2.0+b*y2/2.0;
-
         }
 
         res[i] = res[i-1] + deltaIntegre;
@@ -407,27 +390,15 @@ SampleType  Signal::getSignalDoubleIntegre(int i)
     return this->_signalDoubleIntegre[i];
 }
 
-// Renvoie la colonne col de la matrice sous forme de vecteur
 
-/*float* Signal::vecteurColonne(float **matrice,int col,int nbLignes)
+
+SampleType Signal::getMaxSignal ()
 {
-    float *res = new float[nbLignes];
-
-    for(int ligne=0;ligne<nbLignes;ligne++)
-    {
-        res[ligne] = matrice[ligne][col];
-
-    }
-    return res;
-}*/
-
-double Signal::getMaxSignal ()
-{
-    double max=0;
+    SampleType max=0;
 
     for(int i=0;i<this->getTaille ();i++)
     {
-        if (max>fabs(this->getSignal (i)))
+        if (max<fabs(this->getSignal (i)))
             continue;
         else
             max=fabs(this->getSignal (i));
@@ -436,9 +407,9 @@ double Signal::getMaxSignal ()
     return max;
 }
 
-double Signal::normalizeVector(double val )
+SampleType Signal::normalizeVector(SampleType val )
 {
-    double result;
+    SampleType result;
 
     result=val*9/this->getMaxSignal();
 
@@ -448,6 +419,7 @@ double Signal::normalizeVector(double val )
 void Signal::calculStats()
 {
     _estStatistique = true;
+    // Il faut que la taille du signal soit assez grande par rapport à la taille de la fenetre
     if (_taille > (_tailleFenetreStats+1))
     {
         _signalMoyenne  = new SampleType[_taille-_tailleFenetreStats+1];
@@ -511,20 +483,23 @@ SampleType Signal::min(int iDeb,int iFin)
 
 SampleType Signal::getEcartType(int i)
 {
-   if ((_estStatistique) && (i<_taille-_tailleFenetreStats+1))
-        return _signalEcartType[i];
+   int iStat = i-(_tailleFenetreStats-1)/2;
+   if ((_estStatistique) && (iStat>0) && (iStat<_taille-_tailleFenetreStats+1))
+        return _signalEcartType[iStat];
 }
 
 SampleType Signal::getMoyenne(int i)
 {
-   if ((_estStatistique) && (i<_taille-_tailleFenetreStats+1))
-        return _signalMoyenne[i];
+    int iStat = i-(_tailleFenetreStats-1)/2;
+    if ((_estStatistique) && (iStat>0) && (iStat<_taille-_tailleFenetreStats+1))
+        return _signalMoyenne[iStat];
 }
 
 SampleType Signal::getMin(int i)
 {
-   if ((_estStatistique) && (i<_taille-_tailleFenetreStats+1))
-        return _signalMin[i];
+    int iStat = i-(_tailleFenetreStats-1)/2;
+    if ((_estStatistique) && (iStat>0) && (iStat<_taille-_tailleFenetreStats+1))
+        return _signalMin[iStat];
 }
 
 void Signal::setSignal(SampleType val,int i)

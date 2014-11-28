@@ -26,7 +26,7 @@ TableauDeBord::TableauDeBord(const char* fichiercsv)
 
 TableauDeBord::~TableauDeBord()
 {
-    delete _classif;
+    if (_classif) delete _classif;
 
 }
 
@@ -91,6 +91,7 @@ void TableauDeBord::creeVecteurSignauxEtClassifie(double** donneesBrutes,  Frequ
         _signauxTmp.append(signalBrut);
     }
 
+    // Classification
     _classif = new Classifieur(&_signauxTmp,nbSignauxClassif,tailleFenetreStats);
     _classif->classe();
 

@@ -11,7 +11,7 @@
 
 // Fréquence du filtre passe-bas permettant de ressortir le signal gravité en Hz
 #define freqFiltreGravite 0.18
-// Fréquence de ré-échantillonage du signal en Hz
+// Fréquence de ré-échantillonage du signal en Hz ATTENTION DOIT ETRE PAIRE
 #define freqEch 100
 
 // Nb signaux bruts utilisés pour la classification
@@ -31,7 +31,7 @@
 #include <QVector>
 #include "centrale.h"
 #include <QTime>
-//#include "classifieur.h"
+#include "classifieur.h"
 
 
 class TableauDeBord : public QObject
@@ -83,7 +83,7 @@ class TableauDeBord : public QObject
         // Représente l'indice courant dans le tableau de données
         int iCourant;
 
-        //Classifieur* _classif;
+        Classifieur* _classif;
 
         // Enregistre le QTime de la dernière itération pour identifier un éventuel décalage entre le temps
         // reel et le temps du signal

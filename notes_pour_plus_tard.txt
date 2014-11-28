@@ -33,12 +33,14 @@
 - qualification de la dérive issue d'une double intégration via l'affichage
 
 
+***********************************************
+!!!!!FREQUENCYTYPE : j'ai changé vendredi soit le type du parametre de regulariseechantillonage : SampleType=>FrequencyType!!!!
 
 *****************************************A FAIRE DANS L'ORDRE
 Developpement : s'arrêter là fin de semaine prochaine
 
-- Amjad Affichage projeté avec hoix dans l'interface
-- Régis : classification du mouvement, calcul de stats sur Signal ok... classif à venir
+- Amjad Affichage projeté avec hoix dans l'interface en cours de finalisation
+- Amjad : ajout icone de classif dans interface
 ----------------
 - pb de timer
 - optimisation code : si pas le temps indiquer ce qu'il faudrait faire dans le rapport
@@ -49,7 +51,7 @@ Developpement : s'arrêter là fin de semaine prochaine
 - rapport!!!!!!!!!!!!
 - soutenance!!!!!!!!
 
-9 dans signal::normalizevector
+9 dans signal::normalizevector : il faudrait le passer en parametre
 
 *****************************************RAPPORT
 Perspectives : 

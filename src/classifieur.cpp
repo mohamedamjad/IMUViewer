@@ -26,7 +26,7 @@ void Classifieur::classe()
             Signal accZ       = (*(*_pSignaux)[2]);
             int delta         = (_tailleFenetreStats-1)/2;
             _tailleClasses    = accX.getTaille()-_tailleFenetreStats+1;
-            std::cout << _tailleClasses<< std::endl;
+
             if (_tailleClasses > 0)
             {
                 _pClasses         = new int[_tailleClasses];
@@ -50,12 +50,11 @@ void Classifieur::classe()
                 {
                     // Escalier
                     SampleType min = accY.getMin(i);
-                    std::cout << min << std::endl;
                     if (min < seuilAccYEscalier)
                     {
                         if (min < seuilAccYMonteDescend)
-                            _pClasses[i] = DESCEND_ESCALIER;
-                        else _pClasses[i] = MONTE_ESCALIER;
+                            _pClasses[i] = CLASSE_DESCEND_ESCALIER;
+                        else _pClasses[i] = CLASSE_MONTE_ESCALIER;
                     }
                     else
                     {
