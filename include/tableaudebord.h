@@ -31,7 +31,7 @@
 #include <QVector>
 #include "centrale.h"
 #include <QTime>
-#include "classifieur.h"
+//#include "classifieur.h"
 
 
 class TableauDeBord : public QObject
@@ -83,7 +83,7 @@ class TableauDeBord : public QObject
         // Représente l'indice courant dans le tableau de données
         int iCourant;
 
-        Classifieur* _classif;
+        //Classifieur* _classif;
 
         // Enregistre le QTime de la dernière itération pour identifier un éventuel décalage entre le temps
         // reel et le temps du signal
