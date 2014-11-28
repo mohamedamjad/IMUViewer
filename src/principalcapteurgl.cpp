@@ -1,4 +1,5 @@
 #include "principalcapteurgl.h"
+#include "math.h"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ PrincipalCapteurGL::PrincipalCapteurGL(QWidget *parent) :
     _coinSuperieur.append(0);
     _coinSuperieur.append(0);
     _coinSuperieur.append(0);
+
     /**
         *\fn CCamera
         *\brief Constructor
@@ -25,14 +27,15 @@ PrincipalCapteurGL::PrincipalCapteurGL(QWidget *parent) :
         *\param float aTeta Initial horizontal orientation
         *\param float aPhi Initial vertical orientation
     */
-    _pCamera = new CCamera(-50.0,50.0,-3.0,
+    _pCamera = new CCamera(-50.0,50.0,0.0,
                            0.0,0.0,1.0,
-                           20.0,0.1,-0.1,-0.8);
+                           20.0,0.1,-0.0,-0.0);
 }
 
 void PrincipalCapteurGL::initializeGL()
 {
      glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+
 
 }
 void PrincipalCapteurGL::resizeGL(int w, int h)
@@ -55,11 +58,34 @@ void PrincipalCapteurGL::resizeGL(int w, int h)
 
 void PrincipalCapteurGL::paintGL()
 {
+    // Distance entre les deux coins Sup et Inf
+    double distInfSup=sqrt ((_coinInferieur[0]-_coinSuperieur[0])*(_coinInferieur[0]-_coinSuperieur[0])+(_coinInferieur[1]-_coinSuperieur[1])*(_coinInferieur[1]-_coinSuperieur[1])+(_coinInferieur[2]-_coinSuperieur[2])*(_coinInferieur[2]-_coinSuperieur[2]));
+
+    //distance de la camera pour voir tout le cube de l'évolution
+    double distCam;
+
+    distCam=(distInfSup/2)/tan(15*3.1415/180.0);
+
+    QVector<double> eye(3);
+    eye.append (0);
+    eye[0]=0;
+    eye[1]=distCam;
+    eye[2]=0;
+    _pCamera->setEye (eye);
+
+    // Centre du cube d'évolution
+    QVector<double> centreCube(3);
+    centreCube.append (0);
+    centreCube[0]=(_coinSuperieur[0]+_coinInferieur[0])/2;
+    centreCube[1]=(_coinSuperieur[1]+_coinInferieur[1])/2;
+    centreCube[2]=(_coinSuperieur[2]+_coinInferieur[2])/2;
+
+    _pCamera->setCenter (centreCube);
+
     // Clear Color and Depth Buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Reset transformations
     glLoadIdentity();
-
     if (_cameraSuitCentrale == true)//Mode suivi de centrale
        suitCentrale();
 
@@ -170,6 +196,7 @@ void PrincipalCapteurGL::suitCentrale()
 // Affiche la trajectoire de la centrale
 void PrincipalCapteurGL::afficheTrajectoireCentrale()
 {
+    //_pCamera->setEye ();
     if (_pIMU->_trajectoire.size()>1)
     {
         glBegin(GL_LINE_STRIP);
@@ -327,4 +354,3 @@ void PrincipalCapteurGL::setCentrale(Centrale *uneCentrale)
 {
     _pIMU = uneCentrale;
 }
-

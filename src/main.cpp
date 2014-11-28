@@ -17,7 +17,6 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-
         #ifdef TESTS_MODE
 
             Tests::tout();
@@ -31,6 +30,4 @@ int main(int argc, char *argv[])
             w.show();
             return a.exec();
         #endif
-
-
 }

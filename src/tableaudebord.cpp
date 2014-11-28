@@ -11,7 +11,7 @@ TableauDeBord::TableauDeBord(const char* fichiercsv)
     // Nombre de lignes du fichier
     _nbEch = donneesCentrale.getNbLines();
 
-    _classif = new Classifieur(&_signaux,nbSignauxClassif);
+    //_classif = new Classifieur(&_signaux,nbSignauxClassif);
 
     // Cree un vecteur de signaux avec toutes les données
     creeVecteurSignaux(donneesBrutes,freqFiltreGravite,freqEch);
@@ -101,7 +101,7 @@ void TableauDeBord::creeVecteurSignaux(double** donneesBrutes,  FrequencyType un
         _signaux.append(signalBrut);
     }
 
-    _classif->classe();
+    //_classif->classe();
 
     // Données du magnéto : récupération
     // _signaux[6-7-8];
