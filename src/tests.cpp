@@ -11,7 +11,7 @@ Tests::Tests()
 // Methode à finir
 bool Tests::testQuaternion()
 {
-    bool resB = true;
+/*    bool resB = true;
     Quaternion q(1,1,1,1);
 
     Quaternion resq(1,1,1,1);
@@ -139,7 +139,8 @@ bool Tests::testQuaternion()
           cout << " SET PB " << endl;
           resB = false;
     }
-    return resB;
+    return resB;*/
+    return false;
 }
 
 void Tests::TdSReechantilonnage()

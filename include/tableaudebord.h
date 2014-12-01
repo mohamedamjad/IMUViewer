@@ -14,8 +14,6 @@
 // Fréquence de ré-échantillonage du signal en Hz ATTENTION DOIT ETRE PAIRE
 #define freqEch 100
 
-// Nb signaux bruts utilisés pour la classification
-#define nbSignauxClassif 3
 
 // Taille de la fenetre utilisée pour le calcul des indicateurs préalables à la classification
 #define tailleFenetreStats freqEch-1

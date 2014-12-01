@@ -4,34 +4,50 @@
 #include <QVector>
 #include "signal.h"
 
+/*
+    *\class Centrale
+    * \brief IMU Viewer : Classe permettant d'accéder aux données de la centrale à un instant t ainsi qu'à l'historique de sa trajectoire
+    * \author Ferdaousse Chakir, Mohammed-Amjad Lasri, Régis Cuissard
+    * \date decembre 2014
+*/
 class Centrale
 {
 public:
+    /**
+        * \fn Centrale
+        * \brief  Constructeur
+    */
     Centrale();
-    void setAccX(double);
-
-    // Trois vecteurs pour les trois capteurs
+    /**
+        \var _acc
+        \brief Vecteur à trois composantes stockant les valeurs de l'accéléromètre (QVector<double>)
+    */
     QVector<double> _acc;
+    /**
+        \var _gyro
+        \brief Vecteur à trois composantes stockant les valeurs du gyroscope (QVector<double>)
+    */
     QVector<double> _gyro;
+    /**
+        \var _magn
+        \brief Vecteur à trois composantes stockant les valeurs du magnétomètre (QVector<double>)
+    */
     QVector<double> _magn;
-    // Trois vecteurs normés pour l'affichage du graph signal
-    QVector<double> _accNorm;
-    QVector<double> _gyroNorm;
-    QVector<double> _magnNorm;
-    // Vecteur pour l'accélo intégré deux fois
-    QVector<double> _acc2I;
-    // Vecteur pour le gyroscope intégré une fois
-    QVector<double> _gyroI;
-    // Vecteur Orientation courant (cumul des gyroI)
+    /**
+        \var _orientation
+        \brief Vecteur à trois composantes représentant l'orientation de la centrale en radians (QVector<double>)
+    */
     QVector<double> _orientation;
-    // Vecteur Position courant (cumul des acc2I)
+    /**
+        \var _position
+        \brief Vecteur à trois composantes contenant la position de la centrale dans le repère absolu (QVector<double>)
+    */
     QVector<double> _position;
-    // Trajectoire de la centrale
+    /**
+        \var _trajectoire
+        \brief Vecteur contenant l'historique des positions de la centrale(QVector<QVector<double>>)
+    */
     QVector<QVector<double>> _trajectoire;
-    // Distance totale parcourue par la centrale
-    double _distance=0;
-    // Distance totale parcourue par la centrale
-    double _vitesse=0;
 };
 
 #endif // CENTRALE_H

@@ -1,8 +1,6 @@
 #ifndef TESTS_H
 #define TESTS_H
 
-#include "quaternion.h"
-
 #include "csv.h"
 #include "signal.h"
 #include <time.h>

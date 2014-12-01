@@ -3,11 +3,8 @@
 
 - pb de timer
 *** optimisation code : si pas le temps indiquer ce qu'il faudrait faire dans le rapport
-	- fuites memoire : partout mais particulierement dans mainwindow, tableau de bord (détruire tous les signaux dans le QVector)
-	- tests sur la taille des fichiers
+	- tests sur la taille des tableaux
 	- 9 dans signal::normalizevector : il faudrait le passer en parametre	
-	- ajout de tests (notamment sur la taille des tableaux)
-	- regrouper en une classe l'affichage des capteurs en haut à droite
 	- noms variables : _ pour propriétés p pour pointeurs
 	- warnings
 *** tests unitaires
