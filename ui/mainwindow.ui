@@ -190,78 +190,17 @@
      </rect>
     </property>
    </widget>
-   <widget class="MagneCapteurGL" name="glCapteurMagne" native="true">
-    <property name="geometry">
-     <rect>
-      <x>950</x>
-      <y>60</y>
-      <width>161</width>
-      <height>111</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="formLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>20</y>
-      <width>204</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <layout class="QFormLayout" name="formLayout">
-     <property name="fieldGrowthPolicy">
-      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-     </property>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="pOsitionDuCapteurComboBox">
-       <item>
-        <property name="text">
-         <string>Pied</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Poche</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Main</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="pOsitionDuCapteurLabel">
-       <property name="text">
-        <string>Position du capteur</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="CapteurGL" name="widget_8" native="true">
-    <property name="geometry">
-     <rect>
-      <x>1000</x>
-      <y>10</y>
-      <width>51</width>
-      <height>41</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>810</x>
-      <y>20</y>
-      <width>181</width>
+      <x>920</x>
+      <y>30</y>
+      <width>191</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Type du mouvement détécté</string>
+     <string>Type du mouvement détécté :</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -281,19 +220,6 @@
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>180</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>(x, y, z) </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>950</x>
       <y>180</y>
       <width>111</width>
       <height>16</height>
@@ -441,6 +367,32 @@
      <string>  Min   -</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>170</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Type_M</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>70</y>
+      <width>81</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -519,12 +471,6 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>CapteurGL</class>
-   <extends>QWidget</extends>
-   <header>capteurgl.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>PrincipalCapteurGL</class>
    <extends>QWidget</extends>
    <header>principalcapteurgl.h</header>
@@ -538,11 +484,6 @@
    <class>GyroCapteurGL</class>
    <extends>QWidget</extends>
    <header>gyrocapteurgl.h</header>
-  </customwidget>
-  <customwidget>
-   <class>MagneCapteurGL</class>
-   <extends>QWidget</extends>
-   <header>magnecapteurgl.h</header>
   </customwidget>
   <customwidget>
    <class>gyrograph</class>
