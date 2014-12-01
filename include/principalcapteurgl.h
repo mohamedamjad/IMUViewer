@@ -1,3 +1,9 @@
+/*
+    * \class PrincipalCapteurGL
+    * \brief Classe qui hérite de QGLWidget et qui affiche la centrale dans l'espace ( grand widget principal)
+    * \author Ferdaousse Chakir, Mohammed-Amjad Lasri, Régis Cuissard
+    * \date decembre 2014
+*/
 #ifndef PRINCIPALGLWIDGET_H
 #define PRINCIPALGLWIDGET_H
 
@@ -16,9 +22,23 @@ class PrincipalCapteurGL : public QGLWidget
 {
     Q_OBJECT
     public:
+    /**
+          * \fn PrincipalCapteurGL
+          * \brief Constructeur de PrincipalCapteurGL, cette classe hérite de QGLWidget
+          * \param parent
+          */
          explicit PrincipalCapteurGL(QWidget *parent = 0);
-
+    /**
+         * \fn initializeGL
+         *  \brief fonction qui initialise OpenGL dans le PrincipalCapteurGL
+         */
         void initializeGL();
+        /**
+         * \fn resizeGL
+         * \brief fonction qui permet de redimensionner le PrincipalCapteurGL
+         * \param w : largeur du QGLWidget
+         * \param h : hauteur du QGLWidget
+         */
         void resizeGL(int w, int h);
         void paintGL();
         void mousePressEvent(QMouseEvent *event);

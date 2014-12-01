@@ -7,9 +7,6 @@ using namespace std;
 gyrograph::gyrograph(QWidget *parent) :
     QGLWidget(parent)
 {
-
-
-
 }
 
 
@@ -89,14 +86,11 @@ void gyrograph::paintGL()
 }
 
 
-
-
-
 void gyrograph::updateGL()
 {
 
     QGLWidget::updateGL ();
-    //this->afficheSignal ();
+
 }
 
 void gyrograph::setCentrale(Centrale *uneCentrale)
