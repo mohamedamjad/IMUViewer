@@ -30,12 +30,14 @@ PrincipalCapteurGL::PrincipalCapteurGL(QWidget *parent) :
     _pCamera = new CCamera(-50.0,50.0,0.0,
                            0.0,0.0,1.0,
                            20.0,0.1,-0.0,-0.0);
+
+
 }
 
 void PrincipalCapteurGL::initializeGL()
 {
      glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-
+    setProjection3D ();
 
 }
 void PrincipalCapteurGL::resizeGL(int w, int h)
@@ -55,6 +57,7 @@ void PrincipalCapteurGL::resizeGL(int w, int h)
    glMatrixMode(GL_MODELVIEW);
 }
 
+
 void PrincipalCapteurGL::paintGL()
 {
     // Distance entre les deux coins Sup et Inf
@@ -65,12 +68,13 @@ void PrincipalCapteurGL::paintGL()
 
     distCam=(distInfSup/2)/tan(15*3.1415/180.0);
 
-    QVector<double> eye(3);
+    /*QVector<double> eye(3);
     eye.append (0);
-    eye[0]=distCam;
+
+    eye[0]=0;
     eye[1]=0;
-    eye[2]=0;
-    _pCamera->setEye (eye);
+    eye[2]=distCam;
+    _pCamera->setEye (eye);*/
 
     // Centre du cube d'évolution
     QVector<double> centreCube(3);
@@ -355,11 +359,11 @@ void PrincipalCapteurGL::setCentrale(Centrale *uneCentrale)
 }
 
 // Slot pour projeté suivant X lorsque le combobox change
-/*void PrincipalCapteurGL::setProjectionX()
+void PrincipalCapteurGL::setProjectionX()
 {
 
     // Distance entre les deux coins Sup et Inf
-    double distInfSup=sqrt ((_coinInferieur[0]-_coinSuperieur[0])*(_coinInferieur[0]-_coinSuperieur[0])+(_coinInferieur[1]-_coinSuperieur[1])*(_coinInferieur[1]-_coinSuperieur[1])+(_coinInferieur[2]-_coinInferieur[2])*(_coinInferieur[2]-_coinInferieur[2]));
+    double distInfSup=sqrt ((_coinSuperieur[0]-_coinSuperieur[0])*(_coinSuperieur[0]-_coinSuperieur[0])+(_coinInferieur[1]-_coinSuperieur[1])*(_coinInferieur[1]-_coinSuperieur[1])+(_coinInferieur[2]-_coinSuperieur[2])*(_coinInferieur[2]-_coinSuperieur[2]));
 
     //distance de la camera pour voir tout le cube de l'évolution
     double distCam;
@@ -373,16 +377,141 @@ void PrincipalCapteurGL::setCentrale(Centrale *uneCentrale)
     eye[2]=0;
     _pCamera->setEye (eye);
 
+    QVector<double> center(3);
+
+    center.append (0);
+
+    center[0]=(_coinSuperieur[0]+_coinSuperieur[0])/2;
+    center[1]=(_coinSuperieur[1]+_coinInferieur[1])/2;
+    center[2]=(_coinSuperieur[2]+_coinInferieur[2])/2;
+
+    _pCamera->setCenter (center);
 }
 
 // Slot pour projeté suivant Y lorsque le combobox change
 void PrincipalCapteurGL::setProjectionY()
 {
+    // Distance entre les deux coins Sup et Inf
+    double distInfSup=sqrt ((_coinSuperieur[0]-_coinInferieur[0])*(_coinSuperieur[0]-_coinInferieur[0])+(_coinSuperieur[1]-_coinSuperieur[1])*(_coinSuperieur[1]-_coinSuperieur[1])+(_coinInferieur[2]-_coinSuperieur[2])*(_coinInferieur[2]-_coinSuperieur[2]));
+
+    //distance de la camera pour voir tout le cube de l'évolution
+    double distCam;
+
+    distCam=(distInfSup/2)/tan(15*3.1415/180.0);
+
+    QVector<double> eye(3);
+    eye.append (0);
+    eye[0]=0;
+    eye[1]=distCam;
+    eye[2]=0;
+    _pCamera->setEye (eye);
+
+    QVector<double> center(3);
+
+    center.append (0);
+
+    center[0]=(_coinSuperieur[0]+_coinInferieur[0])/2;
+    center[1]=(_coinSuperieur[1]+_coinInferieur[1])/2;
+    center[2]=(_coinInferieur[2]+_coinInferieur[2])/2;
+
+    _pCamera->setCenter (center);
 
 }
 
-// Slot pour projeté suivant Y lorsque le combobox change
+// Slot pour projeté suivant Z lorsque le combobox change
 void PrincipalCapteurGL::setProjectionZ()
 {
+    // Distance entre les deux coins Sup et Inf
+    double distInfSup=sqrt ((_coinSuperieur[0]-_coinInferieur[0])*(_coinSuperieur[0]-_coinInferieur[0])+(_coinInferieur[1]-_coinSuperieur[1])*(_coinInferieur[1]-_coinSuperieur[1])+(_coinInferieur[2]-_coinInferieur[2])*(_coinInferieur[2]-_coinInferieur[2]));
 
+    //distance de la camera pour voir tout le cube de l'évolution
+    double distCam;
+
+    distCam=(distInfSup/2)/tan(15*3.1415/180.0);
+
+    QVector<double> eye(3);
+    eye.append (0);
+    eye[0]=0;
+    eye[1]=0;
+    eye[2]=distCam;
+    _pCamera->setEye (eye);
+
+    QVector<double> center(3);
+
+    center.append (0);
+
+    center[0]=(_coinSuperieur[0]+_coinInferieur[0])/2;
+    center[1]=(_coinSuperieur[1]+_coinSuperieur[1])/2;
+    center[2]=(_coinSuperieur[2]+_coinInferieur[2])/2;
+
+    _pCamera->setCenter (center);
+}
+
+
+// Slot pour projeté suivant X lorsque le combobox change
+void PrincipalCapteurGL::setProjection3D()
+{
+
+    // Distance entre les deux coins Sup et Inf
+    double distInfSup=sqrt ((_coinSuperieur[0]-_coinInferieur[0])*(_coinSuperieur[0]-_coinInferieur[0])+(_coinInferieur[1]-_coinSuperieur[1])*(_coinInferieur[1]-_coinSuperieur[1])+(_coinInferieur[2]-_coinSuperieur[2])*(_coinInferieur[2]-_coinSuperieur[2]));
+
+    //distance de la camera pour voir tout le cube de l'évolution
+    double distCam;
+
+    distCam=(distInfSup/2)/tan(15*3.1415/180.0);
+
+    QVector<double> eye(3);
+    eye.append (0);
+    eye[0]=distCam;
+    eye[1]=distCam;
+    eye[2]=0;
+    _pCamera->setEye (eye);
+
+    QVector<double> center(3);
+    center.append (0);
+
+    center[0]=(_coinSuperieur[0]+_coinInferieur[0])/2;
+    center[1]=(_coinSuperieur[1]+_coinInferieur[1])/2;
+    center[2]=(_coinSuperieur[2]+_coinInferieur[2])/2;
+
+    _pCamera->setCenter (center);
+
+}
+
+
+void PrincipalCapteurGL::setProjection(int i)
+{
+    switch (i) {
+
+    case 1:
+        setProjectionX ();
+        break;
+    case 2:
+        setProjectionY ();
+        break;
+    case 3:
+        setProjectionZ ();
+        break;
+    default:
+        setProjection3D ();
+        break;
+
+    }
+}
+
+/*void updateProjection(int i) {
+
+    switch (i) {
+
+    case 0:
+        break;
+    case 1:
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    default:
+        break;
+    }
 }*/

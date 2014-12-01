@@ -61,6 +61,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect (this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateLabel()));
     QObject::connect (this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateLabel()));
 
+    // Changement du combobox de la projection
+    QObject::connect (this->findChild<QComboBox*>("comboBox"), SIGNAL(currentIndexChanged(int)), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(setProjection(int)));
+
     // Clic sur pause
 
     connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
@@ -80,9 +83,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionQuitter, SIGNAL(triggered(bool)),this , SLOT(close()));
 
     //Clic sur ouvrir un fichier
+
     connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
+
     // Affichage LCD à 8 caractères
-     ui->lcdNumber->setDigitCount(8);
+
+    ui->lcdNumber->setDigitCount(8);
 }
 
 void MainWindow::chargeFichier(const char* filename)
