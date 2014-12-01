@@ -32,7 +32,7 @@ class PrincipalCapteurGL : public QGLWidget
 
     public slots:
         void updateGL();
-
+        void setProjection(int);
     private:
         Centrale* _pIMU;
 
@@ -52,6 +52,13 @@ class PrincipalCapteurGL : public QGLWidget
         void suitCentrale();
         void afficheRepereSol();
         void afficheCubEvolution();
+
+        void setProjectionX();
+        void setProjectionY();
+        void setProjectionZ();
+        void setProjection3D();
+
+
 };
 
 #endif
