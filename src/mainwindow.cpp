@@ -8,9 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     _fichierOuvert = false;
+    // L'utilisateur choisit un fichier...
+    QString filename=QFileDialog::getOpenFileName(this,tr("Open File"),"",tr("Text files (*.out)"));
     ui->setupUi(this);
     _pTimer = new QTimer(this);
-    chargeFichier("ferdaousse_mixte_cheville.out");
+    // Chargement du fichier...
+    this->chargeFichier(filename.toStdString().c_str());
 
 
     // Affectation des comportements à chaque capteur
@@ -48,46 +51,40 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(_pTimer, SIGNAL(timeout()), glSignalAcc, SLOT(updateGL()));
     QObject::connect(_pTimer, SIGNAL(timeout()), glSignalGyro, SLOT(updateGL()));
     QObject::connect(_pTimer, SIGNAL(timeout()), glSignalMagne, SLOT(updateGL()));
+
     // Maj LCD avec le timer
     QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majLCD()));
     // Maj LCS avec timer
     connect(_pTimer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
-    ////////////////////////////////EVENEMENTS UTILISATEUR//////////////////////////////////////////
-    // Choix d'un autre signal à visualiser
-    QObject::connect(this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalAcc"), SLOT(setsignalIndex(int)));
-    QObject::connect(this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalGyro"), SLOT(setsignalIndex(int)));
-    QObject::connect(this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalMagne"), SLOT(setsignalIndex(int)));
-    QObject::connect (this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateLabel()));
-    QObject::connect (this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateLabel()));
-    QObject::connect (this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateLabel()));
 
-    // Changement du combobox de la projection
-    QObject::connect (this->findChild<QComboBox*>("comboBox"), SIGNAL(currentIndexChanged(int)), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(setProjection(int)));
+    ////////////////////////      EVENEMENTS UTILISATEUR      //////////////////////////////////
+
+    // Choix d'un autre signal à visualiser
+    QObject::connect(this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)), glSignalAcc, SLOT(setsignalIndex(int)));
+    QObject::connect(this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)), glSignalGyro, SLOT(setsignalIndex(int)));
+    QObject::connect(this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)), glSignalMagne, SLOT(setsignalIndex(int)));
+    QObject::connect (this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)),glSignalAcc, SLOT(updateLabel()));
+    QObject::connect (this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)),glSignalGyro, SLOT(updateLabel()));
+    QObject::connect (this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)),glSignalMagne, SLOT(updateLabel()));
 
     // Clic sur pause
-
     connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
 
     // Clic sur play
-
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(clicPlay()));
 
     // Clic sur stop
-
     connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(clicStop()));
 
     //Faire glisser le slider
-
     connect(ui->horizontalSlider, SIGNAL(sliderReleased()), this, SLOT(dragslidervalue()));
     connect(ui->horizontalSlider, SIGNAL(sliderPressed()), _pTimer, SLOT(stop()));
     connect(ui->actionQuitter, SIGNAL(triggered(bool)),this , SLOT(close()));
 
     //Clic sur ouvrir un fichier
-
     connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
 
     // Affichage LCD à 8 caractères
-
     ui->lcdNumber->setDigitCount(8);
 }
 
@@ -107,8 +104,6 @@ void MainWindow::chargeFichier(const char* filename)
     // Affectation de la centrale du tableau de bord aux widgets capteurs
     this->findChild<CapteurGL*>("glCapteurAcc")->setCentrale(&_pTdb->_IMU);
     this->findChild<CapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
-
-
 
     // Affectation de la centrale et du tableau de bord aux widgets signaux
     gyrograph* pGyroAcc= this->findChild<gyrograph*>("glSignalAcc");
@@ -132,7 +127,7 @@ void MainWindow::chargeFichier(const char* filename)
     pGyroMagne->setmaxLabel (this->findChild<QLabel*>("label_12"));
     pGyroMagne->setminLabel (this->findChild<QLabel*>("label_13"));
 
-    // Modifications sur les QLabel
+    // Modifications sur les QLabel (axe des ordonnées des signaux)
 
    this->findChild<QLabel*>("label_8")->setNum (_pTdb->get_signaux ()[this->findChild<gyrograph*>("glSignalAcc")->getsignalIndex ()]->getMaxSignal ());
    this->findChild<QLabel*>("label_9")->setNum (-_pTdb->get_signaux ()[this->findChild<gyrograph*>("glSignalAcc")->getsignalIndex ()]->getMaxSignal ());
@@ -148,18 +143,16 @@ void MainWindow::chargeFichier(const char* filename)
      QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majClasse()));
 
      // + fenetre d'évolution de la centrale
-
      _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
 
      //initialisation de la taille du slider
-
       ui->horizontalSlider->setRange(0,_pTdb->getnbEch());
-
 }
 
 //destructeur
 MainWindow::~MainWindow()
 {
+    delete _pTdb;
     delete ui;
 }
 
@@ -182,36 +175,10 @@ void MainWindow::majLCD()
 
 void MainWindow::majClasse()
 {
-       QPixmap marche("../IMUViewer/images/classif_mouvement/marche.png");
-    QPixmap course("../IMUViewer/images/classif_mouvement/course.png");
-    QPixmap monte("../IMUViewer/images/classif_mouvement/monte.png");
-    QPixmap descend("../IMUViewer/images/classif_mouvement/descend.png");
-    QPixmap NC("../IMUViewer/images/classif_mouvement/NC.png");
+    int iCourant = this->_pTdb->getiCourant();
 
-    switch (_pTdb->getClasse(this->_pTdb->getiCourant())) {
-
-    case 1:
-        this->findChild<QLabel*>("label_14")->setText ("Marche");
-        this->findChild<QLabel*>("label_15")->setPixmap (marche);
-        break;
-    case 2:
-        this->findChild<QLabel*>("label_14")->setText ("Course");
-        this->findChild<QLabel*>("label_15")->setPixmap (course);
-        break;
-    case 3:
-        this->findChild<QLabel*>("label_14")->setText ("Monte les escaliers");
-        this->findChild<QLabel*>("label_15")->setPixmap (monte);
-        break;
-    case 4:
-        this->findChild<QLabel*>("label_14")->setText ("Descend les excaliers");
-        this->findChild<QLabel*>("label_15")->setPixmap (descend);
-        break;
-    default:
-        this->findChild<QLabel*>("label_14")->setText ("Non Classifié");
-        this->findChild<QLabel*>("label_15")->setPixmap (NC);
-        break;
-    }
-
+    this->findChild<QLabel*>("label_14")->setText (this->_pTdb->getClassifieur()->getLabelClasse(iCourant));
+    this->findChild<QLabel*>("label_15")->setPixmap (this->_pTdb->getClassifieur()->getImgClasse(iCourant));
 }
 
 //Initialisation de la valeur du slider

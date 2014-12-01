@@ -26,7 +26,6 @@ TARGET = IMUViewer
 SOURCES += src/main.cpp \
     src/signal.cpp \
     src/csv.cpp \
-    src/quaternion.cpp \
     src/tests.cpp \
     src/mainwindow.cpp \
     src/centrale.cpp \
@@ -44,7 +43,6 @@ SOURCES += src/main.cpp \
 HEADERS += \
     include/signal.h \
     include/csv.h \
-    include/quaternion.h \
     include/tests.h \
     include/mainwindow.h \
     include/glwidget.h \

@@ -1,11 +1,14 @@
 #include "classifieur.h"
 
+std::string Classifieur::imgClasses[] = {"NC.png","marche.png","course.png","monte.png","descend.png"};
+std::string Classifieur::labelClasses[] = {"Non Classifie","Marche","Course","Monte les escaliers","Descend les escaliers"};
+
 Classifieur::Classifieur(QVector <Signal*> *unPSignaux,int unNbSignaux,int uneTailleFenetre)
 {
-    _pSignaux           = unPSignaux;
-    _nbSignaux          = unNbSignaux;
-    _tailleFenetreStats = uneTailleFenetre;
-     _estClasse         = false;
+    _pSignaux          = unPSignaux;
+    _nbSignaux         = unNbSignaux;
+    _tailleFenetreStats= uneTailleFenetre;
+    _estClasse         = false;
 }
 
 Classifieur::~Classifieur()
@@ -90,5 +93,16 @@ int Classifieur::getClasse(int i)
     return NON_CLASSE;
 }
 
+QString Classifieur::getLabelClasse(int i)
+{
+    std::string resStr = Classifieur::labelClasses[getClasse(i)];
+    QString res(resStr.c_str());
+    return res;
+}
 
-
+QString Classifieur::getImgClasse(int i)
+{
+    std::string resStr = Classifieur::imgClasses[getClasse(i)];
+    QString res(resStr.c_str());
+    return res;
+}
