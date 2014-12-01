@@ -18,10 +18,6 @@ public:
     void initializeGL();
     void resizeGL(int w, int h);
     void paintGL();
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void keyPressEvent( QKeyEvent *keyEvent );
-    void timerEvent(QTimerEvent);
     void setCentrale(Centrale *);
     void afficheSignal();
     void setTableauDeBord(TableauDeBord *tdb);

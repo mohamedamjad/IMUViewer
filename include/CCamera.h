@@ -6,6 +6,12 @@
 #include <math.h>
 #include <QVector>
 
+/*
+    *\class CCamera
+    * \brief IMU Viewer : Classe de gestion de caméra
+    * \author Ferdaousse Chakir, Mohammed-Amjad Lasri, Régis Cuissard
+    * \date decembre 2014
+*/
 class CCamera
 {
     public:
@@ -89,18 +95,36 @@ class CCamera
         */
         void play();
 
-
+        /**
+            *\fn getEyeX
+            *\brief Renvoie la composante X de la position de la caméra
+        */
         float getEyeX();
+        /**
+            *\fn getEyeY
+            *\brief Renvoie la composante Y de la position de la caméra
+        */
         float getEyeY();
+        /**
+            *\fn getEyeZ
+            *\brief Renvoie la composante Z de la position de la caméra
+        */
         float getEyeZ();
-
+        /**
+            *\fn setEye
+            *\brief Sets une nouvelle position à la caméra
+            *\param point Nouvelle position de caméra (QVector<double>)
+        */
         void setEye(QVector<double>);
+        /**
+            *\fn setCenter
+            *\brief Sets un nouveau point à regarder pour la caméra
+            *\param point Nouveau point à regarder par la caméra
+        */
         void setCenter(QVector<double>);
 
     protected:
     private:
-
-
         /**
             \var _eyeX
             \var _eyeY

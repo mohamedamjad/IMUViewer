@@ -100,7 +100,7 @@ void TableauDeBord::creeVecteurSignauxEtClassifie(double** donneesBrutes,  Frequ
     }
 
     // Classification
-    _classif = new Classifieur(&_signauxTmp,nbSignauxClassif,tailleFenetreStats);
+    _classif = new Classifieur(&_signauxTmp,tailleFenetreStats);
     _classif->classe();
 
     // Données du gyroscope : récupération et intégration
@@ -168,43 +168,17 @@ void TableauDeBord::majCentrale()
 
     // Acc
     _IMU._acc[0] = _signaux[0]->getSignal(iCourant);
-    _IMU._accNorm[0]=_signaux[0]->normalizeVector (_signaux[0]->getSignal(iCourant));
     _IMU._acc[1] = _signaux[1]->getSignal(iCourant);
-    _IMU._accNorm[1]=_signaux[1]->normalizeVector (_signaux[1]->getSignal(iCourant));
     _IMU._acc[2] = _signaux[2]->getSignal(iCourant);
-    _IMU._accNorm[2]=_signaux[2]->normalizeVector (_signaux[2]->getSignal(iCourant));
     // Gyro
     _IMU._gyro[0]= _signaux[3]->getSignal(iCourant);
-    _IMU._gyroNorm[0]=_signaux[3]->normalizeVector (_signaux[3]->getSignal(iCourant));
     _IMU._gyro[1]= _signaux[4]->getSignal(iCourant);
-    _IMU._gyroNorm[1]=_signaux[4]->normalizeVector (_signaux[4]->getSignal(iCourant));
     _IMU._gyro[2]= _signaux[5]->getSignal(iCourant);
-    _IMU._gyroNorm[2]=_signaux[5]->normalizeVector (_signaux[5]->getSignal(iCourant));
     // Magnétomètre
     _IMU._magn[0]=_signaux[6]->getSignal(iCourant);
-    _IMU._magnNorm[0]=_signaux[6]->normalizeVector (_signaux[6]->getSignal(iCourant));
     _IMU._magn[1]=_signaux[7]->getSignal(iCourant);
-    _IMU._magnNorm[1]=_signaux[7]->normalizeVector (_signaux[7]->getSignal(iCourant));
     _IMU._magn[2]=_signaux[8]->getSignal(iCourant);
-    _IMU._magnNorm[0]=_signaux[8]->normalizeVector (_signaux[8]->getSignal(iCourant));
 
-    //Position depuis l'accéléro
-    _IMU._acc2I[0] = _signaux[9]->getSignalDoubleIntegre(iCourant);
-    _IMU._acc2I[1] = _signaux[10]->getSignalDoubleIntegre(iCourant);
-    _IMU._acc2I[2] = _signaux[11]->getSignalDoubleIntegre(iCourant);
-
-    // Angle depuis le gyro
-    _IMU._gyroI[0]= _signaux[3]->getSignalIntegre(iCourant);
-    _IMU._gyroI[1]= _signaux[4]->getSignalIntegre(iCourant);
-    _IMU._gyroI[2]= _signaux[5]->getSignalIntegre(iCourant);
-
-    // Vitesse courante
-    double vX = _signaux[9]->getSignalIntegre(iCourant);
-    double vY = _signaux[10]->getSignalIntegre(iCourant);
-    double vZ = _signaux[11]->getSignalIntegre(iCourant);
-    _IMU._vitesse  = sqrt(pow(vX,2)+pow(vY,2)+pow(vZ,2));
-
-    double normeAcceleration = sqrt(pow(_IMU._acc[0],2)+pow(_IMU._acc[1],2)+pow(_IMU._acc[2],2));
 }
 
 
@@ -298,7 +272,6 @@ void TableauDeBord::reInitialiseCapteursCentraleEtProgressionSignal()
 
     // On vide la trajectoire
     _IMU._trajectoire.clear();
-    _IMU._distance = 0;
 
 }
 void TableauDeBord::miseenplace(int i)
@@ -316,8 +289,7 @@ void TableauDeBord::miseenplace(int i)
     _IMU._position[2]= _signaux[11]->getSignalDoubleIntegre(i);
     // On ajoute le point courant de la centrale à la trajectoire
     _IMU._trajectoire.append(_IMU._position);
-    // Distance à vol d'oiseau de la centrale a l'origine
-    _IMU._distance = sqrt(pow(_IMU._position[0],2)+pow(_IMU._position[1],2)+pow(_IMU._position[2],2));
+
 }
 
 Classifieur* TableauDeBord::getClassifieur()

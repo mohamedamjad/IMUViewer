@@ -88,16 +88,8 @@ void gyrograph::paintGL()
     afficheSignal ();
 }
 
-void gyrograph::mousePressEvent(QMouseEvent *event){}
-void gyrograph::mouseMoveEvent(QMouseEvent *event){}
-void gyrograph::keyPressEvent( QKeyEvent *keyEvent ){}
 
 
-void gyrograph::timerEvent(QTimerEvent event)
-{
-    //updateGL ();
-
-}
 
 
 void gyrograph::updateGL()

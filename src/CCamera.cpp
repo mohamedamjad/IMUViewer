@@ -164,21 +164,23 @@ void CCamera::play()
     gluLookAt(_eyeX,_eyeY,_eyeZ,_centerX,_centerY,_centerZ,_upX,_upY,_upZ);
 }
 
-
+// Renvoie la composante X de la position de la caméra
 float CCamera::getEyeX()
 {
     return _eyeX;
 }
+// Renvoie la composante Y de la position de la caméra
 float CCamera::getEyeY()
 {
         return _eyeY;
 }
+// Renvoie la composante Z de la position de la caméra
 float CCamera::getEyeZ()
 {
         return _eyeZ;
 }
 
-
+// Sets une nouvelle position à la caméra
 void CCamera::setEye(QVector<double> point)
 {
     _eyeX = point[0];
@@ -186,6 +188,8 @@ void CCamera::setEye(QVector<double> point)
     _eyeZ = point[2];
 
 }
+
+// Sets un nouveau point à regarder pour la caméra
 void CCamera::setCenter(QVector<double> point)
 {
     _centerX = point[0];

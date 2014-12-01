@@ -3,10 +3,9 @@
 std::string Classifieur::imgClasses[] = {"NC.png","marche.png","course.png","monte.png","descend.png"};
 std::string Classifieur::labelClasses[] = {"Non Classifie","Marche","Course","Monte les escaliers","Descend les escaliers"};
 
-Classifieur::Classifieur(QVector <Signal*> *unPSignaux,int unNbSignaux,int uneTailleFenetre)
+Classifieur::Classifieur(QVector <Signal*> *unPSignaux,int uneTailleFenetre)
 {
     _pSignaux          = unPSignaux;
-    _nbSignaux         = unNbSignaux;
     _tailleFenetreStats= uneTailleFenetre;
     _estClasse         = false;
 }
@@ -20,14 +19,14 @@ Classifieur::~Classifieur()
 // Lancement de la classification
 void Classifieur::classe()
 {
-    if (_pSignaux->size() >= 3)
+    if (_pSignaux->size() >= nbSignauxClassif)
     {
         Signal accX       = (*(*_pSignaux)[0]);
         if (accX.getTaille()>(_tailleFenetreStats-1))
         {
             Signal accY       = (*(*_pSignaux)[1]);
             Signal accZ       = (*(*_pSignaux)[2]);
-            int delta         = (_tailleFenetreStats-1)/2;
+
             _tailleClasses    = accX.getTaille()-_tailleFenetreStats+1;
 
             if (_tailleClasses > 0)

@@ -188,6 +188,8 @@ void MainWindow::setslidervalue()
 
     ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
     ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
+
+    std::cout << this->_pTdb->getiCourant() <<std::endl;
 }
 
 // PLAY
