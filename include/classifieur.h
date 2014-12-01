@@ -55,7 +55,7 @@ class Classifieur
         /**
             * \fn getClasse
             * \brief Renvoie la classe pour le ieme élément du signal
-            * \param i Indice de l'élément du Signal (int)
+            * \param i ieme élément du Signal (int)
             * \return Renvoie l'entier correspondant à la classe (int)
         */
         int getClasse(int);

@@ -418,7 +418,7 @@ void Signal::calculStats()
 {
     _estStatistique = true;
     // Il faut que la taille du signal soit assez grande par rapport à la taille de la fenetre
-    if (_taille > (_tailleFenetreStats+1))
+    if (_taille >= _tailleFenetreStats)
     {
         _signalMoyenne  = new SampleType[_taille-_tailleFenetreStats+1];
         _signalEcartType= new SampleType[_taille-_tailleFenetreStats+1];
