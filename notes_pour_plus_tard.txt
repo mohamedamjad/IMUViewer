@@ -18,3 +18,9 @@
 		ce qu'il faut faire en terme d'analyse logicielle
 *** soutenance!!!!!!!!
 
+------------------------------eN CAS DE REGRESSION MARDI MATIN Lundi soir j'ai changé : -----------------------------
+classifieur::classe()
+=>if (accX.getTaille()>=_tailleFenetreStats)
+signal::calculStats()
+=>if (_taille >= _tailleFenetreStats)
+------------------------------------------------------------------------------------
