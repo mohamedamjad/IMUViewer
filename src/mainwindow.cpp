@@ -185,24 +185,24 @@ void MainWindow::majClasse()
     switch (_pTdb->getClasse(this->_pTdb->getiCourant())) {
 
     case 1:
-        this->findChild<label*>("label_14")->setText ("Marche");
-        this->findChild<label*>("label_15")->setPixmap (marche);
+        this->findChild<QLabel*>("label_14")->setText ("Marche");
+        this->findChild<QLabel*>("label_15")->setPixmap (marche);
         break;
     case 2:
-        this->findChild<label*>("label_14")->setText ("Course");
-        this->findChild<label*>("label_15")->setPixmap (course);
+        this->findChild<QLabel*>("label_14")->setText ("Course");
+        this->findChild<QLabel*>("label_15")->setPixmap (course);
         break;
     case 3:
-        this->findChild<label*>("label_14")->setText ("Monte les escaliers");
-        this->findChild<label*>("label_15")->setPixmap (monte);
+        this->findChild<QLabel*>("label_14")->setText ("Monte les escaliers");
+        this->findChild<QLabel*>("label_15")->setPixmap (monte);
         break;
     case 4:
-        this->findChild<label*>("label_14")->setText ("Descend les excaliers");
-        this->findChild<label*>("label_15")->setPixmap (descend);
+        this->findChild<QLabel*>("label_14")->setText ("Descend les excaliers");
+        this->findChild<QLabel*>("label_15")->setPixmap (descend);
         break;
     default:
-        this->findChild<label*>("label_14")->setText ("Non Classifié");
-        this->findChild<label*>("label_15")->setPixmap (NC);
+        this->findChild<QLabel*>("label_14")->setText ("Non Classifié");
+        this->findChild<QLabel*>("label_15")->setPixmap (NC);
         break;
     }
 
