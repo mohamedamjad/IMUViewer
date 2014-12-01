@@ -15,7 +15,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // Chargement du fichier...
     this->chargeFichier(filename.toStdString().c_str());
 
-
     // Affectation des comportements à chaque capteur
     CapteurGL *capteurAcc = this->findChild<CapteurGL*>("glCapteurAcc");
     CapteurGL *capteurGyro = this->findChild<CapteurGL*>("glCapteurGyro");
@@ -189,7 +188,6 @@ void MainWindow::setslidervalue()
     ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
     ui->horizontalSlider->setValue(this->_pTdb->getiCourant());
 
-    std::cout << this->_pTdb->getiCourant() <<std::endl;
 }
 
 // PLAY
