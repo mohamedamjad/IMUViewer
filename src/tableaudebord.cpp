@@ -1,8 +1,12 @@
 #include "tableaudebord.h"
 
+TableauDeBord::TableauDeBord()
+{
+    _nbEch=0;
+}
 
 TableauDeBord::TableauDeBord(const char* fichiercsv)
-{   
+{
     // Lecture du fichier des données centrale
     CSV donneesCentrale;
     //_fichiercsv="amjad_marche_cheville.out";
@@ -15,7 +19,6 @@ TableauDeBord::TableauDeBord(const char* fichiercsv)
     creeVecteurSignauxEtClassifie(donneesBrutes,freqFiltreGravite,freqEch);
     calculeFenetreCentrale();
 
-
     // Initialisation de l'indice de parcours du signal et des capteurs
     reInitialiseCapteursCentraleEtProgressionSignal();
 
@@ -27,7 +30,12 @@ TableauDeBord::TableauDeBord(const char* fichiercsv)
 TableauDeBord::~TableauDeBord()
 {
     if (_classif) delete _classif;
+    // On vide le QVector de signaux
 
+    for (int i=0;i<_signaux.size();i++)
+    {
+        delete _signaux[i];
+    }
 }
 
 
@@ -312,9 +320,9 @@ void TableauDeBord::miseenplace(int i)
     _IMU._distance = sqrt(pow(_IMU._position[0],2)+pow(_IMU._position[1],2)+pow(_IMU._position[2],2));
 }
 
-// Renvoie la classe courante
-int TableauDeBord::getClasse(int i)
+Classifieur* TableauDeBord::getClassifieur()
 {
-    return _classif->getClasse(i);
-
+    return _classif;
 }
+
+

@@ -1,15 +1,18 @@
 #ifndef CLASSIFIEUR_H
 #define CLASSIFIEUR_H
 
-#include <QVector>;
+#include <QVector>
+#include <QString>
 #include "signal.h"
 #include <math.h>
+#include <string.h>
 
+#define NON_CLASSE 0
 #define CLASSE_MARCHE 1
 #define CLASSE_COURSE 2
 #define CLASSE_MONTE_ESCALIER 3
 #define CLASSE_DESCEND_ESCALIER 4
-#define NON_CLASSE -1
+
 
 // Parametres de classification empiriques
 #define seuilMoyenneNormeAccelerationMarcheOuCourse 14
@@ -24,9 +27,13 @@ class Classifieur
         ~Classifieur();
         void classe();
         int getClasse(int);
+        QString getLabelClasse(int);
+        QString getImgClasse(int);
     private:
-
+        static std::string imgClasses[];
+        static std::string labelClasses[];
         QVector<Signal*> *_pSignaux;
+
         int* _pClasses;
         int _nbSignaux;
         int _tailleFenetreStats;

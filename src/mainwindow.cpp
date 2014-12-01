@@ -8,9 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     _fichierOuvert = false;
+    // L'utilisateur choisit un fichier...
+    QString filename=QFileDialog::getOpenFileName(this,tr("Open File"),"",tr("Text files (*.out)"));
     ui->setupUi(this);
     _pTimer = new QTimer(this);
-    chargeFichier("ferdaousse_mixte_cheville.out");
+    // Chargement du fichier...
+    this->chargeFichier(filename.toStdString().c_str());
 
 
     // Affectation des comportements à chaque capteur
@@ -149,6 +152,7 @@ void MainWindow::chargeFichier(const char* filename)
 //destructeur
 MainWindow::~MainWindow()
 {
+    delete _pTdb;
     delete ui;
 }
 
@@ -171,36 +175,10 @@ void MainWindow::majLCD()
 
 void MainWindow::majClasse()
 {
-       QPixmap marche("../IMUViewer/images/classif_mouvement/marche.png");
-    QPixmap course("../IMUViewer/images/classif_mouvement/course.png");
-    QPixmap monte("../IMUViewer/images/classif_mouvement/monte.png");
-    QPixmap descend("../IMUViewer/images/classif_mouvement/descend.png");
-    QPixmap NC("../IMUViewer/images/classif_mouvement/NC.png");
+    int iCourant = this->_pTdb->getiCourant();
 
-    switch (_pTdb->getClasse(this->_pTdb->getiCourant())) {
-
-    case 1:
-        this->findChild<QLabel*>("label_14")->setText ("Marche");
-        this->findChild<QLabel*>("label_15")->setPixmap (marche);
-        break;
-    case 2:
-        this->findChild<QLabel*>("label_14")->setText ("Course");
-        this->findChild<QLabel*>("label_15")->setPixmap (course);
-        break;
-    case 3:
-        this->findChild<QLabel*>("label_14")->setText ("Monte les escaliers");
-        this->findChild<QLabel*>("label_15")->setPixmap (monte);
-        break;
-    case 4:
-        this->findChild<QLabel*>("label_14")->setText ("Descend les excaliers");
-        this->findChild<QLabel*>("label_15")->setPixmap (descend);
-        break;
-    default:
-        this->findChild<QLabel*>("label_14")->setText ("Non Classifié");
-        this->findChild<QLabel*>("label_15")->setPixmap (NC);
-        break;
-    }
-
+    this->findChild<QLabel*>("label_14")->setText (this->_pTdb->getClassifieur()->getLabelClasse(iCourant));
+    this->findChild<QLabel*>("label_15")->setPixmap (this->_pTdb->getClassifieur()->getImgClasse(iCourant));
 }
 
 //Initialisation de la valeur du slider

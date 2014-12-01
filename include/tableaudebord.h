@@ -38,10 +38,9 @@ class TableauDeBord : public QObject
 {
     Q_OBJECT
     public:
-
+        TableauDeBord();
         TableauDeBord(const char* fichiercsv);
         ~TableauDeBord();
-
         Centrale _IMU;
 
         QVector<double> getCoinInferieur();
@@ -58,7 +57,7 @@ class TableauDeBord : public QObject
         void miseenplace(int i);
         void calculeFenetreCentrale();
         int getClasse(int i);
-
+        Classifieur* getClassifieur();
     public slots:
 
         void majCentrale();
