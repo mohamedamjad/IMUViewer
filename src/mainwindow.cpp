@@ -67,6 +67,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect (this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)),glSignalGyro, SLOT(updateLabel()));
     QObject::connect (this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)),glSignalMagne, SLOT(updateLabel()));
 
+    QObject::connect (this->findChild<QComboBox*>("comboBox"), SIGNAL(currentIndexChanged(int)), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(setProjection(int)));
+
     // Clic sur pause
     connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
 
