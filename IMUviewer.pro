@@ -29,18 +29,13 @@ SOURCES += src/main.cpp \
     src/quaternion.cpp \
     src/tests.cpp \
     src/mainwindow.cpp \
-    src/capteurgl.cpp \
     src/centrale.cpp \
-    src/acccapteurgl.cpp \
-    src/magnecapteurgl.cpp \
-    src/gyrocapteurgl.cpp \
     src/principalcapteurgl.cpp \
     src/tableaudebord.cpp \
     src/gyrograph.cpp \
     src/CCamera.cpp \
-    src/combobox.cpp \
-    src/label.cpp \
-    src/classifieur.cpp
+    src/classifieur.cpp \
+    src/capteurgl.cpp
 
 
 
@@ -52,19 +47,14 @@ HEADERS += \
     include/quaternion.h \
     include/tests.h \
     include/mainwindow.h \
-    include/capteurgl.h \
     include/glwidget.h \
     include/centrale.h \
-    include/acccapteurgl.h \
-    include/magnecapteurgl.h \
-    include/gyrocapteurgl.h \
     include/principalcapteurgl.h \
     include/tableaudebord.h \
     include/gyrograph.h \
     include/CCamera.h \
-    include/combobox.h \
-    include/label.h \
-    include/classifieur.h
+    include/classifieur.h \
+    include/capteurgl.h
 
 
 

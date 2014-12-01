@@ -170,7 +170,7 @@
      <string>Espace d'affichage 3</string>
     </property>
    </widget>
-   <widget class="AccCapteurGL" name="glCapteurAcc" native="true">
+   <widget class="CapteurGL" name="glCapteurAcc" native="true">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -180,7 +180,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="GyroCapteurGL" name="glCapteurGyro" native="true">
+   <widget class="CapteurGL" name="glCapteurGyro" native="true">
     <property name="geometry">
      <rect>
       <x>760</x>
@@ -229,7 +229,7 @@
      <string>(x, y, z) </string>
     </property>
    </widget>
-   <widget class="Combobox" name="comboBox_1">
+   <widget class="QComboBox" name="comboBox_1">
     <property name="geometry">
      <rect>
       <x>1020</x>
@@ -239,7 +239,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="Combobox" name="comboBox_2">
+   <widget class="QComboBox" name="comboBox_2">
     <property name="geometry">
      <rect>
       <x>1020</x>
@@ -249,7 +249,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="Combobox" name="comboBox_3">
+   <widget class="QComboBox" name="comboBox_3">
     <property name="geometry">
      <rect>
       <x>1020</x>
@@ -476,24 +476,14 @@
    <header>principalcapteurgl.h</header>
   </customwidget>
   <customwidget>
-   <class>AccCapteurGL</class>
+   <class>CapteurGL</class>
    <extends>QWidget</extends>
-   <header>acccapteurgl.h</header>
-  </customwidget>
-  <customwidget>
-   <class>GyroCapteurGL</class>
-   <extends>QWidget</extends>
-   <header>gyrocapteurgl.h</header>
+   <header>capteurgl.h</header>
   </customwidget>
   <customwidget>
    <class>gyrograph</class>
    <extends>QWidget</extends>
    <header>gyrograph.h</header>
-  </customwidget>
-  <customwidget>
-   <class>Combobox</class>
-   <extends>QComboBox</extends>
-   <header>combobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

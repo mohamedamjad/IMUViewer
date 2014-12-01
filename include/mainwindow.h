@@ -9,8 +9,9 @@
 #include "gyrograph.h"
 #include <QString>
 #include <QFileDialog>
-#include"combobox.h"
-#include"label.h"
+#include <QComboBox>
+#include <QLabel>
+#include "capteurgl.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,7 +24,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void keyPressEvent(QKeyEvent* event);
-    void Initmainwindow(const char* filename);
+    void chargeFichier(const char* filename);
     ~MainWindow();
 
 public slots :
@@ -48,8 +49,7 @@ private:
     PrincipalCapteurGL *_pcGL;
 
     QTimer *_pTimer;
-    // Pointeur sur Combobox
-    Combobox *_pCombo;
+    bool _fichierOuvert;
 };
 
 #endif // MAINWINDOW_H

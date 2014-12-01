@@ -7,90 +7,59 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    _fichierOuvert = false;
     ui->setupUi(this);
     _pTimer = new QTimer(this);
-    Initmainwindow("ferdaousse_mixte_cheville.out");
-    //Signal du chargement du fichier
-    connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
+    chargeFichier("ferdaousse_mixte_cheville.out");
+
+
+    // Affectation des comportements à chaque capteur
+    CapteurGL *capteurAcc = this->findChild<CapteurGL*>("glCapteurAcc");
+    CapteurGL *capteurGyro = this->findChild<CapteurGL*>("glCapteurGyro");
+    capteurAcc->setComportement(COMP_ACC);
+    capteurGyro->setComportement(COMP_GYRO);
 
     // Affectation des Comboboxs aux widgets appropriés
-    // Première Combobox (premier espace d'affichage)
-    this->findChild<Combobox*>("comboBox_1")->addItem ("Acc. X (m/s2)");
-    this->findChild<Combobox*>("comboBox_1")->addItem ("Acc. Y (m/s2)");
-    this->findChild<Combobox*>("comboBox_1")->addItem ("Acc. Z (m/s2)");
-    this->findChild<Combobox*>("comboBox_1")->addItem ("Gyro. X (rad/s)");
-    this->findChild<Combobox*>("comboBox_1")->addItem ("Gyro. Y (rad/s)");
-    this->findChild<Combobox*>("comboBox_1")->addItem ("Gyro. Z (m/s2)");
-    this->findChild<Combobox*>("comboBox_1")->addItem ("Magn. X (uT)");
-    this->findChild<Combobox*>("comboBox_1")->addItem ("Magn. Y (uT)");
-    this->findChild<Combobox*>("comboBox_1")->addItem ("Magn. Z (uT)");
-    this->findChild<Combobox*>("comboBox_1")->setgyrograph(this->findChild<gyrograph*>("glSignalAcc"));
-
-    // Deuxième Combobox (deuxième espace d'affichage)
-    this->findChild<Combobox*>("comboBox_2")->addItem ("Acc. X (m/s2)");
-    this->findChild<Combobox*>("comboBox_2")->addItem ("Acc. Y (m/s2)");
-    this->findChild<Combobox*>("comboBox_2")->addItem ("Acc. Z (m/s2)");
-    this->findChild<Combobox*>("comboBox_2")->addItem ("Gyro. X (rad/s)");
-    this->findChild<Combobox*>("comboBox_2")->addItem ("Gyro. Y (rad/s)");
-    this->findChild<Combobox*>("comboBox_2")->addItem ("Gyro. Z (m/s2)");
-    this->findChild<Combobox*>("comboBox_2")->addItem ("Magn. X (uT)");
-    this->findChild<Combobox*>("comboBox_2")->addItem ("Magn. Y (uT)");
-    this->findChild<Combobox*>("comboBox_2")->addItem ("Magn. Z (uT)");
-    this->findChild<Combobox*>("comboBox_2")->setgyrograph(this->findChild<gyrograph*>("glSignalGyro"));
-
-    // Troisième Combobox (troisième espace d'affichage)
-    this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. X (m/s2)");
-    this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. Y (m/s2)");
-    this->findChild<Combobox*>("comboBox_3")->addItem ("Acc. Z (m/s2)");
-    this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. X (rad/s)");
-    this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. Y (rad/s)");
-    this->findChild<Combobox*>("comboBox_3")->addItem ("Gyro. Z (m/s2)");
-    this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. X (uT)");
-    this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. Y (uT)");
-    this->findChild<Combobox*>("comboBox_3")->addItem ("Magn. Z (uT)");
-    this->findChild<Combobox*>("comboBox_3")->setgyrograph(this->findChild<gyrograph*>("glSignalGyro"));
-
-
-    // Modifications sur les QLabel
-
-   this->findChild<label*>("label_8")->setNum (this->findChild<gyrograph*>("glSignalAcc")->getpTDB ()->get_signaux ()[this->findChild<gyrograph*>("glSignalAcc")->getsignalIndex ()]->getMaxSignal ());
-   this->findChild<label*>("label_9")->setNum (-this->findChild<gyrograph*>("glSignalAcc")->getpTDB ()->get_signaux ()[this->findChild<gyrograph*>("glSignalAcc")->getsignalIndex ()]->getMaxSignal ());
-   this->findChild<label*>("label_10")->setNum (this->findChild<gyrograph*>("glSignalGyro")->getpTDB ()->get_signaux ()[this->findChild<gyrograph*>("glSignalGyro")->getsignalIndex ()]->getMaxSignal ());
-   this->findChild<label*>("label_11")->setNum (this->findChild<gyrograph*>("glSignalGyro")->getpTDB ()->get_signaux ()[this->findChild<gyrograph*>("glSignalGyro")->getsignalIndex ()]->getMaxSignal ());
-   this->findChild<label*>("label_12")->setNum (this->findChild<gyrograph*>("glSignalMagne")->getpTDB ()->get_signaux ()[this->findChild<gyrograph*>("glSignalMagne")->getsignalIndex ()]->getMaxSignal ());
-   this->findChild<label*>("label_13")->setNum (this->findChild<gyrograph*>("glSignalMagne")->getpTDB ()->get_signaux ()[this->findChild<gyrograph*>("glSignalMagne")->getsignalIndex ()]->getMaxSignal ());
-
-    ui->lcdNumber->setDigitCount(8);
+    for (int i=1;i<=3;i++)
+    {
+        char idBox[10];
+        sprintf(idBox,"comboBox_%d",i);
+        QComboBox* cbb = this->findChild<QComboBox*>(idBox);
+        cbb->addItem ("Acc. X (m/s2)");
+        cbb->addItem ("Acc. Y (m/s2)");
+        cbb->addItem ("Acc. Z (m/s2)");
+        cbb->addItem ("Gyro. X (rad/s)");
+        cbb->addItem ("Gyro. Y (rad/s)");
+        cbb->addItem ("Gyro. Z (m/s2)");
+        cbb->addItem ("Magn. X (uT)");
+        cbb->addItem ("Magn. Y (uT)");
+        cbb->addItem ("Magn. Z (uT)");
+    }
+    gyrograph* glSignalAcc  = this->findChild<gyrograph*>("glSignalAcc");
+    gyrograph* glSignalGyro = this->findChild<gyrograph*>("glSignalGyro");
+    gyrograph* glSignalMagne= this->findChild<gyrograph*>("glSignalMagne");
 
     // Mise à jour de la centrale inertielle en suivant le _pTimer
     QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
-    // Mise à jour des widgets gl
-
-    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<AccCapteurGL*>("glCapteurAcc"), SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<GyroCapteurGL*>("glCapteurGyro"), SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<MagneCapteurGL*>("glCapteurMagne"), SLOT(updateGL()));
+    // Mise à jour des widgets gl en suivant le timer
+    QObject::connect(_pTimer, SIGNAL(timeout()), capteurAcc, SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), capteurGyro, SLOT(updateGL()));
     QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateGL()));
-    QObject::connect(this->findChild<Combobox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalAcc"), SLOT(setsignalIndex(int)));
-    QObject::connect(this->findChild<Combobox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalGyro"), SLOT(setsignalIndex(int)));
-    QObject::connect(this->findChild<Combobox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalMagne"), SLOT(setsignalIndex(int)));
-    QObject::connect (this->findChild<Combobox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateLabel()));
-    QObject::connect (this->findChild<Combobox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateLabel()));
-    QObject::connect (this->findChild<Combobox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateLabel()));
-
-
-
-    //Affichage en décimal dans l'écran LCD
-
-     ui->lcdNumber->setDigitCount(8);
-
+    QObject::connect(_pTimer, SIGNAL(timeout()), glSignalAcc, SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), glSignalGyro, SLOT(updateGL()));
+    QObject::connect(_pTimer, SIGNAL(timeout()), glSignalMagne, SLOT(updateGL()));
+    // Maj LCD avec le timer
     QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majLCD()));
-
-    // Evolution slider + boutons
-
+    // Maj LCS avec timer
     connect(_pTimer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
+    ////////////////////////////////EVENEMENTS UTILISATEUR//////////////////////////////////////////
+    // Choix d'un autre signal à visualiser
+    QObject::connect(this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalAcc"), SLOT(setsignalIndex(int)));
+    QObject::connect(this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalGyro"), SLOT(setsignalIndex(int)));
+    QObject::connect(this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)), this->findChild<gyrograph*>("glSignalMagne"), SLOT(setsignalIndex(int)));
+    QObject::connect (this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalAcc"), SLOT(updateLabel()));
+    QObject::connect (this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalGyro"), SLOT(updateLabel()));
+    QObject::connect (this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)),this->findChild<gyrograph*>("glSignalMagne"), SLOT(updateLabel()));
 
     // Clic sur pause
 
@@ -110,66 +79,75 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->horizontalSlider, SIGNAL(sliderPressed()), _pTimer, SLOT(stop()));
     connect(ui->actionQuitter, SIGNAL(triggered(bool)),this , SLOT(close()));
 
+    //Clic sur ouvrir un fichier
+    connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
+    // Affichage LCD à 8 caractères
+     ui->lcdNumber->setDigitCount(8);
 }
 
-void MainWindow::Initmainwindow(const char* filename)
+void MainWindow::chargeFichier(const char* filename)
 {
+    // On supprime l'ancien tableau de bord si un fichier a déjà été ouvert
+    if (_fichierOuvert)delete _pTdb;
+    _fichierOuvert = true;
 
     _pTdb = new TableauDeBord(filename);
-    int max=_pTdb->getnbEch();
     _pTdb->calculeFenetreCentrale ();
 
     _pcGL = this->findChild<PrincipalCapteurGL*>("glPrincipal");
     _pcGL->setCentrale(&_pTdb->_IMU);
 
-    /*   // Mise à jour de la centrale inertielle en suivant le _pTimer
-       QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
-    */   // Mise à jour des widgets gl
+    // Mise à jour des widgets gl
     // Affectation de la centrale du tableau de bord aux widgets capteurs
-    this->findChild<AccCapteurGL*>("glCapteurAcc")->setCentrale(&_pTdb->_IMU);
-    this->findChild<GyroCapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
-    this->findChild<MagneCapteurGL*>("glCapteurMagne")->setCentrale(&_pTdb->_IMU);
+    this->findChild<CapteurGL*>("glCapteurAcc")->setCentrale(&_pTdb->_IMU);
+    this->findChild<CapteurGL*>("glCapteurGyro")->setCentrale(&_pTdb->_IMU);
 
 
 
     // Affectation de la centrale et du tableau de bord aux widgets signaux
-    this->findChild<gyrograph*>("glSignalAcc")->setCentrale (&_pTdb->_IMU);
-    this->findChild<gyrograph*>("glSignalAcc")->setTableauDeBord (_pTdb);
-    this->findChild<gyrograph*>("glSignalAcc")->setsignalIndex (0);
-    this->findChild<gyrograph*>("glSignalAcc")->setmaxLabel (this->findChild<label*>("label_8"));
-    this->findChild<gyrograph*>("glSignalAcc")->setminLabel (this->findChild<label*>("label_9"));
+    gyrograph* pGyroAcc= this->findChild<gyrograph*>("glSignalAcc");
+    pGyroAcc->setCentrale (&_pTdb->_IMU);
+    pGyroAcc->setTableauDeBord (_pTdb);
+    pGyroAcc->setsignalIndex (0);
+    pGyroAcc->setmaxLabel (this->findChild<QLabel*>("label_8"));
+    pGyroAcc->setminLabel (this->findChild<QLabel*>("label_9"));
 
+    gyrograph* pGyroGyro= this->findChild<gyrograph*>("glSignalGyro");
+    pGyroGyro->setCentrale (&_pTdb->_IMU);
+    pGyroGyro->setTableauDeBord (_pTdb);
+    pGyroGyro->setsignalIndex (0);
+    pGyroGyro->setmaxLabel (this->findChild<QLabel*>("label_10"));
+    pGyroGyro->setminLabel (this->findChild<QLabel*>("label_11"));
 
-    this->findChild<gyrograph*>("glSignalGyro")->setCentrale (&_pTdb->_IMU);
-    this->findChild<gyrograph*>("glSignalGyro")->setTableauDeBord (_pTdb);
-    this->findChild<gyrograph*>("glSignalGyro")->setsignalIndex (0);
-    this->findChild<gyrograph*>("glSignalGyro")->setmaxLabel (this->findChild<label*>("label_10"));
-    this->findChild<gyrograph*>("glSignalGyro")->setminLabel (this->findChild<label*>("label_11"));
+    gyrograph* pGyroMagne= this->findChild<gyrograph*>("glSignalMagne");
+    pGyroMagne->setCentrale (&_pTdb->_IMU);
+    pGyroMagne->setTableauDeBord (_pTdb);
+    pGyroMagne->setsignalIndex (0);
+    pGyroMagne->setmaxLabel (this->findChild<QLabel*>("label_12"));
+    pGyroMagne->setminLabel (this->findChild<QLabel*>("label_13"));
 
+    // Modifications sur les QLabel
 
-    this->findChild<gyrograph*>("glSignalMagne")->setCentrale (&_pTdb->_IMU);
-    this->findChild<gyrograph*>("glSignalMagne")->setTableauDeBord (_pTdb);
-    this->findChild<gyrograph*>("glSignalMagne")->setsignalIndex (0);
-    this->findChild<gyrograph*>("glSignalMagne")->setmaxLabel (this->findChild<label*>("label_12"));
-    this->findChild<gyrograph*>("glSignalMagne")->setminLabel (this->findChild<label*>("label_13"));
+   this->findChild<QLabel*>("label_8")->setNum (_pTdb->get_signaux ()[this->findChild<gyrograph*>("glSignalAcc")->getsignalIndex ()]->getMaxSignal ());
+   this->findChild<QLabel*>("label_9")->setNum (-_pTdb->get_signaux ()[this->findChild<gyrograph*>("glSignalAcc")->getsignalIndex ()]->getMaxSignal ());
+   this->findChild<QLabel*>("label_10")->setNum (_pTdb->get_signaux ()[this->findChild<gyrograph*>("glSignalGyro")->getsignalIndex ()]->getMaxSignal ());
+   this->findChild<QLabel*>("label_11")->setNum (-_pTdb->get_signaux ()[this->findChild<gyrograph*>("glSignalGyro")->getsignalIndex ()]->getMaxSignal ());
+   this->findChild<QLabel*>("label_12")->setNum (_pTdb->get_signaux ()[this->findChild<gyrograph*>("glSignalMagne")->getsignalIndex ()]->getMaxSignal ());
+   this->findChild<QLabel*>("label_13")->setNum (-_pTdb->get_signaux ()[this->findChild<gyrograph*>("glSignalMagne")->getsignalIndex ()]->getMaxSignal ());
 
+     // Mise à jour de la centrale inertielle en suivant le _pTimer
+     QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
 
+     // Maj de la classe de mouvement
+     QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majClasse()));
 
- // Mise à jour de la centrale inertielle en suivant le _pTimer
- QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
+     // + fenetre d'évolution de la centrale
 
- // Maj de la classe de mouvement
- QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majClasse()));
+     _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
 
- // + fenetre d'évolution de la centrale
+     //initialisation de la taille du slider
 
- _pcGL->setFenetreEvolutionCentrale(_pTdb->getCoinInferieur(),_pTdb->getCoinSuperieur());
-
- //initialisation de la taille du slider
-
-  ui->horizontalSlider->setRange(0,max);
-
-
+      ui->horizontalSlider->setRange(0,_pTdb->getnbEch());
 
 }
 
@@ -243,6 +221,5 @@ void MainWindow::dragslidervalue()
 void MainWindow::loadfile()
 {
     QString filename=QFileDialog::getOpenFileName(this,tr("Open File"),"",tr("Text files (*.out)"));
-    this->Initmainwindow(filename.toStdString().c_str());
-
+    this->chargeFichier(filename.toStdString().c_str());
 }

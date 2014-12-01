@@ -1,37 +1,44 @@
-#ifndef CAPTEURGL_H
-#define CAPTEURGL_H
+
+#ifndef CAPTEURGLWIDGET_H
+#define CAPTEURGLWIDGET_H
 
 #include <QGLWidget>
-#include "centrale.h"
-#include <iostream>
 #include <QTimerEvent>
+#include <GL/glut.h>
+#include "centrale.h"
+#include <cmath>
 
-/*
-   Pour optimisation diagramme de classes et classe intermédiaire entre QGLWIdget et les classes GL correspondant aux capteurs
-   mais probleme de polymorphisme, les méthodes petites filles ne sont pas appelées
+#define longueurMaxAxe 1.5
+#define valMaxAccArbitraire 30.0
 
-   ... à voir par la suite....
-*/
+#define COMP_ACC 1
+#define COMP_GYRO 2
 
-
-class CapteurGL : virtual public QGLWidget
+class CapteurGL : public QGLWidget
 {
     Q_OBJECT
-public:
-    explicit CapteurGL(QWidget *parent = 0);
-    void setCentrale(Centrale*);
+    public:
+         explicit CapteurGL(QWidget *parent = 0);
 
-    virtual void initializeGL();
-    virtual void resizeGL(int width, int height);
-    virtual void paintGL();
-    virtual void mousePressEvent(QMouseEvent *event);
-    virtual void mouseMoveEvent(QMouseEvent *event);
-    virtual void keyPressEvent( QKeyEvent *keyEvent );
-    void timerEvent(QTimerEvent);
+        void initializeGL();
+        void resizeGL(int w, int h);
+        void paintGL();
+        void mousePressEvent(QMouseEvent *event);
+        void mouseMoveEvent(QMouseEvent *event);
+        void keyPressEvent( QKeyEvent *keyEvent );
+        void timerEvent(QTimerEvent);
 
-protected :
-    Centrale* _centrale;
+        void setCentrale(Centrale *);
+        void setComportement(int);
 
+    public slots:
+        void updateGL();
+
+    private:
+        Centrale* _pIMU;
+        void afficheRepereRVB();
+        void accAfficheRepereBlanc();
+        int _comportement;
 };
 
-#endif // CAPTEURGL_H
+#endif

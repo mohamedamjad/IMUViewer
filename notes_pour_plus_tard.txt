@@ -8,6 +8,8 @@
 	- 9 dans signal::normalizevector : il faudrait le passer en parametre	
 	- ajout de tests (notamment sur la taille des tableaux)
 	- regrouper en une classe l'affichage des capteurs en haut à droite
+	- noms variables : _ pour propriétés p pour pointeurs
+	- warnings
 *** tests unitaires
 *** document Doxygen
 *** rapport!!!!!!!!!!!!

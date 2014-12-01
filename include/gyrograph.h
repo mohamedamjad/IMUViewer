@@ -1,7 +1,6 @@
 #ifndef GYROGRAPH_H
 #define GYROGRAPH_H
 
-#include "capteurgl.h"
 #include <QGLWidget>
 #include <QTimerEvent>
 #include<GL/glut.h>
