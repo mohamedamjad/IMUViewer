@@ -1,64 +1,20 @@
 
-********* OpenGL *********
-- fenetre principale:
-	- parametres a changer avec nouvelle intégration
-	- visu téléphone?=> blender
-- bascule en Quaternions : rotations
-- vbo???
-- libqglviewer??
-
-
-
-********* Traitement du signal *************
-- attention un signal non filtré n'est pas réeéchantillonné actuellement (signaux deu pas différents)
-- classification du mouvement
-
-********* IHM *********
-- chargement fichier
-- évolution du curseur avec boutons
-
-
-- les classes gl ont été simplifiées, on pourrait ajouter une classe capteur mere qui contiendra le pointeur vers la centrale
-
-********* general *********
-- fuites memoire (delete...)
-- test de taille de fichier (si nbLignes>...)
-
-
-*********Priorités fixées par Emmanuel ***********
-- optimisation code
-- document Doxygen
-- tests unitaires
-- étude de la corrélation entre capteurs
-- qualification de la dérive issue d'une double intégration via l'affichage
-
-
-***********************************************
-!!!!!FREQUENCYTYPE : j'ai changé vendredi soit le type du parametre de regulariseechantillonage : SampleType=>FrequencyType!!!!
-
-*****************************************A FAIRE DANS L'ORDRE
-Developpement : s'arrêter là fin de semaine prochaine
-
-- Amjad Affichage projeté avec hoix dans l'interface en cours de finalisation
 - Amjad : ajout icone de classif dans interface
-----------------
+
 - pb de timer
-- optimisation code : si pas le temps indiquer ce qu'il faudrait faire dans le rapport
-- fuites memoire (delete...)
-- ajout de tests (notamment sur la taille des tableaux)
-- tests unitaires
-- document Doxygen
-- rapport!!!!!!!!!!!!
-- soutenance!!!!!!!!
+*** optimisation code : si pas le temps indiquer ce qu'il faudrait faire dans le rapport
+	- fuites memoire : partout mais particulierement dans mainwindow, tableau de bord (détruire tous les signaux dans le QVector)
+	- tests sur la taille des fichiers
+	- 9 dans signal::normalizevector : il faudrait le passer en parametre	
+	- ajout de tests (notamment sur la taille des tableaux)
+	- regrouper en une classe l'affichage des capteurs en haut à droite
+*** tests unitaires
+*** document Doxygen
+*** rapport!!!!!!!!!!!!
+	- Aide pour installation librairie
+	- Explication acquisition : schéma téléphone
+	- Perspectives : 
+		comparaison signal dégravité avec capteur TYPE_GRAVITY de Android
+		ce qu'il faut faire en terme d'analyse logicielle
+*** soutenance!!!!!!!!
 
-9 dans signal::normalizevector : il faudrait le passer en parametre
-
-*****************************************RAPPORT
-Perspectives : 
-comparaison signal dégravité avec capteur TYPE_GRAVITY de Android
-
-
-
-*****************************************Si on a encore du temps
-- caméra orientée dans le sens du pied (ou autre)
-- axe y inversé non? (sur toutes les vues capteur)

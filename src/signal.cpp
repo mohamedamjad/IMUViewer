@@ -7,6 +7,7 @@ Signal::Signal(SampleType** uneMatrice,int taille,int colTemps,int colSignal,int
     _signal       = new SampleType[taille];
     _vecteurTemps = new SampleType[taille];
     _tailleFenetreStats = tailleFenetreStats;
+    _estStatistique=false;
 
     // Récupération des valeurs du signal temps et du signal tout court
     for (int i=0;i<taille;i++)
@@ -24,7 +25,6 @@ Signal::Signal(const Signal& unSignal)
     _signal       = new SampleType[_taille];
     _vecteurTemps = new SampleType[_taille];
     _tailleFenetreStats = unSignal._tailleFenetreStats;
-
 
     // Recopie du temps et du signal
     for (int i=0;i<_taille;i++)
@@ -399,8 +399,6 @@ SampleType Signal::getMaxSignal ()
     for(int i=0;i<this->getTaille ();i++)
     {
         if (max<fabs(this->getSignal (i)))
-            continue;
-        else
             max=fabs(this->getSignal (i));
     }
 
