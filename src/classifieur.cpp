@@ -46,7 +46,6 @@ void Classifieur::classe()
                 }
                 norme->calculStats();
 
-
                 // Classication : parcours du tableau des classes
                 for (int i=0;i<_tailleClasses;i++)
                 {
@@ -87,7 +86,9 @@ int Classifieur::getClasse(int i)
         int delta  = (_tailleFenetreStats-1)/2;
         int iClasse= i - delta;
         if ((iClasse>=0) && (iClasse<_tailleClasses))
-            return _pClasses[i];
+        {
+            return _pClasses[iClasse];
+        }
     }
     return NON_CLASSE;
 }

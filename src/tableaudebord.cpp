@@ -187,6 +187,7 @@ void TableauDeBord::majCentrale()
 /// Renvoie -1 si iCourant a été réinitialisé à zéro
 int TableauDeBord::incrementeICourant()
 {
+
     QTime maintenant = QTime::currentTime();
     // Nb de ms depuis le dernier tour
     int mSecs = abs(maintenant.msecsTo(_lastTime));
