@@ -85,15 +85,48 @@ public:
     void setminLabel(QLabel *minlabel);
 
 public slots:
+    /**
+     * \fn updateGL
+     * \brief SLOT appelé à chaque raffraichissement de la fenêtre principale, il appelle paintGL
+     */
     void updateGL();
+    /**
+     * \fn setsignalIndex
+     * \brief SLOT qui change le signal qu'on affiche dans le gyrograph
+     * \param i : l'indice du signal qu'on veut afficher
+     */
     void setsignalIndex(int i);
+    /**
+     * \fn updateLabel
+     * \brief mise à jour des labels max et min à chaque fois qu'on change de signaux
+     */
     void updateLabel();
 
 private:
+    /**
+     * \var _pIMU
+     * \brief pointeur sur la centrale inertielle
+     */
     Centrale* _pIMU;
+    /**
+     * \var _pTDB
+     * \brief pointeur sur le tableau de bord qui contient les signaux
+     */
     TableauDeBord* _pTDB;
+    /**
+     * \var signalIndex
+     * \brief indice du signal affiché (chaque signal a un indice dans le vecteur des signaux. Le vecteur des signaux contient les 9 signaux issus de la centrale)
+     */
     int signalIndex;
+    /**
+     * \fn _maxLabel
+     * \brief label qui contient le seuil maximal de chaque signal, affiché à côté de chaque gyrograph dans la fenêtre principal
+     */
     QLabel* _maxLabel;
+    /**
+     * \fn _minLabel
+     * \brief label qui contient le seuil minimal de chaque signal, affiché à côté de chaque gyrograph dans la fenêtre principal
+     */
     QLabel* _minLabel;
 
 };
