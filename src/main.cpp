@@ -1,16 +1,8 @@
 #include <QApplication>
-#include "tableaudebord.h"
 #include "tests.h"
-
 #include "mainwindow.h"
 #include <QCoreApplication>
-#include <math.h>
-#include <iostream>
-#include <stdio.h>
-#include <signal.h>
 
-#include <csv.h>
-#include <GL/glut.h>
 
 using namespace std;
 

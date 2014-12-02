@@ -8,17 +8,18 @@ using namespace std;
 CSV::CSV()
 {
 }
-
+// Lance la lecture d'un fichier csv
 double **CSV::readCSV(const char *file_name){
     ;
 
 
     FILE *fichier=NULL;
+    // ouverture du fichier e, lecture
     fichier=fopen(file_name,"r");
     if (fichier!=NULL)
     {
         int ch;
-
+        // Détermination du nombre de lignes
         do
         {
             ch = fgetc(fichier);
@@ -28,15 +29,14 @@ double **CSV::readCSV(const char *file_name){
 
         // On se repositionne au début du fichier
         fseek ( fichier , 0 , SEEK_SET );
-
+        // On crée les 13 colonnes
         double **sensors=new double*[13];
 
-
+        // Pour chaque colonne
         for (int col=0;col<13;col++)
-            sensors[col] = new double[_number_of_lines];
+            sensors[col] = new double[_number_of_lines];// On alloue le number_of_lines lignes
 
-
-            // Lire les valeurs et les stocquer dans une matrice
+            // On lit chaque ligne et on stocke dans la bonne colonne
             for (int i=0;i<_number_of_lines;i++)
             {
                 fscanf(fichier, "%lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf\n", &sensors[0][i],&sensors[1][i],&sensors[2][i],&sensors[3][i],&sensors[4][i],&sensors[5][i],&sensors[6][i],&sensors[7][i],&sensors[8][i],&sensors[9][i],&sensors[10][i],&sensors[11][i],&sensors[12][i]);
@@ -47,7 +47,7 @@ double **CSV::readCSV(const char *file_name){
     else return NULL;
 
 }
-
+// Retourne le nombre de lignes du fichier
 int CSV::getNbLines()
 {
     return _number_of_lines;
