@@ -6,11 +6,14 @@
 #include <time.h>
 #include <iostream>
 #include "tableaudebord.h"
+//#include <QtGui>
+//#include <QtTest/QTest>
 
 using namespace std;
 
 class Tests
 {
+
 public:
     Tests();
 
@@ -19,6 +22,7 @@ public:
     static void TdSPasseBas();
     static bool tout();
     static bool testItegration();
+
 };
 
 #endif // TESTS_H

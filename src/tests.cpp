@@ -203,7 +203,8 @@ bool Tests::testItegration()
     double **sensors=new double*[13];
     double **tdsmatrix=new double*[4];
     CSV fchr;
-    sensors=fchr.readCSV("amjad_controle.csv");
+    sensors=fchr.readCSV("amjad_controle.csv");ternion();
+    static void TdSReec
     int n=fchr.getNbLines();
     float* X=new float [n-2];
     float* Y=new float [n-2];
@@ -223,5 +224,3 @@ bool Tests::testItegration()
 */
     return false;
 }
-
-
