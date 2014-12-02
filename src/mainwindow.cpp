@@ -41,8 +41,6 @@ MainWindow::MainWindow(QWidget *parent) :
     gyrograph* glSignalGyro = this->findChild<gyrograph*>("glSignalGyro");
     gyrograph* glSignalMagne= this->findChild<gyrograph*>("glSignalMagne");
 
-    // Mise à jour de la centrale inertielle en suivant le _pTimer
-    QObject::connect(_pTimer, SIGNAL(timeout()), _pTdb, SLOT(majCentrale()));
     // Mise à jour des widgets gl en suivant le timer
     QObject::connect(_pTimer, SIGNAL(timeout()), capteurAcc, SLOT(updateGL()));
     QObject::connect(_pTimer, SIGNAL(timeout()), capteurGyro, SLOT(updateGL()));
@@ -92,7 +90,12 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::chargeFichier(const char* filename)
 {
     // On supprime l'ancien tableau de bord si un fichier a déjà été ouvert
-    if (_fichierOuvert)delete _pTdb;
+    if (_fichierOuvert)
+    {
+        // On déconnecte l'ancien tableau de bord du timer
+        QObject::disconnect(_pTimer, 0, _pTdb, 0);
+        delete _pTdb;
+    }
     _fichierOuvert = true;
 
     _pTdb = new TableauDeBord(filename);

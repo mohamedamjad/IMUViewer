@@ -1,6 +1,3 @@
-
-- Amjad : ajout icone de classif dans interface
-
 - pb de timer
 *** optimisation code : si pas le temps indiquer ce qu'il faudrait faire dans le rapport
 	- tests sur la taille des tableaux
