@@ -157,6 +157,17 @@ void TableauDeBord::majCentrale()
             setPositionEtCapteursCentrale(i);
         }
     }
+    // Maj orientation de la centrale
+    double angleX = _signaux[3]->getSignalIntegre(iCourant);
+    double angleY = _signaux[4]->getSignalIntegre(iCourant);
+    double angleZ = _signaux[5]->getSignalIntegre(iCourant);
+    _IMU._orientation[0]= (_IMU._orientation[0]>=2*M_PI) ? angleX : angleX-2*M_PI;
+    _IMU._orientation[1]= (_IMU._orientation[1]>=2*M_PI) ? angleY : angleY-2*M_PI;
+    _IMU._orientation[2]= (_IMU._orientation[2]>=2*M_PI) ? angleZ : angleZ-2*M_PI;
+    // Maj capteurs accélération
+    _IMU._acc[0] = _signaux[0]->getSignal(iCourant);
+    _IMU._acc[1] = _signaux[1]->getSignal(iCourant);
+    _IMU._acc[2] = _signaux[2]->getSignal(iCourant);
 }
 
 
@@ -251,13 +262,6 @@ void TableauDeBord::reInitialiseCapteursCentraleEtProgressionSignal()
 // Règle la position de la centrale et les données de ses capteurs correspondant à un certain instant dans le signal et ajoute la position courante à son historique de trajectoire
 void TableauDeBord::setPositionEtCapteursCentrale(int i)
 {
-    // Orientation : cumul des angles obtenus par intégration du signal gyro
-    double angleX = _signaux[3]->getSignalIntegre(i);
-    double angleY = _signaux[4]->getSignalIntegre(i);
-    double angleZ = _signaux[5]->getSignalIntegre(i);
-    _IMU._orientation[0]= (_IMU._orientation[0]>=2*M_PI) ? angleX : angleX-2*M_PI;
-    _IMU._orientation[1]= (_IMU._orientation[1]>=2*M_PI) ? angleY : angleY-2*M_PI;
-    _IMU._orientation[2]= (_IMU._orientation[2]>=2*M_PI) ? angleZ : angleZ-2*M_PI;
     // Position depuis l'acceleromètre
     _IMU._position[0]= _signaux[9]->getSignalDoubleIntegre(i);
     _IMU._position[1]= _signaux[10]->getSignalDoubleIntegre(i);
