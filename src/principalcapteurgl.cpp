@@ -215,7 +215,7 @@ void PrincipalCapteurGL::afficheTrajectoireCentrale()
     }
 }
 
-void PrincipalCapteurGL::afficheSol()
+/*void PrincipalCapteurGL::afficheSol()
 {
 
     glBegin(GL_POLYGON);
@@ -225,7 +225,7 @@ void PrincipalCapteurGL::afficheSol()
         glVertex3f(_coinInferieur[0]+_largeurFenetre,_coinInferieur[1]+_profondeurFenetre,_coinInferieur[2]);
         glVertex3f(_coinInferieur[0]+_largeurFenetre,_coinInferieur[1],_coinInferieur[2]);
     glEnd();
-}
+}*/
 
  void PrincipalCapteurGL::afficheCentrale()
 {
