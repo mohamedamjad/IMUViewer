@@ -21,3 +21,5 @@ classifieur::classe()
 signal::calculStats()
 =>if (_taille >= _tailleFenetreStats)
 ------------------------------------------------------------------------------------
+Amjad a la derniere version du rapport
+Régis à faire : analyse diagramme de classes
