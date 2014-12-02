@@ -20,6 +20,11 @@ TableauDeBord::TableauDeBord(const char* fichiercsv)
 
     // Initialisation du QTime à maintenant
     setLastTimeToCurrentTime();
+
+    // Libération donneesBrutes
+    for (int i=0; i<13; i++)
+        delete [] donneesBrutes[i];
+    delete [] donneesBrutes;
 }
 
 // Destructeur
