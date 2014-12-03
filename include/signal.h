@@ -138,6 +138,7 @@ public:
         * \fn normalizeVector
         * \brief Normalise un nombre en fonction du max du signal
         * \param val Nombre à normaliser (SampleType)
+        * \param h  la hauteur de l'espace d'affichage
         * \return Le nombre normalisé (SampleType)
     */
     SampleType normalizeVector(SampleType, int h);
