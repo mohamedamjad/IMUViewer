@@ -1,4 +1,0 @@
-Parrallépipède d'évolution
-==========================
-Pour afficher l'évolution de la centrale dans le widget principal nous avons mis en place un parallépipère d'évolution.
-Le parallépipède d'évolution est détérminé à partir des valeurs minimale et maximale qu'atteint la centrale dans son déplacement. Ce parallépipède nous permet de fixer 
