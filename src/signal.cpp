@@ -405,11 +405,11 @@ SampleType Signal::getMaxSignal ()
     return max;
 }
 
-SampleType Signal::normalizeVector(SampleType val )
+SampleType Signal::normalizeVector(SampleType val,int h)
 {
     SampleType result;
 
-    result=val*9/this->getMaxSignal();
+    result=val*h/this->getMaxSignal();
 
     return result;
 }

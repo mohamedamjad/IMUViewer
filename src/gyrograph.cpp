@@ -73,7 +73,7 @@ void gyrograph::afficheSignal()
  }
  for(i=_pTDB->getiCourant ()-220;i<_pTDB->getiCourant ();i++)
  {
-     glVertex3f(-i*0.40,0.0,_pTDB->get_signaux ()[this->signalIndex]->normalizeVector (_pTDB->get_signaux ()[this->signalIndex]->getSignal (i)));
+     glVertex3f(-i*0.40,0.0,_pTDB->get_signaux ()[this->signalIndex]->normalizeVector (_pTDB->get_signaux ()[this->signalIndex]->getSignal (i),9));
 
  }
  glEnd();

@@ -140,7 +140,7 @@ public:
         * \param val Nombre à normaliser (SampleType)
         * \return Le nombre normalisé (SampleType)
     */
-    SampleType normalizeVector(SampleType);
+    SampleType normalizeVector(SampleType, int h);
     /**
         * \fn calculStats
         * \brief Lance le calcul des statistiques sur le signal (crée un tableau de taille du vecteur -_tailleFenetreStats+1)
