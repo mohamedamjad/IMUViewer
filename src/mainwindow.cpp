@@ -10,81 +10,84 @@ MainWindow::MainWindow(QWidget *parent) :
     _fichierOuvert = false;
     // L'utilisateur choisit un fichier...
     QString filename=QFileDialog::getOpenFileName(this,tr("Open File"),"",tr("Text files (*.out)"));
-    ui->setupUi(this);
-    _pTimer = new QTimer(this);
-    // Chargement du fichier...
-    this->chargeFichier(filename.toStdString().c_str());
-
-    // Affectation des comportements à chaque capteur
-    CapteurGL *capteurAcc = this->findChild<CapteurGL*>("glCapteurAcc");
-    CapteurGL *capteurGyro = this->findChild<CapteurGL*>("glCapteurGyro");
-    capteurAcc->setComportement(COMP_ACC);
-    capteurGyro->setComportement(COMP_GYRO);
-
-    // Affectation des Comboboxs aux widgets appropriés
-    for (int i=1;i<=3;i++)
+    if (filename.size() != 0)// Si pas de clic sur annuler
     {
-        char idBox[10];
-        sprintf(idBox,"comboBox_%d",i);
-        QComboBox* cbb = this->findChild<QComboBox*>(idBox);
-        cbb->addItem ("Acc. X (m/s2)");
-        cbb->addItem ("Acc. Y (m/s2)");
-        cbb->addItem ("Acc. Z (m/s2)");
-        cbb->addItem ("Gyro. X (rad/s)");
-        cbb->addItem ("Gyro. Y (rad/s)");
-        cbb->addItem ("Gyro. Z (m/s2)");
-        cbb->addItem ("Magn. X (uT)");
-        cbb->addItem ("Magn. Y (uT)");
-        cbb->addItem ("Magn. Z (uT)");
+        ui->setupUi(this);
+        _pTimer = new QTimer(this);
+        // Chargement du fichier...
+        this->chargeFichier(filename.toStdString().c_str());
+
+        // Affectation des comportements à chaque capteur
+        CapteurGL *capteurAcc = this->findChild<CapteurGL*>("glCapteurAcc");
+        CapteurGL *capteurGyro = this->findChild<CapteurGL*>("glCapteurGyro");
+        capteurAcc->setComportement(COMP_ACC);
+        capteurGyro->setComportement(COMP_GYRO);
+
+        // Affectation des Comboboxs aux widgets appropriés
+        for (int i=1;i<=3;i++)
+        {
+            char idBox[10];
+            sprintf(idBox,"comboBox_%d",i);
+            QComboBox* cbb = this->findChild<QComboBox*>(idBox);
+            cbb->addItem ("Acc. X (m/s2)");
+            cbb->addItem ("Acc. Y (m/s2)");
+            cbb->addItem ("Acc. Z (m/s2)");
+            cbb->addItem ("Gyro. X (rad/s)");
+            cbb->addItem ("Gyro. Y (rad/s)");
+            cbb->addItem ("Gyro. Z (m/s2)");
+            cbb->addItem ("Magn. X (uT)");
+            cbb->addItem ("Magn. Y (uT)");
+            cbb->addItem ("Magn. Z (uT)");
+        }
+        gyrograph* glSignalAcc  = this->findChild<gyrograph*>("glSignalAcc");
+        gyrograph* glSignalGyro = this->findChild<gyrograph*>("glSignalGyro");
+        gyrograph* glSignalMagne= this->findChild<gyrograph*>("glSignalMagne");
+
+        // Mise à jour des widgets gl en suivant le timer
+        QObject::connect(_pTimer, SIGNAL(timeout()), capteurAcc, SLOT(updateGL()));
+        QObject::connect(_pTimer, SIGNAL(timeout()), capteurGyro, SLOT(updateGL()));
+        QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
+        QObject::connect(_pTimer, SIGNAL(timeout()), glSignalAcc, SLOT(updateGL()));
+        QObject::connect(_pTimer, SIGNAL(timeout()), glSignalGyro, SLOT(updateGL()));
+        QObject::connect(_pTimer, SIGNAL(timeout()), glSignalMagne, SLOT(updateGL()));
+
+        // Maj LCD avec le timer
+        QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majLCD()));
+        // Maj LCS avec timer
+        connect(_pTimer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
+
+        ////////////////////////      EVENEMENTS UTILISATEUR      //////////////////////////////////
+
+        // Choix d'un autre signal à visualiser
+        QObject::connect(this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)), glSignalAcc, SLOT(setsignalIndex(int)));
+        QObject::connect(this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)), glSignalGyro, SLOT(setsignalIndex(int)));
+        QObject::connect(this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)), glSignalMagne, SLOT(setsignalIndex(int)));
+        QObject::connect (this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)),glSignalAcc, SLOT(updateLabel()));
+        QObject::connect (this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)),glSignalGyro, SLOT(updateLabel()));
+        QObject::connect (this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)),glSignalMagne, SLOT(updateLabel()));
+
+        QObject::connect (this->findChild<QComboBox*>("comboBox"), SIGNAL(currentIndexChanged(int)), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(setProjection(int)));
+
+        // Clic sur pause
+        connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
+
+        // Clic sur play
+        connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(clicPlay()));
+
+        // Clic sur stop
+        connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(clicStop()));
+
+        //Faire glisser le slider
+        connect(ui->horizontalSlider, SIGNAL(sliderReleased()), this, SLOT(dragslidervalue()));
+        connect(ui->horizontalSlider, SIGNAL(sliderPressed()), _pTimer, SLOT(stop()));
+        connect(ui->actionQuitter, SIGNAL(triggered(bool)),this , SLOT(close()));
+
+        //Clic sur ouvrir un fichier
+        connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
+
+        // Affichage LCD à 8 caractères
+        ui->lcdNumber->setDigitCount(8);
     }
-    gyrograph* glSignalAcc  = this->findChild<gyrograph*>("glSignalAcc");
-    gyrograph* glSignalGyro = this->findChild<gyrograph*>("glSignalGyro");
-    gyrograph* glSignalMagne= this->findChild<gyrograph*>("glSignalMagne");
-
-    // Mise à jour des widgets gl en suivant le timer
-    QObject::connect(_pTimer, SIGNAL(timeout()), capteurAcc, SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), capteurGyro, SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), glSignalAcc, SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), glSignalGyro, SLOT(updateGL()));
-    QObject::connect(_pTimer, SIGNAL(timeout()), glSignalMagne, SLOT(updateGL()));
-
-    // Maj LCD avec le timer
-    QObject::connect(_pTimer, SIGNAL(timeout()), this, SLOT(majLCD()));
-    // Maj LCS avec timer
-    connect(_pTimer, SIGNAL(timeout()), this, SLOT(setslidervalue()));
-
-    ////////////////////////      EVENEMENTS UTILISATEUR      //////////////////////////////////
-
-    // Choix d'un autre signal à visualiser
-    QObject::connect(this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)), glSignalAcc, SLOT(setsignalIndex(int)));
-    QObject::connect(this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)), glSignalGyro, SLOT(setsignalIndex(int)));
-    QObject::connect(this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)), glSignalMagne, SLOT(setsignalIndex(int)));
-    QObject::connect (this->findChild<QComboBox*>("comboBox_1"), SIGNAL(currentIndexChanged(int)),glSignalAcc, SLOT(updateLabel()));
-    QObject::connect (this->findChild<QComboBox*>("comboBox_2"), SIGNAL(currentIndexChanged(int)),glSignalGyro, SLOT(updateLabel()));
-    QObject::connect (this->findChild<QComboBox*>("comboBox_3"), SIGNAL(currentIndexChanged(int)),glSignalMagne, SLOT(updateLabel()));
-
-    QObject::connect (this->findChild<QComboBox*>("comboBox"), SIGNAL(currentIndexChanged(int)), this->findChild<PrincipalCapteurGL*>("glPrincipal"), SLOT(setProjection(int)));
-
-    // Clic sur pause
-    connect(ui->pushButton_3, SIGNAL(clicked()), _pTimer, SLOT(stop()));
-
-    // Clic sur play
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(clicPlay()));
-
-    // Clic sur stop
-    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(clicStop()));
-
-    //Faire glisser le slider
-    connect(ui->horizontalSlider, SIGNAL(sliderReleased()), this, SLOT(dragslidervalue()));
-    connect(ui->horizontalSlider, SIGNAL(sliderPressed()), _pTimer, SLOT(stop()));
-    connect(ui->actionQuitter, SIGNAL(triggered(bool)),this , SLOT(close()));
-
-    //Clic sur ouvrir un fichier
-    connect(ui->actionCharger_un_nouveau_fichier, SIGNAL(triggered(bool)),this , SLOT(loadfile()));
-
-    // Affichage LCD à 8 caractères
-    ui->lcdNumber->setDigitCount(8);
 }
 
 void MainWindow::chargeFichier(const char* filename)

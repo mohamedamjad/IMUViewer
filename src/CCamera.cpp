@@ -145,11 +145,6 @@ void CCamera::setClassicalMode()
 */
 void CCamera::updateCoordinatesWithProperties()
 {
-    std::cout<< "*** Camera**** "<< std::endl;
-    std::cout<< "Eye =  "<< _eyeX << " "<< _eyeY <<  " " << _eyeZ<<   std::endl;
-    std::cout<< "Center =  "<< _centerX << " "<< _centerY <<  " " << _centerZ<<   std::endl;
-    std::cout << "Phi = "<< _phi << std::endl;
-    std::cout << "_teta = "<< _teta << std::endl;
     _centerX = _eyeX + cos(_teta) * cos(_phi);
     _centerY = _eyeY + cos(_teta) * sin(_phi);
     _centerZ = _eyeZ + sin(_teta);
