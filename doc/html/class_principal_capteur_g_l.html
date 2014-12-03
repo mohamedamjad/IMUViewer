@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: PrincipalCapteurGL Class Reference</title>
+<title>IMU Viewer: PrincipalCapteurGL Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,39 +91,235 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr class="memitem:a710ab76dbf2da354aa05e801906fb72f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a710ab76dbf2da354aa05e801906fb72f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateGL</b> ()</td></tr>
+<tr class="memitem:a0f18c98300cfb4db7f2076d7220f9d0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f18c98300cfb4db7f2076d7220f9d0a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#a0f18c98300cfb4db7f2076d7220f9d0a">updateGL</a> ()</td></tr>
+<tr class="memdesc:a0f18c98300cfb4db7f2076d7220f9d0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT du mise à jour du QGLWidget déclenché à chaque raffraîchissement de la fenêtre. <br/></td></tr>
+<tr class="memitem:a8ec94f10c6673bc6ac35188256f96bfe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ec94f10c6673bc6ac35188256f96bfe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#a8ec94f10c6673bc6ac35188256f96bfe">setProjection</a> (int)</td></tr>
+<tr class="memdesc:a8ec94f10c6673bc6ac35188256f96bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT déclenché à chaque fois qu'on change les valeurs du combobox des projections. <br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a84fb894a769cac7540e2776a0cb39986"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84fb894a769cac7540e2776a0cb39986"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PrincipalCapteurGL</b> (QWidget *parent=0)</td></tr>
-<tr class="memitem:a108845ea7fefdb783cf12aa7946c9c7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a108845ea7fefdb783cf12aa7946c9c7c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initializeGL</b> ()</td></tr>
-<tr class="memitem:ac9bdd6a2afeed01ecc356ea6f3ca0b17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9bdd6a2afeed01ecc356ea6f3ca0b17"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resizeGL</b> (int w, int h)</td></tr>
-<tr class="memitem:a6882dcae35b25b9808a27843feb92a60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6882dcae35b25b9808a27843feb92a60"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>paintGL</b> ()</td></tr>
-<tr class="memitem:af2bf3493cb62bbe6416cd6ad7d8b20c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2bf3493cb62bbe6416cd6ad7d8b20c3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mousePressEvent</b> (QMouseEvent *event)</td></tr>
-<tr class="memitem:a3d68b0fe90f429dd75e2f35f815e356d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d68b0fe90f429dd75e2f35f815e356d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseMoveEvent</b> (QMouseEvent *event)</td></tr>
-<tr class="memitem:a55e9c15baa18d14bd6839fa346b5a0f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a55e9c15baa18d14bd6839fa346b5a0f6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>keyPressEvent</b> (QKeyEvent *keyEvent)</td></tr>
-<tr class="memitem:a2a85e89a4389f7eb1a3c541b57138beb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a85e89a4389f7eb1a3c541b57138beb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>timerEvent</b> (QTimerEvent)</td></tr>
-<tr class="memitem:a16e55a8846f0579ee729260dd8d3754b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16e55a8846f0579ee729260dd8d3754b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCentrale</b> (<a class="el" href="class_centrale.html">Centrale</a> *)</td></tr>
-<tr class="memitem:a72f5232558a0f7cb1e488bf3148a6592"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72f5232558a0f7cb1e488bf3148a6592"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setFenetreEvolutionCentrale</b> (QVector&lt; double &gt;, QVector&lt; double &gt;)</td></tr>
+<tr class="memitem:a84fb894a769cac7540e2776a0cb39986"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#a84fb894a769cac7540e2776a0cb39986">PrincipalCapteurGL</a> (QWidget *parent=0)</td></tr>
+<tr class="memdesc:a84fb894a769cac7540e2776a0cb39986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de <a class="el" href="class_principal_capteur_g_l.html">PrincipalCapteurGL</a>, cette classe hérite de QGLWidget.  <a href="#a84fb894a769cac7540e2776a0cb39986"></a><br/></td></tr>
+<tr class="memitem:ae34247a4bafb658808038f99f9978c9a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae34247a4bafb658808038f99f9978c9a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#ae34247a4bafb658808038f99f9978c9a">initializeGL</a> ()</td></tr>
+<tr class="memdesc:ae34247a4bafb658808038f99f9978c9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui initialise OpenGL dans le <a class="el" href="class_principal_capteur_g_l.html">PrincipalCapteurGL</a> <br/></td></tr>
+<tr class="memitem:af611b97447b73d8815227f90c5679099"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#af611b97447b73d8815227f90c5679099">resizeGL</a> (int w, int h)</td></tr>
+<tr class="memdesc:af611b97447b73d8815227f90c5679099"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui permet de redimensionner le <a class="el" href="class_principal_capteur_g_l.html">PrincipalCapteurGL</a>  <a href="#af611b97447b73d8815227f90c5679099"></a><br/></td></tr>
+<tr class="memitem:ac85b222b73f7e39e064561c1ef12132e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac85b222b73f7e39e064561c1ef12132e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#ac85b222b73f7e39e064561c1ef12132e">paintGL</a> ()</td></tr>
+<tr class="memdesc:ac85b222b73f7e39e064561c1ef12132e"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction de dessin OpenGL <br/></td></tr>
+<tr class="memitem:a298baae48c0b04f378c23f6a77a394da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#a298baae48c0b04f378c23f6a77a394da">mousePressEvent</a> (QMouseEvent *event)</td></tr>
+<tr class="memdesc:a298baae48c0b04f378c23f6a77a394da"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT déclenché après un clique souris.  <a href="#a298baae48c0b04f378c23f6a77a394da"></a><br/></td></tr>
+<tr class="memitem:acea8292b93cf75380f7601d574d9ff3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#acea8292b93cf75380f7601d574d9ff3a">mouseMoveEvent</a> (QMouseEvent *event)</td></tr>
+<tr class="memdesc:acea8292b93cf75380f7601d574d9ff3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT déclenché après un mouvement de la souris.  <a href="#acea8292b93cf75380f7601d574d9ff3a"></a><br/></td></tr>
+<tr class="memitem:a168318a357ae9cf997fd818195488ece"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#a168318a357ae9cf997fd818195488ece">keyPressEvent</a> (QKeyEvent *keyEvent)</td></tr>
+<tr class="memdesc:a168318a357ae9cf997fd818195488ece"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT déclenché après pression d'une touche clavier.  <a href="#a168318a357ae9cf997fd818195488ece"></a><br/></td></tr>
+<tr class="memitem:a10b21151aa0aace3e7a954d996dab2c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#a10b21151aa0aace3e7a954d996dab2c4">timerEvent</a> (QTimerEvent)</td></tr>
+<tr class="memdesc:a10b21151aa0aace3e7a954d996dab2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT déclenché à chaque raffraichissement de la fenêtre.  <a href="#a10b21151aa0aace3e7a954d996dab2c4"></a><br/></td></tr>
+<tr class="memitem:a6b383a12e845924f6eef74f0574b56cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#a6b383a12e845924f6eef74f0574b56cd">setCentrale</a> (<a class="el" href="class_centrale.html">Centrale</a> *)</td></tr>
+<tr class="memdesc:a6b383a12e845924f6eef74f0574b56cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">setter de _pIMU  <a href="#a6b383a12e845924f6eef74f0574b56cd"></a><br/></td></tr>
+<tr class="memitem:ae8d9bc81919313cdcdcb281ee0d96d8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8d9bc81919313cdcdcb281ee0d96d8d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_principal_capteur_g_l.html#ae8d9bc81919313cdcdcb281ee0d96d8d">setFenetreEvolutionCentrale</a> (QVector&lt; double &gt;, QVector&lt; double &gt;)</td></tr>
+<tr class="memdesc:ae8d9bc81919313cdcdcb281ee0d96d8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">à partir des valeur du coin supérieur et coin inférieur du cube d'évolution setter_hauteurFenetre, _largeurFenetre, _profondeurFenetre, _coinInferieur et _coinSuperieur. <br/></td></tr>
 </table>
+<h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a84fb894a769cac7540e2776a0cb39986"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PrincipalCapteurGL::PrincipalCapteurGL </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructeur de <a class="el" href="class_principal_capteur_g_l.html">PrincipalCapteurGL</a>, cette classe hérite de QGLWidget. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
+<a class="anchor" id="a168318a357ae9cf997fd818195488ece"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PrincipalCapteurGL::keyPressEvent </td>
+          <td>(</td>
+          <td class="paramtype">QKeyEvent *&#160;</td>
+          <td class="paramname"><em>keyEvent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SLOT déclenché après pression d'une touche clavier. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyEvent</td><td>: événement capturé (pression d'une touche clavier) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="acea8292b93cf75380f7601d574d9ff3a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PrincipalCapteurGL::mouseMoveEvent </td>
+          <td>(</td>
+          <td class="paramtype">QMouseEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SLOT déclenché après un mouvement de la souris. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>: événement capturé (mouvement souris) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a298baae48c0b04f378c23f6a77a394da"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PrincipalCapteurGL::mousePressEvent </td>
+          <td>(</td>
+          <td class="paramtype">QMouseEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SLOT déclenché après un clique souris. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>: événement capturé (clique souris) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af611b97447b73d8815227f90c5679099"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PrincipalCapteurGL::resizeGL </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui permet de redimensionner le <a class="el" href="class_principal_capteur_g_l.html">PrincipalCapteurGL</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>: largeur du QGLWidget </td></tr>
+    <tr><td class="paramname">h</td><td>: hauteur du QGLWidget </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6b383a12e845924f6eef74f0574b56cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PrincipalCapteurGL::setCentrale </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_centrale.html">Centrale</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setter de _pIMU </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Centrale*</td><td>: pointeur vers la centrale qu'on va setter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a10b21151aa0aace3e7a954d996dab2c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PrincipalCapteurGL::timerEvent </td>
+          <td>(</td>
+          <td class="paramtype">QTimerEvent&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SLOT déclenché à chaque raffraichissement de la fenêtre. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">QTimerEvent</td><td>: événement capturé (généralement un timeout() SIGNAL) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="principalcapteurgl_8h_source.html">principalcapteurgl.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

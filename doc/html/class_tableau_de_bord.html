@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: TableauDeBord Class Reference</title>
+<title>IMU Viewer: TableauDeBord Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,48 +92,229 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr class="memitem:a9f185a8b68bfdf9df653f2b99574e1e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f185a8b68bfdf9df653f2b99574e1e7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>majCentrale</b> ()</td></tr>
+<tr class="memitem:ac9ec2ff2e324b4dbd4790b6372eda328"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9ec2ff2e324b4dbd4790b6372eda328"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#ac9ec2ff2e324b4dbd4790b6372eda328">majCentrale</a> ()</td></tr>
+<tr class="memdesc:ac9ec2ff2e324b4dbd4790b6372eda328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback d'évolution du temps : fait avancer la centrale dans le temps (en boucle) <br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab371dfed23c16d5079be50321643c54e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab371dfed23c16d5079be50321643c54e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TableauDeBord</b> (const char *fichiercsv)</td></tr>
-<tr class="memitem:aaef4af7a18ae28d98d1faef2a5fd43a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaef4af7a18ae28d98d1faef2a5fd43a1"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getCoinInferieur</b> ()</td></tr>
-<tr class="memitem:a63e1e41a76124e654ffb833c43ba6126"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63e1e41a76124e654ffb833c43ba6126"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getCoinSuperieur</b> ()</td></tr>
-<tr class="memitem:a6c552365c5a2bb0f7254308f7cc00b26"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c552365c5a2bb0f7254308f7cc00b26"></a>
-QVector&lt; <a class="el" href="class_signal.html">Signal</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_signaux</b> ()</td></tr>
-<tr class="memitem:a055bee95488a92470d196778b2a819ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a055bee95488a92470d196778b2a819ed"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getiCourant</b> ()</td></tr>
-<tr class="memitem:a4ab3ebd44ff113f0d515e2c866e9146e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ab3ebd44ff113f0d515e2c866e9146e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getnbEch</b> ()</td></tr>
-<tr class="memitem:a9b391bc1184de15a321ebc118b3a512b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b391bc1184de15a321ebc118b3a512b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setLastTimeToCurrentTime</b> ()</td></tr>
-<tr class="memitem:abc48ad8127c1f2f04f2780f519ab1ff6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc48ad8127c1f2f04f2780f519ab1ff6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setiCourant</b> (int i)</td></tr>
-<tr class="memitem:a9233b049130f2d1490c2f7978d29418e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9233b049130f2d1490c2f7978d29418e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reInitialiseCapteursCentraleEtProgressionSignal</b> ()</td></tr>
-<tr class="memitem:a4abeae4d8ac996df2c8bcfde3c4def5b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4abeae4d8ac996df2c8bcfde3c4def5b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>miseenplace</b> (int i)</td></tr>
-<tr class="memitem:a6a761c60e4b9b08b7c5cf776a45dd34b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a761c60e4b9b08b7c5cf776a45dd34b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calculeFenetreCentrale</b> ()</td></tr>
-<tr class="memitem:a744ea1526c1e11dedbdaac19fdbccd9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a744ea1526c1e11dedbdaac19fdbccd9e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getClasse</b> (int i)</td></tr>
+<tr class="memitem:ab371dfed23c16d5079be50321643c54e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#ab371dfed23c16d5079be50321643c54e">TableauDeBord</a> (const char *fichiercsv)</td></tr>
+<tr class="memdesc:ab371dfed23c16d5079be50321643c54e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur.  <a href="#ab371dfed23c16d5079be50321643c54e"></a><br/></td></tr>
+<tr class="memitem:a32ffac5e0c89a73f14d0c3ae9f1fab17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32ffac5e0c89a73f14d0c3ae9f1fab17"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#a32ffac5e0c89a73f14d0c3ae9f1fab17">~TableauDeBord</a> ()</td></tr>
+<tr class="memdesc:a32ffac5e0c89a73f14d0c3ae9f1fab17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur. <br/></td></tr>
+<tr class="memitem:a6d9c3ed75248cadb5e94122d7198e8e2"><td class="memItemLeft" align="right" valign="top">QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#a6d9c3ed75248cadb5e94122d7198e8e2">getCoinInferieur</a> ()</td></tr>
+<tr class="memdesc:a6d9c3ed75248cadb5e94122d7198e8e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le point inférieur gauche (xmin, ymin, zmin) de l'espace d'évolution de la centrale (QVector&lt;double&gt;)  <a href="#a6d9c3ed75248cadb5e94122d7198e8e2"></a><br/></td></tr>
+<tr class="memitem:a04d78787a0756234bc8a06a394146279"><td class="memItemLeft" align="right" valign="top">QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#a04d78787a0756234bc8a06a394146279">getCoinSuperieur</a> ()</td></tr>
+<tr class="memdesc:a04d78787a0756234bc8a06a394146279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le point supérieur droit (xmax, ymax, zmax) de l'espace d'évolution de la centrale (QVector&lt;double&gt;)  <a href="#a04d78787a0756234bc8a06a394146279"></a><br/></td></tr>
+<tr class="memitem:ad8188ad23e018542a76cf63480f71be0"><td class="memItemLeft" align="right" valign="top">QVector&lt; <a class="el" href="class_signal.html">Signal</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#ad8188ad23e018542a76cf63480f71be0">get_signaux</a> ()</td></tr>
+<tr class="memdesc:ad8188ad23e018542a76cf63480f71be0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le vecteur contenant tous les signaux, tous sont rééchantillonés, il y a les bruts et ceux issus du traitement : [0-1-2] : accéléro sans gravité, accés possible aux données doublement intégrées, [3-4-5] : gyroscope, accés possible aux données intégrées, [6-7-8] : magnétomètre, [9-10-11] : position de la centrale en repère absolu.  <a href="#ad8188ad23e018542a76cf63480f71be0"></a><br/></td></tr>
+<tr class="memitem:aed09ed8bd4facd51e977090f3761e639"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#aed09ed8bd4facd51e977090f3761e639">getiCourant</a> ()</td></tr>
+<tr class="memitem:a7db43195dbf040ccfc34738aa22dd894"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#a7db43195dbf040ccfc34738aa22dd894">getnbEch</a> ()</td></tr>
+<tr class="memitem:aa54c2c1a31cf5ee9b1f8a612919d1c14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa54c2c1a31cf5ee9b1f8a612919d1c14"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#aa54c2c1a31cf5ee9b1f8a612919d1c14">setLastTimeToCurrentTime</a> ()</td></tr>
+<tr class="memdesc:aa54c2c1a31cf5ee9b1f8a612919d1c14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets la date mémoire à la date courante. <br/></td></tr>
+<tr class="memitem:afdf983fd6db3d1518604862ab43499f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#afdf983fd6db3d1518604862ab43499f5">setiCourant</a> (int i)</td></tr>
+<tr class="memdesc:afdf983fd6db3d1518604862ab43499f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets l'indice courant de parcours du signal.  <a href="#afdf983fd6db3d1518604862ab43499f5"></a><br/></td></tr>
+<tr class="memitem:a3b2be9636c179b3435a6af3fef3972b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b2be9636c179b3435a6af3fef3972b7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#a3b2be9636c179b3435a6af3fef3972b7">reInitialiseCapteursCentraleEtProgressionSignal</a> ()</td></tr>
+<tr class="memdesc:a3b2be9636c179b3435a6af3fef3972b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise les capteurs de la centrale et vide sa trajectoire, initialise l'indice de parcours du <a class="el" href="class_signal.html">Signal</a> à zéro. <br/></td></tr>
+<tr class="memitem:ac37b808d4abe13fca27374fff12f78bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#ac37b808d4abe13fca27374fff12f78bc">setPositionEtCapteursCentrale</a> (int i)</td></tr>
+<tr class="memdesc:ac37b808d4abe13fca27374fff12f78bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Règle la position de la centrale et les données de ses capteurs correspondant à un certain instant dans le signal et ajoute la position courante à son historique de trajectoire.  <a href="#ac37b808d4abe13fca27374fff12f78bc"></a><br/></td></tr>
+<tr class="memitem:a76725a3f83921c062576a84de928e6ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76725a3f83921c062576a84de928e6ac"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#a76725a3f83921c062576a84de928e6ac">calculeFenetreCentrale</a> ()</td></tr>
+<tr class="memdesc:a76725a3f83921c062576a84de928e6ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule le parallépipède correspondant à l'espace englobant d'évolution de la centrale. <br/></td></tr>
+<tr class="memitem:a9ae85bd612aa1bf3606f38f00103fbc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_classifieur.html">Classifieur</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#a9ae85bd612aa1bf3606f38f00103fbc8">getClassifieur</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a3bd57b06d7771f60fdd931e67bfd2a7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3bd57b06d7771f60fdd931e67bfd2a7b"></a>
-<a class="el" href="class_centrale.html">Centrale</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_IMU</b></td></tr>
+<tr class="memitem:a63215c72663dac73d504a76ebc83d5c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63215c72663dac73d504a76ebc83d5c9"></a>
+<a class="el" href="class_centrale.html">Centrale</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tableau_de_bord.html#a63215c72663dac73d504a76ebc83d5c9">_IMU</a></td></tr>
+<tr class="memdesc:a63215c72663dac73d504a76ebc83d5c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représente la centrale à un instant donné <br/></td></tr>
 </table>
+<h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ab371dfed23c16d5079be50321643c54e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableauDeBord::TableauDeBord </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fichiercsv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructeur. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fichierCsv</td><td>Fichier issu de l'acquisition centrale au format : tps en sec, code, accx, accy, accz, code, gyrox, gyroy, gyroz, code, magnex, magney, magnez </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
+<a class="anchor" id="ad8188ad23e018542a76cf63480f71be0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableauDeBord::get_signaux </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le vecteur contenant tous les signaux, tous sont rééchantillonés, il y a les bruts et ceux issus du traitement : [0-1-2] : accéléro sans gravité, accés possible aux données doublement intégrées, [3-4-5] : gyroscope, accés possible aux données intégrées, [6-7-8] : magnétomètre, [9-10-11] : position de la centrale en repère absolu. </p>
+<dl class="section return"><dt>Returns</dt><dd>Le point sous forme de vecteur (QVector&lt;double&gt;) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9ae85bd612aa1bf3606f38f00103fbc8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableauDeBord::getClassifieur </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Renvoie l'objet classifieur (Classfieur*) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6d9c3ed75248cadb5e94122d7198e8e2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableauDeBord::getCoinInferieur </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le point inférieur gauche (xmin, ymin, zmin) de l'espace d'évolution de la centrale (QVector&lt;double&gt;) </p>
+<dl class="section return"><dt>Returns</dt><dd>Le point sous forme de vecteur (QVector&lt;double&gt;) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a04d78787a0756234bc8a06a394146279"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableauDeBord::getCoinSuperieur </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le point supérieur droit (xmax, ymax, zmax) de l'espace d'évolution de la centrale (QVector&lt;double&gt;) </p>
+<dl class="section return"><dt>Returns</dt><dd>Le point sous forme de vecteur (QVector&lt;double&gt;) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aed09ed8bd4facd51e977090f3761e639"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableauDeBord::getiCourant </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Renvoie l'indice courant de parcours des signaux (int) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7db43195dbf040ccfc34738aa22dd894"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableauDeBord::getnbEch </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Renvoie le nombre d'éléments dans les signaux(int) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afdf983fd6db3d1518604862ab43499f5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableauDeBord::setiCourant </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets l'indice courant de parcours du signal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Nouvel indice (int) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac37b808d4abe13fca27374fff12f78bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableauDeBord::setPositionEtCapteursCentrale </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Règle la position de la centrale et les données de ses capteurs correspondant à un certain instant dans le signal et ajoute la position courante à son historique de trajectoire. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Ieme élément dans le signal (int) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="tableaudebord_8h_source.html">tableaudebord.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

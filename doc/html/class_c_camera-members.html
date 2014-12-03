@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: Member List</title>
+<title>IMU Viewer: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,9 +88,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>This is the complete list of members for <a class="el" href="class_c_camera.html">CCamera</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="class_c_camera.html#a9fb8772ef9f47e8df722bcd47f2f547c">CCamera</a>(float, float, float, float, float, float, float, float, float, float)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getEyeX</b>() (defined in <a class="el" href="class_c_camera.html">CCamera</a>)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>getEyeY</b>() (defined in <a class="el" href="class_c_camera.html">CCamera</a>)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getEyeZ</b>() (defined in <a class="el" href="class_c_camera.html">CCamera</a>)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_c_camera.html#a2fef1b7126eb3fdd4bc76a96e41a44de">getEyeX</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_c_camera.html#a9165bd5f6dae7034d8bc137ed39c4e18">getEyeY</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_c_camera.html#a69ae680310976f2e943ccce49684d33e">getEyeZ</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_c_camera.html#a1cc15850fd99c8f3eaaaa754ce3b7b09">go</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_c_camera.html#a2992ee97afc577babc1c9242149ac1d4">goBack</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_c_camera.html#a7529521482b348575fc467315e18a5a4">goPro</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
@@ -99,15 +100,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr class="even"><td class="entry"><a class="el" href="class_c_camera.html#a1466d1d11d7ed868bec760dd50291252">lookAtRight</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_c_camera.html#a2816add931cb114e9813b86cd04db37c">lookAtTop</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_c_camera.html#af00e6545d555de2240912e7bf5bb3dc5">play</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setCenter</b>(QVector&lt; double &gt;) (defined in <a class="el" href="class_c_camera.html">CCamera</a>)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_c_camera.html#a561be046869d5ddc2a23565898a2526a">setCenter</a>(QVector&lt; double &gt;)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_c_camera.html#a8a9e733c7fca3b2aa98b4b2d99cf6b0f">setClassicalMode</a>()</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setEye</b>(QVector&lt; double &gt;) (defined in <a class="el" href="class_c_camera.html">CCamera</a>)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_c_camera.html#a9a4c736bfc259daef4a060edc2b02463">setEye</a>(QVector&lt; double &gt;)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_c_camera.html#ab692273f71887d944d66a1226c5c0c3b">setGoProMode</a>(int)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>~CCamera</b>() (defined in <a class="el" href="class_c_camera.html">CCamera</a>)</td><td class="entry"><a class="el" href="class_c_camera.html">CCamera</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

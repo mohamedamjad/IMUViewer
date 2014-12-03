@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: CCamera Class Reference</title>
+<title>IMU Viewer: CCamera Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -123,16 +124,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:af00e6545d555de2240912e7bf5bb3dc5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af00e6545d555de2240912e7bf5bb3dc5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_camera.html#af00e6545d555de2240912e7bf5bb3dc5">play</a> ()</td></tr>
 <tr class="memdesc:af00e6545d555de2240912e7bf5bb3dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call of OpenGL functions to really update the view. <br/></td></tr>
-<tr class="memitem:a123f0456766072584d80ec1ea4e6cf43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a123f0456766072584d80ec1ea4e6cf43"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getEyeX</b> ()</td></tr>
-<tr class="memitem:a0fa71f3a5258a6a0eef4bf0a4f4bc180"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0fa71f3a5258a6a0eef4bf0a4f4bc180"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getEyeY</b> ()</td></tr>
-<tr class="memitem:a2d8e4d885998a0f3dee718f3dcc9592d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d8e4d885998a0f3dee718f3dcc9592d"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getEyeZ</b> ()</td></tr>
-<tr class="memitem:ac24d77888afef520745dcd774eb5dfc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac24d77888afef520745dcd774eb5dfc8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setEye</b> (QVector&lt; double &gt;)</td></tr>
-<tr class="memitem:abd924c4d472396715d885e123780b69f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd924c4d472396715d885e123780b69f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCenter</b> (QVector&lt; double &gt;)</td></tr>
+<tr class="memitem:a2fef1b7126eb3fdd4bc76a96e41a44de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fef1b7126eb3fdd4bc76a96e41a44de"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_camera.html#a2fef1b7126eb3fdd4bc76a96e41a44de">getEyeX</a> ()</td></tr>
+<tr class="memdesc:a2fef1b7126eb3fdd4bc76a96e41a44de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la composante X de la position de la caméra. <br/></td></tr>
+<tr class="memitem:a9165bd5f6dae7034d8bc137ed39c4e18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9165bd5f6dae7034d8bc137ed39c4e18"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_camera.html#a9165bd5f6dae7034d8bc137ed39c4e18">getEyeY</a> ()</td></tr>
+<tr class="memdesc:a9165bd5f6dae7034d8bc137ed39c4e18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la composante Y de la position de la caméra. <br/></td></tr>
+<tr class="memitem:a69ae680310976f2e943ccce49684d33e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69ae680310976f2e943ccce49684d33e"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_camera.html#a69ae680310976f2e943ccce49684d33e">getEyeZ</a> ()</td></tr>
+<tr class="memdesc:a69ae680310976f2e943ccce49684d33e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la composante Z de la position de la caméra. <br/></td></tr>
+<tr class="memitem:a9a4c736bfc259daef4a060edc2b02463"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_camera.html#a9a4c736bfc259daef4a060edc2b02463">setEye</a> (QVector&lt; double &gt;)</td></tr>
+<tr class="memdesc:a9a4c736bfc259daef4a060edc2b02463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets une nouvelle position à la caméra.  <a href="#a9a4c736bfc259daef4a060edc2b02463"></a><br/></td></tr>
+<tr class="memitem:a561be046869d5ddc2a23565898a2526a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_camera.html#a561be046869d5ddc2a23565898a2526a">setCenter</a> (QVector&lt; double &gt;)</td></tr>
+<tr class="memdesc:a561be046869d5ddc2a23565898a2526a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets un nouveau point à regarder pour la caméra.  <a href="#a561be046869d5ddc2a23565898a2526a"></a><br/></td></tr>
 </table>
 <h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9fb8772ef9f47e8df722bcd47f2f547c"></a>
@@ -228,6 +232,54 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setCenter</b> (QVecto
 </div>
 </div>
 <h2>Member Function Documentation</h2>
+<a class="anchor" id="a561be046869d5ddc2a23565898a2526a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CCamera::setCenter </td>
+          <td>(</td>
+          <td class="paramtype">QVector&lt; double &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets un nouveau point à regarder pour la caméra. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>Nouveau point à regarder par la caméra </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9a4c736bfc259daef4a060edc2b02463"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CCamera::setEye </td>
+          <td>(</td>
+          <td class="paramtype">QVector&lt; double &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets une nouvelle position à la caméra. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>Nouvelle position de caméra (QVector&lt;double&gt;) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ab692273f71887d944d66a1226c5c0c3b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -258,7 +310,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setCenter</b> (QVecto
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: include/ Directory Reference</title>
+<title>IMU Viewer: include/ Directory Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -61,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,22 +84,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:acccapteurgl_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>acccapteurgl.h</b> <a href="acccapteurgl_8h_source.html">[code]</a></td></tr>
-<tr class="memitem:capteur_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>capteur.h</b> <a href="capteur_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:capteurgl_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>capteurgl.h</b> <a href="capteurgl_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:_c_camera_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>CCamera.h</b> <a href="_c_camera_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:centrale_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>centrale.h</b> <a href="centrale_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:classifieur_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>classifieur.h</b> <a href="classifieur_8h_source.html">[code]</a></td></tr>
-<tr class="memitem:combobox_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>combobox.h</b> <a href="combobox_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:csv_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>csv.h</b> <a href="csv_8h_source.html">[code]</a></td></tr>
-<tr class="memitem:gyrocapteurgl_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>gyrocapteurgl.h</b> <a href="gyrocapteurgl_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:gyrograph_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>gyrograph.h</b> <a href="gyrograph_8h_source.html">[code]</a></td></tr>
-<tr class="memitem:label_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>label.h</b> <a href="label_8h_source.html">[code]</a></td></tr>
-<tr class="memitem:magnecapteurgl_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>magnecapteurgl.h</b> <a href="magnecapteurgl_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:mainwindow_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>mainwindow.h</b> <a href="mainwindow_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:my__lcdnumber_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>my_lcdnumber.h</b> <a href="my__lcdnumber_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:principalcapteurgl_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>principalcapteurgl.h</b> <a href="principalcapteurgl_8h_source.html">[code]</a></td></tr>
-<tr class="memitem:quaternion_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>quaternion.h</b> <a href="quaternion_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:signal_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>signal.h</b> <a href="signal_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:tableaudebord_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>tableaudebord.h</b> <a href="tableaudebord_8h_source.html">[code]</a></td></tr>
 <tr class="memitem:tests_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>tests.h</b> <a href="tests_8h_source.html">[code]</a></td></tr>
@@ -106,7 +100,7 @@ Files</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

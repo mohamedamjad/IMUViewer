@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: gyrograph Class Reference</title>
+<title>IMU Viewer: gyrograph Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,53 +91,260 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr class="memitem:a812895cb7101fa66e242a40a5073ab96"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a812895cb7101fa66e242a40a5073ab96"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateGL</b> ()</td></tr>
-<tr class="memitem:a6ff55859a490a114d773d7a8e6c071ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ff55859a490a114d773d7a8e6c071ed"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setsignalIndex</b> (int i)</td></tr>
-<tr class="memitem:a5c62e6d8aa3058da79ab52da3a499aa6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c62e6d8aa3058da79ab52da3a499aa6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateLabel</b> ()</td></tr>
+<tr class="memitem:a11c298f699c82e00b2666d51a39ea7d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11c298f699c82e00b2666d51a39ea7d5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#a11c298f699c82e00b2666d51a39ea7d5">updateGL</a> ()</td></tr>
+<tr class="memdesc:a11c298f699c82e00b2666d51a39ea7d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT appelé à chaque raffraichissement de la fenêtre principale, il appelle paintGL. <br/></td></tr>
+<tr class="memitem:a9fc01ec8097ffbe5e89201c44ed82c09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#a9fc01ec8097ffbe5e89201c44ed82c09">setsignalIndex</a> (int i)</td></tr>
+<tr class="memdesc:a9fc01ec8097ffbe5e89201c44ed82c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT qui change le signal qu'on affiche dans le gyrograph.  <a href="#a9fc01ec8097ffbe5e89201c44ed82c09"></a><br/></td></tr>
+<tr class="memitem:ac5d13724f6b335d0b9706621d19b9a8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5d13724f6b335d0b9706621d19b9a8a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#ac5d13724f6b335d0b9706621d19b9a8a">updateLabel</a> ()</td></tr>
+<tr class="memdesc:ac5d13724f6b335d0b9706621d19b9a8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">mise à jour des labels max et min à chaque fois qu'on change de signaux <br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6a2fa93c8602366bedc6fbb849db366a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a2fa93c8602366bedc6fbb849db366a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>gyrograph</b> (QWidget *parent=0)</td></tr>
-<tr class="memitem:ac9a97e1ead056e7415b44ed99b393a78"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9a97e1ead056e7415b44ed99b393a78"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initializeGL</b> ()</td></tr>
-<tr class="memitem:a05a4954cd7e1e8ab6af01c8ff71bb635"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05a4954cd7e1e8ab6af01c8ff71bb635"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resizeGL</b> (int w, int h)</td></tr>
-<tr class="memitem:a9d3e62bb8f672e39d1c9eba10894fc23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d3e62bb8f672e39d1c9eba10894fc23"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>paintGL</b> ()</td></tr>
-<tr class="memitem:a35b760b781e46d03a2f84e5f324af449"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35b760b781e46d03a2f84e5f324af449"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mousePressEvent</b> (QMouseEvent *event)</td></tr>
-<tr class="memitem:a609d5b7880bfc3cb994413ff7f98e76d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a609d5b7880bfc3cb994413ff7f98e76d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseMoveEvent</b> (QMouseEvent *event)</td></tr>
-<tr class="memitem:a0acf4e4fbf1ad80bbb08f7647d669c34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0acf4e4fbf1ad80bbb08f7647d669c34"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>keyPressEvent</b> (QKeyEvent *keyEvent)</td></tr>
-<tr class="memitem:ac36fb3e2bb8d140480879a2961a81dd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac36fb3e2bb8d140480879a2961a81dd3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>timerEvent</b> (QTimerEvent)</td></tr>
-<tr class="memitem:ad768ef4e4b9407f333627e543004b2a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad768ef4e4b9407f333627e543004b2a0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCentrale</b> (<a class="el" href="class_centrale.html">Centrale</a> *)</td></tr>
-<tr class="memitem:a892b6787c49bb542deddfd4df84b5073"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a892b6787c49bb542deddfd4df84b5073"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>afficheSignal</b> ()</td></tr>
-<tr class="memitem:ab27bf84236693162239a99cf7a6ce926"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab27bf84236693162239a99cf7a6ce926"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setTableauDeBord</b> (<a class="el" href="class_tableau_de_bord.html">TableauDeBord</a> *tdb)</td></tr>
-<tr class="memitem:aae6da5eea39c2acde55d7a81a58be29a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae6da5eea39c2acde55d7a81a58be29a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getsignalIndex</b> ()</td></tr>
-<tr class="memitem:ab2c9d1a886a6c7b1b94a550738b59e61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2c9d1a886a6c7b1b94a550738b59e61"></a>
-<a class="el" href="class_tableau_de_bord.html">TableauDeBord</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getpTDB</b> ()</td></tr>
-<tr class="memitem:acc3bcb84dab148b361382dbafd617a35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc3bcb84dab148b361382dbafd617a35"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setmaxLabel</b> (QLabel *maxlabel)</td></tr>
-<tr class="memitem:a20add85c4cc973eba849c64056477eb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20add85c4cc973eba849c64056477eb4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setminLabel</b> (QLabel *minlabel)</td></tr>
+<tr class="memitem:a6a2fa93c8602366bedc6fbb849db366a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#a6a2fa93c8602366bedc6fbb849db366a">gyrograph</a> (QWidget *parent=0)</td></tr>
+<tr class="memdesc:a6a2fa93c8602366bedc6fbb849db366a"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructeur de la classe gyrograph elle hérite de QGLWidget  <a href="#a6a2fa93c8602366bedc6fbb849db366a"></a><br/></td></tr>
+<tr class="memitem:a389e777d0c9686f715c2d5814acbc92c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a389e777d0c9686f715c2d5814acbc92c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#a389e777d0c9686f715c2d5814acbc92c">initializeGL</a> ()</td></tr>
+<tr class="memdesc:a389e777d0c9686f715c2d5814acbc92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise OpenGL dans la QGLWidget <br/></td></tr>
+<tr class="memitem:acb5074dfa8bab843570b61541948f5f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#acb5074dfa8bab843570b61541948f5f0">resizeGL</a> (int w, int h)</td></tr>
+<tr class="memdesc:acb5074dfa8bab843570b61541948f5f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui contient les paramètres de redimensionnement du QGLWidget  <a href="#acb5074dfa8bab843570b61541948f5f0"></a><br/></td></tr>
+<tr class="memitem:ac415766dbaae1cd2a0f2259ab7eb599e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac415766dbaae1cd2a0f2259ab7eb599e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#ac415766dbaae1cd2a0f2259ab7eb599e">paintGL</a> ()</td></tr>
+<tr class="memdesc:ac415766dbaae1cd2a0f2259ab7eb599e"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui déssine le signal à chaque raffraichissement de la fenêtre <br/></td></tr>
+<tr class="memitem:a3379f2fd65bc48411dd43b45992d4230"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3379f2fd65bc48411dd43b45992d4230"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#a3379f2fd65bc48411dd43b45992d4230">setCentrale</a> (<a class="el" href="class_centrale.html">Centrale</a> *)</td></tr>
+<tr class="memdesc:a3379f2fd65bc48411dd43b45992d4230"><td class="mdescLeft">&#160;</td><td class="mdescRight">setter qui indique la centrale source du signal à afficher <br/></td></tr>
+<tr class="memitem:a5ca7b2235558cf51440200bfbc76c862"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ca7b2235558cf51440200bfbc76c862"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#a5ca7b2235558cf51440200bfbc76c862">afficheSignal</a> ()</td></tr>
+<tr class="memdesc:a5ca7b2235558cf51440200bfbc76c862"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui affiche le signal elle est appelée dans paintGL <br/></td></tr>
+<tr class="memitem:ad46239c94e1afb2a1887eb235bdb462f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#ad46239c94e1afb2a1887eb235bdb462f">setTableauDeBord</a> (<a class="el" href="class_tableau_de_bord.html">TableauDeBord</a> *tdb)</td></tr>
+<tr class="memdesc:ad46239c94e1afb2a1887eb235bdb462f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter du tableau de bord qui contient les signaux qu'on veut afficher.  <a href="#ad46239c94e1afb2a1887eb235bdb462f"></a><br/></td></tr>
+<tr class="memitem:a3bc49fcba6fa6af02e5738f01b43fd9c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#a3bc49fcba6fa6af02e5738f01b43fd9c">getsignalIndex</a> ()</td></tr>
+<tr class="memdesc:a3bc49fcba6fa6af02e5738f01b43fd9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui retourne l'indice du signal qu'on affiche, son indice dans le vecteur des signaux  <a href="#a3bc49fcba6fa6af02e5738f01b43fd9c"></a><br/></td></tr>
+<tr class="memitem:abfbc65725aac13c70c3277e13654102f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#abfbc65725aac13c70c3277e13654102f">getpTDB</a> ()</td></tr>
+<tr class="memdesc:abfbc65725aac13c70c3277e13654102f"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter qui retourne le tableau de bord qui contient le signal.  <a href="#abfbc65725aac13c70c3277e13654102f"></a><br/></td></tr>
+<tr class="memitem:a7fe46e583424e6e7f61041b4b509ebda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#a7fe46e583424e6e7f61041b4b509ebda">setmaxLabel</a> (QLabel *maxlabel)</td></tr>
+<tr class="memdesc:a7fe46e583424e6e7f61041b4b509ebda"><td class="mdescLeft">&#160;</td><td class="mdescRight">setter du label qui affiche le seuil max du signal dans la fenêtre  <a href="#a7fe46e583424e6e7f61041b4b509ebda"></a><br/></td></tr>
+<tr class="memitem:a0561537b8d57f5b6ce99500fa4451096"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgyrograph.html#a0561537b8d57f5b6ce99500fa4451096">setminLabel</a> (QLabel *minlabel)</td></tr>
+<tr class="memdesc:a0561537b8d57f5b6ce99500fa4451096"><td class="mdescLeft">&#160;</td><td class="mdescRight">setter du label qui affiche le seuil min du signal dans la fenêtre  <a href="#a0561537b8d57f5b6ce99500fa4451096"></a><br/></td></tr>
 </table>
+<h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a6a2fa93c8602366bedc6fbb849db366a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">gyrograph::gyrograph </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>constructeur de la classe gyrograph elle hérite de QGLWidget </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
+<a class="anchor" id="abfbc65725aac13c70c3277e13654102f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gyrograph::getpTDB </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getter qui retourne le tableau de bord qui contient le signal. </p>
+<dl class="section return"><dt>Returns</dt><dd>Tableau de bord </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3bc49fcba6fa6af02e5738f01b43fd9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gyrograph::getsignalIndex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui retourne l'indice du signal qu'on affiche, son indice dans le vecteur des signaux </p>
+<dl class="section return"><dt>Returns</dt><dd>l'indice du signal courant </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="acb5074dfa8bab843570b61541948f5f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gyrograph::resizeGL </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui contient les paramètres de redimensionnement du QGLWidget </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>largeur du QGLWidget </td></tr>
+    <tr><td class="paramname">h</td><td>hauteur du QGLWidget </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7fe46e583424e6e7f61041b4b509ebda"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gyrograph::setmaxLabel </td>
+          <td>(</td>
+          <td class="paramtype">QLabel *&#160;</td>
+          <td class="paramname"><em>maxlabel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setter du label qui affiche le seuil max du signal dans la fenêtre </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxlabel</td><td>: le label qui affiche le max </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0561537b8d57f5b6ce99500fa4451096"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gyrograph::setminLabel </td>
+          <td>(</td>
+          <td class="paramtype">QLabel *&#160;</td>
+          <td class="paramname"><em>minlabel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setter du label qui affiche le seuil min du signal dans la fenêtre </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxlabel</td><td>: le label qui affiche le min </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9fc01ec8097ffbe5e89201c44ed82c09"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">gyrograph::setsignalIndex </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>SLOT qui change le signal qu'on affiche dans le gyrograph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>: l'indice du signal qu'on veut afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad46239c94e1afb2a1887eb235bdb462f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gyrograph::setTableauDeBord </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a> *&#160;</td>
+          <td class="paramname"><em>tdb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setter du tableau de bord qui contient les signaux qu'on veut afficher. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tdb</td><td>: le tableau de bord qu'on veut setter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="gyrograph_8h_source.html">gyrograph.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

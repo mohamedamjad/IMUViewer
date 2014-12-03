@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: Class Members</title>
+<title>IMU Viewer: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -67,6 +68,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
+      <li><a href="functions_vars.html"><span>Variables</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index__"><span>_</span></a></li>
+      <li><a href="#index_a"><span>a</span></a></li>
+      <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_d"><span>d</span></a></li>
+      <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_k"><span>k</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
+      <li><a href="#index_n"><span>n</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_t"><span>t</span></a></li>
+      <li><a href="#index_u"><span>u</span></a></li>
+      <li><a href="#index_0x7e"><span>~</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -75,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -85,21 +107,126 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div><ul>
+<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+
+<h3><a class="anchor" id="index__"></a>- _ -</h3><ul>
+<li>_acc
+: <a class="el" href="class_centrale.html#a9a7c89ce8970499056fb2ffd2436a849">Centrale</a>
+</li>
+<li>_gyro
+: <a class="el" href="class_centrale.html#af5086e550303963d9357a10db78e7f69">Centrale</a>
+</li>
+<li>_IMU
+: <a class="el" href="class_tableau_de_bord.html#a63215c72663dac73d504a76ebc83d5c9">TableauDeBord</a>
+</li>
+<li>_magn
+: <a class="el" href="class_centrale.html#ab825ced930ac9d8a5c1f57d21ee769e3">Centrale</a>
+</li>
+<li>_orientation
+: <a class="el" href="class_centrale.html#af7e8cdf32186fcc5578532e8f7cdc54a">Centrale</a>
+</li>
+<li>_position
+: <a class="el" href="class_centrale.html#ad76085b1cb96357ea0b9153fce4a4aad">Centrale</a>
+</li>
+<li>_trajectoire
+: <a class="el" href="class_centrale.html#a5a9bb3e05d080f53437c66be4246e0a7">Centrale</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>afficheSignal()
+: <a class="el" href="classgyrograph.html#a5ca7b2235558cf51440200bfbc76c862">gyrograph</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>calculeFenetreCentrale()
+: <a class="el" href="class_tableau_de_bord.html#a76725a3f83921c062576a84de928e6ac">TableauDeBord</a>
+</li>
 <li>calculStats()
 : <a class="el" href="class_signal.html#ace834afef344f6d8bcfd0d44045fab43">Signal</a>
+</li>
+<li>CapteurGL()
+: <a class="el" href="class_capteur_g_l.html#a124803898394b85d5e1d89abc51fb2a5">CapteurGL</a>
 </li>
 <li>CCamera()
 : <a class="el" href="class_c_camera.html#a9fb8772ef9f47e8df722bcd47f2f547c">CCamera</a>
 </li>
+<li>Centrale()
+: <a class="el" href="class_centrale.html#ad005b09cad05266ffe01573a572ad477">Centrale</a>
+</li>
 <li>changeRepere()
 : <a class="el" href="class_signal.html#afdc4a7cb6f8e9474d20527967a8161c8">Signal</a>
 </li>
+<li>chargeFichier()
+: <a class="el" href="class_main_window.html#a67d6e8b8fd10d7d4983ace4b550811ab">MainWindow</a>
+</li>
+<li>classe()
+: <a class="el" href="class_classifieur.html#a4ffa2e034a823e3bb4920e59007d42c1">Classifieur</a>
+</li>
+<li>Classifieur()
+: <a class="el" href="class_classifieur.html#adb3f6c50e978d149d326776855c7f724">Classifieur</a>
+</li>
+<li>clicPlay()
+: <a class="el" href="class_main_window.html#a6eca5dfdc421c100acb8e2314deacf98">MainWindow</a>
+</li>
+<li>clicStop()
+: <a class="el" href="class_main_window.html#a31f97a13cb2313fa1d703bbb0ddce412">MainWindow</a>
+</li>
+<li>CSV()
+: <a class="el" href="class_c_s_v.html#a335bef6309d648d44907c0e7279cc32c">CSV</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
 <li>doubleIntegre()
 : <a class="el" href="class_signal.html#a20b042d70735cbb05ea6ac2954b2a85d">Signal</a>
 </li>
+<li>dragslidervalue()
+: <a class="el" href="class_main_window.html#a5957c9e9b5878589aaa11b110ce6531d">MainWindow</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>get_signaux()
+: <a class="el" href="class_tableau_de_bord.html#ad8188ad23e018542a76cf63480f71be0">TableauDeBord</a>
+</li>
+<li>getClasse()
+: <a class="el" href="class_classifieur.html#a1d893af13aad0f3407c772310e18a1d1">Classifieur</a>
+</li>
+<li>getClassifieur()
+: <a class="el" href="class_tableau_de_bord.html#a9ae85bd612aa1bf3606f38f00103fbc8">TableauDeBord</a>
+</li>
+<li>getCoinInferieur()
+: <a class="el" href="class_tableau_de_bord.html#a6d9c3ed75248cadb5e94122d7198e8e2">TableauDeBord</a>
+</li>
+<li>getCoinSuperieur()
+: <a class="el" href="class_tableau_de_bord.html#a04d78787a0756234bc8a06a394146279">TableauDeBord</a>
+</li>
 <li>getEcartType()
 : <a class="el" href="class_signal.html#a71191a77e1492967acd690b909cfd355">Signal</a>
+</li>
+<li>getEyeX()
+: <a class="el" href="class_c_camera.html#a2fef1b7126eb3fdd4bc76a96e41a44de">CCamera</a>
+</li>
+<li>getEyeY()
+: <a class="el" href="class_c_camera.html#a9165bd5f6dae7034d8bc137ed39c4e18">CCamera</a>
+</li>
+<li>getEyeZ()
+: <a class="el" href="class_c_camera.html#a69ae680310976f2e943ccce49684d33e">CCamera</a>
+</li>
+<li>getiCourant()
+: <a class="el" href="class_tableau_de_bord.html#aed09ed8bd4facd51e977090f3761e639">TableauDeBord</a>
+</li>
+<li>getImgClasse()
+: <a class="el" href="class_classifieur.html#a646727adf013269286836ea455cf121a">Classifieur</a>
+</li>
+<li>getLabelClasse()
+: <a class="el" href="class_classifieur.html#aaa18983c405f8ed373a86cb782c6e7d4">Classifieur</a>
 </li>
 <li>getMaxSignal()
 : <a class="el" href="class_signal.html#adfd4acc458739bfef0000fd8f0d72fd5">Signal</a>
@@ -110,11 +237,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getMoyenne()
 : <a class="el" href="class_signal.html#a163edec705cd436b076904edb51c00bb">Signal</a>
 </li>
+<li>getnbEch()
+: <a class="el" href="class_tableau_de_bord.html#a7db43195dbf040ccfc34738aa22dd894">TableauDeBord</a>
+</li>
+<li>getNbLines()
+: <a class="el" href="class_c_s_v.html#a3de2557be6689ad831e141875d30f443">CSV</a>
+</li>
+<li>getpTDB()
+: <a class="el" href="classgyrograph.html#abfbc65725aac13c70c3277e13654102f">gyrograph</a>
+</li>
 <li>getSignal()
 : <a class="el" href="class_signal.html#a5191f410a06237266e0ed68a9aea52bf">Signal</a>
 </li>
 <li>getSignalDoubleIntegre()
 : <a class="el" href="class_signal.html#a70cb3b57f8518dd5a47f683da530769b">Signal</a>
+</li>
+<li>getsignalIndex()
+: <a class="el" href="classgyrograph.html#a3bc49fcba6fa6af02e5738f01b43fd9c">gyrograph</a>
 </li>
 <li>getSignalIntegre()
 : <a class="el" href="class_signal.html#ad40ab4bea98799cf15be88c1d4811152">Signal</a>
@@ -134,8 +273,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>goPro()
 : <a class="el" href="class_c_camera.html#a7529521482b348575fc467315e18a5a4">CCamera</a>
 </li>
+<li>gyrograph()
+: <a class="el" href="classgyrograph.html#a6a2fa93c8602366bedc6fbb849db366a">gyrograph</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>initializeGL()
+: <a class="el" href="class_capteur_g_l.html#a259d3c377cc3e84b8fa4a6077040af7b">CapteurGL</a>
+, <a class="el" href="classgyrograph.html#a389e777d0c9686f715c2d5814acbc92c">gyrograph</a>
+, <a class="el" href="class_principal_capteur_g_l.html#ae34247a4bafb658808038f99f9978c9a">PrincipalCapteurGL</a>
+</li>
 <li>integre()
 : <a class="el" href="class_signal.html#a0ece1bae5423b833c8e1c379a2c7eda4">Signal</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_k"></a>- k -</h3><ul>
+<li>keyPressEvent()
+: <a class="el" href="class_main_window.html#a555bc19ec64e5528eadefb34d7014d6e">MainWindow</a>
+, <a class="el" href="class_principal_capteur_g_l.html#a168318a357ae9cf997fd818195488ece">PrincipalCapteurGL</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>loadfile()
+: <a class="el" href="class_main_window.html#aef52a6e8364277ac72e594d6470ecce0">MainWindow</a>
 </li>
 <li>lookAtBottom()
 : <a class="el" href="class_c_camera.html#a3870b73e9d94b679ee44259bf1c6ebdc">CCamera</a>
@@ -152,8 +318,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>lookAtTop()
 : <a class="el" href="class_c_camera.html#a2816add931cb114e9813b86cd04db37c">CCamera</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>MainWindow()
+: <a class="el" href="class_main_window.html#a8b244be8b7b7db1b08de2a2acb9409db">MainWindow</a>
+</li>
+<li>majCentrale()
+: <a class="el" href="class_tableau_de_bord.html#ac9ec2ff2e324b4dbd4790b6372eda328">TableauDeBord</a>
+</li>
+<li>majClasse()
+: <a class="el" href="class_main_window.html#a7e49fca35c4136b1c00ad2f1c2a2d5a6">MainWindow</a>
+</li>
+<li>majLCD()
+: <a class="el" href="class_main_window.html#a3f517751abccc432f979f6b5ff540a46">MainWindow</a>
+</li>
+<li>mouseMoveEvent()
+: <a class="el" href="class_principal_capteur_g_l.html#acea8292b93cf75380f7601d574d9ff3a">PrincipalCapteurGL</a>
+</li>
+<li>mousePressEvent()
+: <a class="el" href="class_principal_capteur_g_l.html#a298baae48c0b04f378c23f6a77a394da">PrincipalCapteurGL</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
 <li>normalizeVector()
 : <a class="el" href="class_signal.html#af84a1d605472c50d699a4ca21b784a98">Signal</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>paintGL()
+: <a class="el" href="class_capteur_g_l.html#a4377914f38491375d9e73e35ec6604bc">CapteurGL</a>
+, <a class="el" href="classgyrograph.html#ac415766dbaae1cd2a0f2259ab7eb599e">gyrograph</a>
+, <a class="el" href="class_principal_capteur_g_l.html#ac85b222b73f7e39e064561c1ef12132e">PrincipalCapteurGL</a>
 </li>
 <li>passeBas()
 : <a class="el" href="class_signal.html#a151dc6c717029e392f246d4d55fa895b">Signal</a>
@@ -161,26 +362,123 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>play()
 : <a class="el" href="class_c_camera.html#af00e6545d555de2240912e7bf5bb3dc5">CCamera</a>
 </li>
+<li>PrincipalCapteurGL()
+: <a class="el" href="class_principal_capteur_g_l.html#a84fb894a769cac7540e2776a0cb39986">PrincipalCapteurGL</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>readCSV()
+: <a class="el" href="class_c_s_v.html#ab22d8e32a2143edf26b41241e6c126a8">CSV</a>
+</li>
 <li>regulariseEchantillonage()
 : <a class="el" href="class_signal.html#ab9d50c6b05a4632d1773efc4ed1b018a">Signal</a>
+</li>
+<li>reInitialiseCapteursCentraleEtProgressionSignal()
+: <a class="el" href="class_tableau_de_bord.html#a3b2be9636c179b3435a6af3fef3972b7">TableauDeBord</a>
+</li>
+<li>resizeGL()
+: <a class="el" href="class_capteur_g_l.html#aa7a7eb4c3380b83a410da2e6351bd0c5">CapteurGL</a>
+, <a class="el" href="classgyrograph.html#acb5074dfa8bab843570b61541948f5f0">gyrograph</a>
+, <a class="el" href="class_principal_capteur_g_l.html#af611b97447b73d8815227f90c5679099">PrincipalCapteurGL</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>setCenter()
+: <a class="el" href="class_c_camera.html#a561be046869d5ddc2a23565898a2526a">CCamera</a>
+</li>
+<li>setCentrale()
+: <a class="el" href="class_capteur_g_l.html#a2badf9384bbd2763fb5590b0e3bd0124">CapteurGL</a>
+, <a class="el" href="class_principal_capteur_g_l.html#a6b383a12e845924f6eef74f0574b56cd">PrincipalCapteurGL</a>
+, <a class="el" href="classgyrograph.html#a3379f2fd65bc48411dd43b45992d4230">gyrograph</a>
 </li>
 <li>setClassicalMode()
 : <a class="el" href="class_c_camera.html#a8a9e733c7fca3b2aa98b4b2d99cf6b0f">CCamera</a>
 </li>
+<li>setComportement()
+: <a class="el" href="class_capteur_g_l.html#a449bdd87dc84f425bf0bc9ce659f3044">CapteurGL</a>
+</li>
+<li>setEye()
+: <a class="el" href="class_c_camera.html#a9a4c736bfc259daef4a060edc2b02463">CCamera</a>
+</li>
+<li>setFenetreEvolutionCentrale()
+: <a class="el" href="class_principal_capteur_g_l.html#ae8d9bc81919313cdcdcb281ee0d96d8d">PrincipalCapteurGL</a>
+</li>
 <li>setGoProMode()
 : <a class="el" href="class_c_camera.html#ab692273f71887d944d66a1226c5c0c3b">CCamera</a>
+</li>
+<li>setiCourant()
+: <a class="el" href="class_tableau_de_bord.html#afdf983fd6db3d1518604862ab43499f5">TableauDeBord</a>
+</li>
+<li>setLastTimeToCurrentTime()
+: <a class="el" href="class_tableau_de_bord.html#aa54c2c1a31cf5ee9b1f8a612919d1c14">TableauDeBord</a>
+</li>
+<li>setmaxLabel()
+: <a class="el" href="classgyrograph.html#a7fe46e583424e6e7f61041b4b509ebda">gyrograph</a>
+</li>
+<li>setminLabel()
+: <a class="el" href="classgyrograph.html#a0561537b8d57f5b6ce99500fa4451096">gyrograph</a>
+</li>
+<li>setPositionEtCapteursCentrale()
+: <a class="el" href="class_tableau_de_bord.html#ac37b808d4abe13fca27374fff12f78bc">TableauDeBord</a>
+</li>
+<li>setProjection()
+: <a class="el" href="class_principal_capteur_g_l.html#a8ec94f10c6673bc6ac35188256f96bfe">PrincipalCapteurGL</a>
 </li>
 <li>setSignal()
 : <a class="el" href="class_signal.html#a602184787c1afbeacb31b62507a96820">Signal</a>
 </li>
+<li>setsignalIndex()
+: <a class="el" href="classgyrograph.html#a9fc01ec8097ffbe5e89201c44ed82c09">gyrograph</a>
+</li>
+<li>setslidervalue()
+: <a class="el" href="class_main_window.html#aa849a291ea8672d84ce0e5bbaf345472">MainWindow</a>
+</li>
+<li>setTableauDeBord()
+: <a class="el" href="classgyrograph.html#ad46239c94e1afb2a1887eb235bdb462f">gyrograph</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>TableauDeBord()
+: <a class="el" href="class_tableau_de_bord.html#ab371dfed23c16d5079be50321643c54e">TableauDeBord</a>
+</li>
+<li>timerEvent()
+: <a class="el" href="class_principal_capteur_g_l.html#a10b21151aa0aace3e7a954d996dab2c4">PrincipalCapteurGL</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>updateGL()
+: <a class="el" href="classgyrograph.html#a11c298f699c82e00b2666d51a39ea7d5">gyrograph</a>
+, <a class="el" href="class_principal_capteur_g_l.html#a0f18c98300cfb4db7f2076d7220f9d0a">PrincipalCapteurGL</a>
+</li>
+<li>updateLabel()
+: <a class="el" href="classgyrograph.html#ac5d13724f6b335d0b9706621d19b9a8a">gyrograph</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_0x7e"></a>- ~ -</h3><ul>
+<li>~Classifieur()
+: <a class="el" href="class_classifieur.html#a7ee6e837571dba5758fd69e9e515e55e">Classifieur</a>
+</li>
 <li>~Signal()
 : <a class="el" href="class_signal.html#ae7a1d116cda63e790bf9aab549d57d3a">Signal</a>
+</li>
+<li>~TableauDeBord()
+: <a class="el" href="class_tableau_de_bord.html#a32ffac5e0c89a73f14d0c3ae9f1fab17">TableauDeBord</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

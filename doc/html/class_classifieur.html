@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: Classifieur Class Reference</title>
+<title>IMU Viewer: Classifieur Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,20 +90,140 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a759077f5caeafc6ff63018c67eb22a36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a759077f5caeafc6ff63018c67eb22a36"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Classifieur</b> (QVector&lt; <a class="el" href="class_signal.html">Signal</a> * &gt; *, int, int)</td></tr>
-<tr class="memitem:a498021fda6fd88e1f88faefcd2ee7b92"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a498021fda6fd88e1f88faefcd2ee7b92"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>classe</b> ()</td></tr>
-<tr class="memitem:ad9b3d4576f26a2091151a1d648c1e214"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9b3d4576f26a2091151a1d648c1e214"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getClasse</b> (int)</td></tr>
+<tr class="memitem:adb3f6c50e978d149d326776855c7f724"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_classifieur.html#adb3f6c50e978d149d326776855c7f724">Classifieur</a> (QVector&lt; <a class="el" href="class_signal.html">Signal</a> * &gt; *, int)</td></tr>
+<tr class="memdesc:adb3f6c50e978d149d326776855c7f724"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur.  <a href="#adb3f6c50e978d149d326776855c7f724"></a><br/></td></tr>
+<tr class="memitem:a7ee6e837571dba5758fd69e9e515e55e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ee6e837571dba5758fd69e9e515e55e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_classifieur.html#a7ee6e837571dba5758fd69e9e515e55e">~Classifieur</a> ()</td></tr>
+<tr class="memdesc:a7ee6e837571dba5758fd69e9e515e55e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur. <br/></td></tr>
+<tr class="memitem:a4ffa2e034a823e3bb4920e59007d42c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ffa2e034a823e3bb4920e59007d42c1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_classifieur.html#a4ffa2e034a823e3bb4920e59007d42c1">classe</a> ()</td></tr>
+<tr class="memdesc:a4ffa2e034a823e3bb4920e59007d42c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance la classification, au début et à la fin du <a class="el" href="class_signal.html">Signal</a>, le mouvement ne peut être classé (effet du à la taille de la fenetre) <br/></td></tr>
+<tr class="memitem:a1d893af13aad0f3407c772310e18a1d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_classifieur.html#a1d893af13aad0f3407c772310e18a1d1">getClasse</a> (int)</td></tr>
+<tr class="memdesc:a1d893af13aad0f3407c772310e18a1d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la classe pour le ieme élément du signal.  <a href="#a1d893af13aad0f3407c772310e18a1d1"></a><br/></td></tr>
+<tr class="memitem:aaa18983c405f8ed373a86cb782c6e7d4"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_classifieur.html#aaa18983c405f8ed373a86cb782c6e7d4">getLabelClasse</a> (int)</td></tr>
+<tr class="memdesc:aaa18983c405f8ed373a86cb782c6e7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le label de la classe pour le ieme élément du signal.  <a href="#aaa18983c405f8ed373a86cb782c6e7d4"></a><br/></td></tr>
+<tr class="memitem:a646727adf013269286836ea455cf121a"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_classifieur.html#a646727adf013269286836ea455cf121a">getImgClasse</a> (int)</td></tr>
+<tr class="memdesc:a646727adf013269286836ea455cf121a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nom du fichier image correspondant à la classe du ieme élément du <a class="el" href="class_signal.html">Signal</a>.  <a href="#a646727adf013269286836ea455cf121a"></a><br/></td></tr>
 </table>
+<h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="adb3f6c50e978d149d326776855c7f724"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Classifieur::Classifieur </td>
+          <td>(</td>
+          <td class="paramtype">QVector&lt; <a class="el" href="class_signal.html">Signal</a> * &gt; *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructeur. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unPSignaux</td><td>Pointeur sur les signaux de l'accéromètre brut (QVector&lt;Signal*&gt;*) </td></tr>
+    <tr><td class="paramname">uneTailleFenetre</td><td>Taille de la fenêtre à glisser sur le signal pour la classification (doit être impaire, les paramètres de classification sont définis pour fonctionner sur une freqEch à 100 hz et une fenetre à 99, changer les parametres de seuil de classif dans <a class="el" href="classifieur_8h_source.html">classifieur.h</a> si fréquance d'échantillonage ou taille de fenetre différentes) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
+<a class="anchor" id="a1d893af13aad0f3407c772310e18a1d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Classifieur::getClasse </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie la classe pour le ieme élément du signal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>ieme élément du <a class="el" href="class_signal.html">Signal</a> (int) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Renvoie l'entier correspondant à la classe (int) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a646727adf013269286836ea455cf121a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Classifieur::getImgClasse </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le nom du fichier image correspondant à la classe du ieme élément du <a class="el" href="class_signal.html">Signal</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Indice de l'élément du <a class="el" href="class_signal.html">Signal</a> (int) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Renvoie le nom du fichier correspondant au mouvement (QString) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aaa18983c405f8ed373a86cb782c6e7d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Classifieur::getLabelClasse </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le label de la classe pour le ieme élément du signal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Indice de l'élément du <a class="el" href="class_signal.html">Signal</a> (int) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Renvoie le label correspondant au mouvement (QString) </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="classifieur_8h_source.html">classifieur.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: Member List</title>
+<title>IMU Viewer: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,20 +87,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_capteur_g_l.html">CapteurGL</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>_centrale</b> (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>CapteurGL</b>(QWidget *parent=0) (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>initializeGL</b>() (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>keyPressEvent</b>(QKeyEvent *keyEvent) (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>mouseMoveEvent</b>(QMouseEvent *event) (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>mousePressEvent</b>(QMouseEvent *event) (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>paintGL</b>() (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>resizeGL</b>(int width, int height) (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>setCentrale</b>(Centrale *) (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>timerEvent</b>(QTimerEvent) (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_capteur_g_l.html#a124803898394b85d5e1d89abc51fb2a5">CapteurGL</a>(QWidget *parent=0)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_capteur_g_l.html#a259d3c377cc3e84b8fa4a6077040af7b">initializeGL</a>()</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_capteur_g_l.html#a4377914f38491375d9e73e35ec6604bc">paintGL</a>()</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_capteur_g_l.html#aa7a7eb4c3380b83a410da2e6351bd0c5">resizeGL</a>(int w, int h)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_capteur_g_l.html#a2badf9384bbd2763fb5590b0e3bd0124">setCentrale</a>(Centrale *)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_capteur_g_l.html#a449bdd87dc84f425bf0bc9ce659f3044">setComportement</a>(int)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>updateGL</b>() (defined in <a class="el" href="class_capteur_g_l.html">CapteurGL</a>)</td><td class="entry"><a class="el" href="class_capteur_g_l.html">CapteurGL</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: CSV Class Reference</title>
+<title>IMU Viewer: CSV Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,18 +90,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8f7bf1a8981d755d1074b939f14f1205"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f7bf1a8981d755d1074b939f14f1205"></a>
-double **&#160;</td><td class="memItemRight" valign="bottom"><b>readCSV</b> (const char *)</td></tr>
-<tr class="memitem:aeb7056de851b1e8818507a853296bb1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb7056de851b1e8818507a853296bb1f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getNbLines</b> ()</td></tr>
+<tr class="memitem:a335bef6309d648d44907c0e7279cc32c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a335bef6309d648d44907c0e7279cc32c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_s_v.html#a335bef6309d648d44907c0e7279cc32c">CSV</a> ()</td></tr>
+<tr class="memdesc:a335bef6309d648d44907c0e7279cc32c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut (ne fait rien) <br/></td></tr>
+<tr class="memitem:ab22d8e32a2143edf26b41241e6c126a8"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_s_v.html#ab22d8e32a2143edf26b41241e6c126a8">readCSV</a> (const char *)</td></tr>
+<tr class="memdesc:ab22d8e32a2143edf26b41241e6c126a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit un fichier issu de l'acquisition au format : tps en sec, code, accx, accy, accz, code, gyrox, gyroy, gyroz, code, magnex, magney, magnez.  <a href="#ab22d8e32a2143edf26b41241e6c126a8"></a><br/></td></tr>
+<tr class="memitem:a3de2557be6689ad831e141875d30f443"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_s_v.html#a3de2557be6689ad831e141875d30f443">getNbLines</a> ()</td></tr>
+<tr class="memdesc:a3de2557be6689ad831e141875d30f443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre de lignes du fichier.  <a href="#a3de2557be6689ad831e141875d30f443"></a><br/></td></tr>
 </table>
+<h2>Member Function Documentation</h2>
+<a class="anchor" id="a3de2557be6689ad831e141875d30f443"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CSV::getNbLines </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le nombre de lignes du fichier. </p>
+<dl class="section return"><dt>Returns</dt><dd>Le nombre de lignes (int) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab22d8e32a2143edf26b41241e6c126a8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CSV::readCSV </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit un fichier issu de l'acquisition au format : tps en sec, code, accx, accy, accz, code, gyrox, gyroy, gyroz, code, magnex, magney, magnez. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>file_name Chemin complet vers le fichier à lire (const char *) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="csv_8h_source.html">csv.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

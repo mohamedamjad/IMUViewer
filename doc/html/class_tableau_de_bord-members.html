@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: Member List</title>
+<title>IMU Viewer: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,25 +87,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>_IMU</b> (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>calculeFenetreCentrale</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>get_signaux</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getClasse</b>(int i) (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>getCoinInferieur</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getCoinSuperieur</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>getiCourant</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getnbEch</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>majCentrale</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>miseenplace</b>(int i) (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>reInitialiseCapteursCentraleEtProgressionSignal</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setiCourant</b>(int i) (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>setLastTimeToCurrentTime</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>TableauDeBord</b>(const char *fichiercsv) (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>~TableauDeBord</b>() (defined in <a class="el" href="class_tableau_de_bord.html">TableauDeBord</a>)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tableau_de_bord.html#a63215c72663dac73d504a76ebc83d5c9">_IMU</a></td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tableau_de_bord.html#a76725a3f83921c062576a84de928e6ac">calculeFenetreCentrale</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tableau_de_bord.html#ad8188ad23e018542a76cf63480f71be0">get_signaux</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tableau_de_bord.html#a9ae85bd612aa1bf3606f38f00103fbc8">getClassifieur</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tableau_de_bord.html#a6d9c3ed75248cadb5e94122d7198e8e2">getCoinInferieur</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tableau_de_bord.html#a04d78787a0756234bc8a06a394146279">getCoinSuperieur</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tableau_de_bord.html#aed09ed8bd4facd51e977090f3761e639">getiCourant</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tableau_de_bord.html#a7db43195dbf040ccfc34738aa22dd894">getnbEch</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tableau_de_bord.html#ac9ec2ff2e324b4dbd4790b6372eda328">majCentrale</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tableau_de_bord.html#a3b2be9636c179b3435a6af3fef3972b7">reInitialiseCapteursCentraleEtProgressionSignal</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tableau_de_bord.html#afdf983fd6db3d1518604862ab43499f5">setiCourant</a>(int i)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tableau_de_bord.html#aa54c2c1a31cf5ee9b1f8a612919d1c14">setLastTimeToCurrentTime</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tableau_de_bord.html#ac37b808d4abe13fca27374fff12f78bc">setPositionEtCapteursCentrale</a>(int i)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tableau_de_bord.html#ab371dfed23c16d5079be50321643c54e">TableauDeBord</a>(const char *fichiercsv)</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_tableau_de_bord.html#a32ffac5e0c89a73f14d0c3ae9f1fab17">~TableauDeBord</a>()</td><td class="entry"><a class="el" href="class_tableau_de_bord.html">TableauDeBord</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

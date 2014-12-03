@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: Centrale Class Reference</title>
+<title>IMU Viewer: Centrale Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,37 +91,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aff05268b8cd4ea2f8a43b5ad90146ac2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff05268b8cd4ea2f8a43b5ad90146ac2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAccX</b> (double)</td></tr>
+<tr class="memitem:ad005b09cad05266ffe01573a572ad477"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad005b09cad05266ffe01573a572ad477"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_centrale.html#ad005b09cad05266ffe01573a572ad477">Centrale</a> ()</td></tr>
+<tr class="memdesc:ad005b09cad05266ffe01573a572ad477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur. <br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ad846974f247b153a704f983b9d1f3be6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad846974f247b153a704f983b9d1f3be6"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_acc</b></td></tr>
-<tr class="memitem:a806c6aaa0ce69355bd6fdbd3238f8b49"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a806c6aaa0ce69355bd6fdbd3238f8b49"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_gyro</b></td></tr>
-<tr class="memitem:a34d11a368356204214541e13ed69f320"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34d11a368356204214541e13ed69f320"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_magn</b></td></tr>
-<tr class="memitem:aed176e61a064d0a95b78113738661951"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed176e61a064d0a95b78113738661951"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_accNorm</b></td></tr>
-<tr class="memitem:abe60e6f4a83d5a403c6ef156aba7f427"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe60e6f4a83d5a403c6ef156aba7f427"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_gyroNorm</b></td></tr>
-<tr class="memitem:a2bc96ca4ca013f8dc1c97b9bcfe6d232"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bc96ca4ca013f8dc1c97b9bcfe6d232"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_magnNorm</b></td></tr>
-<tr class="memitem:a274bb60ec7661a3779ae6631a7d2a12f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a274bb60ec7661a3779ae6631a7d2a12f"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_acc2I</b></td></tr>
-<tr class="memitem:a3c13b3ab7313ea2b024433a999485ddc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c13b3ab7313ea2b024433a999485ddc"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_gyroI</b></td></tr>
-<tr class="memitem:ac9d092e752c69c2d5e380eee0a11d1ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9d092e752c69c2d5e380eee0a11d1ec"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_orientation</b></td></tr>
-<tr class="memitem:a4e393d6d22102dc5b966581848ba2070"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e393d6d22102dc5b966581848ba2070"></a>
-QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_position</b></td></tr>
-<tr class="memitem:a4e1cbd3cdb6789fec0212b0637559662"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e1cbd3cdb6789fec0212b0637559662"></a>
-QVector&lt; QVector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_trajectoire</b></td></tr>
-<tr class="memitem:a91c3d819688724fdd2c5b52d8c0fd701"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91c3d819688724fdd2c5b52d8c0fd701"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>_distance</b> = 0</td></tr>
-<tr class="memitem:a143474d4e8e52156fbe2473cc996d62a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a143474d4e8e52156fbe2473cc996d62a"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>_vitesse</b> = 0</td></tr>
+<tr class="memitem:a9a7c89ce8970499056fb2ffd2436a849"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a7c89ce8970499056fb2ffd2436a849"></a>
+QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_centrale.html#a9a7c89ce8970499056fb2ffd2436a849">_acc</a></td></tr>
+<tr class="memdesc:a9a7c89ce8970499056fb2ffd2436a849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vecteur à trois composantes stockant les valeurs de l'accéléromètre (QVector&lt;double&gt;) <br/></td></tr>
+<tr class="memitem:af5086e550303963d9357a10db78e7f69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5086e550303963d9357a10db78e7f69"></a>
+QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_centrale.html#af5086e550303963d9357a10db78e7f69">_gyro</a></td></tr>
+<tr class="memdesc:af5086e550303963d9357a10db78e7f69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vecteur à trois composantes stockant les valeurs du gyroscope (QVector&lt;double&gt;) <br/></td></tr>
+<tr class="memitem:ab825ced930ac9d8a5c1f57d21ee769e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab825ced930ac9d8a5c1f57d21ee769e3"></a>
+QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_centrale.html#ab825ced930ac9d8a5c1f57d21ee769e3">_magn</a></td></tr>
+<tr class="memdesc:ab825ced930ac9d8a5c1f57d21ee769e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vecteur à trois composantes stockant les valeurs du magnétomètre (QVector&lt;double&gt;) <br/></td></tr>
+<tr class="memitem:af7e8cdf32186fcc5578532e8f7cdc54a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7e8cdf32186fcc5578532e8f7cdc54a"></a>
+QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_centrale.html#af7e8cdf32186fcc5578532e8f7cdc54a">_orientation</a></td></tr>
+<tr class="memdesc:af7e8cdf32186fcc5578532e8f7cdc54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vecteur à trois composantes représentant l'orientation de la centrale en radians (QVector&lt;double&gt;) <br/></td></tr>
+<tr class="memitem:ad76085b1cb96357ea0b9153fce4a4aad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad76085b1cb96357ea0b9153fce4a4aad"></a>
+QVector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_centrale.html#ad76085b1cb96357ea0b9153fce4a4aad">_position</a></td></tr>
+<tr class="memdesc:ad76085b1cb96357ea0b9153fce4a4aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vecteur à trois composantes contenant la position de la centrale dans le repère absolu (QVector&lt;double&gt;) <br/></td></tr>
+<tr class="memitem:a5a9bb3e05d080f53437c66be4246e0a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a9bb3e05d080f53437c66be4246e0a7"></a>
+QVector&lt; QVector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_centrale.html#a5a9bb3e05d080f53437c66be4246e0a7">_trajectoire</a></td></tr>
+<tr class="memdesc:a5a9bb3e05d080f53437c66be4246e0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vecteur contenant l'historique des positions de la centrale(QVector&lt;QVector&lt;double&gt;&gt;) <br/></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="centrale_8h_source.html">centrale.h</a></li>
@@ -128,7 +122,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>_vitesse</b> = 0</t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

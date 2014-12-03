@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: MainWindow Class Reference</title>
+<title>IMU Viewer: MainWindow Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,37 +91,126 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr class="memitem:a768a8555eecc86ac8d8b6a8ce20c2fc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a768a8555eecc86ac8d8b6a8ce20c2fc6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>majLCD</b> ()</td></tr>
-<tr class="memitem:a1dd604dd3fe7d6929e1c6feb9062ec86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1dd604dd3fe7d6929e1c6feb9062ec86"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setslidervalue</b> ()</td></tr>
-<tr class="memitem:a00dbc85bb741bb161291386aa4873fc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00dbc85bb741bb161291386aa4873fc8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clicPlay</b> ()</td></tr>
-<tr class="memitem:ad09b9f8a76b015f8a5db10cf00914d0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad09b9f8a76b015f8a5db10cf00914d0c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>dragslidervalue</b> ()</td></tr>
-<tr class="memitem:a7a8e0b8e6acc3e7d4ac1692b511075ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a8e0b8e6acc3e7d4ac1692b511075ff"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clicStop</b> ()</td></tr>
-<tr class="memitem:a65b751746f63054d456dc6a315bead5d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65b751746f63054d456dc6a315bead5d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadfile</b> ()</td></tr>
-<tr class="memitem:af4fdfdab16ba144e20173c81f3f1c06b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4fdfdab16ba144e20173c81f3f1c06b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>majClasse</b> ()</td></tr>
+<tr class="memitem:a3f517751abccc432f979f6b5ff540a46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f517751abccc432f979f6b5ff540a46"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a3f517751abccc432f979f6b5ff540a46">majLCD</a> ()</td></tr>
+<tr class="memdesc:a3f517751abccc432f979f6b5ff540a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT qui permet de mettre à jour le LCD à chaque raffraichissement de la fenêtre. <br/></td></tr>
+<tr class="memitem:aa849a291ea8672d84ce0e5bbaf345472"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa849a291ea8672d84ce0e5bbaf345472"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#aa849a291ea8672d84ce0e5bbaf345472">setslidervalue</a> ()</td></tr>
+<tr class="memdesc:aa849a291ea8672d84ce0e5bbaf345472"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT pour changer les valeurs du slider à chaque raffraîchissement de fenêtre. <br/></td></tr>
+<tr class="memitem:a6eca5dfdc421c100acb8e2314deacf98"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6eca5dfdc421c100acb8e2314deacf98"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a6eca5dfdc421c100acb8e2314deacf98">clicPlay</a> ()</td></tr>
+<tr class="memdesc:a6eca5dfdc421c100acb8e2314deacf98"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT déclenché lorsqu'on clique sur play. <br/></td></tr>
+<tr class="memitem:a5957c9e9b5878589aaa11b110ce6531d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5957c9e9b5878589aaa11b110ce6531d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a5957c9e9b5878589aaa11b110ce6531d">dragslidervalue</a> ()</td></tr>
+<tr class="memdesc:a5957c9e9b5878589aaa11b110ce6531d"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT déclenché lorsqu'on clique-glisse le slider. <br/></td></tr>
+<tr class="memitem:a31f97a13cb2313fa1d703bbb0ddce412"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31f97a13cb2313fa1d703bbb0ddce412"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a31f97a13cb2313fa1d703bbb0ddce412">clicStop</a> ()</td></tr>
+<tr class="memdesc:a31f97a13cb2313fa1d703bbb0ddce412"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT déclenché lorsqu'on clique sur stop. <br/></td></tr>
+<tr class="memitem:aef52a6e8364277ac72e594d6470ecce0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef52a6e8364277ac72e594d6470ecce0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#aef52a6e8364277ac72e594d6470ecce0">loadfile</a> ()</td></tr>
+<tr class="memdesc:aef52a6e8364277ac72e594d6470ecce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT qui lance la fenetre du chargement d'un nouveau fichier. <br/></td></tr>
+<tr class="memitem:a7e49fca35c4136b1c00ad2f1c2a2d5a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e49fca35c4136b1c00ad2f1c2a2d5a6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a7e49fca35c4136b1c00ad2f1c2a2d5a6">majClasse</a> ()</td></tr>
+<tr class="memdesc:a7e49fca35c4136b1c00ad2f1c2a2d5a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">SLOT de la mise à jour de la classification à chaque raffraîchissement de la fenêtre. <br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8b244be8b7b7db1b08de2a2acb9409db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b244be8b7b7db1b08de2a2acb9409db"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MainWindow</b> (QWidget *parent=0)</td></tr>
-<tr class="memitem:a9c4f542263838b9ecd06eae839a42a34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c4f542263838b9ecd06eae839a42a34"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>keyPressEvent</b> (QKeyEvent *event)</td></tr>
-<tr class="memitem:a428d3fd1fd491107dacda4eebb5e0d16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a428d3fd1fd491107dacda4eebb5e0d16"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Initmainwindow</b> (const char *filename)</td></tr>
+<tr class="memitem:a8b244be8b7b7db1b08de2a2acb9409db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a8b244be8b7b7db1b08de2a2acb9409db">MainWindow</a> (QWidget *parent=0)</td></tr>
+<tr class="memdesc:a8b244be8b7b7db1b08de2a2acb9409db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par copie du mainwindow.  <a href="#a8b244be8b7b7db1b08de2a2acb9409db"></a><br/></td></tr>
+<tr class="memitem:a555bc19ec64e5528eadefb34d7014d6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a555bc19ec64e5528eadefb34d7014d6e">keyPressEvent</a> (QKeyEvent *event)</td></tr>
+<tr class="memdesc:a555bc19ec64e5528eadefb34d7014d6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction appelée à chaque pression d'une touche clavier  <a href="#a555bc19ec64e5528eadefb34d7014d6e"></a><br/></td></tr>
+<tr class="memitem:a67d6e8b8fd10d7d4983ace4b550811ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a67d6e8b8fd10d7d4983ace4b550811ab">chargeFichier</a> (const char *filename)</td></tr>
+<tr class="memdesc:a67d6e8b8fd10d7d4983ace4b550811ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui permet de choisir le fichier qu'on va charger  <a href="#a67d6e8b8fd10d7d4983ace4b550811ab"></a><br/></td></tr>
 </table>
+<h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a8b244be8b7b7db1b08de2a2acb9409db"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainWindow::MainWindow </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructeur par copie du mainwindow. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>: QWidget pour construire <a class="el" href="class_main_window.html">MainWindow</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2>Member Function Documentation</h2>
+<a class="anchor" id="a67d6e8b8fd10d7d4983ace4b550811ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainWindow::chargeFichier </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui permet de choisir le fichier qu'on va charger </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>: chemin vers le fichier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a555bc19ec64e5528eadefb34d7014d6e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainWindow::keyPressEvent </td>
+          <td>(</td>
+          <td class="paramtype">QKeyEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction appelée à chaque pression d'une touche clavier </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>l'événement qui déclenche la fonction </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="mainwindow_8h_source.html">mainwindow.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: File List</title>
+<title>IMU Viewer: File List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -67,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,31 +85,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock">Here is a list of all documented files with brief descriptions:</div><div class="directory">
 <div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
 <tr id="row_0_" class="even"><td class="entry"><img id="arr_0_" src="ftv2mlastnode.png" alt="\" width="16" height="22" onclick="toggleFolder('0_')"/><img id="img_0_" src="ftv2folderopen.png" alt="-" width="24" height="22" onclick="toggleFolder('0_')"/><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html" target="_self">include</a></td><td class="desc"></td></tr>
-<tr id="row_0_0_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="acccapteurgl_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>acccapteurgl.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_1_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="capteur_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>capteur.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_2_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="capteurgl_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>capteurgl.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_3_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="_c_camera_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>CCamera.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_4_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="centrale_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>centrale.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_5_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="classifieur_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>classifieur.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_6_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="combobox_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>combobox.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_7_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="csv_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>csv.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_8_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="gyrocapteurgl_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>gyrocapteurgl.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_9_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="gyrograph_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>gyrograph.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_10_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="label_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>label.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_11_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="magnecapteurgl_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>magnecapteurgl.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_12_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="mainwindow_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>mainwindow.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_13_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="my__lcdnumber_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>my_lcdnumber.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_14_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="principalcapteurgl_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>principalcapteurgl.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_15_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="quaternion_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>quaternion.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_16_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="signal_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>signal.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_17_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="tableaudebord_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>tableaudebord.h</b></td><td class="desc"></td></tr>
-<tr id="row_0_18_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><a href="tests_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>tests.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_0_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="capteurgl_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>capteurgl.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_1_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="_c_camera_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>CCamera.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_2_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="centrale_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>centrale.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_3_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="classifieur_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>classifieur.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_4_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="csv_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>csv.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_5_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="gyrograph_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>gyrograph.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_6_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="mainwindow_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>mainwindow.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_7_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="my__lcdnumber_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>my_lcdnumber.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_8_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="principalcapteurgl_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>principalcapteurgl.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_9_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="signal_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>signal.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_10_"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="tableaudebord_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>tableaudebord.h</b></td><td class="desc"></td></tr>
+<tr id="row_0_11_" class="even"><td class="entry"><img src="ftv2blank.png" alt="&#160;" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><a href="tests_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>tests.h</b></td><td class="desc"></td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

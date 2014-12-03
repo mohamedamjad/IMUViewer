@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: Member List</title>
+<title>IMU Viewer: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">IMU Viewer
    </div>
+   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,25 +87,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_centrale.html">Centrale</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>_acc</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>_acc2I</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>_accNorm</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>_distance</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>_gyro</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>_gyroI</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>_gyroNorm</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>_magn</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>_magnNorm</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>_orientation</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>_position</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>_trajectoire</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>_vitesse</b> (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Centrale</b>() (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>setAccX</b>(double) (defined in <a class="el" href="class_centrale.html">Centrale</a>)</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_centrale.html#a9a7c89ce8970499056fb2ffd2436a849">_acc</a></td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_centrale.html#af5086e550303963d9357a10db78e7f69">_gyro</a></td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_centrale.html#ab825ced930ac9d8a5c1f57d21ee769e3">_magn</a></td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_centrale.html#af7e8cdf32186fcc5578532e8f7cdc54a">_orientation</a></td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_centrale.html#ad76085b1cb96357ea0b9153fce4a4aad">_position</a></td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_centrale.html#a5a9bb3e05d080f53437c66be4246e0a7">_trajectoire</a></td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_centrale.html#ad005b09cad05266ffe01573a572ad477">Centrale</a>()</td><td class="entry"><a class="el" href="class_centrale.html">Centrale</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 20:35:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
