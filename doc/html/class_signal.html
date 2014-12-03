@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>IMU Viewer: Signal Class Reference</title>
+<title>IMUViewer: Signal Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IMU Viewer
+   <div id="projectname">IMUViewer
    </div>
-   <div id="projectbrief">Visualisation de l&#39;évolution d&#39;une centrale inertielle</div>
+   <div id="projectbrief">Visualisation de données inertielles</div>
   </td>
  </tr>
  </tbody>
@@ -128,8 +128,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a70cb3b57f8518dd5a47f683da530769b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur pour un élément du signal doublement intégré  <a href="#a70cb3b57f8518dd5a47f683da530769b"></a><br/></td></tr>
 <tr class="memitem:adfd4acc458739bfef0000fd8f0d72fd5"><td class="memItemLeft" align="right" valign="top">SampleType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_signal.html#adfd4acc458739bfef0000fd8f0d72fd5">getMaxSignal</a> ()</td></tr>
 <tr class="memdesc:adfd4acc458739bfef0000fd8f0d72fd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la valeur max du signal.  <a href="#adfd4acc458739bfef0000fd8f0d72fd5"></a><br/></td></tr>
-<tr class="memitem:af84a1d605472c50d699a4ca21b784a98"><td class="memItemLeft" align="right" valign="top">SampleType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_signal.html#af84a1d605472c50d699a4ca21b784a98">normalizeVector</a> (SampleType)</td></tr>
-<tr class="memdesc:af84a1d605472c50d699a4ca21b784a98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalise un nombre en fonction du max du signal.  <a href="#af84a1d605472c50d699a4ca21b784a98"></a><br/></td></tr>
+<tr class="memitem:a0ad47a076acd62673c565476c034cc96"><td class="memItemLeft" align="right" valign="top">SampleType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_signal.html#a0ad47a076acd62673c565476c034cc96">normalizeVector</a> (SampleType, int h)</td></tr>
+<tr class="memdesc:a0ad47a076acd62673c565476c034cc96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalise un nombre en fonction du max du signal.  <a href="#a0ad47a076acd62673c565476c034cc96"></a><br/></td></tr>
 <tr class="memitem:ace834afef344f6d8bcfd0d44045fab43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace834afef344f6d8bcfd0d44045fab43"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_signal.html#ace834afef344f6d8bcfd0d44045fab43">calculStats</a> ()</td></tr>
 <tr class="memdesc:ace834afef344f6d8bcfd0d44045fab43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance le calcul des statistiques sur le signal (crée un tableau de taille du vecteur -_tailleFenetreStats+1) <br/></td></tr>
@@ -428,7 +428,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af84a1d605472c50d699a4ca21b784a98"></a>
+<a class="anchor" id="a0ad47a076acd62673c565476c034cc96"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -436,8 +436,18 @@ Static Public Member Functions</h2></td></tr>
           <td class="memname">Signal::normalizeVector </td>
           <td>(</td>
           <td class="paramtype">SampleType&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -446,6 +456,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">val</td><td>Nombre à normaliser (SampleType) </td></tr>
+    <tr><td class="paramname">h</td><td>la hauteur de l'espace d'affichage </td></tr>
   </table>
   </dd>
 </dl>
@@ -560,7 +571,7 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 3 2014 14:08:19 for IMU Viewer by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 3 2014 15:25:02 for IMUViewer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

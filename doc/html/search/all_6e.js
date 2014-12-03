@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['normalizevector',['normalizeVector',['../class_signal.html#af84a1d605472c50d699a4ca21b784a98',1,'Signal']]]
+  ['normalizevector',['normalizeVector',['../class_signal.html#a0ad47a076acd62673c565476c034cc96',1,'Signal']]]
 ];

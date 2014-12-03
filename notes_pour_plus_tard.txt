@@ -1,18 +1,12 @@
 - pb de timer
 *** optimisation code : si pas le temps indiquer ce qu'il faudrait faire dans le rapport
 	- tests sur la taille des tableaux
-	- 9 dans signal::normalizevector : il faudrait le passer en parametre	
-	- noms variables : _ pour propriétés p pour pointeurs
-	- warnings
 	- test si annuler à l'ouvertture de ficheir au tout début du programme
 *** tests unitaires
 *** document Doxygen
 *** rapport!!!!!!!!!!!!
-	- Aide pour installation librairie
-	- Explication acquisition : schéma téléphone
 	- Perspectives : 
-		comparaison signal dégravité avec capteur TYPE_GRAVITY de Android
-		ce qu'il faut faire en terme d'analyse logicielle
+
 *** soutenance!!!!!!!!
 
 ------------------------------eN CAS DE REGRESSION MARDI MATIN Lundi soir j'ai changé : -----------------------------
