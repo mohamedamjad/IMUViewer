@@ -203,7 +203,7 @@ void MainWindow::clicPlay()
 {
     // On réaffecte la mémoire de date à la date courante
     _pTdb->setLastTimeToCurrentTime();
-    _pTimer->start();
+    _pTimer->start(1000/freqEch);
 
 
 }
@@ -220,7 +220,7 @@ void MainWindow::clicStop()
 void MainWindow::dragslidervalue()
 {
     this->_pTdb->setiCourant(ui->horizontalSlider->value());
-    _pTimer->start();
+    _pTimer->start(1000/freqEch);
     _pTdb->setLastTimeToCurrentTime();
 
 
