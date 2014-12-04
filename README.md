@@ -23,4 +23,4 @@ Le fichier se lit avec les boutons classiques d'un lecteur multimédia.
 
 
 Développeurs:
-Amjad - Régis - Ferdaousse
+![Régis](https://github.com/cwamgis) - ![Ferdaousse](https://github.com/ferdaousse) - ![Amjad](https://github.com/mohamedamjad)
