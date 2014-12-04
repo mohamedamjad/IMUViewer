@@ -21,6 +21,7 @@ courant du mouvement. Il est possible d'afficher trois signaux différents via l
 (classe gyrograph).
 Le fichier se lit avec les boutons classiques d'un lecteur multimédia.
 
+Voir répértoire ![doc](https://github.com/mohamedamjad/IMUViewer/doc) pour télécharger la doc développeur et le rapport du projet
 
 Développeurs:
 ![Régis](https://github.com/cwamgis) - ![Ferdaousse](https://github.com/ferdaousse) - ![Amjad](https://github.com/mohamedamjad)
