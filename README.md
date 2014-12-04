@@ -11,6 +11,7 @@ fréquence régulière :
 - la mise à jour de l'affichage de la classe de mouvement
  la mise à jour de l'écran LCD (affichant le temps), barre de défilement
 
+![snapshot de l'application](https://github.com/mohamedamjad/IMUViewer/blob/master/images/application_snapshot.png)
 
 La partie de gauche permet de visualiser l'évolution de la centrale en 3D ou en mode projeté sur
 les trois plans (classe PrincipalCapteurGL). L'utilsiateur peut également activer le mode suivi en
