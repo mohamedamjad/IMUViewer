@@ -9,5 +9,5 @@ include
 =======
 header files
 
-by 
+Développeurs:
 Amjad - Régis - Ferdaousse
