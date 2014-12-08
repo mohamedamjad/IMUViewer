@@ -1,0 +1,16 @@
+.cnul_les_tableaux
+{
+	width:100%;
+
+}
+
+.cnul_les_tableaux td
+{
+		vertical-align:top;
+}
+
+.cnul_les_tableaux td img
+{
+		width:800px;
+		height:500px;
+}
