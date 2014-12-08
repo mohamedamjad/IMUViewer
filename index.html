@@ -31,18 +31,33 @@
           <h1>
 <a id="imuviewer" class="anchor" href="#imuviewer" aria-hidden="true"><span class="octicon octicon-link"></span></a>IMUViewer</h1>
 
-<h1>
-<a id="src" class="anchor" href="#src" aria-hidden="true"><span class="octicon octicon-link"></span></a>src</h1>
+<p>Lorsque l'utilisateur choisit un fichier, le logiciel réalise les pré-traitements nécessaires pour l'affichage de la centrale et de la classification du mouvement de l'opérateur.
+Une fois ces traitements réalisés, MainWindow crée un timer qui va permettre de lancer à une
+fréquence régulière :</p>
 
-<p>source files</p>
+<ul>
+<li>l'évolution de la centrale dans le temps</li>
+<li>la mise à jour de la fenêtre d'évolution de la centrale</li>
+<li>la mise à jour des fenêtres des capteurs</li>
+<li>la mise à jour des fenêtres de visualisation des signaux</li>
+<li>la mise à jour de l'affichage de la classe de mouvement
+la mise à jour de l'écran LCD (affichant le temps), barre de défilement</li>
+</ul>
 
-<h1>
-<a id="include" class="anchor" href="#include" aria-hidden="true"><span class="octicon octicon-link"></span></a>include</h1>
+<p><img src="https://github.com/mohamedamjad/IMUViewer/blob/master/images/application_snapshot.png" alt="snapshot de l'application"></p>
 
-<p>header files</p>
+<p>La partie de gauche permet de visualiser l'évolution de la centrale en 3D ou en mode projeté sur
+les trois plans (classe PrincipalCapteurGL). L'utilsiateur peut également activer le mode suivi en
+appuyant sur la touche 's' du clavier. La partie supérieure représente les données de
+l'accéléromètre et du gyroscope (classe CapteurGL). L'image en haut à droite représente le type
+courant du mouvement. Il est possible d'afficher trois signaux différents via les listes déroulantes
+(classe gyrograph).
+Le fichier se lit avec les boutons classiques d'un lecteur multimédia.</p>
 
-<p>by 
-Amjad - Régis - Ferdaousse</p>
+<p>Voir répértoire <img src="https://github.com/mohamedamjad/IMUViewer/tree/master/doc" alt="doc"> pour télécharger la doc développeur et le rapport du projet</p>
+
+<p>Développeurs:
+<img src="https://github.com/cwamgis" alt="Régis"> - <img src="https://github.com/ferdaousse" alt="Ferdaousse"> - <img src="https://github.com/mohamedamjad" alt="Amjad"></p>
         </section>
 
         <aside id="sidebar">
