@@ -14,3 +14,17 @@
 		width:800px;
 		height:500px;
 }
+
+.fond_blanc
+{
+		background-color:white;
+		width:900px;
+		height:560px;
+		text-align:center;
+}
+
+.fond_blanc img
+{
+		width:900px;
+		height:560px;
+}
